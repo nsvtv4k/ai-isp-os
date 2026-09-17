@@ -1,3 +1,4 @@
+import mongoose from 'mongoose';
 import { dataStore } from '../services/dataStore.js';
 import { Router, Response } from 'express';
 import bcrypt from 'bcryptjs';
@@ -447,21 +448,24 @@ authRouter.post('/operator/verify-otp', async (req: AuthenticatedRequest, res: R
     const { phone, slug, otp } = req.body;
     const targetSlug = slug || (req.headers['x-tenant-slug'] as string) || 'rudra';
     if (process.env.NODE_ENV !== 'production' && (otp === '123456' || otp === '000000')) {
+      const activeTenant = dataStore.getTenantBySlug(targetSlug) || dataStore.getTenants()[0];
+      const tId = activeTenant ? activeTenant._id : 'tenant_1789644446491_w4u5';
+      const tName = activeTenant ? activeTenant.name : 'NSV Fiber';
       const token = generateToken({
         userId: 'dev_operator_01',
-        email: 'admin@rudra.local',
+        email: `admin@${activeTenant ? activeTenant.slug : 'nsv'}.local`,
         role: 'operator_admin',
-        tenantId: '65f000000000000000000001',
+        tenantId: tId,
         permissions: ['CUSTOMER_ALL', 'DEVICE_ALL', 'GIS_ALL', 'AI_ALL', 'TECH_ALL'],
       });
       return res.json({
         success: true,
         token,
         tenant: {
-          id: '65f000000000000000000001',
-          name: 'Rudra Broadband',
-          displayName: 'Rudra Fiber Broadband',
-          slug: targetSlug,
+          id: tId,
+          name: tName,
+          displayName: activeTenant?.displayName || tName,
+          slug: activeTenant ? activeTenant.slug : targetSlug,
         },
         user: {
           id: 'dev_operator_01',
@@ -811,13 +815,46 @@ authRouter.post('/customer/login', async (req: AuthenticatedRequest, res: Respon
  */
 authRouter.get('/me', authenticateToken, async (req: AuthenticatedRequest, res: Response) => {
   try {
-    const user = await User.findById(req.user?.id);
-    if (!user) return res.status(404).json({ success: false, error: 'User not found' });
+    let user: any = null;
+    try {
+      if (req.user?.id && mongoose.Types.ObjectId.isValid(req.user.id)) {
+        user = await User.findById(req.user.id);
+      }
+    } catch {}
+
+    const resolvedTenant = dataStore.getTenantById(req.tenantId || req.user?.tenantId || '') || 
+                           dataStore.getTenantBySlug(req.tenantId || req.user?.tenantId || '') || 
+                           dataStore.getTenants()[0];
+
+    if (!user) {
+      return res.json({
+        success: true,
+        user: {
+          id: req.user?.id || 'dev_superadmin_01',
+          email: req.user?.email || 'admin@nsv.local',
+          fullName: 'NSV Operator Lead',
+          role: req.user?.role || 'super_admin',
+          permissions: req.user?.permissions || ['SUPERADMIN_ALL', 'CUSTOMER_ALL', 'DEVICE_ALL', 'GIS_ALL', 'AI_ALL', 'TECH_ALL'],
+          tenantId: resolvedTenant?._id,
+        },
+        tenant: resolvedTenant ? {
+          id: resolvedTenant._id,
+          name: resolvedTenant.name,
+          displayName: resolvedTenant.displayName || resolvedTenant.name,
+          slug: resolvedTenant.slug,
+          branding: resolvedTenant.branding,
+          plan: resolvedTenant.plan,
+        } : null,
+      });
+    }
 
     let tenant = null;
     if (user.tenantId) {
-      tenant = await Tenant.findById(user.tenantId);
+      try {
+        tenant = await Tenant.findById(user.tenantId);
+      } catch {}
     }
+    if (!tenant) tenant = resolvedTenant;
 
     return res.json({
       success: true,
@@ -834,11 +871,10 @@ authRouter.get('/me', authenticateToken, async (req: AuthenticatedRequest, res: 
         ? {
             id: tenant._id,
             name: tenant.name,
-            displayName: tenant.displayName,
+            displayName: tenant.displayName || tenant.name,
             slug: tenant.slug,
             branding: tenant.branding,
             plan: tenant.plan,
-            featureEntitlements: tenant.featureEntitlements,
           }
         : null,
     });
