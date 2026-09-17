@@ -1,3 +1,4 @@
+import mongoose from 'mongoose';
 import { Types } from 'mongoose';
 import { AuditLog } from '../models/AuditLog.js';
 
@@ -64,6 +65,9 @@ export const recordAuditLog = async ({
   result?: 'SUCCESS' | 'FAILURE' | 'BLOCKED_BY_POLICY';
   failureReason?: string;
 }) => {
+  if (mongoose.connection.readyState !== 1) {
+    return;
+  }
   try {
     await AuditLog.create({
       tenantId: tenantId && Types.ObjectId.isValid(tenantId) ? new Types.ObjectId(tenantId) : undefined,

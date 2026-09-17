@@ -1,3 +1,4 @@
+import mongoose from 'mongoose';
 import { Types } from 'mongoose';
 import { Customer, ICustomer } from '../models/Customer.js';
 import { Device, IDevice } from '../models/Device.js';

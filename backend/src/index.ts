@@ -25,6 +25,7 @@ import path from 'path';
 
 dotenv.config();
 
+mongoose.set('bufferCommands', false);
 const app = express();
 const server = http.createServer(app);
 

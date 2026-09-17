@@ -1,7 +1,7 @@
 {
   "tenants": [
     {
-      "_id": "tenant_1789644446491_w4u5",
+      "_id": "65f000000000000000000001",
       "name": "NSV Fiber Broadband",
       "displayName": "NSV Fiber",
       "slug": "nsv",
@@ -45,9 +45,9 @@
   ],
   "devices": [
     {
-      "_id": "dev_1789645881681_7k4z",
+      "_id": "65f847291000000000000001",
       "serialNumber": "OPTX84729100",
-      "tenantId": "tenant_1789644446491_w4u5",
+      "tenantId": "65f000000000000000000001",
       "tenantSlug": "nsv",
       "manufacturer": "Optronix",
       "model": "Titanium-2122A",
@@ -67,7 +67,32 @@
       "updatedAt": "2026-09-17T11:51:21.681Z"
     }
   ],
-  "customers": [],
+  "customers": [
+    {
+      "_id": "cust_1789649953717",
+      "tenantId": "65f000000000000000000001",
+      "name": "Srinivas Rao",
+      "phone": "9845012345",
+      "email": "subscriber@nsv.local",
+      "address": " , ",
+      "planName": "Fiber 100M",
+      "status": "active",
+      "assignedDeviceId": "65f847291000000000000001",
+      "createdAt": "2026-09-17T12:59:13.717Z"
+    },
+    {
+      "_id": "cust_1789650075675",
+      "tenantId": "65f000000000000000000001",
+      "name": "Srinivas Rao",
+      "phone": "9845012345",
+      "email": "subscriber@nsv.local",
+      "address": " , ",
+      "planName": "Fiber 100M",
+      "status": "active",
+      "assignedDeviceId": "65f847291000000000000001",
+      "createdAt": "2026-09-17T13:01:15.675Z"
+    }
+  ],
   "pendingMappings": [],
   "users": [
     {
@@ -77,7 +102,8 @@
       "phone": "+91 98450 00000",
       "role": "super_admin",
       "status": "active",
-      "createdAt": "2026-09-17T11:23:43.593Z"
+      "createdAt": "2026-09-17T11:23:43.593Z",
+      "tenantId": "65f000000000000000000001"
     },
     {
       "_id": "user_1789644446491_5z0o",
@@ -85,7 +111,7 @@
       "email": "ponnanaresh123@gmail.com",
       "phone": "9959303412",
       "role": "operator_admin",
-      "tenantId": "tenant_1789644446491_w4u5",
+      "tenantId": "65f000000000000000000001",
       "tenantSlug": "nsv",
       "status": "active",
       "createdAt": "2026-09-17T11:27:26.491Z"

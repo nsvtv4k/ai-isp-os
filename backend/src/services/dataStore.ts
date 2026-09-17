@@ -495,7 +495,7 @@ class LocalDataStore {
       return updated;
     } else {
       const newDev: IDeviceData = {
-        _id: 'dev_' + Date.now() + '_' + Math.random().toString(36).substring(2, 6),
+        _id: '65f' + Date.now().toString(16).padStart(13, '0') + Math.random().toString(16).substring(2, 10).padStart(8, '0'),
         serialNumber: serial,
         tenantId,
         tenantSlug,
