@@ -1,3 +1,4 @@
+import { dataStore } from './dataStore.js';
 import { Device, IDevice, IRxPowerRecord, IConnectedClient } from '../models/Device.js';
 import { Customer } from '../models/Customer.js';
 import { Tenant, ITenant } from '../models/Tenant.js';
@@ -794,7 +795,8 @@ export class CwmpService {
       ssid: informData.wifiSsid24 || informData.wifiSsid5g,
       wanIp: informData.wanIp,
     });
-    const tenantSlug = tenant?.slug || 'quarantine_pending';
+    const tenantSlug = tenant?.slug || pathOrQuerySlug || 'quarantine_pending';
+    
     const model = informData.productClass || informData.hardwareVersion || 'GPON-ONT';
     const vendorName = informData.manufacturer || 'Generic GPON';
     const detectedVendor = CwmpVendorProfiles.detectVendor(vendorName, model, informData.oui, informData.productClass, xml);

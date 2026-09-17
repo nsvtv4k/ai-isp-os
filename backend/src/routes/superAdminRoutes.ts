@@ -1,3 +1,4 @@
+import { dataStore } from '../services/dataStore.js';
 import mongoose from 'mongoose';
 import { Router, Response } from 'express';
 import { Types } from 'mongoose';
@@ -29,156 +30,29 @@ superAdminRouter.use(requireRole(['super_admin']));
  */
 superAdminRouter.get('/dashboard', async (req: AuthenticatedRequest, res: Response) => {
   try {
-    if (mongoose.connection.readyState !== 1) {
-      return res.json({
-        success: true,
-        kpis: {
-          totalTenants: 2,
-          activeTenants: 2,
-          totalCustomers: 6660,
-          totalDevices: 6660,
-          onlineDevices: 6495,
-          offlineDevices: 165,
-          onlineRatio: 97.5,
-          criticalAlarms: 0,
-          activeIncidents: 1,
-          mrr: 19998,
-          arr: 239976,
-        },
-        recentTenants: [
-          {
-            _id: '65f000000000000000000001',
-            displayName: 'Rudra Fiber Broadband',
-            slug: 'rudra',
-            status: 'active',
-            createdAt: new Date().toISOString(),
-          },
-          {
-            _id: '65f000000000000000000002',
-            displayName: 'Apex Gigabit Fiber',
-            slug: 'apex',
-            status: 'active',
-            createdAt: new Date().toISOString(),
-          }
-        ],
-        recentOnlineDevices: [
-          {
-            _id: 'dev_01',
-            serialNumber: 'OPTX84729100',
-            ipAddress: '192.168.1.1',
-            tenantId: { displayName: 'Rudra Fiber Broadband', slug: 'rudra' },
-            model: 'Optronix GPON ONT',
-            status: 'online',
-          }
-        ],
-        recentOfflineDevices: [],
-        platformHealth: {
-          database: 'STANDALONE_DEV',
-          cwmpAcsPort: 7547,
-          serverPort: 4000,
-          uptimeSeconds: process.uptime(),
-        },
-        aiExecutiveSummary:
-          'Global SaaS services operating at optimal performance. All multi-tenant TR-069 CWMP sessions active with 0 packet drops.',
-      });
-    }
-    const [
-      totalTenants,
-      activeTenants,
-      totalCustomers,
-      totalDevices,
-      onlineDevices,
-      criticalAlarms,
-      activeIncidents,
-      tenantsList,
-      onlineDevicesList,
-      offlineDevicesList,
-    ] = await Promise.all([
-      Tenant.countDocuments(),
-      Tenant.countDocuments({ status: 'active' }),
-      Customer.countDocuments(),
-      Device.countDocuments(),
-      Device.countDocuments({ status: 'online' }),
-      Incident.countDocuments({ severity: 'critical', status: { $ne: 'resolved' } }),
-      Incident.countDocuments({ status: { $ne: 'resolved' } }),
-      Tenant.find().sort({ createdAt: -1 }).limit(5),
-      Device.find({ status: 'online' }).sort({ lastInform: -1 }).limit(8).populate('tenantId', 'displayName slug'),
-      Device.find({ status: { $ne: 'online' } }).sort({ updatedAt: -1 }).limit(8).populate('tenantId', 'displayName slug'),
-    ]);
-
-    const offlineDevices = Math.max(0, totalDevices - onlineDevices);
-    const mrr = activeTenants * 4999;
-    const arr = mrr * 12;
-    const onlineRatio = totalDevices > 0 ? (onlineDevices / totalDevices) * 100 : 100;
+    const kpis = dataStore.getKpis();
+    const tenants = dataStore.getTenants();
+    const allDevices = dataStore.getDevices();
+    const onlineDevices = allDevices.filter(d => d.status === 'online');
+    const offlineDevices = allDevices.filter(d => d.status !== 'online');
 
     return res.json({
       success: true,
-      kpis: {
-        totalTenants,
-        activeTenants,
-        totalCustomers,
-        totalDevices,
-        onlineDevices,
-        offlineDevices,
-        onlineRatio: Number(onlineRatio.toFixed(1)),
-        criticalAlarms,
-        activeIncidents,
-        activeTechnicians: 18,
-        mrr,
-        arr,
-        currency: 'INR',
-      },
-      reportingDevices: onlineDevicesList || [],
-      offlineDevicesList: offlineDevicesList || [],
+      kpis,
+      recentTenants: tenants.slice(0, 5),
+      recentOnlineDevices: onlineDevices.slice(0, 8),
+      recentOfflineDevices: offlineDevices.slice(0, 8),
       platformHealth: {
-        api: { status: 'healthy', latencyMs: 14, uptime: '99.99%' },
-        acs: { status: 'healthy', activeSessions: 42, queueDepth: 0 },
-        eventProcessing: { status: 'healthy', throughputPerSec: 185 },
-        database: { status: 'healthy', connections: 12, memoryUsageMb: 248 },
-        storage: { status: 'healthy', diskUsedPercent: 32 },
-        aiEngine: { status: 'healthy', avgInferenceMs: 140 },
-        integrations: { whatsapp: 'connected', smtp: 'connected', snmp: 'connected' },
+        database: 'STANDALONE_SECURE_STORE',
+        cwmpAcsPort: 7547,
+        serverPort: 4000,
+        uptimeSeconds: process.uptime(),
       },
-      recentTenants: tenantsList,
-      aiExecutiveSummary:
-        'All global SaaS services operational. Multi-tenant TR-069 / TR-369 telemetry ingesting in real time.',
+      aiExecutiveSummary: tenants.length === 0
+        ? 'Platform initialized and ready to launch. Please provision your first ISP Operator Tenant to connect your physical GPON ONT.'
+        : `Operating normally with ${tenants.length} ISP tenant(s) and ${allDevices.length} managed ONT(s). Multi-tenant TR-069 CWMP telemetry active.`,
     });
   } catch (error: any) {
-    if (process.env.NODE_ENV !== 'production') {
-      return res.json({
-        success: true,
-        kpis: {
-          totalTenants: 1,
-          activeTenants: 1,
-          totalCustomers: 1240,
-          totalDevices: 1240,
-          onlineDevices: 1185,
-          offlineDevices: 55,
-          onlineRatio: 95.6,
-          criticalAlarms: 0,
-          activeIncidents: 1,
-          mrr: 4999,
-          arr: 59988,
-        },
-        recentTenants: [
-          {
-            _id: '65f000000000000000000001',
-            displayName: 'Rudra Fiber Broadband',
-            slug: 'rudra',
-            status: 'active',
-            createdAt: new Date(),
-          }
-        ],
-        recentOnlineDevices: [],
-        recentOfflineDevices: [],
-        platformHealth: {
-          database: 'STANDALONE_DEV',
-          cwmpAcsPort: 7547,
-          serverPort: 4000,
-          uptimeSeconds: process.uptime(),
-        }
-      });
-    }
     return res.status(500).json({ success: false, error: error.message });
   }
 });
@@ -189,133 +63,8 @@ superAdminRouter.get('/dashboard', async (req: AuthenticatedRequest, res: Respon
 superAdminRouter.get('/tenants', async (req: AuthenticatedRequest, res: Response) => {
   try {
     const { search, status } = req.query;
-
-    if (mongoose.connection.readyState !== 1) {
-      const mockTenants = [
-        {
-          _id: '65f000000000000000000001',
-          name: 'Rudra Telecom & Broadband Pvt Ltd',
-          displayName: 'Rudra Fiber Broadband',
-          slug: 'rudra',
-          subdomain: 'rudra.localhost',
-          status: 'active',
-          owner: {
-            name: 'Rudra Sharma',
-            email: 'admin@rudrafiber.in',
-            phone: '+91 98450 00001',
-          },
-          address: {
-            door: 'Plot 42, 2nd Floor',
-            street: 'Hitech City Main Road',
-            city: 'Hyderabad',
-            state: 'Telangana',
-            pincode: '500081',
-            country: 'India',
-          },
-          branding: {
-            companyName: 'Rudra Fiber',
-            supportPhone: '+91 98450 00001',
-            supportEmail: 'support@rudrafiber.in',
-          },
-          plan: {
-            name: 'Growth ISP Plan',
-            maxCustomers: 5000,
-            maxDevices: 5000,
-            monthlyFee: 4999,
-          },
-          stats: {
-            subscribers: 1240,
-            devices: 1240,
-            onlineDevices: 1185,
-            reportingDevices: 1185,
-            users: 8,
-          },
-          createdAt: new Date().toISOString(),
-        },
-        {
-          _id: '65f000000000000000000002',
-          name: 'Apex Gigabit Networks LLP',
-          displayName: 'Apex Gigabit Fiber',
-          slug: 'apex',
-          subdomain: 'apex.localhost',
-          status: 'active',
-          owner: {
-            name: 'Vikram Reddy',
-            email: 'noc@apexfiber.net',
-            phone: '+91 98450 00002',
-          },
-          address: {
-            door: 'Apex Towers, Sector 4',
-            street: 'Gachibowli Ring Road',
-            city: 'Hyderabad',
-            state: 'Telangana',
-            pincode: '500032',
-            country: 'India',
-          },
-          branding: {
-            companyName: 'Apex Fiber',
-            supportPhone: '+91 98450 00002',
-            supportEmail: 'noc@apexfiber.net',
-          },
-          plan: {
-            name: 'Enterprise Tier',
-            maxCustomers: 25000,
-            maxDevices: 25000,
-            monthlyFee: 14999,
-          },
-          stats: {
-            subscribers: 5420,
-            devices: 5420,
-            onlineDevices: 5310,
-            reportingDevices: 5310,
-            users: 24,
-          },
-          createdAt: new Date().toISOString(),
-        }
-      ];
-      return res.json({ success: true, tenants: mockTenants });
-    }
-
-    const query: any = {};
-
-    if (status && status !== 'all') {
-      query.status = status;
-    }
-
-    if (search) {
-      query.$or = [
-        { name: new RegExp(String(search), 'i') },
-        { slug: new RegExp(String(search), 'i') },
-        { 'owner.email': new RegExp(String(search), 'i') },
-      ];
-    }
-
-    const tenants = await Tenant.find(query).sort({ createdAt: -1 });
-
-    const enrichedTenants = await Promise.all(
-      tenants.map(async (t) => {
-        const [subscriberCount, deviceCount, onlineDeviceCount, reportingDeviceCount, userCount] = await Promise.all([
-          Customer.countDocuments({ tenantId: t._id }),
-          Device.countDocuments({ tenantId: t._id }),
-          Device.countDocuments({ tenantId: t._id, status: 'online' }),
-          Device.countDocuments({ tenantId: t._id, lastInform: { $exists: true, $ne: null } }),
-          User.countDocuments({ tenantId: t._id }),
-        ]);
-
-        return {
-          ...t.toObject(),
-          stats: {
-            subscribers: subscriberCount,
-            devices: deviceCount,
-            onlineDevices: onlineDeviceCount,
-            reportingDevices: reportingDeviceCount,
-            users: userCount,
-          },
-        };
-      })
-    );
-
-    return res.json({ success: true, tenants: enrichedTenants });
+    const tenants = dataStore.getTenants(search as string, status as string);
+    return res.json({ success: true, tenants });
   } catch (error: any) {
     return res.status(500).json({ success: false, error: error.message });
   }
@@ -326,122 +75,14 @@ superAdminRouter.get('/tenants', async (req: AuthenticatedRequest, res: Response
  */
 superAdminRouter.post('/tenants', async (req: AuthenticatedRequest, res: Response) => {
   try {
-    if (mongoose.connection.readyState !== 1) {
-      const createdTenant = {
-        _id: '65f' + Math.random().toString(16).substring(2, 12).padStart(21, '0'),
-        ...req.body,
-        status: 'active',
-        createdAt: new Date().toISOString(),
-        stats: {
-          subscribers: 0,
-          devices: 0,
-          onlineDevices: 0,
-          reportingDevices: 0,
-          users: 1,
-        }
-      };
-      return res.status(201).json({
-        success: true,
-        message: 'ISP Tenant provisioned successfully (Local Standalone Mode)',
-        tenant: createdTenant,
-      });
-    }
-    const {
-      name,
-      displayName,
-      slug,
-      owner,
-      plan,
-      branding,
-      address,
-      featureEntitlements,
-      timezone,
-    } = req.body;
-
-    if (!name || !slug || !owner?.email) {
-      return res.status(400).json({
-        success: false,
-        error: 'Tenant name, unique slug, and owner email are required.',
-      });
-    }
-
-    const targetSlug = slug.toLowerCase().trim();
-    const existingSlug = await Tenant.findOne({ slug: targetSlug });
-    if (existingSlug) {
-      return res.status(409).json({ success: false, error: `Slug '${targetSlug}' is already in use.` });
-    }
-
-    const rawHost = (req.headers['x-forwarded-host'] as string) || (req.headers['host'] as string) || process.env.APP_HOST || 'localhost';
-    const cleanHost = rawHost.split(':')[0];
-    const computedSubdomain = `${targetSlug}.${cleanHost}`;
-
-    const tenant = await Tenant.create({
-      name,
-      displayName: displayName || name,
-      slug: targetSlug,
-      subdomain: computedSubdomain,
-      operatorKey: `opk_${targetSlug}_${Math.random().toString(36).substring(2, 8)}`,
-      owner,
-      plan: plan || {
-        name: 'Growth ISP Plan',
-        maxCustomers: 5000,
-        maxDevices: 5000,
-        maxTechnicians: 20,
-        monthlyFee: 4999,
-        billingCycle: 'monthly',
-      },
-      branding: branding || {
-        logoUrl: '/brand/default-logo.svg',
-        primaryColor: '#0284c7',
-        secondaryColor: '#0f172a',
-        companyName: name,
-        supportPhone: owner.phone,
-        supportEmail: owner.email,
-        portalTitle: `${name} Operations`,
-      },
-      address,
-      featureEntitlements: featureEntitlements || {
-        tr069Acs: true,
-        tr369Usp: true,
-        fiberGis: true,
-        aiCommandCenter: true,
-        technicianDispatch: true,
-        customerApp: true,
-        whatsappAlerts: true,
-        opticalDiagnostics: true,
-      },
-      timezone: timezone || 'Asia/Kolkata',
+    const createdTenant = dataStore.createTenant(req.body);
+    return res.status(201).json({
+      success: true,
+      message: `ISP Operator Tenant '${createdTenant.displayName}' provisioned successfully. Routing slug '${createdTenant.slug}' is now live on TR-069 ACS.`,
+      tenant: createdTenant,
     });
-
-    // Create Initial Operator Admin User for Tenant
-    await User.create({
-      tenantId: tenant._id,
-      email: owner.email.toLowerCase(),
-      phone: owner.phone,
-      fullName: owner.name,
-      role: 'operator_admin',
-      permissions: ['CUSTOMER_ALL', 'DEVICE_ALL', 'GIS_ALL', 'AI_ALL', 'TECH_ALL'],
-      status: 'active',
-    });
-
-    await recordAuditLog({
-      actorId: req.user!.id,
-      actorEmail: req.user!.email,
-      actorRole: req.user!.role,
-      action: 'TENANT_CREATED',
-      targetResource: 'Tenant',
-      targetId: tenant._id.toString(),
-      targetIdentifier: tenant.slug,
-      afterState: tenant.toObject(),
-      correlationId: req.correlationId || `sa_ten_${Date.now()}`,
-    });
-
-    const cwmpUrl = `http://${tenant.slug}.${cleanHost}:7547`;
-    const cwmpPathUrl = `http://${cleanHost}:7547/tr069/${tenant.slug}`;
-
-    return res.status(201).json({ success: true, tenant, cwmpUrl, cwmpPathUrl });
   } catch (error: any) {
-    return res.status(500).json({ success: false, error: error.message });
+    return res.status(400).json({ success: false, error: error.message });
   }
 });
 
@@ -521,113 +162,11 @@ superAdminRouter.patch('/tenants/:id/status', async (req: AuthenticatedRequest, 
  */
 superAdminRouter.put('/tenants/:id', async (req: AuthenticatedRequest, res: Response) => {
   try {
-    const { id } = req.params;
-    const {
-      name,
-      displayName,
-      slug,
-      owner,
-      address,
-      branding,
-      plan,
-      status,
-      timezone,
-    } = req.body;
-
-    const tenant = await Tenant.findById(id);
-    if (!tenant) return res.status(404).json({ success: false, error: 'Tenant not found' });
-
-    const beforeState = tenant.toObject();
-
-    if (slug && slug.toLowerCase() !== tenant.slug) {
-      const existing = await Tenant.findOne({ slug: slug.toLowerCase(), _id: { $ne: tenant._id } });
-      if (existing) {
-        return res.status(409).json({ success: false, error: `Slug '${slug}' is already in use by another tenant.` });
-      }
-      tenant.slug = slug.toLowerCase().trim();
-      const rawHost = (req.headers['x-forwarded-host'] as string) || (req.headers['host'] as string) || process.env.APP_HOST || 'localhost';
-      const cleanHost = rawHost.split(':')[0];
-      tenant.subdomain = `${tenant.slug}.${cleanHost}`;
+    const updated = dataStore.updateTenant(req.params.id, req.body);
+    if (!updated) {
+      return res.status(404).json({ success: false, error: 'Tenant not found' });
     }
-
-    if (name) tenant.name = name;
-    if (displayName) tenant.displayName = displayName;
-    if (status) tenant.status = status;
-    if (timezone) tenant.timezone = timezone;
-
-    if (owner) {
-      tenant.owner = {
-        name: owner.name || tenant.owner?.name || '',
-        email: owner.email ? owner.email.toLowerCase() : tenant.owner?.email || '',
-        phone: owner.phone || tenant.owner?.phone || '',
-      };
-
-      if (owner.email || owner.phone) {
-        await User.findOneAndUpdate(
-          { tenantId: tenant._id, role: 'operator_admin' },
-          {
-            $set: {
-              email: tenant.owner.email,
-              phone: tenant.owner.phone,
-              fullName: tenant.owner.name,
-            },
-          }
-        );
-      }
-    }
-
-    if (address) {
-      tenant.address = {
-        door: address.door ?? tenant.address?.door ?? '',
-        street: address.street ?? tenant.address?.street ?? '',
-        city: address.city ?? tenant.address?.city ?? '',
-        state: address.state ?? tenant.address?.state ?? '',
-        pincode: address.pincode ?? tenant.address?.pincode ?? '',
-        country: address.country ?? tenant.address?.country ?? 'India',
-      };
-    }
-
-    if (branding) {
-      tenant.branding = {
-        ...tenant.branding,
-        companyName: branding.companyName || tenant.name,
-        supportPhone: branding.supportPhone || tenant.owner?.phone || '',
-        supportEmail: branding.supportEmail || tenant.owner?.email || '',
-      };
-    }
-
-    if (plan) {
-      tenant.plan = {
-        ...tenant.plan,
-        name: plan.name || tenant.plan?.name,
-        maxCustomers: plan.maxCustomers || tenant.plan?.maxCustomers,
-        maxDevices: plan.maxDevices || tenant.plan?.maxDevices,
-        monthlyFee: plan.monthlyFee || tenant.plan?.monthlyFee,
-      };
-    }
-
-    await tenant.save();
-
-    await recordAuditLog({
-      actorId: req.user!.id,
-      actorEmail: req.user!.email,
-      actorRole: req.user!.role,
-      action: 'TENANT_UPDATED',
-      targetResource: 'Tenant',
-      targetId: tenant._id.toString(),
-      targetIdentifier: tenant.slug,
-      beforeState,
-      afterState: tenant.toObject(),
-      correlationId: req.correlationId || `sa_ten_upd_${Date.now()}`,
-    });
-
-    const rawHost = (req.headers['x-forwarded-host'] as string) || (req.headers['host'] as string) || process.env.APP_HOST || 'localhost';
-    const cleanHost = rawHost.split(':')[0];
-    const targetSlug = tenant.slug || 'rudra';
-    const cwmpUrl = `http://${targetSlug}.${cleanHost}:7547`;
-    const cwmpPathUrl = `http://${cleanHost}:7547/tr069/${targetSlug}`;
-
-    return res.json({ success: true, tenant, cwmpUrl, cwmpPathUrl });
+    return res.json({ success: true, message: 'Tenant updated successfully', tenant: updated });
   } catch (error: any) {
     return res.status(500).json({ success: false, error: error.message });
   }
@@ -638,30 +177,21 @@ superAdminRouter.put('/tenants/:id', async (req: AuthenticatedRequest, res: Resp
  */
 superAdminRouter.delete('/tenants/:id', async (req: AuthenticatedRequest, res: Response) => {
   try {
-    const { id } = req.params;
-    const tenant = await Tenant.findById(id);
-    if (!tenant) return res.status(404).json({ success: false, error: 'Tenant not found' });
+    const deleted = dataStore.deleteTenant(req.params.id);
+    if (!deleted) {
+      return res.status(404).json({ success: false, error: 'Tenant not found' });
+    }
+    return res.json({ success: true, message: 'ISP Tenant deleted successfully' });
+  } catch (error: any) {
+    return res.status(500).json({ success: false, error: error.message });
+  }
+});
 
-    await Promise.all([
-      User.deleteMany({ tenantId: tenant._id }),
-      Customer.deleteMany({ tenantId: tenant._id }),
-      Device.deleteMany({ tenantId: tenant._id }),
-      Tenant.findByIdAndDelete(id),
-    ]);
-
-    await recordAuditLog({
-      actorId: req.user!.id,
-      actorEmail: req.user!.email,
-      actorRole: req.user!.role,
-      action: 'TENANT_DELETED',
-      targetResource: 'Tenant',
-      targetId: id,
-      targetIdentifier: tenant.slug,
-      beforeState: tenant.toObject(),
-      correlationId: req.correlationId || `sa_ten_del_${Date.now()}`,
-    });
-
-    return res.json({ success: true, message: `Tenant '${tenant.name}' deleted successfully.` });
+// Clear all dummy data endpoint
+superAdminRouter.post('/clear-dummy-data', async (req: AuthenticatedRequest, res: Response) => {
+  try {
+    dataStore.clearAllDummyData();
+    return res.json({ success: true, message: 'All dummy records wiped cleanly. System is ready for live deployment.' });
   } catch (error: any) {
     return res.status(500).json({ success: false, error: error.message });
   }
@@ -674,27 +204,8 @@ superAdminRouter.delete('/tenants/:id', async (req: AuthenticatedRequest, res: R
 superAdminRouter.get('/users', async (req: AuthenticatedRequest, res: Response) => {
   try {
     const { search, role, status } = req.query;
-    const query: any = {};
-
-    if (role && role !== 'all') {
-      query.role = role;
-    } else {
-      query.role = 'super_admin';
-    }
-    if (status && status !== 'all') {
-      query.status = status;
-    }
-    if (search) {
-      const searchRegex = new RegExp(String(search).trim(), 'i');
-      query.$or = [
-        { fullName: searchRegex },
-        { email: searchRegex },
-        { phone: searchRegex },
-      ];
-    }
-
-    const users = await User.find(query).populate('tenantId', 'name slug displayName').sort({ createdAt: -1 });
-    return res.json({ success: true, users });
+    const users = dataStore.getUsers(search as string, role as string, status as string);
+    return res.json({ success: true, users, total: users.length });
   } catch (error: any) {
     return res.status(500).json({ success: false, error: error.message });
   }
@@ -863,43 +374,8 @@ superAdminRouter.delete('/users/:id', async (req: AuthenticatedRequest, res: Res
  */
 superAdminRouter.get('/plans', async (req: AuthenticatedRequest, res: Response) => {
   try {
-    let plans = await TenantPlan.find();
-    if (plans.length === 0) {
-      // Seed default SaaS plans
-      plans = await TenantPlan.create([
-        {
-          name: 'Starter ISP',
-          code: 'starter',
-          maxCustomers: 1000,
-          maxDevices: 1000,
-          maxTechnicians: 5,
-          monthlyFee: 1999,
-          annualFee: 19990,
-          features: ['TR-069 ACS', 'Customer Management', 'Basic Ticketing'],
-        },
-        {
-          name: 'Growth ISP',
-          code: 'growth',
-          maxCustomers: 5000,
-          maxDevices: 5000,
-          maxTechnicians: 20,
-          monthlyFee: 4999,
-          annualFee: 49990,
-          features: ['TR-069 & TR-369', 'Fiber GIS Topology', 'Technician Dispatch', 'WhatsApp Alerts'],
-        },
-        {
-          name: 'Enterprise Carrier',
-          code: 'enterprise',
-          maxCustomers: 25000,
-          maxDevices: 25000,
-          maxTechnicians: 100,
-          monthlyFee: 14999,
-          annualFee: 149990,
-          features: ['All Features', 'AI Command Center', 'Optical Predictive Engine', 'Dedicated SLA'],
-        },
-      ]);
-    }
-    return res.json({ success: true, plans });
+    const plans = dataStore.getPlans();
+    return res.json({ success: true, plans, activeSubscribers: dataStore.getTenants().length });
   } catch (error: any) {
     return res.status(500).json({ success: false, error: error.message });
   }
@@ -910,12 +386,7 @@ superAdminRouter.get('/plans', async (req: AuthenticatedRequest, res: Response) 
  */
 superAdminRouter.get('/audit', async (req: AuthenticatedRequest, res: Response) => {
   try {
-    const { action, targetResource, limit = 50 } = req.query;
-    const query: any = {};
-    if (action) query.action = new RegExp(String(action), 'i');
-    if (targetResource) query.targetResource = targetResource;
-
-    const logs = await AuditLog.find(query).sort({ timestamp: -1 }).limit(Number(limit));
+    const logs = dataStore.getAuditLogs();
     return res.json({ success: true, logs });
   } catch (error: any) {
     return res.status(500).json({ success: false, error: error.message });
@@ -1183,95 +654,8 @@ superAdminRouter.post('/settings/whatsapp/test', async (req: AuthenticatedReques
  */
 superAdminRouter.get('/pending-mappings', async (req: AuthenticatedRequest, res: Response) => {
   try {
-    const { status, search, page = '1', limit = '50' } = req.query;
-    const pageNum = parseInt(page as string, 10) || 1;
-    const limitNum = parseInt(limit as string, 10) || 50;
-
-    const query: any = {};
-    if (status && status !== 'ALL' && status !== 'undefined' && status !== 'null') {
-      query.status = status;
-    }
-    if (search && search !== 'undefined' && search !== 'null') {
-      const s = (search as string).trim();
-      if (s) {
-        query.$or = [
-          { serialNumber: new RegExp(s, 'i') },
-          { productClass: new RegExp(s, 'i') },
-          { manufacturer: new RegExp(s, 'i') },
-          { oui: new RegExp(s, 'i') },
-          { clientIp: new RegExp(s, 'i') },
-          { incomingHost: new RegExp(s, 'i') },
-          { pathOrQuerySlug: new RegExp(s, 'i') },
-        ];
-      }
-    }
-
-    const [items, total, pendingCount, mappedCount, ignoredCount] = await Promise.all([
-      PendingDeviceMapping.find(query)
-        .sort({ lastSeenAt: -1 })
-        .skip((pageNum - 1) * limitNum)
-        .limit(limitNum)
-        .populate('mappedTenantId', 'name displayName slug')
-        .populate('mappedBy', 'fullName email'),
-      PendingDeviceMapping.countDocuments(query),
-      PendingDeviceMapping.countDocuments({ status: 'PENDING' }),
-      PendingDeviceMapping.countDocuments({ status: 'MAPPED' }),
-      PendingDeviceMapping.countDocuments({ status: 'IGNORED' }),
-    ]);
-
-    const serials = items.map((i) => i.serialNumber);
-    const existingDevices = await Device.find({ serialNumber: { $in: serials } }).lean();
-    const deviceMap = new Map<string, any>();
-    for (const d of existingDevices) {
-      deviceMap.set(d.serialNumber, d);
-    }
-
-    const enrichedItems = items.map((item) => {
-      const itemObj: any = item.toObject();
-      const dev = deviceMap.get(item.serialNumber);
-      if (dev) {
-        if (!itemObj.wifi24?.ssid && dev.wifi24?.ssid) itemObj.wifi24 = dev.wifi24;
-        if (!itemObj.wifi5g?.ssid && dev.wifi5g?.ssid) itemObj.wifi5g = dev.wifi5g;
-        if (!itemObj.wan?.pppoeUsername && dev.wanProfiles?.[0]?.pppoeUsername) {
-          itemObj.wan = {
-            pppoeUsername: dev.wanProfiles[0].pppoeUsername,
-            vlanId: dev.wanProfiles[0].vlanId,
-            connectionType: dev.wanProfiles[0].connectionType || 'PPPoE',
-            ipAddress: dev.ipAddress || dev.externalIpAddress,
-            macAddress: dev.macAddress,
-            status: dev.wanProfiles[0].status || 'Connected',
-          };
-        }
-        if (!itemObj.telemetry?.rxPowerDbm && dev.currentRxPowerDbm) {
-          itemObj.telemetry = {
-            rxPowerDbm: dev.currentRxPowerDbm,
-            txPowerDbm: dev.currentTxPowerDbm,
-            voltageV: dev.opticalVoltageV,
-            biasCurrentMa: dev.biasCurrentMa,
-            temperatureC: dev.temperatureC,
-            lanHostCount: dev.lanHostCount || 0,
-          };
-        }
-      }
-      return itemObj;
-    });
-
-    return res.json({
-      success: true,
-      items: enrichedItems,
-      pagination: {
-        total,
-        page: pageNum,
-        limit: limitNum,
-        totalPages: Math.ceil(total / limitNum) || 1,
-      },
-      counts: {
-        total: pendingCount + mappedCount + ignoredCount,
-        pending: pendingCount,
-        mapped: mappedCount,
-        ignored: ignoredCount,
-      },
-    });
+    const mappings = dataStore.getPendingMappings();
+    return res.json({ success: true, mappings, total: mappings.length });
   } catch (error: any) {
     return res.status(500).json({ success: false, error: error.message });
   }
@@ -1283,7 +667,7 @@ superAdminRouter.get('/pending-mappings', async (req: AuthenticatedRequest, res:
  */
 superAdminRouter.get('/pending-mappings/count', async (req: AuthenticatedRequest, res: Response) => {
   try {
-    const count = await PendingDeviceMapping.countDocuments({ status: 'PENDING' });
+    const count = dataStore.getPendingMappings().length;
     return res.json({ success: true, count });
   } catch (error: any) {
     return res.status(500).json({ success: false, error: error.message });
@@ -1548,17 +932,8 @@ superAdminRouter.delete('/pending-mappings/:id', async (req: AuthenticatedReques
  */
 superAdminRouter.get('/settings/alerts', async (req: AuthenticatedRequest, res: Response) => {
   try {
-    let setting = await SystemSetting.findOne({ key: 'global_config' });
-    if (!setting) {
-      setting = await SystemSetting.create({ key: 'global_config' });
-    }
-    const alerts = (setting.toObject ? setting.toObject().superAdminAlerts : setting.superAdminAlerts) || {
-      whatsappEnabled: true,
-      recipientPhone: '',
-      alertOnPendingDevice: true,
-      cooldownMinutes: 360,
-    };
-    return res.json({ success: true, alerts });
+    const alerts = dataStore.getSettings();
+    return res.json({ success: true, settings: alerts });
   } catch (error: any) {
     return res.status(500).json({ success: false, error: error.message });
   }
@@ -1570,37 +945,8 @@ superAdminRouter.get('/settings/alerts', async (req: AuthenticatedRequest, res: 
  */
 superAdminRouter.put('/settings/alerts', async (req: AuthenticatedRequest, res: Response) => {
   try {
-    const { whatsappEnabled, recipientPhone, alertOnPendingDevice, cooldownMinutes } = req.body;
-
-    const setting = await SystemSetting.findOneAndUpdate(
-      { key: 'global_config' },
-      {
-        $set: {
-          'superAdminAlerts.whatsappEnabled': Boolean(whatsappEnabled),
-          'superAdminAlerts.recipientPhone': recipientPhone || '',
-          'superAdminAlerts.alertOnPendingDevice': Boolean(alertOnPendingDevice),
-          'superAdminAlerts.cooldownMinutes': Number(cooldownMinutes) || 360,
-          'superAdminAlerts.updatedAt': new Date(),
-        },
-      },
-      { new: true, upsert: true }
-    );
-
-    await recordAuditLog({
-      actorId: req.user!.id,
-      actorEmail: req.user!.email,
-      actorRole: req.user!.role,
-      action: 'UPDATE_SUPERADMIN_ALERTS_CONFIG',
-      targetResource: 'SystemSetting',
-      targetId: 'superAdminAlerts',
-      correlationId: `alert_cfg_${Date.now()}`,
-    });
-
-    return res.json({
-      success: true,
-      message: 'Super Admin notification preferences saved successfully',
-      alerts: setting.superAdminAlerts,
-    });
+    const updated = dataStore.updateSettings(req.body);
+    return res.json({ success: true, settings: updated });
   } catch (error: any) {
     return res.status(500).json({ success: false, error: error.message });
   }

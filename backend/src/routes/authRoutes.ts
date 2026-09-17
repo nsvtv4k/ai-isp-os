@@ -1,3 +1,4 @@
+import { dataStore } from '../services/dataStore.js';
 import { Router, Response } from 'express';
 import bcrypt from 'bcryptjs';
 import { User } from '../models/User.js';

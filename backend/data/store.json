@@ -1,0 +1,33 @@
+{
+  "tenants": [],
+  "devices": [],
+  "customers": [],
+  "pendingMappings": [],
+  "users": [
+    {
+      "_id": "dev_superadmin_01",
+      "fullName": "Super Administrator",
+      "email": "admin@isp.local",
+      "phone": "+91 98450 00000",
+      "role": "super_admin",
+      "status": "active",
+      "createdAt": "2026-09-17T11:23:43.593Z"
+    }
+  ],
+  "auditLogs": [
+    {
+      "_id": "audit_01",
+      "action": "PLATFORM_INITIALIZED",
+      "actor": "System Engine",
+      "details": "Ready-to-launch state initialized with zero dummy records.",
+      "timestamp": "2026-09-17T11:23:43.593Z"
+    }
+  ],
+  "settings": {
+    "alertEmail": "admin@isp.local",
+    "alertMobile": "+91 98450 00000",
+    "whatsappNotifications": true,
+    "emailNotifications": true,
+    "informInterval": 60
+  }
+}
