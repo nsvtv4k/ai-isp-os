@@ -107,29 +107,9 @@ operatorRouter.get('/dashboard/summary', async (req: AuthenticatedRequest, res: 
  */
 operatorRouter.get('/customers', async (req: AuthenticatedRequest, res: Response) => {
   try {
-    const tenantId = new Types.ObjectId(req.tenantId);
-    const { search, status, area } = req.query;
-
-    const query: any = { tenantId };
-    if (status && status !== 'all') query.status = status;
-    if (area) query['address.area'] = area;
-
-    if (search) {
-      const s = String(search);
-      query.$or = [
-        { fullName: new RegExp(s, 'i') },
-        { phone: new RegExp(s, 'i') },
-        { accountNumber: new RegExp(s, 'i') },
-        { serviceId: new RegExp(s, 'i') },
-        { email: new RegExp(s, 'i') },
-      ];
-    }
-
-    const customers = await Customer.find(query)
-      .populate('assignedDeviceId', 'serialNumber status currentRxPowerDbm manufacturer modelName')
-      .sort({ createdAt: -1 });
-
-    return res.json({ success: true, customers });
+    const tenantId = req.tenantId || req.tenant?._id;
+    const customers = dataStore.getCustomers(tenantId?.toString());
+    return res.json({ success: true, customers, total: customers.length });
   } catch (error: any) {
     return res.status(500).json({ success: false, error: error.message });
   }

@@ -83,6 +83,15 @@ app.use(express.text({ type: ['text/xml', 'application/xml', 'text/*'], limit: '
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true }));
 app.use(resolveTenantContext as any);
+
+// Log all incoming CWMP / TR-069 requests
+app.use((req, res, next) => {
+  if (req.path.includes('tr069') || req.path.includes('cwmp') || req.path.includes('inform') || req.socket.localPort === 7547) {
+    console.log(`[INBOUND CWMP] ${req.method} ${req.url} from ${req.socket.remoteAddress || req.ip} (LocalPort: ${req.socket.localPort})`);
+  }
+  next();
+});
+
 app.use(cwmpRouter);
 
 // 2. Socket.IO Realtime Engine with Authenticated Handshake
@@ -375,6 +384,17 @@ export const startServer = async () => {
       server.listen(PORT, () => {
         console.log('AI ISP OS Backend Engine running on http://localhost:' + PORT);
       });
+
+      // Start Dedicated Port 7547 HTTP Server for TR-069 CWMP ONTs
+      const CWMP_PORT = parseInt(process.env.CWMP_ACS_PORT || '7547', 10);
+      try {
+        const cwmpAcsServer = http.createServer(app);
+        cwmpAcsServer.listen(CWMP_PORT, '0.0.0.0', () => {
+          console.log(`[TR-069 ACS Engine] SUCCESS: Listening on 0.0.0.0:${CWMP_PORT} for physical GPON ONTs.`);
+        });
+      } catch (cwmpErr: any) {
+        console.error('Failed to bind CWMP ACS server on port 7547:', cwmpErr);
+      }
     }
   } catch (serverError: any) {
     console.error('Failed to start HTTP server:', serverError);

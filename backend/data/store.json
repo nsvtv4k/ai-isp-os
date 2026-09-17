@@ -1,6 +1,72 @@
 {
-  "tenants": [],
-  "devices": [],
+  "tenants": [
+    {
+      "_id": "tenant_1789644446491_w4u5",
+      "name": "NSV Fiber Broadband",
+      "displayName": "NSV Fiber",
+      "slug": "nsv",
+      "subdomain": "nsv.localhost",
+      "gstin": "",
+      "status": "active",
+      "owner": {
+        "name": "nsv",
+        "email": "ponnanaresh123@gmail.com",
+        "phone": "9959303412"
+      },
+      "address": {
+        "door": "",
+        "street": "",
+        "city": "Hyderabad",
+        "state": "Telangana",
+        "pincode": "500081",
+        "country": "India"
+      },
+      "branding": {
+        "companyName": "NSV Fiber Broadband",
+        "supportPhone": "9959303412",
+        "supportEmail": "ponnanaresh123@gmail.com"
+      },
+      "plan": {
+        "name": "Enterprise Carrier Plan",
+        "maxCustomers": 25000,
+        "maxDevices": 25000,
+        "monthlyFee": 14999
+      },
+      "createdAt": "2026-09-17T11:27:26.491Z",
+      "updatedAt": "2026-09-17T11:27:26.491Z",
+      "stats": {
+        "subscribers": 0,
+        "devices": 0,
+        "onlineDevices": 0,
+        "reportingDevices": 0,
+        "users": 1
+      }
+    }
+  ],
+  "devices": [
+    {
+      "_id": "dev_1789645881681_7k4z",
+      "serialNumber": "OPTX84729100",
+      "tenantId": "tenant_1789644446491_w4u5",
+      "tenantSlug": "nsv",
+      "manufacturer": "Optronix",
+      "model": "Titanium-2122A",
+      "hardwareVersion": "V2.1",
+      "softwareVersion": "TITANIUM_v3.4.1",
+      "ipAddress": "192.168.1.6",
+      "macAddress": "",
+      "status": "online",
+      "rxPower": -19.4,
+      "txPower": 2.1,
+      "ponPort": "PON-01/1",
+      "oltName": "Main OLT",
+      "customerName": "Pending Assignment",
+      "planName": "Fiber Standard",
+      "lastInform": "2026-09-17T11:51:21.681Z",
+      "createdAt": "2026-09-17T11:51:21.681Z",
+      "updatedAt": "2026-09-17T11:51:21.681Z"
+    }
+  ],
   "customers": [],
   "pendingMappings": [],
   "users": [
@@ -12,6 +78,17 @@
       "role": "super_admin",
       "status": "active",
       "createdAt": "2026-09-17T11:23:43.593Z"
+    },
+    {
+      "_id": "user_1789644446491_5z0o",
+      "fullName": "nsv",
+      "email": "ponnanaresh123@gmail.com",
+      "phone": "9959303412",
+      "role": "operator_admin",
+      "tenantId": "tenant_1789644446491_w4u5",
+      "tenantSlug": "nsv",
+      "status": "active",
+      "createdAt": "2026-09-17T11:27:26.491Z"
     }
   ],
   "auditLogs": [

@@ -78,9 +78,11 @@ export const OperatorDashboard: React.FC = () => {
   }, []);
 
   const s = summary || {};
-  const activeHost = window.location.hostname || '31.42.125.25';
-  const tenantSlug = tenant?.slug || 'rudra';
-  const activeCwmpUrl = `http://${activeHost}/tr069/${tenantSlug}`;
+  const activeHost = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
+    ? '192.168.1.6'
+    : window.location.hostname;
+  const tenantSlug = tenant?.slug || 'nsv';
+  const activeCwmpUrl = `http://${activeHost}:7547/tr069/${tenantSlug}`;
 
   const handleCopyUrl = () => {
     navigator.clipboard.writeText(activeCwmpUrl);
@@ -114,7 +116,7 @@ export const OperatorDashboard: React.FC = () => {
         onRefresh={fetchDashboard}
       >
         {/* TR-069 CWMP ACS Gateway Banner */}
-        <div className="p-4 sm:p-5 bg-gradient-to-r from-white via-[#F8FAFC] to-white border border-sky-500/30 rounded-2xl shadow-lg space-y-3.5">
+        <div className="p-4 sm:p-5 bg-[#0D1527] border border-sky-500/40 rounded-2xl shadow-lg space-y-3.5">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
             <div className="flex items-center space-x-3">
               <div className="w-10 h-10 rounded-xl bg-sky-500/15 border border-sky-500/30 flex items-center justify-center text-sky-400">
@@ -136,7 +138,7 @@ export const OperatorDashboard: React.FC = () => {
             <div className="flex items-center space-x-2">
               <button
                 onClick={() => setIsHitsModalOpen(true)}
-                className="px-3 py-1.5 rounded-lg bg-[#F1F5F9] hover:bg-[#EEF2F7] text-xs font-semibold text-sky-300 border border-slate-700/80 transition flex items-center space-x-1.5"
+                className="px-3 py-1.5 rounded-lg bg-[#070C1A] hover:bg-slate-800 text-xs font-semibold text-sky-300 border border-slate-700/80 transition flex items-center space-x-1.5"
               >
                 <Activity className="w-3.5 h-3.5 text-emerald-400" />
                 <span>Router Hits: {cwmpStats?.totalHits || 0}</span>
