@@ -125,7 +125,7 @@ export const Shell: React.FC<ShellProps> = ({
           <Button
             size="sm"
             variant="secondary"
-            className="bg-white text-slate-900 hover:bg-slate-50 font-bold text-xs py-1 px-3 shadow-xs flex items-center space-x-1 border-0"
+            className="bg-[#0E172A] text-white hover:bg-[#080D1A] font-bold text-xs py-1 px-3 shadow-xs flex items-center space-x-1 border-0"
             onClick={handleExitImpersonation}
           >
             <ArrowLeft className="w-3.5 h-3.5 mr-1" />
@@ -176,7 +176,7 @@ export const Shell: React.FC<ShellProps> = ({
                   onClick={() => setSidebarOpen(false)}
                   className={`flex items-center space-x-3 px-3 py-2 rounded-lg text-xs font-medium transition ${
                     isActive
-                      ? 'bg-[#EFF6FF] text-sky-400 font-semibold shadow-xs'
+                      ? 'bg-sky-500/15 text-sky-400 font-semibold shadow-xs'
                       : 'text-[#475569] hover:text-white hover:bg-slate-800/50'
                   }`}
                 >
@@ -188,10 +188,10 @@ export const Shell: React.FC<ShellProps> = ({
           </nav>
 
           {/* User Footer Profile */}
-          <div className="p-3 border-t border-[#E2E8F0] bg-[#F8FAFC]">
+          <div className="p-3.5 border-t border-slate-800 bg-[#090D18]">
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-2.5 overflow-hidden">
-                <div className="w-8 h-8 rounded-full bg-[#E2E8F0] border border-[#CBD5E1] flex items-center justify-center font-bold text-xs text-[#334155]">
+                <div className="w-8 h-8 rounded-full bg-sky-950 border border-sky-500/50 flex items-center justify-center font-bold text-xs text-sky-300">
                   {user?.fullName?.charAt(0) || 'U'}
                 </div>
                 <div className="truncate">
@@ -215,7 +215,7 @@ export const Shell: React.FC<ShellProps> = ({
         {/* Main Workspace Shell */}
         <div className="flex-1 flex flex-col min-w-0 lg:pl-64">
           {/* Top Navbar */}
-          <header className="h-14 border-b border-[#E2E8F0] bg-white px-6 flex items-center justify-between shrink-0">
+          <header className="h-16 border-b border-slate-800 bg-[#0B1020]/95 backdrop-blur-md px-6 flex items-center justify-between shrink-0 z-30">
             <div className="flex items-center space-x-3">
               <button
                 onClick={() => setSidebarOpen(true)}
@@ -231,7 +231,7 @@ export const Shell: React.FC<ShellProps> = ({
                 </Link>
                 {breadcrumbs.map((b, i) => (
                   <React.Fragment key={i}>
-                    <ChevronRight className="w-3.5 h-3.5 text-[#94A3B8]" />
+                    <ChevronRight className="w-3.5 h-3.5 text-slate-400" />
                     {b.href ? (
                       <Link to={b.href} className="hover:text-sky-400 font-medium">
                         {b.label}
@@ -248,7 +248,7 @@ export const Shell: React.FC<ShellProps> = ({
               <div className="relative">
                 <button
                   onClick={() => navigate(portalType === 'superadmin' ? '/superadmin/incidents' : '/operator/incidents')}
-                  className="p-2 text-slate-400 hover:text-white hover:bg-slate-800/50 rounded-lg transition relative border border-transparent hover:border-[#E2E8F0]"
+                  className="p-2 text-slate-400 hover:text-white hover:bg-slate-800/50 rounded-lg transition relative border border-transparent hover:border-slate-800"
                   title="Active Alarms"
                 >
                   <Bell className="w-4 h-4" />
@@ -259,12 +259,12 @@ export const Shell: React.FC<ShellProps> = ({
           </header>
 
           {/* Page Content Container */}
-          <main className="flex-1 p-6 overflow-y-auto bg-[#F8FAFC]">
+          <main className="flex-1 p-6 lg:p-8 overflow-y-auto bg-[#060913] text-slate-100">
             <div className="max-w-7xl mx-auto space-y-6">
               {/* Page Header */}
-              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-[#E2E8F0] pb-4">
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-slate-800 pb-4">
                 <div>
-                  <h1 className="text-xl font-bold text-white">{title}</h1>
+                  <h1 className="text-2xl lg:text-3xl font-extrabold text-white tracking-tight leading-tight">{title}</h1>
                   <p className="text-xs text-slate-400 mt-0.5">
                     Tenant: <span className="font-mono text-sky-400 font-medium">{tenant?.slug || 'global-plane'}</span> | Role: <span className="capitalize">{user?.role?.replace('_', ' ')}</span>
                   </p>

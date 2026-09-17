@@ -290,14 +290,14 @@ export const Customer360: React.FC = () => {
       <StateWrapper isLoading={isLoading} error={error} onRetry={fetch360Data}>
         <div className="space-y-5 max-w-7xl mx-auto pb-16 font-sans">
           {/* TOP QUICK ACTION TOOLBAR */}
-          <div className="p-3 bg-white border border-slate-200 rounded-2xl shadow-xs flex flex-wrap items-center justify-between gap-2.5">
+          <div className="p-3 bg-[#0E172A] border border-slate-800 rounded-2xl shadow-xs flex flex-wrap items-center justify-between gap-2.5">
             <div className="flex items-center space-x-2">
               <div className="w-8 h-8 rounded-lg bg-sky-600 text-white flex items-center justify-center font-bold text-xs shadow-xs">
                 <PhoneCall className="w-4 h-4" />
               </div>
               <div>
                 <span className="text-[10px] font-bold uppercase text-slate-400 tracking-wider block">Support Cockpit</span>
-                <span className="text-xs font-black text-slate-900">{customer?.fullName} ({customer?.accountNumber})</span>
+                <span className="text-xs font-black text-white">{customer?.fullName} ({customer?.accountNumber})</span>
               </div>
             </div>
 
@@ -367,7 +367,7 @@ export const Customer360: React.FC = () => {
                 size="sm"
                 variant="outline"
                 onClick={handleToggleUnmask}
-                className="h-7 text-xs font-bold text-slate-700 bg-slate-100 border-slate-300 hover:bg-slate-200"
+                className="h-7 text-xs font-bold text-slate-700 bg-slate-100 border-slate-700 hover:bg-slate-200"
               >
                 {isUnmasked ? <EyeOff className="w-3 h-3 mr-1" /> : <Eye className="w-3 h-3 mr-1" />}
                 {isUnmasked ? 'Mask PII' : 'Unmask PII'}
@@ -461,7 +461,7 @@ export const Customer360: React.FC = () => {
           </Card>
 
           {/* 10 NAVIGATION TABS */}
-          <div className="flex items-center space-x-1 border-b border-slate-200 overflow-x-auto pb-0.5 scrollbar-thin text-xs">
+          <div className="flex items-center space-x-1 border-b border-slate-800 overflow-x-auto pb-0.5 scrollbar-thin text-xs">
             {[
               { id: 'cockpit', label: 'Call Cockpit', icon: PhoneCall },
               { id: 'fiber', label: 'Fiber GIS Route', icon: MapPin },
@@ -482,8 +482,8 @@ export const Customer360: React.FC = () => {
                   onClick={() => setActiveTab(tab.id as any)}
                   className={`flex items-center space-x-1.5 px-3 py-2 rounded-t-xl font-bold whitespace-nowrap transition-all ${
                     isActive
-                      ? 'bg-white border-t-2 border-sky-600 text-sky-700 shadow-xs border-x border-slate-200 -mb-px'
-                      : 'text-slate-500 hover:text-slate-900 hover:bg-slate-100/60'
+                      ? 'bg-[#0E172A] border-t-2 border-sky-600 text-sky-700 shadow-xs border-x border-slate-800 -mb-px'
+                      : 'text-slate-500 hover:text-white hover:bg-slate-100/60'
                   }`}
                 >
                   <Icon className="w-3.5 h-3.5" />
@@ -509,10 +509,10 @@ export const Customer360: React.FC = () => {
                 </div>
 
                 <div className="space-y-2">
-                  <p className="text-xs font-bold text-slate-800">Root Cause Analysis:</p>
+                  <p className="text-xs font-bold text-slate-100">Root Cause Analysis:</p>
                   <ul className="space-y-1.5">
                     {(data?.aiDiagnosticBrief?.insights || []).map((ins: string, idx: number) => (
-                      <li key={idx} className="text-xs text-slate-700 flex items-start space-x-2 bg-white/80 p-2 rounded-lg border border-sky-100">
+                      <li key={idx} className="text-xs text-slate-700 flex items-start space-x-2 bg-[#0E172A]/80 p-2 rounded-lg border border-sky-100">
                         <CheckCircle2 className="w-3.5 h-3.5 text-sky-600 shrink-0 mt-0.5" />
                         <span>{ins}</span>
                       </li>
@@ -521,10 +521,10 @@ export const Customer360: React.FC = () => {
                 </div>
 
                 <div className="space-y-2 pt-1">
-                  <p className="text-xs font-bold text-slate-800">Recommended Support Steps:</p>
+                  <p className="text-xs font-bold text-slate-100">Recommended Support Steps:</p>
                   <ul className="space-y-1.5">
                     {(data?.aiDiagnosticBrief?.suggestedActions || []).map((act: string, idx: number) => (
-                      <li key={idx} className="text-xs text-slate-800 font-semibold flex items-start space-x-2 bg-white p-2 rounded-lg border border-sky-200">
+                      <li key={idx} className="text-xs text-slate-100 font-semibold flex items-start space-x-2 bg-[#0E172A] p-2 rounded-lg border border-sky-200">
                         <Zap className="w-3.5 h-3.5 text-amber-500 shrink-0 mt-0.5" />
                         <span>{act}</span>
                       </li>
@@ -534,64 +534,64 @@ export const Customer360: React.FC = () => {
               </Card>
 
               {/* Live Device Telemetry */}
-              <Card className="p-5 border border-slate-200 bg-white rounded-2xl shadow-xs space-y-3">
-                <h3 className="text-xs font-bold uppercase text-slate-800 tracking-wider flex items-center">
+              <Card className="p-5 border border-slate-800 bg-[#0E172A] rounded-2xl shadow-xs space-y-3">
+                <h3 className="text-xs font-bold uppercase text-slate-100 tracking-wider flex items-center">
                   <Radio className="w-3.5 h-3.5 mr-1.5 text-sky-600" />
                   CPE Hardware Diagnostics
                 </h3>
 
                 <div className="space-y-2 text-xs font-mono">
-                  <div className="flex justify-between p-2 bg-slate-50 rounded-lg">
+                  <div className="flex justify-between p-2 bg-[#080D1A] rounded-lg">
                     <span className="text-slate-500 font-sans">Device Model:</span>
-                    <span className="font-bold text-slate-900">{`${device?.vendor || ''} ${device?.modelName || ''}`.trim() || 'No ONT Bound'}</span>
+                    <span className="font-bold text-white">{`${device?.vendor || ''} ${device?.modelName || ''}`.trim() || 'No ONT Bound'}</span>
                   </div>
-                  <div className="flex justify-between p-2 bg-slate-50 rounded-lg">
+                  <div className="flex justify-between p-2 bg-[#080D1A] rounded-lg">
                     <span className="text-slate-500 font-sans">Serial Number:</span>
-                    <span className="font-bold text-slate-900">{device?.serialNumber || 'N/A'}</span>
+                    <span className="font-bold text-white">{device?.serialNumber || 'N/A'}</span>
                   </div>
-                  <div className="flex justify-between p-2 bg-slate-50 rounded-lg">
+                  <div className="flex justify-between p-2 bg-[#080D1A] rounded-lg">
                     <span className="text-slate-500 font-sans">MAC Address:</span>
-                    <span className="font-bold text-slate-900">{device?.macAddress || 'N/A'}</span>
+                    <span className="font-bold text-white">{device?.macAddress || 'N/A'}</span>
                   </div>
-                  <div className="flex justify-between p-2 bg-slate-50 rounded-lg">
+                  <div className="flex justify-between p-2 bg-[#080D1A] rounded-lg">
                     <span className="text-slate-500 font-sans">Firmware Version:</span>
-                    <span className="font-bold text-slate-900">{device?.softwareVersion || 'N/A'}</span>
+                    <span className="font-bold text-white">{device?.softwareVersion || 'N/A'}</span>
                   </div>
-                  <div className="p-2.5 bg-slate-50 rounded-lg space-y-1">
+                  <div className="p-2.5 bg-[#080D1A] rounded-lg space-y-1">
                     <div className="flex justify-between items-center">
                       <span className="text-slate-500 font-sans">Wi-Fi 2.4 GHz:</span>
-                      <span className="font-bold text-slate-900">
+                      <span className="font-bold text-white">
                         {device?.wifi24?.ssid || 'N/A'} {device?.wifi24?.channel ? `(Ch ${device.wifi24.channel})` : ''} {device?.wifi24?.enabled !== false ? '• Active' : '• Disabled'}
                       </span>
                     </div>
                     <div className="flex justify-between items-center text-[11px] text-slate-600">
                       <span className="text-slate-400 font-sans">2.4G Key:</span>
-                      <span className="font-mono font-bold text-slate-800">
+                      <span className="font-mono font-bold text-slate-100">
                         {isUnmasked ? (device?.wifi24?.password || '••••••••') : '••••••••'}
                       </span>
                     </div>
                   </div>
 
                   {(device?.wifi5g || device?.wifi5g?.ssid) && (
-                    <div className="p-2.5 bg-slate-50 rounded-lg space-y-1">
+                    <div className="p-2.5 bg-[#080D1A] rounded-lg space-y-1">
                       <div className="flex justify-between items-center">
                         <span className="text-slate-500 font-sans">Wi-Fi 5 GHz:</span>
-                        <span className="font-bold text-slate-900">
+                        <span className="font-bold text-white">
                           {device?.wifi5g?.ssid || 'N/A'} {device?.wifi5g?.channel ? `(Ch ${device.wifi5g.channel})` : ''} {device?.wifi5g?.enabled !== false ? '• Active' : '• Disabled'}
                         </span>
                       </div>
                       <div className="flex justify-between items-center text-[11px] text-slate-600">
                         <span className="text-slate-400 font-sans">5G Key:</span>
-                        <span className="font-mono font-bold text-slate-800">
+                        <span className="font-mono font-bold text-slate-100">
                           {isUnmasked ? (device?.wifi5g?.password || '••••••••') : '••••••••'}
                         </span>
                       </div>
                     </div>
                   )}
 
-                  <div className="flex justify-between p-2 bg-slate-50 rounded-lg">
+                  <div className="flex justify-between p-2 bg-[#080D1A] rounded-lg">
                     <span className="text-slate-500 font-sans">Connected Clients:</span>
-                    <span className="font-bold text-slate-900">
+                    <span className="font-bold text-white">
                       {device?.connectedClients?.filter((c: any) => c.connected !== false).length || device?.lanHostCount || 0} Devices Active
                     </span>
                   </div>
@@ -599,23 +599,23 @@ export const Customer360: React.FC = () => {
               </Card>
 
               {/* Quick Customer Snapshot */}
-              <Card className="p-5 border border-slate-200 bg-white rounded-2xl shadow-xs space-y-3">
-                <h3 className="text-xs font-bold uppercase text-slate-800 tracking-wider flex items-center">
+              <Card className="p-5 border border-slate-800 bg-[#0E172A] rounded-2xl shadow-xs space-y-3">
+                <h3 className="text-xs font-bold uppercase text-slate-100 tracking-wider flex items-center">
                   <User className="w-3.5 h-3.5 mr-1.5 text-purple-600" />
                   Subscriber Profile & Installation
                 </h3>
 
                 <div className="space-y-2 text-xs font-sans">
-                  <div className="p-2.5 bg-slate-50 rounded-xl space-y-1">
+                  <div className="p-2.5 bg-[#080D1A] rounded-xl space-y-1">
                     <span className="text-[10px] text-slate-400 uppercase font-bold font-mono">Physical Installation Address</span>
-                    <p className="font-semibold text-slate-800">
+                    <p className="font-semibold text-slate-100">
                       {customer?.address?.street}, {customer?.address?.area}, {customer?.address?.city} - {customer?.address?.pincode}
                     </p>
                   </div>
 
-                  <div className="p-2.5 bg-slate-50 rounded-xl space-y-1 font-mono text-[11px]">
+                  <div className="p-2.5 bg-[#080D1A] rounded-xl space-y-1 font-mono text-[11px]">
                     <span className="text-[10px] text-slate-400 uppercase font-bold font-sans">Fiber Path Terminal</span>
-                    <p className="text-slate-800 font-bold">{assets?.fiberTermination?.fatBoxName} (Port #{assets?.fiberTermination?.fatPortNumber})</p>
+                    <p className="text-slate-100 font-bold">{assets?.fiberTermination?.fatBoxName} (Port #{assets?.fiberTermination?.fatPortNumber})</p>
                     <p className="text-slate-500">Drop Cable: {assets?.fiberTermination?.dropCableLengthMeters}m to Premise</p>
                   </div>
 
@@ -633,10 +633,10 @@ export const Customer360: React.FC = () => {
 
           {/* TAB 2: FIBER GIS ROUTE */}
           {activeTab === 'fiber' && (
-            <Card className="p-5 border border-slate-200 bg-white rounded-2xl shadow-xs space-y-4">
+            <Card className="p-5 border border-slate-800 bg-[#0E172A] rounded-2xl shadow-xs space-y-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <h3 className="font-bold text-slate-900 text-sm">Passive Optical Network (PON) Fiber Path</h3>
+                  <h3 className="font-bold text-white text-sm">Passive Optical Network (PON) Fiber Path</h3>
                   <p className="text-xs text-slate-500 mt-0.5">Carrier-grade optical signal path from Central OLT to Customer ONT</p>
                 </div>
                 <Badge variant="info" className="font-mono text-xs">
@@ -654,16 +654,16 @@ export const Customer360: React.FC = () => {
                   { step: 6, type: 'DROP_CABLE', name: '2-Core Armored Drop', distance: `${assets?.fiberTermination?.dropCableLengthMeters || 45}m`, power: '-19.8 dBm' },
                   { step: 7, type: 'ONT', name: device?.serialNumber || 'Subscriber ONT', power: `${rxPower || -19.8} dBm (Healthy)` },
                 ]).map((node: any, idx: number) => (
-                  <div key={idx} className="relative flex items-start justify-between bg-slate-50 p-3 rounded-xl border border-slate-200">
+                  <div key={idx} className="relative flex items-start justify-between bg-[#080D1A] p-3 rounded-xl border border-slate-800">
                     <div className="absolute -left-[31px] top-4 w-3.5 h-3.5 rounded-full bg-sky-600 border-2 border-white shadow-xs"></div>
                     <div>
                       <span className="text-[10px] font-bold text-sky-700 uppercase tracking-wider font-mono">
                         Step {idx + 1}: {node.type}
                       </span>
-                      <h4 className="font-bold text-slate-900 text-xs mt-0.5">{node.name}</h4>
+                      <h4 className="font-bold text-white text-xs mt-0.5">{node.name}</h4>
                       <p className="text-[11px] text-slate-500 font-mono">{node.port || node.distance || node.ratio || ''}</p>
                     </div>
-                    <span className="font-mono font-bold text-xs text-slate-800 bg-white px-2 py-1 rounded border border-slate-200">
+                    <span className="font-mono font-bold text-xs text-slate-100 bg-[#0E172A] px-2 py-1 rounded border border-slate-800">
                       {node.power || node.powerDbm || '-19.8 dBm'}
                     </span>
                   </div>
@@ -677,9 +677,9 @@ export const Customer360: React.FC = () => {
             <div className="space-y-5">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
                 {/* Optical Telemetry */}
-                <Card className="p-5 border border-slate-200 bg-white rounded-2xl shadow-xs space-y-3">
+                <Card className="p-5 border border-slate-800 bg-[#0E172A] rounded-2xl shadow-xs space-y-3">
                   <div className="flex items-center justify-between">
-                    <h3 className="text-xs font-bold uppercase text-slate-800 tracking-wider flex items-center">
+                    <h3 className="text-xs font-bold uppercase text-slate-100 tracking-wider flex items-center">
                       <Radio className="w-3.5 h-3.5 mr-1.5 text-sky-600" />
                       Optical Transceiver Telemetry
                     </h3>
@@ -688,21 +688,21 @@ export const Customer360: React.FC = () => {
                     </Badge>
                   </div>
                   <div className="grid grid-cols-2 gap-3 text-xs font-mono">
-                    <div className="p-3 bg-slate-50 rounded-xl space-y-1">
+                    <div className="p-3 bg-[#080D1A] rounded-xl space-y-1">
                       <span className="text-[10px] text-slate-400 uppercase font-sans">RX Optical Power</span>
                       <p className={`text-xl font-black ${opticalColor}`}>{rxPower != null ? `${rxPower.toFixed(2)} dBm` : 'N/A'}</p>
                     </div>
-                    <div className="p-3 bg-slate-50 rounded-xl space-y-1">
+                    <div className="p-3 bg-[#080D1A] rounded-xl space-y-1">
                       <span className="text-[10px] text-slate-400 uppercase font-sans">TX Optical Power</span>
-                      <p className="text-xl font-black text-slate-800">{device?.currentTxPowerDbm != null ? `${device.currentTxPowerDbm.toFixed(2)} dBm` : 'N/A'}</p>
+                      <p className="text-xl font-black text-slate-100">{device?.currentTxPowerDbm != null ? `${device.currentTxPowerDbm.toFixed(2)} dBm` : 'N/A'}</p>
                     </div>
-                    <div className="p-3 bg-slate-50 rounded-xl space-y-1">
+                    <div className="p-3 bg-[#080D1A] rounded-xl space-y-1">
                       <span className="text-[10px] text-slate-400 uppercase font-sans">Laser Bias Current</span>
-                      <p className="text-lg font-black text-slate-800">{device?.biasCurrentMa != null ? `${device.biasCurrentMa} mA` : 'N/A'}</p>
+                      <p className="text-lg font-black text-slate-100">{device?.biasCurrentMa != null ? `${device.biasCurrentMa} mA` : 'N/A'}</p>
                     </div>
-                    <div className="p-3 bg-slate-50 rounded-xl space-y-1">
+                    <div className="p-3 bg-[#080D1A] rounded-xl space-y-1">
                       <span className="text-[10px] text-slate-400 uppercase font-sans">ONT Temperature</span>
-                      <p className="text-lg font-black text-slate-800">{device?.temperatureC != null ? `${device.temperatureC} °C` : 'N/A'}</p>
+                      <p className="text-lg font-black text-slate-100">{device?.temperatureC != null ? `${device.temperatureC} °C` : 'N/A'}</p>
                     </div>
                   </div>
                 </Card>
@@ -714,9 +714,9 @@ export const Customer360: React.FC = () => {
                   ) || (device?.wanProfiles || []).find((p: any) => !p.isProtected && p.serviceType !== 'TR069') || device?.wanProfiles?.[0];
 
                   return (
-                    <Card className="p-5 border border-slate-200 bg-white rounded-2xl shadow-xs space-y-3">
+                    <Card className="p-5 border border-slate-800 bg-[#0E172A] rounded-2xl shadow-xs space-y-3">
                       <div className="flex items-center justify-between">
-                        <h3 className="text-xs font-bold uppercase text-slate-800 tracking-wider flex items-center">
+                        <h3 className="text-xs font-bold uppercase text-slate-100 tracking-wider flex items-center">
                           <Server className="w-3.5 h-3.5 mr-1.5 text-purple-600" />
                           PPPoE & WAN Network Interface
                         </h3>
@@ -725,25 +725,25 @@ export const Customer360: React.FC = () => {
                         </Badge>
                       </div>
                       <div className="space-y-2 text-xs font-mono">
-                        <div className="flex justify-between p-2 bg-slate-50 rounded-lg">
+                        <div className="flex justify-between p-2 bg-[#080D1A] rounded-lg">
                           <span className="text-slate-500 font-sans">PPPoE Username:</span>
-                          <span className="font-bold text-slate-900">{customerInternetWan?.pppoeUsername || device?.pppoeUsername || customer?.wanConfig?.pppoeUsername || 'Not Configured'}</span>
+                          <span className="font-bold text-white">{customerInternetWan?.pppoeUsername || device?.pppoeUsername || customer?.wanConfig?.pppoeUsername || 'Not Configured'}</span>
                         </div>
-                        <div className="flex justify-between p-2 bg-slate-50 rounded-lg">
+                        <div className="flex justify-between p-2 bg-[#080D1A] rounded-lg">
                           <span className="text-slate-500 font-sans">Assigned External IP:</span>
-                          <span className="font-bold text-slate-900">{customerInternetWan?.ipAddress || device?.externalIpAddress || 'No IP Assigned'}</span>
+                          <span className="font-bold text-white">{customerInternetWan?.ipAddress || device?.externalIpAddress || 'No IP Assigned'}</span>
                         </div>
-                        <div className="flex justify-between p-2 bg-slate-50 rounded-lg">
+                        <div className="flex justify-between p-2 bg-[#080D1A] rounded-lg">
                           <span className="text-slate-500 font-sans">VLAN Tag:</span>
-                          <span className="font-bold text-slate-900">{customerInternetWan?.vlanId || device?.wanVlan || customer?.wanConfig?.vlanId || 'Untagged'}</span>
+                          <span className="font-bold text-white">{customerInternetWan?.vlanId || device?.wanVlan || customer?.wanConfig?.vlanId || 'Untagged'}</span>
                         </div>
-                        <div className="flex justify-between p-2 bg-slate-50 rounded-lg">
+                        <div className="flex justify-between p-2 bg-[#080D1A] rounded-lg">
                           <span className="text-slate-500 font-sans">Primary DNS:</span>
-                          <span className="font-bold text-slate-900">{customerInternetWan?.primaryDns || customer?.wanConfig?.dnsPrimary || 'N/A'}</span>
+                          <span className="font-bold text-white">{customerInternetWan?.primaryDns || customer?.wanConfig?.dnsPrimary || 'N/A'}</span>
                         </div>
-                        <div className="flex justify-between p-2 bg-slate-50 rounded-lg">
+                        <div className="flex justify-between p-2 bg-[#080D1A] rounded-lg">
                           <span className="text-slate-500 font-sans">Secondary DNS:</span>
-                          <span className="font-bold text-slate-900">{customerInternetWan?.secondaryDns || customer?.wanConfig?.dnsSecondary || 'N/A'}</span>
+                          <span className="font-bold text-white">{customerInternetWan?.secondaryDns || customer?.wanConfig?.dnsSecondary || 'N/A'}</span>
                         </div>
                       </div>
                     </Card>
@@ -752,12 +752,12 @@ export const Customer360: React.FC = () => {
               </div>
 
               {/* LIVE CONNECTED WI-FI & LAN CLIENTS TABLE */}
-              <Card className="overflow-hidden border border-slate-200 bg-white rounded-2xl shadow-xs">
-                <div className="p-4 border-b border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-slate-50/50">
+              <Card className="overflow-hidden border border-slate-800 bg-[#0E172A] rounded-2xl shadow-xs">
+                <div className="p-4 border-b border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-[#080D1A]/50">
                   <div className="flex items-center space-x-2">
                     <Network className="w-4 h-4 text-sky-600" />
                     <div>
-                      <h3 className="font-bold text-slate-900 text-sm">
+                      <h3 className="font-bold text-white text-sm">
                         Live Connected Devices & Wi-Fi Clients
                         <span className="ml-2 px-2 py-0.5 rounded-full text-xs bg-sky-100 text-sky-800 font-mono">
                           {device?.connectedClients?.length || 0} Registered
@@ -774,7 +774,7 @@ export const Customer360: React.FC = () => {
                         placeholder="Search Host / IP / MAC..."
                         value={clientSearch}
                         onChange={(e) => setClientSearch(e.target.value)}
-                        className="pl-8 pr-3 py-1.5 text-xs bg-white border border-slate-200 rounded-lg focus:outline-hidden focus:ring-2 focus:ring-sky-500 w-48 sm:w-60 font-sans"
+                        className="pl-8 pr-3 py-1.5 text-xs bg-[#0E172A] border border-slate-800 rounded-lg focus:outline-hidden focus:ring-2 focus:ring-sky-500 w-48 sm:w-60 font-sans"
                       />
                     </div>
                     <Button
@@ -791,7 +791,7 @@ export const Customer360: React.FC = () => {
 
                 <div className="overflow-x-auto">
                   <table className="w-full text-left text-xs">
-                    <thead className="bg-slate-100/75 border-b border-slate-200 text-slate-600 font-bold uppercase text-[10px] tracking-wider">
+                    <thead className="bg-slate-100/75 border-b border-slate-800 text-slate-600 font-bold uppercase text-[10px] tracking-wider">
                       <tr>
                         <th className="py-3 px-4">Device Hostname</th>
                         <th className="py-3 px-4">Connection Interface</th>
@@ -839,13 +839,13 @@ export const Customer360: React.FC = () => {
                             : Globe;
 
                           return (
-                            <tr key={idx} className="hover:bg-slate-50/80 transition-colors">
-                              <td className="py-3 px-4 font-sans font-bold text-slate-900 flex items-center space-x-2">
+                            <tr key={idx} className="hover:bg-[#080D1A]/80 transition-colors">
+                              <td className="py-3 px-4 font-sans font-bold text-white flex items-center space-x-2">
                                 <div className="p-1.5 rounded-lg bg-slate-100 text-slate-600">
                                   <DeviceIcon className="w-4 h-4" />
                                 </div>
                                 <div>
-                                  <p className="text-xs font-bold text-slate-900 truncate max-w-[200px]">
+                                  <p className="text-xs font-bold text-white truncate max-w-[200px]">
                                     {client.hostname || `Device (${client.mac?.slice(-5) || idx + 1})`}
                                   </p>
                                   <span className="text-[10px] font-mono text-slate-400 font-normal">
@@ -861,7 +861,7 @@ export const Customer360: React.FC = () => {
                                   {isWifi5G ? '5 GHz Wi-Fi' : isEthernet ? 'Ethernet LAN' : '2.4 GHz Wi-Fi'}
                                 </Badge>
                               </td>
-                              <td className="py-3 px-4 font-bold text-slate-800">
+                              <td className="py-3 px-4 font-bold text-slate-100">
                                 {client.ip || 'DHCP Dynamic'}
                               </td>
                               <td className="py-3 px-4 text-slate-600 font-semibold">
@@ -893,10 +893,10 @@ export const Customer360: React.FC = () => {
 
           {/* TAB 4: ASSIGNED HARDWARE ASSETS */}
           {activeTab === 'assets' && (
-            <Card className="overflow-hidden border border-slate-200 bg-white rounded-2xl shadow-xs">
+            <Card className="overflow-hidden border border-slate-800 bg-[#0E172A] rounded-2xl shadow-xs">
               <div className="p-4 border-b border-slate-100 flex items-center justify-between">
                 <div>
-                  <h3 className="font-bold text-slate-900 text-sm">Physical Hardware Assets Assigned to Subscriber</h3>
+                  <h3 className="font-bold text-white text-sm">Physical Hardware Assets Assigned to Subscriber</h3>
                   <p className="text-xs text-slate-500 mt-0.5">Track serial numbers, warranties, and warehouse stock records</p>
                 </div>
                 <Button size="sm" onClick={() => setIsAssetModalOpen(true)} className="text-xs bg-sky-600 hover:bg-sky-700 text-white font-bold">
@@ -907,39 +907,39 @@ export const Customer360: React.FC = () => {
 
               <div className="p-4 grid grid-cols-1 md:grid-cols-3 gap-4">
                 {/* ONT Card */}
-                <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl space-y-2 text-xs">
+                <div className="p-4 bg-[#080D1A] border border-slate-800 rounded-xl space-y-2 text-xs">
                   <div className="flex items-center justify-between">
                     <span className="font-mono font-bold text-sky-700">OPTICAL NETWORK TERMINAL (ONT)</span>
                     <Badge variant={device?.status === 'online' ? 'success' : 'neutral'}>
                       {device?.status === 'online' ? 'Online' : 'Active'}
                     </Badge>
                   </div>
-                  <p className="font-bold text-slate-900 text-sm">{assets?.ont?.brand || device?.vendor || ''} {assets?.ont?.model || device?.modelName || 'Premise ONT'}</p>
+                  <p className="font-bold text-white text-sm">{assets?.ont?.brand || device?.vendor || ''} {assets?.ont?.model || device?.modelName || 'Premise ONT'}</p>
                   <p className="font-mono text-slate-600">Serial: {assets?.ont?.serialNumber || device?.serialNumber || 'N/A'}</p>
                   <p className="font-mono text-slate-600">MAC: {assets?.ont?.macAddress || device?.macAddress || 'N/A'}</p>
                   <p className="font-mono text-[11px] text-slate-500">Warranty Exp: {assets?.ont?.warrantyExpiry ? new Date(assets.ont.warrantyExpiry).toLocaleDateString() : 'Active'}</p>
                 </div>
 
                 {/* Secondary Router Card */}
-                <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl space-y-2 text-xs">
+                <div className="p-4 bg-[#080D1A] border border-slate-800 rounded-xl space-y-2 text-xs">
                   <div className="flex items-center justify-between">
                     <span className="font-mono font-bold text-purple-700">SECONDARY ROUTER / MESH</span>
                     <Badge variant={assets?.secondaryRouter ? 'success' : 'neutral'}>
                       {assets?.secondaryRouter ? 'Assigned' : 'None'}
                     </Badge>
                   </div>
-                  <p className="font-bold text-slate-900 text-sm">{assets?.secondaryRouter ? `${assets?.secondaryRouter?.brand} ${assets?.secondaryRouter?.model}` : 'Not Assigned'}</p>
+                  <p className="font-bold text-white text-sm">{assets?.secondaryRouter ? `${assets?.secondaryRouter?.brand} ${assets?.secondaryRouter?.model}` : 'Not Assigned'}</p>
                   <p className="font-mono text-slate-600">Serial: {assets?.secondaryRouter?.serialNumber || 'None'}</p>
                   <p className="font-mono text-[11px] text-slate-500">Status: {assets?.secondaryRouter ? 'Active' : 'Optional'}</p>
                 </div>
 
                 {/* SFP Transceiver & Fiber Drop */}
-                <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl space-y-2 text-xs">
+                <div className="p-4 bg-[#080D1A] border border-slate-800 rounded-xl space-y-2 text-xs">
                   <div className="flex items-center justify-between">
                     <span className="font-mono font-bold text-emerald-700">SFP PON & FIBER DROP</span>
                     <Badge variant="info">Carrier Grade</Badge>
                   </div>
-                  <p className="font-bold text-slate-900 text-sm">Class B+ GPON Optical SFP</p>
+                  <p className="font-bold text-white text-sm">Class B+ GPON Optical SFP</p>
                   <p className="font-mono text-slate-600">FAT Terminal: {assets?.fiberTermination?.fatBoxName}</p>
                   <p className="font-mono text-slate-600">Splitter Port: #{assets?.fiberTermination?.fatPortNumber}</p>
                   <p className="font-mono text-[11px] text-slate-500">Drop Cable: {assets?.fiberTermination?.dropCableLengthMeters} meters</p>
@@ -950,10 +950,10 @@ export const Customer360: React.FC = () => {
 
           {/* TAB 5: CUSTOMER DOCUMENTS & PHOTOS */}
           {activeTab === 'documents' && (
-            <Card className="p-5 border border-slate-200 bg-white rounded-2xl shadow-xs space-y-4">
+            <Card className="p-5 border border-slate-800 bg-[#0E172A] rounded-2xl shadow-xs space-y-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <h3 className="font-bold text-slate-900 text-sm">Subscriber Document Vault & Photos</h3>
+                  <h3 className="font-bold text-white text-sm">Subscriber Document Vault & Photos</h3>
                   <p className="text-xs text-slate-500 mt-0.5">Aadhaar, CAF forms, and premise installation photo proofs</p>
                 </div>
                 <Button size="sm" onClick={() => setIsDocModalOpen(true)} className="text-xs bg-indigo-600 hover:bg-indigo-700 text-white font-bold">
@@ -967,7 +967,7 @@ export const Customer360: React.FC = () => {
                   <p className="text-xs text-slate-400 italic col-span-3 py-6 text-center">No documents or photos uploaded yet.</p>
                 ) : (
                   data.documents.map((doc: any) => (
-                    <div key={doc.documentId} className="border border-slate-200 rounded-xl overflow-hidden bg-slate-50 space-y-2 group">
+                    <div key={doc.documentId} className="border border-slate-800 rounded-xl overflow-hidden bg-[#080D1A] space-y-2 group">
                       <div
                         className="h-36 bg-slate-200 overflow-hidden cursor-pointer relative flex items-center justify-center"
                         onClick={() => setSelectedPhoto(doc.url)}
@@ -988,7 +988,7 @@ export const Customer360: React.FC = () => {
                             <Trash2 className="w-3.5 h-3.5" />
                           </button>
                         </div>
-                        <h4 className="font-bold text-slate-900 text-xs truncate">{doc.name}</h4>
+                        <h4 className="font-bold text-white text-xs truncate">{doc.name}</h4>
                         <p className="text-[10px] text-slate-400 font-mono">
                           {new Date(doc.uploadedAt).toLocaleDateString()} • Verified
                         </p>
@@ -1002,10 +1002,10 @@ export const Customer360: React.FC = () => {
 
           {/* TAB 6: UNIFIED CUSTOMER TIMELINE */}
           {activeTab === 'timeline' && (
-            <Card className="p-5 border border-slate-200 bg-white rounded-2xl shadow-xs space-y-4">
+            <Card className="p-5 border border-slate-800 bg-[#0E172A] rounded-2xl shadow-xs space-y-4">
               <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
                 <div>
-                  <h3 className="font-bold text-slate-900 text-sm">Unified 360° Chronological Customer Timeline</h3>
+                  <h3 className="font-bold text-white text-sm">Unified 360° Chronological Customer Timeline</h3>
                   <p className="text-xs text-slate-500 mt-0.5">Stream combining billing, WhatsApp, tickets, field jobs, TR-069, and security events</p>
                 </div>
 
@@ -1025,19 +1025,19 @@ export const Customer360: React.FC = () => {
                 </div>
               </div>
 
-              <div className="relative border-l-2 border-slate-200 ml-4 pl-6 space-y-5 py-2">
+              <div className="relative border-l-2 border-slate-800 ml-4 pl-6 space-y-5 py-2">
                 {filteredTimeline.length === 0 ? (
                   <p className="text-xs text-slate-400 italic py-6 text-center">No timeline events found for this filter.</p>
                 ) : (
                   filteredTimeline.map((evt: any) => (
-                    <div key={evt.id} className="relative bg-slate-50 p-3.5 rounded-xl border border-slate-200 flex items-start justify-between">
+                    <div key={evt.id} className="relative bg-[#080D1A] p-3.5 rounded-xl border border-slate-800 flex items-start justify-between">
                       <div className="absolute -left-[31px] top-4 w-3.5 h-3.5 rounded-full bg-slate-400 border-2 border-white shadow-xs"></div>
                       <div className="space-y-1">
                         <div className="flex items-center space-x-2">
                           <Badge variant={evt.severity || 'info'} className="text-[10px] font-mono">
                             {evt.type}
                           </Badge>
-                          <span className="font-bold text-slate-900 text-xs">{evt.title}</span>
+                          <span className="font-bold text-white text-xs">{evt.title}</span>
                         </div>
                         <p className="text-xs text-slate-600 font-sans">{evt.subtitle}</p>
                         <span className="text-[10px] text-slate-400 font-mono block">Actor: {evt.actor || 'System'}</span>
@@ -1054,10 +1054,10 @@ export const Customer360: React.FC = () => {
 
           {/* TAB 7: WHATSAPP DISPATCHES */}
           {activeTab === 'whatsapp' && (
-            <Card className="overflow-hidden border border-slate-200 bg-white rounded-2xl shadow-xs">
+            <Card className="overflow-hidden border border-slate-800 bg-[#0E172A] rounded-2xl shadow-xs">
               <div className="p-4 border-b border-slate-100 flex items-center justify-between">
                 <div>
-                  <h3 className="font-bold text-slate-900 text-sm">Outbound WhatsApp Notification Dispatches</h3>
+                  <h3 className="font-bold text-white text-sm">Outbound WhatsApp Notification Dispatches</h3>
                   <p className="text-xs text-slate-500 mt-0.5">Receipts, expiry reminders, and payment confirmations</p>
                 </div>
                 <Button size="sm" onClick={() => setIsWhatsAppModalOpen(true)} className="text-xs bg-emerald-600 hover:bg-emerald-700 text-white font-bold">
@@ -1069,7 +1069,7 @@ export const Customer360: React.FC = () => {
               <div className="overflow-x-auto">
                 <table className="w-full text-left text-xs border-collapse">
                   <thead>
-                    <tr className="bg-slate-50 border-b border-slate-200 text-slate-500 font-semibold uppercase">
+                    <tr className="bg-[#080D1A] border-b border-slate-800 text-slate-500 font-semibold uppercase">
                       <th className="py-3 px-4">Template / Event</th>
                       <th className="py-3 px-4">Recipient Phone</th>
                       <th className="py-3 px-4">Status</th>
@@ -1083,8 +1083,8 @@ export const Customer360: React.FC = () => {
                       </tr>
                     ) : (
                       data.messageHistory.map((msg: any) => (
-                        <tr key={msg._id} className="hover:bg-slate-50">
-                          <td className="py-3 px-4 font-mono font-bold text-slate-900">{msg.templateName || msg.type || 'NOTIFICATION'}</td>
+                        <tr key={msg._id} className="hover:bg-[#080D1A]">
+                          <td className="py-3 px-4 font-mono font-bold text-white">{msg.templateName || msg.type || 'NOTIFICATION'}</td>
                           <td className="py-3 px-4 font-mono text-slate-700">{msg.recipient?.identifier || customer?.phone}</td>
                           <td className="py-3 px-4">
                             <Badge variant={msg.status === 'DELIVERED' || msg.status === 'SENT' ? 'success' : 'danger'}>
@@ -1105,10 +1105,10 @@ export const Customer360: React.FC = () => {
 
           {/* TAB 8: TICKETS & COMPLAINTS */}
           {activeTab === 'tickets' && (
-            <Card className="overflow-hidden border border-slate-200 bg-white rounded-2xl shadow-xs">
+            <Card className="overflow-hidden border border-slate-800 bg-[#0E172A] rounded-2xl shadow-xs">
               <div className="p-4 border-b border-slate-100 flex items-center justify-between">
                 <div>
-                  <h3 className="font-bold text-slate-900 text-sm">Subscriber Complaints & Support Tickets</h3>
+                  <h3 className="font-bold text-white text-sm">Subscriber Complaints & Support Tickets</h3>
                   <p className="text-xs text-slate-500 mt-0.5">Active incident timeline and resolution SLAs</p>
                 </div>
                 <Button size="sm" onClick={() => setIsTicketModalOpen(true)} className="text-xs bg-amber-600 hover:bg-amber-700 text-white font-bold">
@@ -1120,7 +1120,7 @@ export const Customer360: React.FC = () => {
               <div className="overflow-x-auto">
                 <table className="w-full text-left text-xs border-collapse">
                   <thead>
-                    <tr className="bg-slate-50 border-b border-slate-200 text-slate-500 font-semibold uppercase">
+                    <tr className="bg-[#080D1A] border-b border-slate-800 text-slate-500 font-semibold uppercase">
                       <th className="py-3 px-4">Ticket Reference</th>
                       <th className="py-3 px-4">Subject & Category</th>
                       <th className="py-3 px-4">Priority</th>
@@ -1136,10 +1136,10 @@ export const Customer360: React.FC = () => {
                       </tr>
                     ) : (
                       data.openTickets.map((t: any) => (
-                        <tr key={t._id} className="hover:bg-slate-50">
-                          <td className="py-3 px-4 font-mono font-bold text-slate-900">{t.ticketNumber || t._id.slice(-6)}</td>
+                        <tr key={t._id} className="hover:bg-[#080D1A]">
+                          <td className="py-3 px-4 font-mono font-bold text-white">{t.ticketNumber || t._id.slice(-6)}</td>
                           <td className="py-3 px-4">
-                            <p className="font-bold text-slate-800">{t.title || t.subject}</p>
+                            <p className="font-bold text-slate-100">{t.title || t.subject}</p>
                             <span className="text-[11px] text-slate-400 font-mono">{t.category}</span>
                           </td>
                           <td className="py-3 px-4 font-mono font-bold text-rose-700">{t.priority}</td>
@@ -1163,10 +1163,10 @@ export const Customer360: React.FC = () => {
 
           {/* TAB 9: BILLING & INVOICES */}
           {activeTab === 'billing' && (
-            <Card className="overflow-hidden border border-slate-200 bg-white rounded-2xl shadow-xs">
+            <Card className="overflow-hidden border border-slate-800 bg-[#0E172A] rounded-2xl shadow-xs">
               <div className="p-4 border-b border-slate-100 flex items-center justify-between">
                 <div>
-                  <h3 className="font-bold text-slate-900 text-sm">Tax Invoices & Payment Ledger</h3>
+                  <h3 className="font-bold text-white text-sm">Tax Invoices & Payment Ledger</h3>
                   <p className="text-xs text-slate-500 mt-0.5">Official GST receipts and subscription payments</p>
                 </div>
                 <Button size="sm" onClick={() => setIsRenewModalOpen(true)} className="text-xs bg-emerald-600 hover:bg-emerald-700 text-white font-bold">
@@ -1178,7 +1178,7 @@ export const Customer360: React.FC = () => {
               <div className="overflow-x-auto">
                 <table className="w-full text-left text-xs border-collapse">
                   <thead>
-                    <tr className="bg-slate-50 border-b border-slate-200 text-slate-500 font-semibold uppercase">
+                    <tr className="bg-[#080D1A] border-b border-slate-800 text-slate-500 font-semibold uppercase">
                       <th className="py-3 px-4">Reference #</th>
                       <th className="py-3 px-4">Description</th>
                       <th className="py-3 px-4">Amount</th>
@@ -1195,9 +1195,9 @@ export const Customer360: React.FC = () => {
                       </tr>
                     ) : (
                       data.billingHistory.map((b: any, idx: number) => (
-                        <tr key={idx} className="hover:bg-slate-50">
-                          <td className="py-3 px-4 font-mono font-bold text-slate-900">{b.referenceNumber}</td>
-                          <td className="py-3 px-4 font-semibold text-slate-800">{b.description}</td>
+                        <tr key={idx} className="hover:bg-[#080D1A]">
+                          <td className="py-3 px-4 font-mono font-bold text-white">{b.referenceNumber}</td>
+                          <td className="py-3 px-4 font-semibold text-slate-100">{b.description}</td>
                           <td className="py-3 px-4 font-mono font-black text-emerald-700">₹{b.amount}</td>
                           <td className="py-3 px-4 text-slate-600 font-mono">{b.paymentMode}</td>
                           <td className="py-3 px-4">
@@ -1229,41 +1229,41 @@ export const Customer360: React.FC = () => {
           {/* TAB 10: SUBSCRIBER REPORTS & AUDIT */}
           {activeTab === 'reports' && (
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
-              <Card className="p-5 border border-slate-200 bg-white rounded-2xl shadow-xs space-y-3">
-                <h3 className="text-xs font-bold uppercase text-slate-800 tracking-wider flex items-center">
+              <Card className="p-5 border border-slate-800 bg-[#0E172A] rounded-2xl shadow-xs space-y-3">
+                <h3 className="text-xs font-bold uppercase text-slate-100 tracking-wider flex items-center">
                   <TrendingUp className="w-3.5 h-3.5 mr-1.5 text-emerald-600" />
                   Subscriber Lifetime Value & SLA Performance
                 </h3>
                 <div className="grid grid-cols-2 gap-3 text-xs font-mono">
-                  <div className="p-3 bg-slate-50 rounded-xl space-y-1">
+                  <div className="p-3 bg-[#080D1A] rounded-xl space-y-1">
                     <span className="text-[10px] text-slate-400 uppercase font-sans">Customer Lifetime Value (LTV)</span>
                     <p className="text-xl font-black text-emerald-700">₹{reports?.lifetimeValue?.toLocaleString() || 699}</p>
                   </div>
-                  <div className="p-3 bg-slate-50 rounded-xl space-y-1">
+                  <div className="p-3 bg-[#080D1A] rounded-xl space-y-1">
                     <span className="text-[10px] text-slate-400 uppercase font-sans">Average Monthly Spend</span>
-                    <p className="text-xl font-black text-slate-800">₹{reports?.averageMonthlyRevenue || 699}</p>
+                    <p className="text-xl font-black text-slate-100">₹{reports?.averageMonthlyRevenue || 699}</p>
                   </div>
-                  <div className="p-3 bg-slate-50 rounded-xl space-y-1">
+                  <div className="p-3 bg-[#080D1A] rounded-xl space-y-1">
                     <span className="text-[10px] text-slate-400 uppercase font-sans">Total Lifetime Complaints</span>
-                    <p className="text-lg font-black text-slate-800">{reports?.totalTicketsCount || 0}</p>
+                    <p className="text-lg font-black text-slate-100">{reports?.totalTicketsCount || 0}</p>
                   </div>
-                  <div className="p-3 bg-slate-50 rounded-xl space-y-1">
+                  <div className="p-3 bg-[#080D1A] rounded-xl space-y-1">
                     <span className="text-[10px] text-slate-400 uppercase font-sans">Average MTTR Resolution</span>
                     <p className="text-lg font-black text-sky-700">{reports?.averageResolutionHours || 2.8} hrs</p>
                   </div>
                 </div>
               </Card>
 
-              <Card className="p-5 border border-slate-200 bg-white rounded-2xl shadow-xs space-y-3">
-                <h3 className="text-xs font-bold uppercase text-slate-800 tracking-wider flex items-center">
+              <Card className="p-5 border border-slate-800 bg-[#0E172A] rounded-2xl shadow-xs space-y-3">
+                <h3 className="text-xs font-bold uppercase text-slate-100 tracking-wider flex items-center">
                   <Shield className="w-3.5 h-3.5 mr-1.5 text-purple-600" />
                   Security & Audit Trails
                 </h3>
                 <div className="space-y-2 max-h-64 overflow-y-auto font-sans">
                   {(data?.auditHistory || []).map((a: any) => (
-                    <div key={a._id} className="p-2.5 bg-slate-50 rounded-xl border border-slate-200 flex items-center justify-between text-xs">
+                    <div key={a._id} className="p-2.5 bg-[#080D1A] rounded-xl border border-slate-800 flex items-center justify-between text-xs">
                       <div>
-                        <span className="font-bold text-slate-900 font-mono">{a.action}</span>
+                        <span className="font-bold text-white font-mono">{a.action}</span>
                         <span className="text-[10px] text-slate-500 block">By {a.actor?.email || a.actor?.role}</span>
                       </div>
                       <span className="font-mono text-slate-400 text-[10px]">{new Date(a.timestamp).toLocaleDateString()}</span>
@@ -1284,9 +1284,9 @@ export const Customer360: React.FC = () => {
         subtitle="Extends validity by 30 days and logs formal payment receipt."
       >
         <form onSubmit={handleRenewPlan} className="space-y-4">
-          <div className="p-3 bg-slate-50 rounded-xl border border-slate-200 text-xs space-y-1">
+          <div className="p-3 bg-[#080D1A] rounded-xl border border-slate-800 text-xs space-y-1">
             <span className="text-slate-500">Active Plan:</span>
-            <p className="font-bold text-slate-900 text-sm">{plan?.name}</p>
+            <p className="font-bold text-white text-sm">{plan?.name}</p>
           </div>
 
           <div className="grid grid-cols-2 gap-3">
@@ -1295,7 +1295,7 @@ export const Customer360: React.FC = () => {
               <select
                 value={renewForm.validityDays}
                 onChange={(e) => setRenewForm({ ...renewForm, validityDays: Number(e.target.value) })}
-                className="w-full px-3 py-2 text-xs border border-slate-300 rounded-lg bg-white font-semibold"
+                className="w-full px-3 py-2 text-xs border border-slate-700 rounded-lg bg-[#0E172A] font-semibold"
               >
                 <option value={30}>30 Days (1 Month)</option>
                 <option value={90}>90 Days (Quarterly)</option>
@@ -1311,7 +1311,7 @@ export const Customer360: React.FC = () => {
                 required
                 value={renewForm.paymentAmount}
                 onChange={(e) => setRenewForm({ ...renewForm, paymentAmount: Number(e.target.value) })}
-                className="w-full px-3 py-2 text-xs border border-slate-300 rounded-lg font-mono font-bold"
+                className="w-full px-3 py-2 text-xs border border-slate-700 rounded-lg font-mono font-bold"
               />
             </div>
           </div>
@@ -1322,7 +1322,7 @@ export const Customer360: React.FC = () => {
               <select
                 value={renewForm.paymentMode}
                 onChange={(e) => setRenewForm({ ...renewForm, paymentMode: e.target.value })}
-                className="w-full px-3 py-2 text-xs border border-slate-300 rounded-lg bg-white font-semibold"
+                className="w-full px-3 py-2 text-xs border border-slate-700 rounded-lg bg-[#0E172A] font-semibold"
               >
                 <option value="CASH">Cash In Hand</option>
                 <option value="UPI_DIRECT">Direct UPI (GPay / PhonePe)</option>
@@ -1339,7 +1339,7 @@ export const Customer360: React.FC = () => {
                 placeholder="e.g. UPI-9920199"
                 value={renewForm.paymentReference}
                 onChange={(e) => setRenewForm({ ...renewForm, paymentReference: e.target.value })}
-                className="w-full px-3 py-2 text-xs border border-slate-300 rounded-lg font-mono"
+                className="w-full px-3 py-2 text-xs border border-slate-700 rounded-lg font-mono"
               />
             </div>
           </div>
@@ -1371,7 +1371,7 @@ export const Customer360: React.FC = () => {
               placeholder="e.g. Optical Loss / Red LOS light on ONT"
               value={ticketForm.title}
               onChange={(e) => setTicketForm({ ...ticketForm, title: e.target.value })}
-              className="w-full px-3 py-2 text-xs border border-slate-300 rounded-lg"
+              className="w-full px-3 py-2 text-xs border border-slate-700 rounded-lg"
             />
           </div>
 
@@ -1381,7 +1381,7 @@ export const Customer360: React.FC = () => {
               <select
                 value={ticketForm.category}
                 onChange={(e) => setTicketForm({ ...ticketForm, category: e.target.value })}
-                className="w-full px-3 py-2 text-xs border border-slate-300 rounded-lg bg-white font-semibold"
+                className="w-full px-3 py-2 text-xs border border-slate-700 rounded-lg bg-[#0E172A] font-semibold"
               >
                 <option value="NO_INTERNET">No Internet / LOS Red</option>
                 <option value="SLOW_SPEED">Slow Speed / Latency</option>
@@ -1396,7 +1396,7 @@ export const Customer360: React.FC = () => {
               <select
                 value={ticketForm.priority}
                 onChange={(e) => setTicketForm({ ...ticketForm, priority: e.target.value })}
-                className="w-full px-3 py-2 text-xs border border-slate-300 rounded-lg bg-white font-semibold"
+                className="w-full px-3 py-2 text-xs border border-slate-700 rounded-lg bg-[#0E172A] font-semibold"
               >
                 <option value="low">Low Priority</option>
                 <option value="medium">Medium Priority</option>
@@ -1413,7 +1413,7 @@ export const Customer360: React.FC = () => {
               placeholder="Caller reported connection dropout since morning..."
               value={ticketForm.description}
               onChange={(e) => setTicketForm({ ...ticketForm, description: e.target.value })}
-              className="w-full px-3 py-2 text-xs border border-slate-300 rounded-lg"
+              className="w-full px-3 py-2 text-xs border border-slate-700 rounded-lg"
             />
           </div>
 
@@ -1443,7 +1443,7 @@ export const Customer360: React.FC = () => {
               required
               value={docForm.name}
               onChange={(e) => setDocForm({ ...docForm, name: e.target.value })}
-              className="w-full px-3 py-2 text-xs border border-slate-300 rounded-lg"
+              className="w-full px-3 py-2 text-xs border border-slate-700 rounded-lg"
             />
           </div>
 
@@ -1452,7 +1452,7 @@ export const Customer360: React.FC = () => {
             <select
               value={docForm.category}
               onChange={(e) => setDocForm({ ...docForm, category: e.target.value })}
-              className="w-full px-3 py-2 text-xs border border-slate-300 rounded-lg bg-white font-semibold"
+              className="w-full px-3 py-2 text-xs border border-slate-700 rounded-lg bg-[#0E172A] font-semibold"
             >
               <option value="INSTALLATION_PHOTO">Premise ONT Installation Photo</option>
               <option value="OPTICAL_TERMINATION">FAT Box Splice / Termination Photo</option>
@@ -1471,7 +1471,7 @@ export const Customer360: React.FC = () => {
               required
               value={docForm.url}
               onChange={(e) => setDocForm({ ...docForm, url: e.target.value })}
-              className="w-full px-3 py-2 text-xs border border-slate-300 rounded-lg font-mono"
+              className="w-full px-3 py-2 text-xs border border-slate-700 rounded-lg font-mono"
             />
           </div>
 
@@ -1500,7 +1500,7 @@ export const Customer360: React.FC = () => {
               <select
                 value={assetForm.category}
                 onChange={(e) => setAssetForm({ ...assetForm, category: e.target.value })}
-                className="w-full px-3 py-2 text-xs border border-slate-300 rounded-lg bg-white font-semibold"
+                className="w-full px-3 py-2 text-xs border border-slate-700 rounded-lg bg-[#0E172A] font-semibold"
               >
                 <option value="ONT">ONT Terminal</option>
                 <option value="ROUTER">Wi-Fi 6 Router</option>
@@ -1516,7 +1516,7 @@ export const Customer360: React.FC = () => {
                 placeholder="e.g. GNXS-2026-991"
                 value={assetForm.serialNumber}
                 onChange={(e) => setAssetForm({ ...assetForm, serialNumber: e.target.value })}
-                className="w-full px-3 py-2 text-xs border border-slate-300 rounded-lg font-mono font-bold"
+                className="w-full px-3 py-2 text-xs border border-slate-700 rounded-lg font-mono font-bold"
               />
             </div>
           </div>
@@ -1528,7 +1528,7 @@ export const Customer360: React.FC = () => {
                 type="text"
                 value={assetForm.brand}
                 onChange={(e) => setAssetForm({ ...assetForm, brand: e.target.value })}
-                className="w-full px-3 py-2 text-xs border border-slate-300 rounded-lg"
+                className="w-full px-3 py-2 text-xs border border-slate-700 rounded-lg"
               />
             </div>
 
@@ -1538,7 +1538,7 @@ export const Customer360: React.FC = () => {
                 type="text"
                 value={assetForm.modelName}
                 onChange={(e) => setAssetForm({ ...assetForm, modelName: e.target.value })}
-                className="w-full px-3 py-2 text-xs border border-slate-300 rounded-lg"
+                className="w-full px-3 py-2 text-xs border border-slate-700 rounded-lg"
               />
             </div>
           </div>
@@ -1567,7 +1567,7 @@ export const Customer360: React.FC = () => {
             <select
               value={whatsAppForm.eventType}
               onChange={(e) => setWhatsAppForm({ ...whatsAppForm, eventType: e.target.value })}
-              className="w-full px-3 py-2 text-xs border border-slate-300 rounded-lg bg-white font-semibold"
+              className="w-full px-3 py-2 text-xs border border-slate-700 rounded-lg bg-[#0E172A] font-semibold"
             >
               <option value="PAYMENT_RECEIVED">Payment Received & Receipt</option>
               <option value="PLAN_RENEWED">Plan Renewed Confirmation</option>
@@ -1598,7 +1598,7 @@ export const Customer360: React.FC = () => {
             <img src={selectedPhoto} alt="Preview" className="max-w-full max-h-[85vh] object-contain rounded-xl" />
             <button
               onClick={() => setSelectedPhoto(null)}
-              className="absolute top-4 right-4 bg-white/20 hover:bg-white/40 text-white rounded-full p-2 text-xs font-bold font-mono"
+              className="absolute top-4 right-4 bg-[#0E172A]/20 hover:bg-[#0E172A]/40 text-white rounded-full p-2 text-xs font-bold font-mono"
             >
               ✕ Close
             </button>

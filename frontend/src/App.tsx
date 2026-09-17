@@ -67,10 +67,10 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children, allowedRoles,
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-[#F8FAFC] flex items-center justify-center font-sans">
+      <div className="min-h-screen bg-[#060913] flex items-center justify-center font-sans">
         <div className="flex flex-col items-center space-y-4">
           <div className="w-10 h-10 border-2 border-sky-500 border-t-transparent rounded-full animate-spin"></div>
-          <p className="text-xs text-[#64748B] font-mono">Verifying cryptographic session...</p>
+          <p className="text-xs text-slate-400 font-mono">Verifying cryptographic session...</p>
         </div>
       </div>
     );
@@ -117,7 +117,7 @@ const RootRedirect: React.FC = () => {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-[#F8FAFC] flex items-center justify-center">
+      <div className="min-h-screen bg-[#060913] flex items-center justify-center">
         <div className="w-8 h-8 border-2 border-sky-500 border-t-transparent rounded-full animate-spin"></div>
       </div>
     );

@@ -98,9 +98,9 @@ export const CustomerWiFi: React.FC = () => {
           )}
 
           {/* 5 GHz Card */}
-          <div className="bg-white border border-slate-200 rounded-2xl p-4 space-y-3 shadow-xs">
+          <div className="bg-[#0E172A] border border-slate-800 rounded-2xl p-4 space-y-3 shadow-xs">
             <div className="flex items-center justify-between border-b border-slate-100 pb-2">
-              <div className="flex items-center space-x-2 text-xs font-bold text-slate-900">
+              <div className="flex items-center space-x-2 text-xs font-bold text-white">
                 <Wifi className="w-4 h-4 text-sky-600" />
                 <span>High-Speed 5 GHz Wi-Fi (Ultra Fast)</span>
               </div>
@@ -136,9 +136,9 @@ export const CustomerWiFi: React.FC = () => {
           </div>
 
           {/* 2.4 GHz Card */}
-          <div className="bg-white border border-slate-200 rounded-2xl p-4 space-y-3 shadow-xs">
+          <div className="bg-[#0E172A] border border-slate-800 rounded-2xl p-4 space-y-3 shadow-xs">
             <div className="flex items-center justify-between border-b border-slate-100 pb-2">
-              <div className="flex items-center space-x-2 text-xs font-bold text-slate-900">
+              <div className="flex items-center space-x-2 text-xs font-bold text-white">
                 <Wifi className="w-4 h-4 text-purple-600" />
                 <span>Standard 2.4 GHz Wi-Fi (Long Range)</span>
               </div>

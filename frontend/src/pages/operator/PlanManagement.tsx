@@ -529,14 +529,14 @@ export const PlanManagement: React.FC = () => {
         )}
 
         {/* Tab Navigation Controls */}
-        <div className="flex items-center justify-between border-b border-slate-200 pb-2">
+        <div className="flex items-center justify-between border-b border-slate-800 pb-2">
           <div className="flex items-center space-x-2">
             <button
               onClick={() => setActiveTab('catalog')}
               className={`px-4 py-2 text-sm font-semibold rounded-lg transition-all flex items-center space-x-2 ${
                 activeTab === 'catalog'
                   ? 'bg-slate-900 text-white shadow-xs'
-                  : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900'
+                  : 'text-slate-600 hover:bg-slate-100 hover:text-white'
               }`}
             >
               <Layers className="w-4 h-4" />
@@ -548,7 +548,7 @@ export const PlanManagement: React.FC = () => {
               className={`px-4 py-2 text-sm font-semibold rounded-lg transition-all flex items-center space-x-2 ${
                 activeTab === 'expiring'
                   ? 'bg-slate-900 text-white shadow-xs'
-                  : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900'
+                  : 'text-slate-600 hover:bg-slate-100 hover:text-white'
               }`}
             >
               <CalendarClock className="w-4 h-4" />
@@ -563,7 +563,7 @@ export const PlanManagement: React.FC = () => {
               className={`px-4 py-2 text-sm font-semibold rounded-lg transition-all flex items-center space-x-2 ${
                 activeTab === 'templates'
                   ? 'bg-slate-900 text-white shadow-xs'
-                  : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900'
+                  : 'text-slate-600 hover:bg-slate-100 hover:text-white'
               }`}
             >
               <MessageSquare className="w-4 h-4" />
@@ -577,7 +577,7 @@ export const PlanManagement: React.FC = () => {
         {activeTab === 'catalog' && (
           <div className="space-y-4">
             {/* Filter & Sort Bar */}
-            <div className="flex flex-col sm:flex-row items-center justify-between gap-3 bg-white p-3.5 rounded-xl border border-slate-200 shadow-xs">
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-3 bg-[#0E172A] p-3.5 rounded-xl border border-slate-800 shadow-xs">
               <div className="flex items-center space-x-2 w-full sm:w-auto">
                 <div className="flex items-center space-x-1.5">
                   <span className="text-xs font-semibold text-slate-500">Status:</span>
@@ -604,7 +604,7 @@ export const PlanManagement: React.FC = () => {
                   <select
                     value={catalogSortBy}
                     onChange={(e) => setCatalogSortBy(e.target.value)}
-                    className="text-xs bg-slate-50 border border-slate-200 rounded-md px-2 py-1 font-medium text-slate-700"
+                    className="text-xs bg-[#080D1A] border border-slate-800 rounded-md px-2 py-1 font-medium text-slate-700"
                   >
                     <option value="price_asc">Price: Low to High (Ascending)</option>
                     <option value="price_desc">Price: High to Low</option>
@@ -623,7 +623,7 @@ export const PlanManagement: React.FC = () => {
                     onChange={(e) => setCatalogSearch(e.target.value)}
                     onKeyDown={(e) => e.key === 'Enter' && fetchCatalog()}
                     placeholder="Search plan name, code..."
-                    className="w-full pl-8 pr-3 py-1.5 text-xs bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500"
+                    className="w-full pl-8 pr-3 py-1.5 text-xs bg-[#080D1A] border border-slate-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500"
                   />
                 </div>
                 <Button size="sm" variant="outline" onClick={fetchCatalog} className="px-2.5 text-xs">
@@ -633,11 +633,11 @@ export const PlanManagement: React.FC = () => {
             </div>
 
             {/* Catalog Grid Table with Clear Labels */}
-            <Card className="overflow-hidden border border-slate-200 bg-white shadow-xs">
+            <Card className="overflow-hidden border border-slate-800 bg-[#0E172A] shadow-xs">
               <div className="overflow-x-auto">
                 <table className="w-full text-left text-xs border-collapse">
                   <thead>
-                    <tr className="bg-slate-50 border-b border-slate-200 text-slate-500 font-semibold uppercase tracking-wider">
+                    <tr className="bg-[#080D1A] border-b border-slate-800 text-slate-500 font-semibold uppercase tracking-wider">
                       <th className="py-3 px-4">Plan Name & Code</th>
                       <th className="py-3 px-4">Price (₹)</th>
                       <th className="py-3 px-4">Validity Period</th>
@@ -672,9 +672,9 @@ export const PlanManagement: React.FC = () => {
                           : computeExpiryDateFromDays(plan.billingCycleDays || 30);
 
                         return (
-                          <tr key={plan._id} className="hover:bg-slate-50/70 transition-colors">
+                          <tr key={plan._id} className="hover:bg-[#080D1A]/70 transition-colors">
                             <td className="py-3.5 px-4">
-                              <div className="font-bold text-slate-900 text-sm">{plan.name}</div>
+                              <div className="font-bold text-white text-sm">{plan.name}</div>
                               <div className="flex items-center space-x-2 mt-0.5">
                                 <span className="font-mono text-[11px] bg-slate-100 text-slate-700 px-1.5 py-0.2 rounded font-semibold uppercase">
                                   {plan.code}
@@ -690,7 +690,7 @@ export const PlanManagement: React.FC = () => {
                               <span className="text-[10px] text-slate-400 block font-sans">per cycle</span>
                             </td>
 
-                            <td className="py-3.5 px-4 font-mono font-semibold text-slate-800">
+                            <td className="py-3.5 px-4 font-mono font-semibold text-slate-100">
                               <span className="inline-flex items-center px-2 py-0.5 rounded-md bg-sky-50 text-sky-800 border border-sky-200">
                                 <Calendar className="w-3 h-3 mr-1 text-sky-600" />
                                 {plan.billingCycleDays} Days
@@ -698,12 +698,12 @@ export const PlanManagement: React.FC = () => {
                             </td>
 
                             <td className="py-3.5 px-4 font-mono text-slate-700">
-                              <div className="font-semibold text-slate-900">{calculatedExpiry}</div>
+                              <div className="font-semibold text-white">{calculatedExpiry}</div>
                               <span className="text-[10px] text-slate-400 block">from today</span>
                             </td>
 
                             <td className="py-3.5 px-4">
-                              <div className="font-medium text-slate-800">
+                              <div className="font-medium text-slate-100">
                                 {plan.downloadSpeedMbps} ↓ / {plan.uploadSpeedMbps} ↑ Mbps
                               </div>
                               <div className="text-[11px] text-slate-500 font-mono">
@@ -787,19 +787,19 @@ export const PlanManagement: React.FC = () => {
           <div className="space-y-4">
             {/* Real-Time Metrics Bar */}
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
-              <Card className="p-4 bg-white border border-slate-200 shadow-xs">
+              <Card className="p-4 bg-[#0E172A] border border-slate-800 shadow-xs">
                 <div className="flex items-center justify-between">
                   <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Subscribers</span>
                   <User className="w-4 h-4 text-slate-400" />
                 </div>
-                <p className="text-2xl font-bold text-slate-800 mt-2 font-mono">{summary.totalCustomers}</p>
+                <p className="text-2xl font-bold text-slate-100 mt-2 font-mono">{summary.totalCustomers}</p>
                 <span className="text-[11px] text-slate-500 font-medium">Total registered</span>
               </Card>
 
               <Card
                 onClick={() => setExpiryWindow('1d')}
                 className={`p-4 border transition-all cursor-pointer shadow-xs ${
-                  expiryWindow === '1d' ? 'ring-2 ring-rose-500 bg-rose-50/40 border-rose-300' : 'bg-white border-slate-200 hover:border-rose-300'
+                  expiryWindow === '1d' ? 'ring-2 ring-rose-500 bg-rose-50/40 border-rose-300' : 'bg-[#0E172A] border-slate-800 hover:border-rose-300'
                 }`}
               >
                 <div className="flex items-center justify-between">
@@ -816,7 +816,7 @@ export const PlanManagement: React.FC = () => {
               <Card
                 onClick={() => setExpiryWindow('3d')}
                 className={`p-4 border transition-all cursor-pointer shadow-xs ${
-                  expiryWindow === '3d' ? 'ring-2 ring-amber-500 bg-amber-50/40 border-amber-300' : 'bg-white border-slate-200 hover:border-amber-300'
+                  expiryWindow === '3d' ? 'ring-2 ring-amber-500 bg-amber-50/40 border-amber-300' : 'bg-[#0E172A] border-slate-800 hover:border-amber-300'
                 }`}
               >
                 <div className="flex items-center justify-between">
@@ -830,7 +830,7 @@ export const PlanManagement: React.FC = () => {
               <Card
                 onClick={() => setExpiryWindow('7d')}
                 className={`p-4 border transition-all cursor-pointer shadow-xs ${
-                  expiryWindow === '7d' ? 'ring-2 ring-purple-500 bg-purple-50/40 border-purple-300' : 'bg-white border-slate-200 hover:border-purple-300'
+                  expiryWindow === '7d' ? 'ring-2 ring-purple-500 bg-purple-50/40 border-purple-300' : 'bg-[#0E172A] border-slate-800 hover:border-purple-300'
                 }`}
               >
                 <div className="flex items-center justify-between">
@@ -844,7 +844,7 @@ export const PlanManagement: React.FC = () => {
               <Card
                 onClick={() => setExpiryWindow('expired')}
                 className={`p-4 border transition-all cursor-pointer shadow-xs ${
-                  expiryWindow === 'expired' ? 'ring-2 ring-red-600 bg-red-50/40 border-red-300' : 'bg-white border-slate-200 hover:border-red-300'
+                  expiryWindow === 'expired' ? 'ring-2 ring-red-600 bg-red-50/40 border-red-300' : 'bg-[#0E172A] border-slate-800 hover:border-red-300'
                 }`}
               >
                 <div className="flex items-center justify-between">
@@ -858,7 +858,7 @@ export const PlanManagement: React.FC = () => {
               <Card
                 onClick={() => setExpiryWindow('all')}
                 className={`p-4 border transition-all cursor-pointer shadow-xs ${
-                  expiryWindow === 'all' ? 'ring-2 ring-emerald-500 bg-emerald-50/40 border-emerald-300' : 'bg-white border-slate-200 hover:border-emerald-300'
+                  expiryWindow === 'all' ? 'ring-2 ring-emerald-500 bg-emerald-50/40 border-emerald-300' : 'bg-[#0E172A] border-slate-800 hover:border-emerald-300'
                 }`}
               >
                 <div className="flex items-center justify-between">
@@ -871,7 +871,7 @@ export const PlanManagement: React.FC = () => {
             </div>
 
             {/* Filter Pills & Search */}
-            <div className="flex flex-col sm:flex-row items-center justify-between gap-3 bg-white p-3 rounded-xl border border-slate-200 shadow-xs">
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-3 bg-[#0E172A] p-3 rounded-xl border border-slate-800 shadow-xs">
               <div className="flex items-center space-x-1.5 overflow-x-auto w-full sm:w-auto pb-1 sm:pb-0">
                 {(['all', '1d', '3d', '7d', 'expired'] as const).map((w) => (
                   <button
@@ -909,7 +909,7 @@ export const PlanManagement: React.FC = () => {
                     onChange={(e) => setExpiringSearchQuery(e.target.value)}
                     onKeyDown={(e) => e.key === 'Enter' && fetchExpiringPlans()}
                     placeholder="Search name, account, mobile..."
-                    className="w-full pl-9 pr-3 py-1.5 text-xs bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500"
+                    className="w-full pl-9 pr-3 py-1.5 text-xs bg-[#080D1A] border border-slate-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500"
                   />
                 </div>
                 <Button size="sm" variant="outline" onClick={fetchExpiringPlans} className="px-3 text-xs">
@@ -919,11 +919,11 @@ export const PlanManagement: React.FC = () => {
             </div>
 
             {/* Expiring Customers Table */}
-            <Card className="overflow-hidden border border-slate-200 bg-white shadow-xs">
+            <Card className="overflow-hidden border border-slate-800 bg-[#0E172A] shadow-xs">
               <div className="overflow-x-auto">
                 <table className="w-full text-left text-xs border-collapse">
                   <thead>
-                    <tr className="bg-slate-50 border-b border-slate-200 text-slate-500 font-semibold uppercase tracking-wider">
+                    <tr className="bg-[#080D1A] border-b border-slate-800 text-slate-500 font-semibold uppercase tracking-wider">
                       <th className="py-3 px-4">Subscriber & Account</th>
                       <th className="py-3 px-4">Current Plan</th>
                       <th className="py-3 px-4">Validity Window</th>
@@ -948,9 +948,9 @@ export const PlanManagement: React.FC = () => {
                         const is7d = c.remainingDays > 3 && c.remainingDays <= 7;
 
                         return (
-                          <tr key={c.customerId} className="hover:bg-slate-50/70 transition-colors">
+                          <tr key={c.customerId} className="hover:bg-[#080D1A]/70 transition-colors">
                             <td className="py-3.5 px-4">
-                              <div className="font-semibold text-slate-900">{c.customerName}</div>
+                              <div className="font-semibold text-white">{c.customerName}</div>
                               <div className="flex items-center space-x-2 text-[11px] text-slate-500 mt-0.5">
                                 <span className="font-mono bg-slate-100 px-1.5 py-0.5 rounded text-slate-700">
                                   {c.accountNumber}
@@ -963,7 +963,7 @@ export const PlanManagement: React.FC = () => {
                             </td>
 
                             <td className="py-3.5 px-4">
-                              <div className="font-medium text-slate-800">{c.planName}</div>
+                              <div className="font-medium text-slate-100">{c.planName}</div>
                               <div className="text-[11px] font-mono text-emerald-700 font-semibold mt-0.5">
                                 ₹{c.price} / month
                               </div>
@@ -972,7 +972,7 @@ export const PlanManagement: React.FC = () => {
                             <td className="py-3.5 px-4">
                               <div className="text-slate-700 font-mono text-[11px]">
                                 {c.startDate} <span className="text-slate-400">→</span>{' '}
-                                <span className="font-semibold text-slate-900">{c.endDate}</span>
+                                <span className="font-semibold text-white">{c.endDate}</span>
                               </div>
                             </td>
 
@@ -1025,7 +1025,7 @@ export const PlanManagement: React.FC = () => {
                                   size="sm"
                                   variant="outline"
                                   onClick={() => handleOpenRetrigger(c)}
-                                  className="h-7 px-2 text-xs border-slate-300 text-slate-700 hover:bg-slate-100"
+                                  className="h-7 px-2 text-xs border-slate-700 text-slate-700 hover:bg-slate-100"
                                   title="Explicitly Retrigger WhatsApp Notification"
                                 >
                                   <Send className="w-3.5 h-3.5 text-sky-600 mr-1" />
@@ -1068,7 +1068,7 @@ export const PlanManagement: React.FC = () => {
                       '{operator_name}',
                       '{tenant_id}',
                     ].map((t) => (
-                      <span key={t} className="px-2 py-0.5 bg-white border border-sky-200 text-sky-800 rounded font-semibold">
+                      <span key={t} className="px-2 py-0.5 bg-[#0E172A] border border-sky-200 text-sky-800 rounded font-semibold">
                         {t}
                       </span>
                     ))}
@@ -1082,13 +1082,13 @@ export const PlanManagement: React.FC = () => {
                 const isEditing = editingTemplate?.eventType === tmpl.eventType;
 
                 return (
-                  <Card key={tmpl.eventType} className="p-5 border border-slate-200 bg-white shadow-xs">
+                  <Card key={tmpl.eventType} className="p-5 border border-slate-800 bg-[#0E172A] shadow-xs">
                     <div className="flex items-center justify-between border-b border-slate-100 pb-3">
                       <div>
                         <span className="text-[10px] font-mono font-bold bg-slate-100 text-slate-700 px-2 py-0.5 rounded">
                           {tmpl.eventType}
                         </span>
-                        <h4 className="font-bold text-slate-900 text-sm mt-1">{tmpl.title}</h4>
+                        <h4 className="font-bold text-white text-sm mt-1">{tmpl.title}</h4>
                       </div>
                       <Badge variant={tmpl.isEnabled ? 'success' : 'neutral'}>
                         {tmpl.isEnabled ? 'Active' : 'Disabled'}
@@ -1118,7 +1118,7 @@ export const PlanManagement: React.FC = () => {
                             onChange={(e) =>
                               setEditingTemplate({ ...editingTemplate, templateText: e.target.value })
                             }
-                            className="w-full p-2.5 text-xs font-mono border rounded-md bg-slate-50"
+                            className="w-full p-2.5 text-xs font-mono border rounded-md bg-[#080D1A]"
                           />
                         </div>
                         <div className="flex items-center justify-between">
@@ -1156,7 +1156,7 @@ export const PlanManagement: React.FC = () => {
                       </div>
                     ) : (
                       <div className="mt-3 space-y-3">
-                        <div className="p-3 bg-slate-50 border border-slate-200 rounded-lg text-xs font-mono text-slate-800 whitespace-pre-wrap leading-relaxed max-h-48 overflow-y-auto">
+                        <div className="p-3 bg-[#080D1A] border border-slate-800 rounded-lg text-xs font-mono text-slate-100 whitespace-pre-wrap leading-relaxed max-h-48 overflow-y-auto">
                           {tmpl.templateText}
                         </div>
 
@@ -1183,11 +1183,11 @@ export const PlanManagement: React.FC = () => {
         {/* MODAL: CREATE / EDIT PLAN WIZARD WITH CONFIRMATION STEP */}
         {showPlanModal && (
           <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4 backdrop-blur-xs">
-            <div className="bg-white rounded-2xl max-w-lg w-full p-6 shadow-2xl border border-slate-200 max-h-[90vh] overflow-y-auto">
+            <div className="bg-[#0E172A] rounded-2xl max-w-lg w-full p-6 shadow-2xl border border-slate-800 max-h-[90vh] overflow-y-auto">
               {/* Header */}
               <div className="flex items-center justify-between border-b border-slate-100 pb-3 mb-4">
                 <div>
-                  <h3 className="text-lg font-bold text-slate-900">
+                  <h3 className="text-lg font-bold text-white">
                     {editingPlan ? 'Edit Broadband Plan' : 'Create New Broadband Plan'}
                   </h3>
                   <p className="text-xs text-slate-500">
@@ -1238,7 +1238,7 @@ export const PlanManagement: React.FC = () => {
                         if (validationErrors.name) setValidationErrors({ ...validationErrors, name: '' });
                       }}
                       className={`w-full px-3 py-2 text-xs border rounded-lg focus:ring-2 focus:ring-sky-500 ${
-                        validationErrors.name ? 'border-rose-500 bg-rose-50/30' : 'border-slate-300'
+                        validationErrors.name ? 'border-rose-500 bg-rose-50/30' : 'border-slate-700'
                       }`}
                     />
                     {validationErrors.name && (
@@ -1263,7 +1263,7 @@ export const PlanManagement: React.FC = () => {
                           min={0}
                           value={planForm.price}
                           onChange={(e) => setPlanForm({ ...planForm, price: Number(e.target.value) })}
-                          className="w-full pl-7 pr-3 py-2 text-xs border border-slate-300 rounded-lg font-mono font-bold text-slate-900"
+                          className="w-full pl-7 pr-3 py-2 text-xs border border-slate-700 rounded-lg font-mono font-bold text-white"
                         />
                       </div>
                       {validationErrors.price && (
@@ -1288,7 +1288,7 @@ export const PlanManagement: React.FC = () => {
                             expiryDate: computeExpiryDateFromDays(d),
                           });
                         }}
-                        className="w-full px-3 py-2 text-xs border border-slate-300 rounded-lg font-mono font-semibold text-slate-900"
+                        className="w-full px-3 py-2 text-xs border border-slate-700 rounded-lg font-mono font-semibold text-white"
                       />
                       {validationErrors.validityDays && (
                         <p className="text-[11px] text-rose-600 mt-1">{validationErrors.validityDays}</p>
@@ -1345,7 +1345,7 @@ export const PlanManagement: React.FC = () => {
                             validityDays: calculatedDays,
                           });
                         }}
-                        className="w-full pl-9 pr-3 py-2 text-xs border border-slate-300 rounded-lg font-mono font-semibold text-slate-900"
+                        className="w-full pl-9 pr-3 py-2 text-xs border border-slate-700 rounded-lg font-mono font-semibold text-white"
                       />
                     </div>
                     <span className="text-[11px] text-slate-500 mt-1 block">
@@ -1362,7 +1362,7 @@ export const PlanManagement: React.FC = () => {
                         placeholder="e.g. PLAN-300M"
                         value={planForm.code}
                         onChange={(e) => setPlanForm({ ...planForm, code: e.target.value.toUpperCase() })}
-                        className="w-full px-2.5 py-1.5 text-xs border border-slate-300 rounded-md font-mono uppercase"
+                        className="w-full px-2.5 py-1.5 text-xs border border-slate-700 rounded-md font-mono uppercase"
                       />
                     </div>
                     <div>
@@ -1372,7 +1372,7 @@ export const PlanManagement: React.FC = () => {
                         min={1}
                         value={planForm.downloadSpeedMbps}
                         onChange={(e) => setPlanForm({ ...planForm, downloadSpeedMbps: Number(e.target.value) })}
-                        className="w-full px-2.5 py-1.5 text-xs border border-slate-300 rounded-md font-mono"
+                        className="w-full px-2.5 py-1.5 text-xs border border-slate-700 rounded-md font-mono"
                       />
                     </div>
                     <div>
@@ -1382,7 +1382,7 @@ export const PlanManagement: React.FC = () => {
                         min={1}
                         value={planForm.uploadSpeedMbps}
                         onChange={(e) => setPlanForm({ ...planForm, uploadSpeedMbps: Number(e.target.value) })}
-                        className="w-full px-2.5 py-1.5 text-xs border border-slate-300 rounded-md font-mono"
+                        className="w-full px-2.5 py-1.5 text-xs border border-slate-700 rounded-md font-mono"
                       />
                     </div>
                   </div>
@@ -1395,7 +1395,7 @@ export const PlanManagement: React.FC = () => {
                       placeholder="e.g. Recommended plan for commercial fiber connections."
                       value={planForm.description}
                       onChange={(e) => setPlanForm({ ...planForm, description: e.target.value })}
-                      className="w-full p-2 text-xs border border-slate-300 rounded-lg"
+                      className="w-full p-2 text-xs border border-slate-700 rounded-lg"
                     />
                   </div>
 
@@ -1432,7 +1432,7 @@ export const PlanManagement: React.FC = () => {
                     <div className="grid grid-cols-2 gap-3 text-xs">
                       <div>
                         <span className="text-[10px] text-slate-500 uppercase font-semibold">Plan Name</span>
-                        <p className="font-bold text-slate-900 text-sm mt-0.5">{planForm.name}</p>
+                        <p className="font-bold text-white text-sm mt-0.5">{planForm.name}</p>
                       </div>
                       <div>
                         <span className="text-[10px] text-slate-500 uppercase font-semibold">Price (₹)</span>
@@ -1445,7 +1445,7 @@ export const PlanManagement: React.FC = () => {
                     <div className="grid grid-cols-2 gap-3 text-xs pt-1 border-t border-sky-200/50">
                       <div>
                         <span className="text-[10px] text-slate-500 uppercase font-semibold">Validity Period</span>
-                        <p className="font-bold text-slate-900 font-mono mt-0.5">{planForm.validityDays} Days</p>
+                        <p className="font-bold text-white font-mono mt-0.5">{planForm.validityDays} Days</p>
                       </div>
                       <div>
                         <span className="text-[10px] text-slate-500 uppercase font-semibold">Effective Expiry Date</span>
@@ -1456,7 +1456,7 @@ export const PlanManagement: React.FC = () => {
                     <div className="grid grid-cols-2 gap-3 text-xs pt-1 border-t border-sky-200/50">
                       <div>
                         <span className="text-[10px] text-slate-500 uppercase font-semibold">Bandwidth Speed</span>
-                        <p className="font-medium text-slate-800 mt-0.5">
+                        <p className="font-medium text-slate-100 mt-0.5">
                           {planForm.downloadSpeedMbps} ↓ / {planForm.uploadSpeedMbps} ↑ Mbps
                         </p>
                       </div>
@@ -1513,7 +1513,7 @@ export const PlanManagement: React.FC = () => {
         {/* MODAL: DEACTIVATE / ACTIVATE CONFIRMATION DIALOG */}
         {deactivateConfirmModal.isOpen && deactivateConfirmModal.plan && (
           <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4 backdrop-blur-xs">
-            <div className="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl border border-slate-200">
+            <div className="bg-[#0E172A] rounded-2xl max-w-md w-full p-6 shadow-2xl border border-slate-800">
               <div className="flex items-center space-x-3 mb-3">
                 <div
                   className={`w-10 h-10 rounded-full flex items-center justify-center ${
@@ -1523,7 +1523,7 @@ export const PlanManagement: React.FC = () => {
                   <Power className="w-5 h-5" />
                 </div>
                 <div>
-                  <h3 className="text-base font-bold text-slate-900">
+                  <h3 className="text-base font-bold text-white">
                     {deactivateConfirmModal.targetStatus ? 'Activate Plan Package?' : 'Deactivate Plan Package?'}
                   </h3>
                   <p className="text-xs text-slate-500 font-mono">
@@ -1532,7 +1532,7 @@ export const PlanManagement: React.FC = () => {
                 </div>
               </div>
 
-              <div className="text-xs text-slate-600 space-y-2 bg-slate-50 p-3.5 rounded-xl border border-slate-200">
+              <div className="text-xs text-slate-600 space-y-2 bg-[#080D1A] p-3.5 rounded-xl border border-slate-800">
                 {deactivateConfirmModal.targetStatus ? (
                   <p>
                     Activating this plan will make it immediately available for new subscriber subscriptions and automated renewals.
@@ -1573,12 +1573,12 @@ export const PlanManagement: React.FC = () => {
         {/* MODAL: RENEW PLAN & PAYMENT COLLECTION */}
         {showRenewModal && selectedCustomerForRenew && (
           <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4 backdrop-blur-xs">
-            <div className="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl border border-slate-200">
-              <h3 className="text-lg font-bold text-slate-900 mb-1">
+            <div className="bg-[#0E172A] rounded-2xl max-w-md w-full p-6 shadow-2xl border border-slate-800">
+              <h3 className="text-lg font-bold text-white mb-1">
                 Renew Plan — {selectedCustomerForRenew.customerName}
               </h3>
               <p className="text-xs text-slate-500 mb-4">
-                Account: <strong className="font-mono text-slate-800">{selectedCustomerForRenew.accountNumber}</strong> | Current Plan: <strong className="text-slate-800">{selectedCustomerForRenew.planName}</strong>
+                Account: <strong className="font-mono text-slate-100">{selectedCustomerForRenew.accountNumber}</strong> | Current Plan: <strong className="text-slate-100">{selectedCustomerForRenew.planName}</strong>
               </p>
 
               <form onSubmit={handleExecuteRenew} className="space-y-4">
@@ -1595,7 +1595,7 @@ export const PlanManagement: React.FC = () => {
                         billingCycleDays: sel ? sel.billingCycleDays : renewForm.billingCycleDays,
                       });
                     }}
-                    className="w-full px-3 py-2 text-xs border border-slate-300 rounded-lg bg-white font-medium"
+                    className="w-full px-3 py-2 text-xs border border-slate-700 rounded-lg bg-[#0E172A] font-medium"
                   >
                     <option value="">Keep Existing Plan ({selectedCustomerForRenew.planName})</option>
                     {catalogPlans.filter(p => p.isActive).map((p) => (
@@ -1615,7 +1615,7 @@ export const PlanManagement: React.FC = () => {
                       min={0}
                       value={renewForm.paymentAmount}
                       onChange={(e) => setRenewForm({ ...renewForm, paymentAmount: Number(e.target.value) })}
-                      className="w-full px-3 py-2 text-xs border border-slate-300 rounded-lg font-mono font-bold text-emerald-700"
+                      className="w-full px-3 py-2 text-xs border border-slate-700 rounded-lg font-mono font-bold text-emerald-700"
                     />
                   </div>
                   <div>
@@ -1626,7 +1626,7 @@ export const PlanManagement: React.FC = () => {
                       min={1}
                       value={renewForm.billingCycleDays}
                       onChange={(e) => setRenewForm({ ...renewForm, billingCycleDays: Number(e.target.value) })}
-                      className="w-full px-3 py-2 text-xs border border-slate-300 rounded-lg font-mono font-semibold"
+                      className="w-full px-3 py-2 text-xs border border-slate-700 rounded-lg font-mono font-semibold"
                     />
                   </div>
                 </div>
@@ -1637,7 +1637,7 @@ export const PlanManagement: React.FC = () => {
                     <select
                       value={renewForm.paymentMode}
                       onChange={(e) => setRenewForm({ ...renewForm, paymentMode: e.target.value })}
-                      className="w-full px-3 py-2 text-xs border border-slate-300 rounded-lg bg-white"
+                      className="w-full px-3 py-2 text-xs border border-slate-700 rounded-lg bg-[#0E172A]"
                     >
                       <option value="Cash / UPI">Cash / UPI</option>
                       <option value="Online Payment Gateway">Online Gateway</option>
@@ -1652,7 +1652,7 @@ export const PlanManagement: React.FC = () => {
                       value={renewForm.paymentReference}
                       onChange={(e) => setRenewForm({ ...renewForm, paymentReference: e.target.value })}
                       placeholder="e.g. UPI-998822"
-                      className="w-full px-3 py-2 text-xs border border-slate-300 rounded-lg font-mono"
+                      className="w-full px-3 py-2 text-xs border border-slate-700 rounded-lg font-mono"
                     />
                   </div>
                 </div>
@@ -1692,12 +1692,12 @@ export const PlanManagement: React.FC = () => {
         {/* MODAL: EXPLICIT WHATSAPP RETRIGGER */}
         {showRetriggerModal && selectedCustomerForRetrigger && (
           <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4 backdrop-blur-xs">
-            <div className="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl border border-slate-200">
-              <h3 className="text-lg font-bold text-slate-900 mb-1">
+            <div className="bg-[#0E172A] rounded-2xl max-w-md w-full p-6 shadow-2xl border border-slate-800">
+              <h3 className="text-lg font-bold text-white mb-1">
                 Explicit WhatsApp Event Retrigger
               </h3>
               <p className="text-xs text-slate-500 mb-4">
-                Force-retransmit notification to <strong className="text-slate-800">{selectedCustomerForRetrigger.customerName}</strong> ({selectedCustomerForRetrigger.phone}) with anti-spam duplicate bypass.
+                Force-retransmit notification to <strong className="text-slate-100">{selectedCustomerForRetrigger.customerName}</strong> ({selectedCustomerForRetrigger.phone}) with anti-spam duplicate bypass.
               </p>
 
               <div className="space-y-4">
@@ -1706,7 +1706,7 @@ export const PlanManagement: React.FC = () => {
                   <select
                     value={retriggerEventType}
                     onChange={(e) => setRetriggerEventType(e.target.value)}
-                    className="w-full px-3 py-2 text-xs border border-slate-300 rounded-lg bg-white font-mono font-medium text-slate-800"
+                    className="w-full px-3 py-2 text-xs border border-slate-700 rounded-lg bg-[#0E172A] font-mono font-medium text-slate-100"
                   >
                     <option value="PLAN_EXPIRING_1D">PLAN_EXPIRING_1D (1 Day / Tomorrow Notice)</option>
                     <option value="PLAN_EXPIRING_3D">PLAN_EXPIRING_3D (3 Days Urgent Reminder)</option>

@@ -39,41 +39,41 @@ export const PlansAndRevenue: React.FC = () => {
             {plans.map((p) => (
               <div
                 key={p._id}
-                className="bg-white border border-[#E2E8F0] rounded-2xl p-6 flex flex-col justify-between relative overflow-hidden shadow-lg"
+                className="bg-[#0E172A] border border-slate-800 rounded-2xl p-6 flex flex-col justify-between relative overflow-hidden shadow-lg"
               >
                 <div>
                   <div className="flex justify-between items-center">
-                    <h3 className="text-lg font-bold text-[#0F172A]">{p.name}</h3>
+                    <h3 className="text-lg font-bold text-white">{p.name}</h3>
                     <Badge variant="info">{p.code}</Badge>
                   </div>
                   <div className="mt-4 flex items-baseline">
-                    <span className="text-3xl font-extrabold text-[#0F172A]">₹{p.monthlyFee.toLocaleString()}</span>
-                    <span className="text-xs text-[#64748B] ml-1">/ month</span>
+                    <span className="text-3xl font-extrabold text-white">₹{p.monthlyFee.toLocaleString()}</span>
+                    <span className="text-xs text-slate-400 ml-1">/ month</span>
                   </div>
 
-                  <div className="mt-6 space-y-3 border-t border-[#E2E8F0] pt-4 text-xs text-[#334155]">
+                  <div className="mt-6 space-y-3 border-t border-slate-800 pt-4 text-xs text-slate-300">
                     <div className="flex items-center space-x-2">
-                      <Check className="w-4 h-4 text-[#047857]" />
+                      <Check className="w-4 h-4 text-emerald-400" />
                       <span>Up to {p.maxCustomers.toLocaleString()} Subscribers</span>
                     </div>
                     <div className="flex items-center space-x-2">
-                      <Check className="w-4 h-4 text-[#047857]" />
+                      <Check className="w-4 h-4 text-emerald-400" />
                       <span>Up to {p.maxDevices.toLocaleString()} ONT Devices</span>
                     </div>
                     <div className="flex items-center space-x-2">
-                      <Check className="w-4 h-4 text-[#047857]" />
+                      <Check className="w-4 h-4 text-emerald-400" />
                       <span>Up to {p.maxTechnicians} Field Techs</span>
                     </div>
                     {(p.features || []).map((f: string, i: number) => (
                       <div key={i} className="flex items-center space-x-2">
-                        <Check className="w-4 h-4 text-[#1677FF]" />
+                        <Check className="w-4 h-4 text-sky-400" />
                         <span>{f}</span>
                       </div>
                     ))}
                   </div>
                 </div>
 
-                <div className="mt-6 pt-4 border-t border-[#E2E8F0]">
+                <div className="mt-6 pt-4 border-t border-slate-800">
                   <Button variant="outline" className="w-full" size="sm">
                     Configure Quotas
                   </Button>

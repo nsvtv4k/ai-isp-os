@@ -56,8 +56,8 @@ export const InventoryManagement: React.FC = () => {
       header: 'Asset Tag / Serial #',
       accessor: (item) => (
         <div>
-          <span className="font-bold text-[#0F172A] font-mono text-xs">{item.assetTag}</span>
-          <p className="text-[11px] font-mono text-[#1677FF] mt-0.5">{item.serialNumber}</p>
+          <span className="font-bold text-white font-mono text-xs">{item.assetTag}</span>
+          <p className="text-[11px] font-mono text-sky-400 mt-0.5">{item.serialNumber}</p>
         </div>
       ),
     },
@@ -65,14 +65,14 @@ export const InventoryManagement: React.FC = () => {
       header: 'Hardware Model',
       accessor: (item) => (
         <div>
-          <span className="text-xs font-semibold text-[#1E293B]">{item.vendor} {item.modelName}</span>
-          <p className="text-[10px] text-[#64748B]">{item.itemType}</p>
+          <span className="text-xs font-semibold text-slate-100">{item.vendor} {item.modelName}</span>
+          <p className="text-[10px] text-slate-400">{item.itemType}</p>
         </div>
       ),
     },
     {
       header: 'Warehouse Location',
-      accessor: (item) => <span className="text-xs text-[#334155]">{item.warehouseLocation}</span>,
+      accessor: (item) => <span className="text-xs text-slate-300">{item.warehouseLocation}</span>,
     },
     {
       header: 'Status',
@@ -107,14 +107,14 @@ export const InventoryManagement: React.FC = () => {
     >
       <div className="space-y-4">
         {/* Filters */}
-        <div className="flex items-center space-x-2 bg-white p-4 border border-[#E2E8F0] rounded-xl">
-          <span className="text-xs text-[#64748B]">Filter Status:</span>
+        <div className="flex items-center space-x-2 bg-[#0E172A] p-4 border border-slate-800 rounded-xl">
+          <span className="text-xs text-slate-400">Filter Status:</span>
           {['all', 'available', 'assigned', 'faulty'].map((st) => (
             <button
               key={st}
               onClick={() => setStatusFilter(st)}
               className={`px-3 py-1.5 rounded-lg text-xs font-medium capitalize transition ${
-                statusFilter === st ? 'bg-sky-600 text-white' : 'bg-[#F1F5F9] text-[#64748B]'
+                statusFilter === st ? 'bg-sky-600 text-white' : 'bg-[#F1F5F9] text-slate-400'
               }`}
             >
               {st}
@@ -175,7 +175,7 @@ export const InventoryManagement: React.FC = () => {
             onChange={(e) => setNewItem({ ...newItem, warehouseLocation: e.target.value })}
           />
 
-          <div className="flex justify-end space-x-3 pt-4 border-t border-[#E2E8F0]">
+          <div className="flex justify-end space-x-3 pt-4 border-t border-slate-800">
             <Button type="button" variant="outline" onClick={() => setIsAddModalOpen(false)}>
               Cancel
             </Button>

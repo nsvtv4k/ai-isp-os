@@ -24,7 +24,7 @@ import { Shell } from '../../components/layout/Shell.js';
 import { Button, Input } from '../../components/ui/Button.js';
 
 const Card: React.FC<{ children: React.ReactNode; className?: string }> = ({ children, className = '' }) => (
-  <div className={`bg-white border border-[#E2E8F0] rounded-2xl shadow-xl ${className}`}>{children}</div>
+  <div className={`bg-[#0E172A] border border-slate-800 rounded-2xl shadow-xl ${className}`}>{children}</div>
 );
 
 export const SuperAdminSettings: React.FC = () => {
@@ -284,13 +284,13 @@ export const SuperAdminSettings: React.FC = () => {
     >
       <div className="space-y-6">
         {/* Navigation Tabs */}
-        <div className="flex flex-wrap items-center gap-2 bg-white p-1.5 rounded-xl border border-[#E2E8F0] w-fit">
+        <div className="flex flex-wrap items-center gap-2 bg-[#0E172A] p-1.5 rounded-xl border border-slate-800 w-fit">
           <button
             onClick={() => setActiveTab('alerts')}
             className={`flex items-center space-x-2 px-4 py-2 rounded-lg text-xs font-semibold transition-all ${
               activeTab === 'alerts'
-                ? 'bg-amber-500 text-[#0F172A] shadow-lg shadow-amber-500/20'
-                : 'text-[#64748B] hover:text-[#1E293B]'
+                ? 'bg-amber-500 text-white shadow-lg shadow-amber-500/20'
+                : 'text-slate-400 hover:text-slate-100'
             }`}
           >
             <Bell className="w-4 h-4" />
@@ -304,8 +304,8 @@ export const SuperAdminSettings: React.FC = () => {
             onClick={() => setActiveTab('smtp')}
             className={`flex items-center space-x-2 px-4 py-2 rounded-lg text-xs font-semibold transition-all ${
               activeTab === 'smtp'
-                ? 'bg-sky-500 text-[#0F172A] shadow-lg shadow-sky-500/20'
-                : 'text-[#64748B] hover:text-[#1E293B]'
+                ? 'bg-sky-500 text-white shadow-lg shadow-sky-500/20'
+                : 'text-slate-400 hover:text-slate-100'
             }`}
           >
             <Mail className="w-4 h-4" />
@@ -319,8 +319,8 @@ export const SuperAdminSettings: React.FC = () => {
             onClick={() => setActiveTab('whatsapp')}
             className={`flex items-center space-x-2 px-4 py-2 rounded-lg text-xs font-semibold transition-all ${
               activeTab === 'whatsapp'
-                ? 'bg-emerald-500 text-[#0F172A] shadow-lg shadow-emerald-500/20'
-                : 'text-[#64748B] hover:text-[#1E293B]'
+                ? 'bg-emerald-500 text-white shadow-lg shadow-emerald-500/20'
+                : 'text-slate-400 hover:text-slate-100'
             }`}
           >
             <MessageSquare className="w-4 h-4" />
@@ -338,15 +338,15 @@ export const SuperAdminSettings: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             <div className="lg:col-span-2 space-y-6">
               {/* Alert Settings Form */}
-              <Card className="p-6 bg-white border-[#E2E8F0]">
-                <div className="flex items-center justify-between mb-6 pb-4 border-b border-[#E2E8F0]">
+              <Card className="p-6 bg-[#0E172A] border-slate-800">
+                <div className="flex items-center justify-between mb-6 pb-4 border-b border-slate-800">
                   <div className="flex items-center space-x-3">
                     <div className="p-2.5 rounded-xl bg-amber-50 text-amber-600 border border-amber-200">
                       <Bell className="w-5 h-5" />
                     </div>
                     <div>
-                      <h2 className="text-base font-semibold text-[#0F172A]">Super Admin WhatsApp Alerts</h2>
-                      <p className="text-xs text-[#64748B]">
+                      <h2 className="text-base font-semibold text-white">Super Admin WhatsApp Alerts</h2>
+                      <p className="text-xs text-slate-400">
                         Real-time WhatsApp notifications for unmapped ONTs & TR-069 tenant assignment requests
                       </p>
                     </div>
@@ -390,7 +390,7 @@ export const SuperAdminSettings: React.FC = () => {
                           placeholder="+919845000001 or +919949666907"
                           value={saAlertPhone}
                           onChange={(e) => setSaAlertPhone(e.target.value)}
-                          className="w-full pl-9 pr-3.5 py-2 text-xs font-mono font-medium border border-slate-200 rounded-xl bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-amber-500"
+                          className="w-full pl-9 pr-3.5 py-2 text-xs font-mono font-medium border border-slate-800 rounded-xl bg-[#080D1A] focus:bg-[#0E172A] focus:outline-none focus:ring-2 focus:ring-amber-500"
                         />
                       </div>
                       <p className="text-[11px] text-slate-400">Include country code (e.g. +91)</p>
@@ -408,7 +408,7 @@ export const SuperAdminSettings: React.FC = () => {
                           max="1440"
                           value={saAlertCooldown}
                           onChange={(e) => setSaAlertCooldown(Number(e.target.value))}
-                          className="w-full pl-9 pr-3.5 py-2 text-xs font-mono font-medium border border-slate-200 rounded-xl bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-amber-500"
+                          className="w-full pl-9 pr-3.5 py-2 text-xs font-mono font-medium border border-slate-800 rounded-xl bg-[#080D1A] focus:bg-[#0E172A] focus:outline-none focus:ring-2 focus:ring-amber-500"
                         />
                       </div>
                       <p className="text-[11px] text-slate-400">Prevents repetitive spam for the same serial (Default: 360 min / 6 hrs)</p>
@@ -416,7 +416,7 @@ export const SuperAdminSettings: React.FC = () => {
                   </div>
 
                   <div className="space-y-3 pt-2">
-                    <label className="flex items-center space-x-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer transition">
+                    <label className="flex items-center space-x-3 p-3 rounded-xl border border-slate-800 hover:bg-[#080D1A] cursor-pointer transition">
                       <input
                         type="checkbox"
                         checked={saAlertEnabled}
@@ -424,12 +424,12 @@ export const SuperAdminSettings: React.FC = () => {
                         className="w-4 h-4 text-amber-500 rounded focus:ring-amber-400"
                       />
                       <div>
-                        <span className="text-xs font-bold text-slate-800 block">Enable WhatsApp Notifications</span>
+                        <span className="text-xs font-bold text-slate-100 block">Enable WhatsApp Notifications</span>
                         <span className="text-[11px] text-slate-500 block">Master switch for Super Admin WhatsApp alerts</span>
                       </div>
                     </label>
 
-                    <label className="flex items-center space-x-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer transition">
+                    <label className="flex items-center space-x-3 p-3 rounded-xl border border-slate-800 hover:bg-[#080D1A] cursor-pointer transition">
                       <input
                         type="checkbox"
                         checked={saAlertOnPending}
@@ -437,7 +437,7 @@ export const SuperAdminSettings: React.FC = () => {
                         className="w-4 h-4 text-amber-500 rounded focus:ring-amber-400"
                       />
                       <div>
-                        <span className="text-xs font-bold text-slate-800 block">Instant Alert on Unmapped ONT Connection</span>
+                        <span className="text-xs font-bold text-slate-100 block">Instant Alert on Unmapped ONT Connection</span>
                         <span className="text-[11px] text-slate-500 block">
                           Dispatches an alert immediately whenever an ONT connects without a valid URL slug or subdomain
                         </span>
@@ -458,20 +458,20 @@ export const SuperAdminSettings: React.FC = () => {
               </Card>
 
               {/* WhatsApp Alert Test Card */}
-              <Card className="p-6 bg-white border-[#E2E8F0]">
+              <Card className="p-6 bg-[#0E172A] border-slate-800">
                 <div className="flex items-center space-x-3 mb-4">
                   <div className="p-2 rounded-lg bg-emerald-50 text-emerald-700 border border-emerald-200">
                     <MessageSquare className="w-4 h-4" />
                   </div>
                   <div>
-                    <h3 className="text-sm font-semibold text-[#0F172A]">Test Super Admin WhatsApp Alert Channel</h3>
-                    <p className="text-xs text-[#64748B]">Sends an authentic test notification to the configured Super Admin phone</p>
+                    <h3 className="text-sm font-semibold text-white">Test Super Admin WhatsApp Alert Channel</h3>
+                    <p className="text-xs text-slate-400">Sends an authentic test notification to the configured Super Admin phone</p>
                   </div>
                 </div>
 
                 <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pt-2">
                   <p className="text-xs text-slate-600">
-                    Destination: <span className="font-mono font-bold text-slate-900">{saAlertPhone || '(Enter phone above)'}</span>
+                    Destination: <span className="font-mono font-bold text-white">{saAlertPhone || '(Enter phone above)'}</span>
                   </p>
                   <Button
                     type="button"
@@ -506,13 +506,13 @@ export const SuperAdminSettings: React.FC = () => {
 
             {/* Sidebar Guidelines */}
             <div className="space-y-6">
-              <Card className="p-6 bg-white border-[#E2E8F0]">
+              <Card className="p-6 bg-[#0E172A] border-slate-800">
                 <div className="flex items-center space-x-2.5 text-amber-700 mb-4 font-semibold text-sm">
                   <Info className="w-4 h-4" />
                   <span>Strict Resolution Architecture</span>
                 </div>
 
-                <div className="space-y-3 text-xs text-[#334155] leading-relaxed">
+                <div className="space-y-3 text-xs text-slate-300 leading-relaxed">
                   <p>
                     <strong>1. 100% Deterministic:</strong> Mappings are resolved only from the explicit URL Slug (e.g. <code>/tr069/vgigafiber</code>) or Subdomain (e.g. <code>vgigafiber.ciniplay.in</code>).
                   </p>
@@ -535,15 +535,15 @@ export const SuperAdminSettings: React.FC = () => {
         {activeTab === 'smtp' && (
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             <div className="lg:col-span-2 space-y-6">
-              <Card className="p-6 bg-white border-[#E2E8F0]">
-                <div className="flex items-center justify-between mb-6 pb-4 border-b border-[#E2E8F0]">
+              <Card className="p-6 bg-[#0E172A] border-slate-800">
+                <div className="flex items-center justify-between mb-6 pb-4 border-b border-slate-800">
                   <div className="flex items-center space-x-3">
-                    <div className="p-2.5 rounded-xl bg-[#EFF6FF] text-[#1677FF] border border-[#BFDBFE]">
+                    <div className="p-2.5 rounded-xl bg-sky-500/15 text-sky-400 border border-sky-500/30">
                       <Mail className="w-5 h-5" />
                     </div>
                     <div>
-                      <h2 className="text-base font-semibold text-[#0F172A]">Google Gmail SMTP Credentials</h2>
-                      <p className="text-xs text-[#64748B]">
+                      <h2 className="text-base font-semibold text-white">Google Gmail SMTP Credentials</h2>
+                      <p className="text-xs text-slate-400">
                         Dynamic 6-digit OTPs will be securely dispatched to Super Admin from this account
                       </p>
                     </div>
@@ -552,7 +552,7 @@ export const SuperAdminSettings: React.FC = () => {
                   <span
                     className={`inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium border ${
                       isSmtpConfigured
-                        ? 'bg-[#ECFDF5] text-[#047857] border-[#A7F3D0]'
+                        ? 'bg-emerald-500/15 text-emerald-400 border-emerald-500/30'
                         : 'bg-[#FFFBEB] text-[#B45309] border-[#FDE68A]'
                     }`}
                   >
@@ -561,15 +561,15 @@ export const SuperAdminSettings: React.FC = () => {
                 </div>
 
                 {smtpSuccessMsg && (
-                  <div className="mb-6 p-4 rounded-xl bg-[#ECFDF5] border border-[#A7F3D0] text-[#065F46] text-xs flex items-center space-x-3">
-                    <CheckCircle2 className="w-5 h-5 shrink-0 text-[#047857]" />
+                  <div className="mb-6 p-4 rounded-xl bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 text-xs flex items-center space-x-3">
+                    <CheckCircle2 className="w-5 h-5 shrink-0 text-emerald-400" />
                     <span>{smtpSuccessMsg}</span>
                   </div>
                 )}
 
                 {smtpErrorMsg && (
-                  <div className="mb-6 p-4 rounded-xl bg-[#FEF2F2] border border-[#FECACA] text-[#991B1B] text-xs flex items-center space-x-3">
-                    <AlertCircle className="w-5 h-5 shrink-0 text-[#B91C1C]" />
+                  <div className="mb-6 p-4 rounded-xl bg-rose-500/15 border border-rose-500/30 text-rose-300 text-xs flex items-center space-x-3">
+                    <AlertCircle className="w-5 h-5 shrink-0 text-rose-400" />
                     <span>{smtpErrorMsg}</span>
                   </div>
                 )}
@@ -622,7 +622,7 @@ export const SuperAdminSettings: React.FC = () => {
                     />
                   </div>
 
-                  <div className="pt-4 flex items-center justify-end space-x-3 border-t border-[#E2E8F0]">
+                  <div className="pt-4 flex items-center justify-end space-x-3 border-t border-slate-800">
                     <Button type="submit" isLoading={smtpLoading} variant="primary">
                       Save SMTP Credentials
                     </Button>
@@ -631,14 +631,14 @@ export const SuperAdminSettings: React.FC = () => {
               </Card>
 
               {/* SMTP Test Verification Tool */}
-              <Card className="p-6 bg-white border-[#E2E8F0]">
+              <Card className="p-6 bg-[#0E172A] border-slate-800">
                 <div className="flex items-center space-x-3 mb-4">
                   <div className="p-2 rounded-lg bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
                     <Send className="w-4 h-4" />
                   </div>
                   <div>
-                    <h3 className="text-sm font-semibold text-[#0F172A]">Test Gmail SMTP & Send Verification Email</h3>
-                    <p className="text-xs text-[#64748B]">Verify connectivity and receive an instant test email</p>
+                    <h3 className="text-sm font-semibold text-white">Test Gmail SMTP & Send Verification Email</h3>
+                    <p className="text-xs text-slate-400">Verify connectivity and receive an instant test email</p>
                   </div>
                 </div>
 
@@ -666,14 +666,14 @@ export const SuperAdminSettings: React.FC = () => {
                   <div
                     className={`mt-4 p-3.5 rounded-xl text-xs flex items-center space-x-2 border ${
                       testResult.success
-                        ? 'bg-[#ECFDF5] border-[#A7F3D0] text-[#065F46]'
-                        : 'bg-[#FEF2F2] border-[#FECACA] text-[#991B1B]'
+                        ? 'bg-emerald-500/15 border-emerald-500/30 text-emerald-300'
+                        : 'bg-rose-500/15 border-rose-500/30 text-rose-300'
                     }`}
                   >
                     {testResult.success ? (
-                      <CheckCircle2 className="w-4 h-4 shrink-0 text-[#047857]" />
+                      <CheckCircle2 className="w-4 h-4 shrink-0 text-emerald-400" />
                     ) : (
-                      <AlertCircle className="w-4 h-4 shrink-0 text-[#B91C1C]" />
+                      <AlertCircle className="w-4 h-4 shrink-0 text-rose-400" />
                     )}
                     <span>{testResult.message}</span>
                   </div>
@@ -683,20 +683,20 @@ export const SuperAdminSettings: React.FC = () => {
 
             {/* Google App Password Guide Card */}
             <div className="space-y-6">
-              <Card className="p-6 bg-white border-[#E2E8F0]">
-                <div className="flex items-center space-x-2.5 text-[#1677FF] mb-4 font-semibold text-sm">
+              <Card className="p-6 bg-[#0E172A] border-slate-800">
+                <div className="flex items-center space-x-2.5 text-sky-400 mb-4 font-semibold text-sm">
                   <Info className="w-4 h-4" />
                   <span>How to Create a Google App Password</span>
                 </div>
 
-                <ol className="space-y-3 text-xs text-[#334155] list-decimal list-inside leading-relaxed">
+                <ol className="space-y-3 text-xs text-slate-300 list-decimal list-inside leading-relaxed">
                   <li>
                     Log into your{' '}
                     <a
                       href="https://myaccount.google.com/security"
                       target="_blank"
                       rel="noreferrer"
-                      className="text-[#1677FF] hover:underline inline-flex items-center"
+                      className="text-sky-400 hover:underline inline-flex items-center"
                     >
                       Google Account Security <ExternalLink className="w-3 h-3 ml-0.5" />
                     </a>
@@ -715,7 +715,7 @@ export const SuperAdminSettings: React.FC = () => {
                   </li>
                 </ol>
 
-                <div className="mt-6 p-3 rounded-lg bg-[#EFF6FF] border border-[#BFDBFE] text-[#1D4ED8] text-xs leading-relaxed">
+                <div className="mt-6 p-3 rounded-lg bg-sky-500/15 border border-sky-500/30 text-sky-300 text-xs leading-relaxed">
                   🔒 <strong>Zero Storage of Main Passwords:</strong> Google App Passwords protect your main Google account while granting secure automated OTP email delivery privileges.
                 </div>
               </Card>
@@ -727,15 +727,15 @@ export const SuperAdminSettings: React.FC = () => {
         {activeTab === 'whatsapp' && (
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             <div className="lg:col-span-2 space-y-6">
-              <Card className="p-6 bg-white border-[#E2E8F0]">
-                <div className="flex items-center justify-between mb-6 pb-4 border-b border-[#E2E8F0]">
+              <Card className="p-6 bg-[#0E172A] border-slate-800">
+                <div className="flex items-center justify-between mb-6 pb-4 border-b border-slate-800">
                   <div className="flex items-center space-x-3">
-                    <div className="p-2.5 rounded-xl bg-[#ECFDF5] text-[#047857] border border-[#A7F3D0]">
+                    <div className="p-2.5 rounded-xl bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">
                       <QrCode className="w-5 h-5" />
                     </div>
                     <div>
-                      <h2 className="text-base font-semibold text-[#0F172A]">WhatsApp Web / Business Session</h2>
-                      <p className="text-xs text-[#64748B]">
+                      <h2 className="text-base font-semibold text-white">WhatsApp Web / Business Session</h2>
+                      <p className="text-xs text-slate-400">
                         Scan with WhatsApp Linked Devices to enable Operator WhatsApp OTP logins
                       </p>
                     </div>
@@ -745,10 +745,10 @@ export const SuperAdminSettings: React.FC = () => {
                     <span
                       className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold border ${
                         waStatus === 'CONNECTED'
-                          ? 'bg-[#ECFDF5] text-[#047857] border-[#A7F3D0]'
+                          ? 'bg-emerald-500/15 text-emerald-400 border-emerald-500/30'
                           : waStatus === 'SCAN_QR_REQUIRED'
                           ? 'bg-[#FFFBEB] text-[#B45309] border-[#FDE68A]'
-                          : 'bg-[#F1F5F9] text-[#64748B] border-[#CBD5E1]'
+                          : 'bg-[#F1F5F9] text-slate-400 border-slate-700/80'
                       }`}
                     >
                       <span
@@ -770,24 +770,24 @@ export const SuperAdminSettings: React.FC = () => {
                 </div>
 
                 {waMsg && (
-                  <div className="mb-6 p-4 rounded-xl bg-[#ECFDF5] border border-[#A7F3D0] text-[#065F46] text-xs flex items-center space-x-3">
-                    <CheckCircle2 className="w-5 h-5 shrink-0 text-[#047857]" />
+                  <div className="mb-6 p-4 rounded-xl bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 text-xs flex items-center space-x-3">
+                    <CheckCircle2 className="w-5 h-5 shrink-0 text-emerald-400" />
                     <span>{waMsg}</span>
                   </div>
                 )}
 
                 {/* QR Scanner & Pairing Card */}
                 {waStatus === 'CONNECTED' ? (
-                  <div className="p-8 rounded-2xl bg-[#ECFDF5] border border-[#A7F3D0] text-center space-y-4">
-                    <div className="w-16 h-16 rounded-full bg-[#D1FAE5] border border-[#A7F3D0] flex items-center justify-center mx-auto text-[#047857]">
+                  <div className="p-8 rounded-2xl bg-emerald-500/15 border border-emerald-500/30 text-center space-y-4">
+                    <div className="w-16 h-16 rounded-full bg-[#D1FAE5] border border-emerald-500/30 flex items-center justify-center mx-auto text-emerald-400">
                       <Smartphone className="w-8 h-8" />
                     </div>
                     <div>
-                      <h3 className="text-lg font-bold text-[#0F172A]">WhatsApp Business Linked</h3>
-                      <p className="text-xs text-[#334155] mt-1">
-                        Active Phone: <span className="font-mono text-[#047857] font-bold">{waConnectedPhone}</span>
+                      <h3 className="text-lg font-bold text-white">WhatsApp Business Linked</h3>
+                      <p className="text-xs text-slate-300 mt-1">
+                        Active Phone: <span className="font-mono text-emerald-400 font-bold">{waConnectedPhone}</span>
                       </p>
-                      <p className="text-xs text-[#64748B] mt-0.5">{waDeviceInfo}</p>
+                      <p className="text-xs text-slate-400 mt-0.5">{waDeviceInfo}</p>
                     </div>
 
                     <div className="pt-4 flex items-center justify-center space-x-3">
@@ -800,13 +800,13 @@ export const SuperAdminSettings: React.FC = () => {
                     </div>
                   </div>
                 ) : (
-                  <div className="flex flex-col items-center justify-center p-8 rounded-2xl bg-[#F8FAFC] border border-[#E2E8F0] space-y-6">
+                  <div className="flex flex-col items-center justify-center p-8 rounded-2xl bg-[#060913] border border-slate-800 space-y-6">
                     {waQrDataUrl ? (
-                      <div className="p-4 bg-white rounded-2xl shadow-2xl shadow-emerald-500/10 border-4 border-[#A7F3D0]">
+                      <div className="p-4 bg-[#0E172A] rounded-2xl shadow-2xl shadow-emerald-500/10 border-4 border-emerald-500/30">
                         <img src={waQrDataUrl} alt="WhatsApp Web QR Code" className="w-64 h-64" />
                       </div>
                     ) : (
-                      <div className="w-64 h-64 rounded-2xl border-2 border-dashed border-[#CBD5E1] flex flex-col items-center justify-center text-[#94A3B8] space-y-2">
+                      <div className="w-64 h-64 rounded-2xl border-2 border-dashed border-slate-700/80 flex flex-col items-center justify-center text-slate-400 space-y-2">
                         <QrCode className="w-12 h-12 stroke-1" />
                         <span className="text-xs">No Active QR Session</span>
                       </div>
@@ -820,7 +820,7 @@ export const SuperAdminSettings: React.FC = () => {
 
                       {waQrDataUrl && (
                         <Button onClick={handleConfirmWaScan} isLoading={waLoading} variant="outline">
-                          <CheckCircle2 className="w-4 h-4 mr-2 text-[#047857]" />
+                          <CheckCircle2 className="w-4 h-4 mr-2 text-emerald-400" />
                           Confirm Device Linked
                         </Button>
                       )}
@@ -830,14 +830,14 @@ export const SuperAdminSettings: React.FC = () => {
               </Card>
 
               {/* WhatsApp OTP Dispatch Tester */}
-              <Card className="p-6 bg-white border-[#E2E8F0]">
+              <Card className="p-6 bg-[#0E172A] border-slate-800">
                 <div className="flex items-center space-x-3 mb-4">
-                  <div className="p-2 rounded-lg bg-[#ECFDF5] text-[#047857] border border-[#A7F3D0]">
+                  <div className="p-2 rounded-lg bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">
                     <MessageSquare className="w-4 h-4" />
                   </div>
                   <div>
-                    <h3 className="text-sm font-semibold text-[#0F172A]">Test Operator WhatsApp OTP Dispatch</h3>
-                    <p className="text-xs text-[#64748B]">Send an instant test message to any operator phone number</p>
+                    <h3 className="text-sm font-semibold text-white">Test Operator WhatsApp OTP Dispatch</h3>
+                    <p className="text-xs text-slate-400">Send an instant test message to any operator phone number</p>
                   </div>
                 </div>
 
@@ -873,14 +873,14 @@ export const SuperAdminSettings: React.FC = () => {
                   <div
                     className={`mt-4 p-3.5 rounded-xl text-xs flex items-center space-x-2 border ${
                       testWaResult.success
-                        ? 'bg-[#ECFDF5] border-[#A7F3D0] text-[#065F46]'
-                        : 'bg-[#FEF2F2] border-[#FECACA] text-[#991B1B]'
+                        ? 'bg-emerald-500/15 border-emerald-500/30 text-emerald-300'
+                        : 'bg-rose-500/15 border-rose-500/30 text-rose-300'
                     }`}
                   >
                     {testWaResult.success ? (
-                      <CheckCircle2 className="w-4 h-4 shrink-0 text-[#047857]" />
+                      <CheckCircle2 className="w-4 h-4 shrink-0 text-emerald-400" />
                     ) : (
-                      <AlertCircle className="w-4 h-4 shrink-0 text-[#B91C1C]" />
+                      <AlertCircle className="w-4 h-4 shrink-0 text-rose-400" />
                     )}
                     <span>{testWaResult.message}</span>
                   </div>
@@ -890,13 +890,13 @@ export const SuperAdminSettings: React.FC = () => {
 
             {/* WhatsApp Integration Instructions */}
             <div className="space-y-6">
-              <Card className="p-6 bg-white border-[#E2E8F0]">
-                <div className="flex items-center space-x-2.5 text-[#047857] mb-4 font-semibold text-sm">
+              <Card className="p-6 bg-[#0E172A] border-slate-800">
+                <div className="flex items-center space-x-2.5 text-emerald-400 mb-4 font-semibold text-sm">
                   <Info className="w-4 h-4" />
                   <span>How to Link WhatsApp Business</span>
                 </div>
 
-                <ol className="space-y-3 text-xs text-[#334155] list-decimal list-inside leading-relaxed">
+                <ol className="space-y-3 text-xs text-slate-300 list-decimal list-inside leading-relaxed">
                   <li>
                     Open <strong>WhatsApp</strong> or <strong>WhatsApp Business</strong> on your mobile phone.
                   </li>
@@ -914,7 +914,7 @@ export const SuperAdminSettings: React.FC = () => {
                   </li>
                 </ol>
 
-                <div className="mt-6 p-3 rounded-lg bg-[#ECFDF5] border border-[#A7F3D0] text-[#065F46] text-xs leading-relaxed">
+                <div className="mt-6 p-3 rounded-lg bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 text-xs leading-relaxed">
                   ⚡ <strong>Registered Operators Security:</strong> Only mobile numbers registered under active ISP tenants in the database can trigger OTPs. Unregistered numbers are strictly rejected with <code>404 Not Found</code>.
                 </div>
               </Card>

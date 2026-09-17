@@ -50,10 +50,10 @@ export const CustomerSupport: React.FC = () => {
     <MobileShell portalType="customer" title="Help & AI Support">
       <div className="space-y-4">
         {/* Interactive AI Chatbot Card */}
-        <div className="bg-white border border-[#E2E8F0] rounded-2xl p-4 space-y-3 shadow-lg">
-          <div className="flex items-center space-x-2 border-b border-[#E2E8F0] pb-2">
-            <Bot className="w-5 h-5 text-[#1677FF]" />
-            <h3 className="text-xs font-bold text-[#0F172A]">AI Self-Troubleshooting</h3>
+        <div className="bg-[#0E172A] border border-slate-800 rounded-2xl p-4 space-y-3 shadow-lg">
+          <div className="flex items-center space-x-2 border-b border-slate-800 pb-2">
+            <Bot className="w-5 h-5 text-sky-400" />
+            <h3 className="text-xs font-bold text-white">AI Self-Troubleshooting</h3>
           </div>
 
           <div className="space-y-2.5 max-h-60 overflow-y-auto pr-1">
@@ -63,7 +63,7 @@ export const CustomerSupport: React.FC = () => {
                 className={`p-3 rounded-xl text-xs max-w-[85%] ${
                   msg.sender === 'user'
                     ? 'ml-auto bg-sky-600 text-white rounded-br-none'
-                    : 'bg-[#F1F5F9] text-[#1E293B] rounded-bl-none'
+                    : 'bg-[#F1F5F9] text-slate-100 rounded-bl-none'
                 }`}
               >
                 <p>{msg.text}</p>
@@ -71,13 +71,13 @@ export const CustomerSupport: React.FC = () => {
             ))}
           </div>
 
-          <form onSubmit={handleSendChat} className="flex gap-2 pt-2 border-t border-[#E2E8F0]">
+          <form onSubmit={handleSendChat} className="flex gap-2 pt-2 border-t border-slate-800">
             <input
               type="text"
               placeholder="Ask a question or report an issue..."
               value={chatMessage}
               onChange={(e) => setChatMessage(e.target.value)}
-              className="flex-1 bg-[#F8FAFC] border border-[#E2E8F0] rounded-lg px-3 py-1.5 text-xs text-[#0F172A] focus:outline-none focus:ring-1 focus:ring-sky-500"
+              className="flex-1 bg-[#060913] border border-slate-800 rounded-lg px-3 py-1.5 text-xs text-white focus:outline-none focus:ring-1 focus:ring-sky-500"
             />
             <Button size="sm" type="submit" variant="primary" isLoading={isChatLoading}>
               <Send className="w-3.5 h-3.5" />
@@ -86,25 +86,25 @@ export const CustomerSupport: React.FC = () => {
         </div>
 
         {/* Existing Tickets Card */}
-        <div className="bg-white border border-[#E2E8F0] rounded-2xl p-4 space-y-3 shadow-lg">
-          <div className="flex justify-between items-center border-b border-[#E2E8F0] pb-2">
-            <h3 className="text-xs font-bold text-[#0F172A] flex items-center space-x-2">
-              <Ticket className="w-4 h-4 text-[#047857]" />
+        <div className="bg-[#0E172A] border border-slate-800 rounded-2xl p-4 space-y-3 shadow-lg">
+          <div className="flex justify-between items-center border-b border-slate-800 pb-2">
+            <h3 className="text-xs font-bold text-white flex items-center space-x-2">
+              <Ticket className="w-4 h-4 text-emerald-400" />
               <span>Service Tickets</span>
             </h3>
           </div>
 
           <div className="space-y-2">
             {tickets.length === 0 ? (
-              <p className="text-xs text-[#94A3B8] py-3 text-center">No active service tickets.</p>
+              <p className="text-xs text-slate-400 py-3 text-center">No active service tickets.</p>
             ) : (
               tickets.map((t) => (
-                <div key={t._id} className="p-3 bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl space-y-1">
+                <div key={t._id} className="p-3 bg-[#060913] border border-slate-800 rounded-xl space-y-1">
                   <div className="flex justify-between items-start">
-                    <p className="text-xs font-semibold text-[#1E293B]">{t.subject}</p>
+                    <p className="text-xs font-semibold text-slate-100">{t.subject}</p>
                     <Badge variant={t.status === 'resolved' ? 'success' : 'info'}>{t.status}</Badge>
                   </div>
-                  <p className="text-[11px] text-[#64748B] font-mono">{t.ticketNumber}</p>
+                  <p className="text-[11px] text-slate-400 font-mono">{t.ticketNumber}</p>
                 </div>
               ))
             )}

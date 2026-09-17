@@ -27,40 +27,40 @@ export const SystemHealth: React.FC = () => {
       <StateWrapper isLoading={isLoading}>
         <div className="space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="p-5 bg-white border border-[#E2E8F0] rounded-xl space-y-3">
+            <div className="p-5 bg-[#0E172A] border border-slate-800 rounded-xl space-y-3">
               <div className="flex justify-between items-center">
-                <div className="flex items-center space-x-2 text-sm font-semibold text-[#0F172A]">
-                  <Server className="w-4 h-4 text-[#1677FF]" />
+                <div className="flex items-center space-x-2 text-sm font-semibold text-white">
+                  <Server className="w-4 h-4 text-sky-400" />
                   <span>REST API Gateway</span>
                 </div>
                 <Badge variant="success" dot>Healthy</Badge>
               </div>
-              <p className="text-2xl font-bold text-[#0F172A]">{health.api?.latencyMs || 14} ms</p>
-              <p className="text-xs text-[#64748B]">Uptime: {health.api?.uptime || '99.99%'}</p>
+              <p className="text-2xl font-bold text-white">{health.api?.latencyMs || 14} ms</p>
+              <p className="text-xs text-slate-400">Uptime: {health.api?.uptime || '99.99%'}</p>
             </div>
 
-            <div className="p-5 bg-white border border-[#E2E8F0] rounded-xl space-y-3">
+            <div className="p-5 bg-[#0E172A] border border-slate-800 rounded-xl space-y-3">
               <div className="flex justify-between items-center">
-                <div className="flex items-center space-x-2 text-sm font-semibold text-[#0F172A]">
-                  <Radio className="w-4 h-4 text-[#047857]" />
+                <div className="flex items-center space-x-2 text-sm font-semibold text-white">
+                  <Radio className="w-4 h-4 text-emerald-400" />
                   <span>TR-069 / ACS Engine</span>
                 </div>
                 <Badge variant="success" dot>Healthy</Badge>
               </div>
-              <p className="text-2xl font-bold text-[#0F172A]">{health.acs?.activeSessions || 42}</p>
-              <p className="text-xs text-[#64748B]">Active CPE CWMP Sessions</p>
+              <p className="text-2xl font-bold text-white">{health.acs?.activeSessions || 42}</p>
+              <p className="text-xs text-slate-400">Active CPE CWMP Sessions</p>
             </div>
 
-            <div className="p-5 bg-white border border-[#E2E8F0] rounded-xl space-y-3">
+            <div className="p-5 bg-[#0E172A] border border-slate-800 rounded-xl space-y-3">
               <div className="flex justify-between items-center">
-                <div className="flex items-center space-x-2 text-sm font-semibold text-[#0F172A]">
+                <div className="flex items-center space-x-2 text-sm font-semibold text-white">
                   <Bot className="w-4 h-4 text-[#6D28D9]" />
                   <span>AI Inference Pipeline</span>
                 </div>
                 <Badge variant="purple" dot>Online</Badge>
               </div>
-              <p className="text-2xl font-bold text-[#0F172A]">{health.aiEngine?.avgInferenceMs || 140} ms</p>
-              <p className="text-xs text-[#64748B]">Average Diagnostic Latency</p>
+              <p className="text-2xl font-bold text-white">{health.aiEngine?.avgInferenceMs || 140} ms</p>
+              <p className="text-xs text-slate-400">Average Diagnostic Latency</p>
             </div>
           </div>
         </div>

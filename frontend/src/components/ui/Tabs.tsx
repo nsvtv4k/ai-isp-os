@@ -16,7 +16,7 @@ export interface TabsProps {
 
 export const Tabs: React.FC<TabsProps> = ({ tabs, activeTab, onChange, className = '' }) => {
   return (
-    <div className={`flex border-b border-[#E2E8F0] space-x-1 overflow-x-auto bg-white px-2 rounded-t-[10px] ${className}`}>
+    <div className={`flex border-b border-slate-800 space-x-1 overflow-x-auto bg-[#0E172A] px-2 rounded-t-[10px] ${className}`}>
       {tabs.map((tab) => {
         const isActive = activeTab === tab.id;
         const Icon = tab.icon;
@@ -26,16 +26,16 @@ export const Tabs: React.FC<TabsProps> = ({ tabs, activeTab, onChange, className
             onClick={() => onChange(tab.id)}
             className={`flex items-center space-x-2 px-4 py-2.5 text-sm font-medium border-b-2 transition whitespace-nowrap ${
               isActive
-                ? 'border-[#1677FF] text-[#1677FF] font-semibold'
-                : 'border-transparent text-[#64748B] hover:text-[#0F172A] hover:border-[#CBD5E1]'
+                ? 'border-[#1677FF] text-sky-400 font-semibold'
+                : 'border-transparent text-slate-400 hover:text-white hover:border-slate-700/80'
             }`}
           >
-            {Icon && <Icon className={`w-4 h-4 ${isActive ? 'text-[#1677FF]' : 'text-[#64748B]'}`} />}
+            {Icon && <Icon className={`w-4 h-4 ${isActive ? 'text-sky-400' : 'text-slate-400'}`} />}
             <span>{tab.label}</span>
             {tab.count !== undefined && (
               <span
                 className={`px-1.5 py-0.5 text-xs rounded-full ${
-                  isActive ? 'bg-[#EFF6FF] text-[#1677FF] font-bold' : 'bg-[#F1F5F9] text-[#64748B]'
+                  isActive ? 'bg-sky-500/15 text-sky-400 font-bold' : 'bg-[#F1F5F9] text-slate-400'
                 }`}
               >
                 {tab.count}

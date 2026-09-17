@@ -143,13 +143,13 @@ export const CustomerCreateEdit: React.FC = () => {
       breadcrumbs={[{ label: 'Customers', href: '/operator/customers' }, { label: 'New Subscriber' }]}
     >
       <div className="max-w-4xl mx-auto pb-12">
-        <form onSubmit={handleSubmit} className="bg-white border border-[#E2E8F0] rounded-2xl p-6 sm:p-8 space-y-8 shadow-xl">
+        <form onSubmit={handleSubmit} className="bg-[#0E172A] border border-slate-800 rounded-2xl p-6 sm:p-8 space-y-8 shadow-xl">
           
           {/* SECTION 1: CUSTOMER IDENTITY */}
           <div className="space-y-4">
-            <div className="flex items-center justify-between pb-3 border-b border-[#E2E8F0]">
-              <h3 className="text-sm font-bold text-[#0F172A] flex items-center space-x-2">
-                <User className="w-4 h-4 text-[#1677FF]" />
+            <div className="flex items-center justify-between pb-3 border-b border-slate-800">
+              <h3 className="text-sm font-bold text-white flex items-center space-x-2">
+                <User className="w-4 h-4 text-sky-400" />
                 <span>1. Subscriber Profile & Contact Info</span>
               </h3>
               <Badge variant="info">Primary Info</Badge>
@@ -191,10 +191,10 @@ export const CustomerCreateEdit: React.FC = () => {
           </div>
 
           {/* SECTION 2: INSTALLATION ADDRESS */}
-          <div className="border-t border-[#E2E8F0] pt-6 space-y-4">
-            <div className="flex items-center justify-between pb-3 border-b border-[#E2E8F0]">
-              <h3 className="text-sm font-bold text-[#0F172A] flex items-center space-x-2">
-                <MapPin className="w-4 h-4 text-[#047857]" />
+          <div className="border-t border-slate-800 pt-6 space-y-4">
+            <div className="flex items-center justify-between pb-3 border-b border-slate-800">
+              <h3 className="text-sm font-bold text-white flex items-center space-x-2">
+                <MapPin className="w-4 h-4 text-emerald-400" />
                 <span>2. Installation Premise & Billing Address</span>
               </h3>
               <Badge variant="success">Premise Details</Badge>
@@ -267,9 +267,9 @@ export const CustomerCreateEdit: React.FC = () => {
           </div>
 
           {/* SECTION 3: KYC COMPLIANCE & DOCUMENT UPLOAD */}
-          <div className="border-t border-[#E2E8F0] pt-6 space-y-4">
-            <div className="flex items-center justify-between pb-3 border-b border-[#E2E8F0]">
-              <h3 className="text-sm font-bold text-[#0F172A] flex items-center space-x-2">
+          <div className="border-t border-slate-800 pt-6 space-y-4">
+            <div className="flex items-center justify-between pb-3 border-b border-slate-800">
+              <h3 className="text-sm font-bold text-white flex items-center space-x-2">
                 <ShieldCheck className="w-4 h-4 text-[#6D28D9]" />
                 <span>3. KYC Verification & Document Upload</span>
               </h3>
@@ -278,9 +278,9 @@ export const CustomerCreateEdit: React.FC = () => {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-1.5">
-                <label className="block text-xs font-semibold text-[#334155]">KYC ID Document Type</label>
+                <label className="block text-xs font-semibold text-slate-300">KYC ID Document Type</label>
                 <select
-                  className="w-full bg-[#F8FAFC] border border-[#E2E8F0] rounded-lg px-3.5 py-2 text-sm text-[#0F172A] focus:outline-none focus:ring-1 focus:ring-sky-500"
+                  className="w-full bg-[#060913] border border-slate-800 rounded-lg px-3.5 py-2 text-sm text-white focus:outline-none focus:ring-1 focus:ring-sky-500"
                   value={formData.kycDocType}
                   onChange={(e) => setFormData({ ...formData, kycDocType: e.target.value })}
                 >
@@ -305,10 +305,10 @@ export const CustomerCreateEdit: React.FC = () => {
             {/* Document Upload Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
               {/* ID Proof Front */}
-              <div className="p-4 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0] text-center space-y-3">
-                <p className="text-xs font-semibold text-[#334155]">ID Proof (Front Side)</p>
+              <div className="p-4 rounded-xl bg-[#060913] border border-slate-800 text-center space-y-3">
+                <p className="text-xs font-semibold text-slate-300">ID Proof (Front Side)</p>
                 {idFrontPreview ? (
-                  <div className="relative rounded-lg overflow-hidden border border-emerald-500/40 h-28 bg-white flex items-center justify-center">
+                  <div className="relative rounded-lg overflow-hidden border border-emerald-500/40 h-28 bg-[#0E172A] flex items-center justify-center">
                     <img src={idFrontPreview} alt="ID Front" className="max-h-full object-contain" />
                     <button
                       type="button"
@@ -319,8 +319,8 @@ export const CustomerCreateEdit: React.FC = () => {
                     </button>
                   </div>
                 ) : (
-                  <label className="border-2 border-dashed border-[#CBD5E1] hover:border-sky-500 rounded-lg p-4 flex flex-col items-center justify-center cursor-pointer transition h-28 text-[#64748B] hover:text-[#1E293B]">
-                    <UploadCloud className="w-6 h-6 mb-1 text-[#1677FF]" />
+                  <label className="border-2 border-dashed border-slate-700/80 hover:border-sky-500 rounded-lg p-4 flex flex-col items-center justify-center cursor-pointer transition h-28 text-slate-400 hover:text-slate-100">
+                    <UploadCloud className="w-6 h-6 mb-1 text-sky-400" />
                     <span className="text-[11px]">Upload Front Photo</span>
                     <input type="file" accept="image/*,.pdf" className="hidden" onChange={(e) => handleFileUpload(e, 'front')} />
                   </label>
@@ -328,10 +328,10 @@ export const CustomerCreateEdit: React.FC = () => {
               </div>
 
               {/* ID Proof Back */}
-              <div className="p-4 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0] text-center space-y-3">
-                <p className="text-xs font-semibold text-[#334155]">ID Proof (Back Side)</p>
+              <div className="p-4 rounded-xl bg-[#060913] border border-slate-800 text-center space-y-3">
+                <p className="text-xs font-semibold text-slate-300">ID Proof (Back Side)</p>
                 {idBackPreview ? (
-                  <div className="relative rounded-lg overflow-hidden border border-emerald-500/40 h-28 bg-white flex items-center justify-center">
+                  <div className="relative rounded-lg overflow-hidden border border-emerald-500/40 h-28 bg-[#0E172A] flex items-center justify-center">
                     <img src={idBackPreview} alt="ID Back" className="max-h-full object-contain" />
                     <button
                       type="button"
@@ -342,8 +342,8 @@ export const CustomerCreateEdit: React.FC = () => {
                     </button>
                   </div>
                 ) : (
-                  <label className="border-2 border-dashed border-[#CBD5E1] hover:border-sky-500 rounded-lg p-4 flex flex-col items-center justify-center cursor-pointer transition h-28 text-[#64748B] hover:text-[#1E293B]">
-                    <UploadCloud className="w-6 h-6 mb-1 text-[#047857]" />
+                  <label className="border-2 border-dashed border-slate-700/80 hover:border-sky-500 rounded-lg p-4 flex flex-col items-center justify-center cursor-pointer transition h-28 text-slate-400 hover:text-slate-100">
+                    <UploadCloud className="w-6 h-6 mb-1 text-emerald-400" />
                     <span className="text-[11px]">Upload Back Photo</span>
                     <input type="file" accept="image/*,.pdf" className="hidden" onChange={(e) => handleFileUpload(e, 'back')} />
                   </label>
@@ -351,10 +351,10 @@ export const CustomerCreateEdit: React.FC = () => {
               </div>
 
               {/* Customer Live Photo */}
-              <div className="p-4 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0] text-center space-y-3">
-                <p className="text-xs font-semibold text-[#334155]">Subscriber Photo</p>
+              <div className="p-4 rounded-xl bg-[#060913] border border-slate-800 text-center space-y-3">
+                <p className="text-xs font-semibold text-slate-300">Subscriber Photo</p>
                 {photoPreview ? (
-                  <div className="relative rounded-lg overflow-hidden border border-emerald-500/40 h-28 bg-white flex items-center justify-center">
+                  <div className="relative rounded-lg overflow-hidden border border-emerald-500/40 h-28 bg-[#0E172A] flex items-center justify-center">
                     <img src={photoPreview} alt="Subscriber Photo" className="max-h-full object-contain" />
                     <button
                       type="button"
@@ -365,7 +365,7 @@ export const CustomerCreateEdit: React.FC = () => {
                     </button>
                   </div>
                 ) : (
-                  <label className="border-2 border-dashed border-[#CBD5E1] hover:border-sky-500 rounded-lg p-4 flex flex-col items-center justify-center cursor-pointer transition h-28 text-[#64748B] hover:text-[#1E293B]">
+                  <label className="border-2 border-dashed border-slate-700/80 hover:border-sky-500 rounded-lg p-4 flex flex-col items-center justify-center cursor-pointer transition h-28 text-slate-400 hover:text-slate-100">
                     <ImageIcon className="w-6 h-6 mb-1 text-[#6D28D9]" />
                     <span className="text-[11px]">Upload Photo</span>
                     <input type="file" accept="image/*" className="hidden" onChange={(e) => handleFileUpload(e, 'photo')} />
@@ -376,9 +376,9 @@ export const CustomerCreateEdit: React.FC = () => {
           </div>
 
           {/* SECTION 4: SERVICE PLAN SELECTION */}
-          <div className="border-t border-[#E2E8F0] pt-6 space-y-4">
-            <div className="flex items-center justify-between pb-3 border-b border-[#E2E8F0]">
-              <h3 className="text-sm font-bold text-[#0F172A] flex items-center space-x-2">
+          <div className="border-t border-slate-800 pt-6 space-y-4">
+            <div className="flex items-center justify-between pb-3 border-b border-slate-800">
+              <h3 className="text-sm font-bold text-white flex items-center space-x-2">
                 <Zap className="w-4 h-4 text-[#B45309]" />
                 <span>4. FTTH Broadband Service Plan</span>
               </h3>
@@ -402,22 +402,22 @@ export const CustomerCreateEdit: React.FC = () => {
                   }
                   className={`p-3.5 rounded-xl border cursor-pointer transition ${
                     formData.downloadSpeedMbps === p.speed
-                      ? 'bg-[#EFF6FF] border-sky-500 text-[#0F172A]'
-                      : 'bg-[#F8FAFC] border-[#E2E8F0] text-[#334155] hover:border-[#CBD5E1]'
+                      ? 'bg-sky-500/15 border-sky-500 text-white'
+                      : 'bg-[#060913] border-slate-800 text-slate-300 hover:border-slate-700/80'
                   }`}
                 >
                   <p className="font-semibold text-xs">{p.name}</p>
-                  <p className="text-sm font-bold text-[#1677FF] mt-1">₹{p.fee}/mo</p>
-                  <p className="text-[10px] text-[#64748B]">Speed: {p.speed} Mbps Symmetric</p>
+                  <p className="text-sm font-bold text-sky-400 mt-1">₹{p.fee}/mo</p>
+                  <p className="text-[10px] text-slate-400">Speed: {p.speed} Mbps Symmetric</p>
                 </div>
               ))}
             </div>
           </div>
 
           {/* SECTION 5: ONT HARDWARE & WAN PROVISIONING */}
-          <div className="border-t border-[#E2E8F0] pt-6 space-y-4">
-            <div className="flex items-center justify-between pb-3 border-b border-[#E2E8F0]">
-              <h3 className="text-sm font-bold text-[#0F172A] flex items-center space-x-2">
+          <div className="border-t border-slate-800 pt-6 space-y-4">
+            <div className="flex items-center justify-between pb-3 border-b border-slate-800">
+              <h3 className="text-sm font-bold text-white flex items-center space-x-2">
                 <Radio className="w-4 h-4 text-[#6D28D9]" />
                 <span>5. ONT Hardware Assignment & WAN PPPoE</span>
               </h3>
@@ -425,9 +425,9 @@ export const CustomerCreateEdit: React.FC = () => {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-1.5">
-                <label className="block text-xs font-semibold text-[#334155]">Select Available ONT Device</label>
+                <label className="block text-xs font-semibold text-slate-300">Select Available ONT Device</label>
                 <select
-                  className="w-full bg-[#F8FAFC] border border-[#E2E8F0] rounded-lg px-3.5 py-2 text-sm text-[#0F172A] focus:outline-none focus:ring-1 focus:ring-sky-500"
+                  className="w-full bg-[#060913] border border-slate-800 rounded-lg px-3.5 py-2 text-sm text-white focus:outline-none focus:ring-1 focus:ring-sky-500"
                   value={formData.assignedDeviceId}
                   onChange={(e) => setFormData({ ...formData, assignedDeviceId: e.target.value })}
                 >
@@ -450,7 +450,7 @@ export const CustomerCreateEdit: React.FC = () => {
           </div>
 
           {/* Form Actions */}
-          <div className="flex justify-end space-x-3 pt-6 border-t border-[#E2E8F0]">
+          <div className="flex justify-end space-x-3 pt-6 border-t border-slate-800">
             <Button type="button" variant="outline" onClick={() => navigate('/operator/customers')}>
               Cancel
             </Button>

@@ -364,24 +364,24 @@ export const FiberGIS: React.FC = () => {
               <Plus className="w-3.5 h-3.5" />
               <span>+ Add Fiber Asset</span>
             </Button>
-            <div className="absolute right-0 mt-1 w-48 bg-white border border-[#E2E8F0] rounded-xl shadow-xl py-1 hidden group-hover:block z-50">
+            <div className="absolute right-0 mt-1 w-48 bg-[#0E172A] border border-slate-800 rounded-xl shadow-xl py-1 hidden group-hover:block z-50">
               <button
                 onClick={() => setIsAddOltOpen(true)}
-                className="w-full px-4 py-2 text-left text-xs font-semibold text-[#0F172A] hover:bg-[#F1F5F9] flex items-center space-x-2"
+                className="w-full px-4 py-2 text-left text-xs font-semibold text-white hover:bg-[#F1F5F9] flex items-center space-x-2"
               >
                 <Server className="w-3.5 h-3.5 text-blue-600" />
                 <span>Add OLT Chassis</span>
               </button>
               <button
                 onClick={() => setIsAddNodeOpen(true)}
-                className="w-full px-4 py-2 text-left text-xs font-semibold text-[#0F172A] hover:bg-[#F1F5F9] flex items-center space-x-2"
+                className="w-full px-4 py-2 text-left text-xs font-semibold text-white hover:bg-[#F1F5F9] flex items-center space-x-2"
               >
                 <Box className="w-3.5 h-3.5 text-purple-600" />
                 <span>Add FAT / Splitter Node</span>
               </button>
               <button
                 onClick={() => setIsAddCableOpen(true)}
-                className="w-full px-4 py-2 text-left text-xs font-semibold text-[#0F172A] hover:bg-[#F1F5F9] flex items-center space-x-2"
+                className="w-full px-4 py-2 text-left text-xs font-semibold text-white hover:bg-[#F1F5F9] flex items-center space-x-2"
               >
                 <Cable className="w-3.5 h-3.5 text-amber-600" />
                 <span>Add Fiber Cable Segment</span>
@@ -394,39 +394,39 @@ export const FiberGIS: React.FC = () => {
       <StateWrapper isLoading={isLoading} error={error} onRetry={fetchLayers}>
         {/* Core Live Metrics Banner */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 mb-6">
-          <div className="bg-white border border-[#E2E8F0] p-3.5 rounded-xl shadow-sm">
-            <p className="text-[11px] font-semibold text-[#64748B] uppercase tracking-wider">OLT Chassis</p>
+          <div className="bg-[#0E172A] border border-slate-800 p-3.5 rounded-xl shadow-sm">
+            <p className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">OLT Chassis</p>
             <div className="flex items-baseline justify-between mt-1">
-              <span className="text-xl font-bold text-[#0F172A]">{summary.totalOlts}</span>
+              <span className="text-xl font-bold text-white">{summary.totalOlts}</span>
               <span className="text-xs font-mono text-blue-600">{summary.totalPonPorts} PONs</span>
             </div>
           </div>
 
-          <div className="bg-white border border-[#E2E8F0] p-3.5 rounded-xl shadow-sm">
-            <p className="text-[11px] font-semibold text-[#64748B] uppercase tracking-wider">FAT & Splitters</p>
+          <div className="bg-[#0E172A] border border-slate-800 p-3.5 rounded-xl shadow-sm">
+            <p className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">FAT & Splitters</p>
             <div className="flex items-baseline justify-between mt-1">
-              <span className="text-xl font-bold text-[#0F172A]">{summary.totalNodes}</span>
+              <span className="text-xl font-bold text-white">{summary.totalNodes}</span>
               <span className="text-xs font-mono text-purple-600">Terminals</span>
             </div>
           </div>
 
-          <div className="bg-white border border-[#E2E8F0] p-3.5 rounded-xl shadow-sm">
-            <p className="text-[11px] font-semibold text-[#64748B] uppercase tracking-wider">Cable Segments</p>
+          <div className="bg-[#0E172A] border border-slate-800 p-3.5 rounded-xl shadow-sm">
+            <p className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">Cable Segments</p>
             <div className="flex items-baseline justify-between mt-1">
-              <span className="text-xl font-bold text-[#0F172A]">{summary.totalSegments}</span>
+              <span className="text-xl font-bold text-white">{summary.totalSegments}</span>
               <span className="text-xs font-mono text-amber-600">{(summary.totalFiberLengthMeters / 1000).toFixed(1)} km</span>
             </div>
           </div>
 
-          <div className="bg-white border border-[#E2E8F0] p-3.5 rounded-xl shadow-sm">
-            <p className="text-[11px] font-semibold text-[#64748B] uppercase tracking-wider">Total Core Capacity</p>
+          <div className="bg-[#0E172A] border border-slate-800 p-3.5 rounded-xl shadow-sm">
+            <p className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">Total Core Capacity</p>
             <div className="flex items-baseline justify-between mt-1">
-              <span className="text-xl font-bold text-[#0F172A]">{coreMetrics.totalCores}</span>
+              <span className="text-xl font-bold text-white">{coreMetrics.totalCores}</span>
               <span className="text-xs font-mono text-slate-500">Cores</span>
             </div>
           </div>
 
-          <div className="bg-white border border-[#E2E8F0] p-3.5 rounded-xl shadow-sm bg-gradient-to-br from-emerald-50/50 to-white">
+          <div className="bg-[#0E172A] border border-slate-800 p-3.5 rounded-xl shadow-sm bg-gradient-to-br from-emerald-50/50 to-white">
             <p className="text-[11px] font-semibold text-emerald-800 uppercase tracking-wider">Free Dark Fibers</p>
             <div className="flex items-baseline justify-between mt-1">
               <span className="text-xl font-bold text-emerald-600">{coreMetrics.darkCores}</span>
@@ -436,7 +436,7 @@ export const FiberGIS: React.FC = () => {
             </div>
           </div>
 
-          <div className="bg-white border border-[#E2E8F0] p-3.5 rounded-xl shadow-sm bg-gradient-to-br from-blue-50/50 to-white">
+          <div className="bg-[#0E172A] border border-slate-800 p-3.5 rounded-xl shadow-sm bg-gradient-to-br from-blue-50/50 to-white">
             <p className="text-[11px] font-semibold text-blue-800 uppercase tracking-wider">Core Utilization</p>
             <div className="flex items-baseline justify-between mt-1">
               <span className="text-xl font-bold text-blue-600">{coreMetrics.liveCores} Live</span>
@@ -446,13 +446,13 @@ export const FiberGIS: React.FC = () => {
         </div>
 
         {/* Universal Search & End-to-End Visual Tracer Console */}
-        <div className="bg-white border border-[#E2E8F0] rounded-2xl p-5 mb-6 shadow-sm">
+        <div className="bg-[#0E172A] border border-slate-800 rounded-2xl p-5 mb-6 shadow-sm">
           <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
             <div className="flex items-center space-x-2">
               <Compass className="w-5 h-5 text-blue-600" />
               <div>
-                <h3 className="text-sm font-bold text-[#0F172A]">Universal Physical Route Tracer</h3>
-                <p className="text-xs text-[#64748B]">Search by Customer, ONT Serial, MAC Address, Splitter, FAT Box, or OLT</p>
+                <h3 className="text-sm font-bold text-white">Universal Physical Route Tracer</h3>
+                <p className="text-xs text-slate-400">Search by Customer, ONT Serial, MAC Address, Splitter, FAT Box, or OLT</p>
               </div>
             </div>
 
@@ -463,7 +463,7 @@ export const FiberGIS: React.FC = () => {
                     key={t}
                     onClick={() => setSearchType(t)}
                     className={`px-2.5 py-1 rounded capitalize font-medium transition ${
-                      searchType === t ? 'bg-white text-blue-600 shadow-sm font-bold' : 'text-[#64748B] hover:text-[#0F172A]'
+                      searchType === t ? 'bg-[#0E172A] text-blue-600 shadow-sm font-bold' : 'text-slate-400 hover:text-white'
                     }`}
                   >
                     {t}
@@ -496,21 +496,21 @@ export const FiberGIS: React.FC = () => {
 
           {/* Trace Visual Journey Display */}
           {traceResult && (
-            <div className="mt-5 pt-5 border-t border-[#E2E8F0]">
-              <div className="flex flex-wrap items-center justify-between gap-3 mb-4 bg-[#F8FAFC] p-3 rounded-xl border border-[#E2E8F0]">
+            <div className="mt-5 pt-5 border-t border-slate-800">
+              <div className="flex flex-wrap items-center justify-between gap-3 mb-4 bg-[#060913] p-3 rounded-xl border border-slate-800">
                 <div className="flex items-center space-x-3">
                   <Badge variant={traceResult.isFullyLinked ? 'success' : 'warning'}>
                     {traceResult.isFullyLinked ? 'Full Physical Linkage Verified' : 'Partially Configured Path'}
                   </Badge>
-                  <span className="text-xs font-bold text-[#0F172A]">Target: {traceResult.matchedTarget?.label}</span>
-                  <span className="text-xs font-mono text-[#64748B]">({traceResult.searchType.toUpperCase()})</span>
+                  <span className="text-xs font-bold text-white">Target: {traceResult.matchedTarget?.label}</span>
+                  <span className="text-xs font-mono text-slate-400">({traceResult.searchType.toUpperCase()})</span>
                 </div>
 
                 <div className="flex items-center space-x-4 text-xs font-mono">
                   {traceResult.oltName && <span className="text-blue-600 font-bold">OLT: {traceResult.oltName}</span>}
                   {traceResult.ponPortIdentifier && <span className="text-purple-600 font-bold">PON: {traceResult.ponPortIdentifier}</span>}
-                  <span className="text-[#64748B]">Total Est. Distance: {traceResult.totalDistanceMeters}m</span>
-                  <span className="text-[#64748B]">Est. Loss: {traceResult.estimatedTotalLossDb} dB</span>
+                  <span className="text-slate-400">Total Est. Distance: {traceResult.totalDistanceMeters}m</span>
+                  <span className="text-slate-400">Est. Loss: {traceResult.estimatedTotalLossDb} dB</span>
                 </div>
               </div>
 
@@ -524,12 +524,12 @@ export const FiberGIS: React.FC = () => {
                         <div
                           className={`p-3.5 rounded-xl border transition shadow-sm w-64 ${
                             isConfigured
-                              ? 'bg-white border-blue-200 hover:border-blue-400'
+                              ? 'bg-[#0E172A] border-blue-200 hover:border-blue-400'
                               : 'bg-amber-50/60 border-dashed border-amber-300'
                           }`}
                         >
                           <div className="flex items-center justify-between mb-1.5">
-                            <span className="text-[10px] font-bold uppercase tracking-wider text-[#64748B]">
+                            <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
                               Step {hop.step}: {hop.nodeType.replace(/_/g, ' ')}
                             </span>
                             <span
@@ -541,13 +541,13 @@ export const FiberGIS: React.FC = () => {
                             </span>
                           </div>
 
-                          <p className="text-xs font-bold text-[#0F172A] truncate" title={hop.name}>
+                          <p className="text-xs font-bold text-white truncate" title={hop.name}>
                             {hop.name}
                           </p>
                           <p className="text-[11px] font-mono text-blue-600 mt-0.5 truncate">{hop.nodeCode}</p>
 
                           {hop.address && hop.address !== 'Not Configured' && (
-                            <p className="text-[10px] text-[#64748B] truncate mt-1 flex items-center space-x-1">
+                            <p className="text-[10px] text-slate-400 truncate mt-1 flex items-center space-x-1">
                               <MapPin className="w-3 h-3 shrink-0 text-slate-400" />
                               <span>{hop.address}</span>
                             </p>
@@ -583,7 +583,7 @@ export const FiberGIS: React.FC = () => {
             <button
               onClick={() => setActiveTab('map')}
               className={`px-3.5 py-1.5 text-xs font-bold rounded-lg transition ${
-                activeTab === 'map' ? 'bg-white text-blue-600 shadow-sm' : 'text-[#64748B] hover:text-[#0F172A]'
+                activeTab === 'map' ? 'bg-[#0E172A] text-blue-600 shadow-sm' : 'text-slate-400 hover:text-white'
               }`}
             >
               Interactive GIS Map
@@ -591,7 +591,7 @@ export const FiberGIS: React.FC = () => {
             <button
               onClick={() => setActiveTab('olts')}
               className={`px-3.5 py-1.5 text-xs font-bold rounded-lg transition ${
-                activeTab === 'olts' ? 'bg-white text-blue-600 shadow-sm' : 'text-[#64748B] hover:text-[#0F172A]'
+                activeTab === 'olts' ? 'bg-[#0E172A] text-blue-600 shadow-sm' : 'text-slate-400 hover:text-white'
               }`}
             >
               OLTs & PON Ports ({summary.totalOlts})
@@ -599,7 +599,7 @@ export const FiberGIS: React.FC = () => {
             <button
               onClick={() => setActiveTab('nodes')}
               className={`px-3.5 py-1.5 text-xs font-bold rounded-lg transition ${
-                activeTab === 'nodes' ? 'bg-white text-blue-600 shadow-sm' : 'text-[#64748B] hover:text-[#0F172A]'
+                activeTab === 'nodes' ? 'bg-[#0E172A] text-blue-600 shadow-sm' : 'text-slate-400 hover:text-white'
               }`}
             >
               FAT & Splitters ({summary.totalNodes})
@@ -607,7 +607,7 @@ export const FiberGIS: React.FC = () => {
             <button
               onClick={() => setActiveTab('cables')}
               className={`px-3.5 py-1.5 text-xs font-bold rounded-lg transition ${
-                activeTab === 'cables' ? 'bg-white text-blue-600 shadow-sm' : 'text-[#64748B] hover:text-[#0F172A]'
+                activeTab === 'cables' ? 'bg-[#0E172A] text-blue-600 shadow-sm' : 'text-slate-400 hover:text-white'
               }`}
             >
               Fiber Cables ({summary.totalSegments})
@@ -615,7 +615,7 @@ export const FiberGIS: React.FC = () => {
             <button
               onClick={() => setActiveTab('customers')}
               className={`px-3.5 py-1.5 text-xs font-bold rounded-lg transition ${
-                activeTab === 'customers' ? 'bg-white text-blue-600 shadow-sm' : 'text-[#64748B] hover:text-[#0F172A]'
+                activeTab === 'customers' ? 'bg-[#0E172A] text-blue-600 shadow-sm' : 'text-slate-400 hover:text-white'
               }`}
             >
               Subscribers Linking ({summary.totalCustomers})
@@ -624,12 +624,12 @@ export const FiberGIS: React.FC = () => {
 
           {/* Map Style Switcher */}
           {activeTab === 'map' && (
-            <div className="flex items-center space-x-2 bg-white border border-[#E2E8F0] p-1 rounded-xl shadow-sm">
-              <span className="text-[11px] font-semibold text-[#64748B] px-2">Map Style:</span>
+            <div className="flex items-center space-x-2 bg-[#0E172A] border border-slate-800 p-1 rounded-xl shadow-sm">
+              <span className="text-[11px] font-semibold text-slate-400 px-2">Map Style:</span>
               <button
                 onClick={() => setViewMode('satellite')}
                 className={`px-2.5 py-1 text-xs font-semibold rounded-lg flex items-center space-x-1 transition ${
-                  viewMode === 'satellite' ? 'bg-blue-600 text-white' : 'text-[#64748B] hover:bg-[#F1F5F9]'
+                  viewMode === 'satellite' ? 'bg-blue-600 text-white' : 'text-slate-400 hover:bg-[#F1F5F9]'
                 }`}
               >
                 <Globe className="w-3 h-3" />
@@ -638,7 +638,7 @@ export const FiberGIS: React.FC = () => {
               <button
                 onClick={() => setViewMode('street')}
                 className={`px-2.5 py-1 text-xs font-semibold rounded-lg flex items-center space-x-1 transition ${
-                  viewMode === 'street' ? 'bg-blue-600 text-white' : 'text-[#64748B] hover:bg-[#F1F5F9]'
+                  viewMode === 'street' ? 'bg-blue-600 text-white' : 'text-slate-400 hover:bg-[#F1F5F9]'
                 }`}
               >
                 <Sun className="w-3 h-3" />
@@ -647,7 +647,7 @@ export const FiberGIS: React.FC = () => {
               <button
                 onClick={() => setViewMode('dark')}
                 className={`px-2.5 py-1 text-xs font-semibold rounded-lg flex items-center space-x-1 transition ${
-                  viewMode === 'dark' ? 'bg-slate-900 text-white' : 'text-[#64748B] hover:bg-[#F1F5F9]'
+                  viewMode === 'dark' ? 'bg-slate-900 text-white' : 'text-slate-400 hover:bg-[#F1F5F9]'
                 }`}
               >
                 <Moon className="w-3 h-3" />
@@ -656,7 +656,7 @@ export const FiberGIS: React.FC = () => {
               <button
                 onClick={() => setViewMode('topology')}
                 className={`px-2.5 py-1 text-xs font-semibold rounded-lg flex items-center space-x-1 transition ${
-                  viewMode === 'topology' ? 'bg-purple-600 text-white' : 'text-[#64748B] hover:bg-[#F1F5F9]'
+                  viewMode === 'topology' ? 'bg-purple-600 text-white' : 'text-slate-400 hover:bg-[#F1F5F9]'
                 }`}
               >
                 <Split className="w-3 h-3" />
@@ -676,17 +676,17 @@ export const FiberGIS: React.FC = () => {
                   ? 'bg-[#0B1120] border-slate-800 text-slate-100'
                   : viewMode === 'satellite'
                   ? 'bg-[#030712] border-slate-700 text-slate-100'
-                  : 'bg-white border-[#E2E8F0] text-[#0F172A]'
+                  : 'bg-[#0E172A] border-slate-800 text-white'
               }`}
             >
               {/* Map Layer Filter Pills */}
-              <div className="flex flex-wrap items-center justify-between gap-2 z-10 p-2.5 rounded-xl backdrop-blur-md bg-white/10 border border-white/20">
+              <div className="flex flex-wrap items-center justify-between gap-2 z-10 p-2.5 rounded-xl backdrop-blur-md bg-[#0E172A]/10 border border-white/20">
                 <div className="flex items-center space-x-1.5 text-xs">
                   <span className="font-semibold text-slate-400 mr-1">Layers:</span>
                   <button
                     onClick={() => setActiveFilters({ ...activeFilters, olts: !activeFilters.olts })}
                     className={`px-2.5 py-1 rounded text-[11px] font-bold transition ${
-                      activeFilters.olts ? 'bg-blue-600 text-white' : 'bg-white/5 text-slate-400'
+                      activeFilters.olts ? 'bg-blue-600 text-white' : 'bg-[#0E172A]/5 text-slate-400'
                     }`}
                   >
                     OLTs ({layers?.olts?.length || 0})
@@ -694,7 +694,7 @@ export const FiberGIS: React.FC = () => {
                   <button
                     onClick={() => setActiveFilters({ ...activeFilters, splitters: !activeFilters.splitters })}
                     className={`px-2.5 py-1 rounded text-[11px] font-bold transition ${
-                      activeFilters.splitters ? 'bg-emerald-600 text-white' : 'bg-white/5 text-slate-400'
+                      activeFilters.splitters ? 'bg-emerald-600 text-white' : 'bg-[#0E172A]/5 text-slate-400'
                     }`}
                   >
                     Splitters ({layers?.nodes?.filter((n: any) => n.type.includes('SPLITTER')).length || 0})
@@ -702,7 +702,7 @@ export const FiberGIS: React.FC = () => {
                   <button
                     onClick={() => setActiveFilters({ ...activeFilters, fats: !activeFilters.fats })}
                     className={`px-2.5 py-1 rounded text-[11px] font-bold transition ${
-                      activeFilters.fats ? 'bg-purple-600 text-white' : 'bg-white/5 text-slate-400'
+                      activeFilters.fats ? 'bg-purple-600 text-white' : 'bg-[#0E172A]/5 text-slate-400'
                     }`}
                   >
                     FATs ({layers?.nodes?.filter((n: any) => !n.type.includes('SPLITTER')).length || 0})
@@ -710,7 +710,7 @@ export const FiberGIS: React.FC = () => {
                   <button
                     onClick={() => setActiveFilters({ ...activeFilters, cables: !activeFilters.cables })}
                     className={`px-2.5 py-1 rounded text-[11px] font-bold transition ${
-                      activeFilters.cables ? 'bg-amber-600 text-white' : 'bg-white/5 text-slate-400'
+                      activeFilters.cables ? 'bg-amber-600 text-white' : 'bg-[#0E172A]/5 text-slate-400'
                     }`}
                   >
                     Cables ({layers?.segments?.length || 0})
@@ -718,7 +718,7 @@ export const FiberGIS: React.FC = () => {
                   <button
                     onClick={() => setActiveFilters({ ...activeFilters, customers: !activeFilters.customers })}
                     className={`px-2.5 py-1 rounded text-[11px] font-bold transition ${
-                      activeFilters.customers ? 'bg-cyan-600 text-white' : 'bg-white/5 text-slate-400'
+                      activeFilters.customers ? 'bg-cyan-600 text-white' : 'bg-[#0E172A]/5 text-slate-400'
                     }`}
                   >
                     ONTs ({layers?.customers?.length || 0})
@@ -840,36 +840,36 @@ export const FiberGIS: React.FC = () => {
             </div>
 
             {/* Element Inspector Sidebar */}
-            <div className="bg-white border border-[#E2E8F0] rounded-2xl p-5 shadow-sm">
-              <h4 className="text-xs font-bold uppercase tracking-wider text-[#64748B] mb-3 flex items-center space-x-1.5">
+            <div className="bg-[#0E172A] border border-slate-800 rounded-2xl p-5 shadow-sm">
+              <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3 flex items-center space-x-1.5">
                 <Info className="w-4 h-4 text-blue-600" />
                 <span>Physical Asset Inspector</span>
               </h4>
 
               {selectedElement ? (
                 <div className="space-y-4">
-                  <div className="p-3 bg-[#F8FAFC] rounded-xl border border-[#E2E8F0]">
+                  <div className="p-3 bg-[#060913] rounded-xl border border-slate-800">
                     <div className="flex items-center justify-between">
                       <Badge variant="info">{selectedElement.type}</Badge>
                       <span className="text-xs font-mono font-bold text-blue-600">
                         {selectedElement.data?.code || selectedElement.data?.nodeCode || selectedElement.data?.cableCode || 'ASSET'}
                       </span>
                     </div>
-                    <p className="text-sm font-bold text-[#0F172A] mt-2">{selectedElement.data?.name || selectedElement.data?.matchedTarget?.label}</p>
+                    <p className="text-sm font-bold text-white mt-2">{selectedElement.data?.name || selectedElement.data?.matchedTarget?.label}</p>
                   </div>
 
                   {/* Inspector Fields */}
                   <div className="space-y-2 text-xs">
                     {selectedElement.data?.address && (
                       <div className="flex justify-between py-1 border-b border-[#F1F5F9]">
-                        <span className="text-[#64748B]">Location Address:</span>
-                        <span className="font-semibold text-[#0F172A] text-right max-w-[180px] truncate">{selectedElement.data.address}</span>
+                        <span className="text-slate-400">Location Address:</span>
+                        <span className="font-semibold text-white text-right max-w-[180px] truncate">{selectedElement.data.address}</span>
                       </div>
                     )}
 
                     {selectedElement.data?.lat !== undefined && (
                       <div className="flex justify-between py-1 border-b border-[#F1F5F9]">
-                        <span className="text-[#64748B]">GPS Coordinates:</span>
+                        <span className="text-slate-400">GPS Coordinates:</span>
                         <span className="font-mono text-blue-600">
                           {selectedElement.data.lat !== 0 ? `${selectedElement.data.lat}, ${selectedElement.data.lng}` : 'Not Configured'}
                         </span>
@@ -878,8 +878,8 @@ export const FiberGIS: React.FC = () => {
 
                     {selectedElement.data?.totalCapacity !== undefined && (
                       <div className="flex justify-between py-1 border-b border-[#F1F5F9]">
-                        <span className="text-[#64748B]">Port / Core Capacity:</span>
-                        <span className="font-bold text-[#0F172A]">
+                        <span className="text-slate-400">Port / Core Capacity:</span>
+                        <span className="font-bold text-white">
                           {selectedElement.data.usedCapacity ?? selectedElement.data.liveCores ?? 0} / {selectedElement.data.totalCapacity ?? selectedElement.data.totalCores}
                         </span>
                       </div>
@@ -894,8 +894,8 @@ export const FiberGIS: React.FC = () => {
 
                     {selectedElement.data?.vendor && (
                       <div className="flex justify-between py-1 border-b border-[#F1F5F9]">
-                        <span className="text-[#64748B]">Hardware Vendor:</span>
-                        <span className="font-semibold text-[#0F172A]">{selectedElement.data.vendor} {selectedElement.data.modelName}</span>
+                        <span className="text-slate-400">Hardware Vendor:</span>
+                        <span className="font-semibold text-white">{selectedElement.data.vendor} {selectedElement.data.modelName}</span>
                       </div>
                     )}
                   </div>
@@ -903,13 +903,13 @@ export const FiberGIS: React.FC = () => {
                   {/* Photo Preview if Available */}
                   {selectedElement.data?.photos && selectedElement.data.photos.length > 0 && (
                     <div className="pt-2">
-                      <p className="text-[11px] font-bold text-[#64748B] mb-2 flex items-center space-x-1">
+                      <p className="text-[11px] font-bold text-slate-400 mb-2 flex items-center space-x-1">
                         <Camera className="w-3.5 h-3.5 text-purple-600" />
                         <span>Site Installation Photos ({selectedElement.data.photos.length})</span>
                       </p>
                       <div className="grid grid-cols-2 gap-2">
                         {selectedElement.data.photos.map((url: string, idx: number) => (
-                          <a key={idx} href={url} target="_blank" rel="noreferrer" className="block rounded-lg overflow-hidden border border-[#E2E8F0] hover:opacity-90">
+                          <a key={idx} href={url} target="_blank" rel="noreferrer" className="block rounded-lg overflow-hidden border border-slate-800 hover:opacity-90">
                             <img src={url} alt="Site asset" className="w-full h-24 object-cover" />
                           </a>
                         ))}
@@ -918,7 +918,7 @@ export const FiberGIS: React.FC = () => {
                   )}
                 </div>
               ) : (
-                <div className="text-center py-12 text-[#64748B]">
+                <div className="text-center py-12 text-slate-400">
                   <Crosshair className="w-8 h-8 mx-auto mb-2 opacity-40 text-blue-600" />
                   <p className="text-xs">Click on any OLT, Splitter, FAT box, or run a Trace above to inspect physical details.</p>
                 </div>
@@ -929,11 +929,11 @@ export const FiberGIS: React.FC = () => {
 
         {/* TAB 2: OLT CHASSIS & PON PORTS INVENTORY TABLE */}
         {activeTab === 'olts' && (
-          <div className="bg-white border border-[#E2E8F0] rounded-2xl p-6 shadow-sm">
+          <div className="bg-[#0E172A] border border-slate-800 rounded-2xl p-6 shadow-sm">
             <div className="flex items-center justify-between mb-4">
               <div>
-                <h3 className="text-sm font-bold text-[#0F172A]">Central Office OLT Chassis Inventory</h3>
-                <p className="text-xs text-[#64748B]">Hardware profiles, chassis slots, PON port split ratios, and GPS coordinates</p>
+                <h3 className="text-sm font-bold text-white">Central Office OLT Chassis Inventory</h3>
+                <p className="text-xs text-slate-400">Hardware profiles, chassis slots, PON port split ratios, and GPS coordinates</p>
               </div>
               <Button size="sm" variant="primary" onClick={() => setIsAddOltOpen(true)}>
                 <Plus className="w-3.5 h-3.5 mr-1" />
@@ -942,14 +942,14 @@ export const FiberGIS: React.FC = () => {
             </div>
 
             {(!layers?.olts || layers.olts.length === 0) ? (
-              <div className="text-center py-12 text-[#64748B]">
+              <div className="text-center py-12 text-slate-400">
                 <Server className="w-8 h-8 mx-auto mb-2 opacity-40 text-blue-600" />
                 <p className="text-xs">No OLT Chassis provisioned in your tenant context.</p>
               </div>
             ) : (
               <div className="overflow-x-auto">
                 <table className="w-full text-left text-xs">
-                  <thead className="bg-[#F8FAFC] text-[#64748B] font-semibold border-b border-[#E2E8F0]">
+                  <thead className="bg-[#060913] text-slate-400 font-semibold border-b border-slate-800">
                     <tr>
                       <th className="py-3 px-4">Code / Name</th>
                       <th className="py-3 px-4">Management IP</th>
@@ -963,15 +963,15 @@ export const FiberGIS: React.FC = () => {
                   </thead>
                   <tbody className="divide-y divide-[#F1F5F9]">
                     {layers.olts.map((olt: any) => (
-                      <tr key={olt.id} className="hover:bg-[#F8FAFC]">
+                      <tr key={olt.id} className="hover:bg-[#060913]">
                         <td className="py-3 px-4">
-                          <p className="font-bold text-[#0F172A]">{olt.name}</p>
+                          <p className="font-bold text-white">{olt.name}</p>
                           <span className="font-mono text-blue-600 text-[11px] font-semibold">{olt.code}</span>
                         </td>
                         <td className="py-3 px-4 font-mono font-bold text-slate-700">{olt.ipAddress}</td>
                         <td className="py-3 px-4">{olt.vendor} {olt.modelName}</td>
                         <td className="py-3 px-4">
-                          <span className="font-bold text-[#0F172A]">{olt.totalSlots} Slots</span> • {olt.totalPonPorts} PONs
+                          <span className="font-bold text-white">{olt.totalSlots} Slots</span> • {olt.totalPonPorts} PONs
                         </td>
                         <td className="py-3 px-4">
                           {olt.hasGps ? (
@@ -1010,11 +1010,11 @@ export const FiberGIS: React.FC = () => {
 
         {/* TAB 3: FAT BOXES & SPLITTERS INVENTORY TABLE */}
         {activeTab === 'nodes' && (
-          <div className="bg-white border border-[#E2E8F0] rounded-2xl p-6 shadow-sm">
+          <div className="bg-[#0E172A] border border-slate-800 rounded-2xl p-6 shadow-sm">
             <div className="flex items-center justify-between mb-4">
               <div>
-                <h3 className="text-sm font-bold text-[#0F172A]">Passive Optical Nodes (FAT, Splitters, Joint Boxes, Poles)</h3>
-                <p className="text-xs text-[#64748B]">Terminal boxes, split ratios, dark fiber cores, and upstream parent links</p>
+                <h3 className="text-sm font-bold text-white">Passive Optical Nodes (FAT, Splitters, Joint Boxes, Poles)</h3>
+                <p className="text-xs text-slate-400">Terminal boxes, split ratios, dark fiber cores, and upstream parent links</p>
               </div>
               <Button size="sm" variant="primary" onClick={() => setIsAddNodeOpen(true)}>
                 <Plus className="w-3.5 h-3.5 mr-1" />
@@ -1023,14 +1023,14 @@ export const FiberGIS: React.FC = () => {
             </div>
 
             {(!layers?.nodes || layers.nodes.length === 0) ? (
-              <div className="text-center py-12 text-[#64748B]">
+              <div className="text-center py-12 text-slate-400">
                 <Box className="w-8 h-8 mx-auto mb-2 opacity-40 text-purple-600" />
                 <p className="text-xs">No Fiber Nodes provisioned in your tenant context.</p>
               </div>
             ) : (
               <div className="overflow-x-auto">
                 <table className="w-full text-left text-xs">
-                  <thead className="bg-[#F8FAFC] text-[#64748B] font-semibold border-b border-[#E2E8F0]">
+                  <thead className="bg-[#060913] text-slate-400 font-semibold border-b border-slate-800">
                     <tr>
                       <th className="py-3 px-4">Node Code / Name</th>
                       <th className="py-3 px-4">Type</th>
@@ -1044,14 +1044,14 @@ export const FiberGIS: React.FC = () => {
                   </thead>
                   <tbody className="divide-y divide-[#F1F5F9]">
                     {layers.nodes.map((node: any) => (
-                      <tr key={node.id} className="hover:bg-[#F8FAFC]">
+                      <tr key={node.id} className="hover:bg-[#060913]">
                         <td className="py-3 px-4">
-                          <p className="font-bold text-[#0F172A]">{node.name}</p>
+                          <p className="font-bold text-white">{node.name}</p>
                           <span className="font-mono text-purple-600 font-semibold">{node.code}</span>
                         </td>
                         <td className="py-3 px-4 font-semibold text-slate-700">{node.type.replace(/_/g, ' ')}</td>
                         <td className="py-3 px-4">
-                          <span className="font-bold text-[#0F172A]">{node.usedCapacity}</span> / {node.totalCapacity} Ports
+                          <span className="font-bold text-white">{node.usedCapacity}</span> / {node.totalCapacity} Ports
                         </td>
                         <td className="py-3 px-4 font-bold text-emerald-600">{node.darkCores} Dark</td>
                         <td className="py-3 px-4">
@@ -1085,11 +1085,11 @@ export const FiberGIS: React.FC = () => {
 
         {/* TAB 4: FIBER CABLE SEGMENTS INVENTORY TABLE */}
         {activeTab === 'cables' && (
-          <div className="bg-white border border-[#E2E8F0] rounded-2xl p-6 shadow-sm">
+          <div className="bg-[#0E172A] border border-slate-800 rounded-2xl p-6 shadow-sm">
             <div className="flex items-center justify-between mb-4">
               <div>
-                <h3 className="text-sm font-bold text-[#0F172A]">Physical Fiber Cable Segments</h3>
-                <p className="text-xs text-[#64748B]">Feeder, distribution, and drop cable routes, live cores, and free dark fiber cores</p>
+                <h3 className="text-sm font-bold text-white">Physical Fiber Cable Segments</h3>
+                <p className="text-xs text-slate-400">Feeder, distribution, and drop cable routes, live cores, and free dark fiber cores</p>
               </div>
               <Button size="sm" variant="primary" onClick={() => setIsAddCableOpen(true)}>
                 <Plus className="w-3.5 h-3.5 mr-1" />
@@ -1098,14 +1098,14 @@ export const FiberGIS: React.FC = () => {
             </div>
 
             {(!layers?.segments || layers.segments.length === 0) ? (
-              <div className="text-center py-12 text-[#64748B]">
+              <div className="text-center py-12 text-slate-400">
                 <Cable className="w-8 h-8 mx-auto mb-2 opacity-40 text-amber-600" />
                 <p className="text-xs">No Fiber Cable Segments provisioned in your tenant context.</p>
               </div>
             ) : (
               <div className="overflow-x-auto">
                 <table className="w-full text-left text-xs">
-                  <thead className="bg-[#F8FAFC] text-[#64748B] font-semibold border-b border-[#E2E8F0]">
+                  <thead className="bg-[#060913] text-slate-400 font-semibold border-b border-slate-800">
                     <tr>
                       <th className="py-3 px-4">Cable Code / Name</th>
                       <th className="py-3 px-4">Category</th>
@@ -1119,13 +1119,13 @@ export const FiberGIS: React.FC = () => {
                   </thead>
                   <tbody className="divide-y divide-[#F1F5F9]">
                     {layers.segments.map((seg: any) => (
-                      <tr key={seg.id} className="hover:bg-[#F8FAFC]">
+                      <tr key={seg.id} className="hover:bg-[#060913]">
                         <td className="py-3 px-4">
-                          <p className="font-bold text-[#0F172A]">{seg.name}</p>
+                          <p className="font-bold text-white">{seg.name}</p>
                           <span className="font-mono text-amber-600 font-semibold">{seg.code}</span>
                         </td>
                         <td className="py-3 px-4 font-semibold text-slate-700">{seg.category}</td>
-                        <td className="py-3 px-4 font-bold text-[#0F172A]">{seg.totalCores}C</td>
+                        <td className="py-3 px-4 font-bold text-white">{seg.totalCores}C</td>
                         <td className="py-3 px-4 font-bold text-blue-600">{seg.liveCores} Live</td>
                         <td className="py-3 px-4 font-bold text-emerald-600">{seg.darkCores} Dark Free</td>
                         <td className="py-3 px-4">
@@ -1158,23 +1158,23 @@ export const FiberGIS: React.FC = () => {
 
         {/* TAB 5: CUSTOMER PHYSICAL FIBER LINKING */}
         {activeTab === 'customers' && (
-          <div className="bg-white border border-[#E2E8F0] rounded-2xl p-6 shadow-sm">
+          <div className="bg-[#0E172A] border border-slate-800 rounded-2xl p-6 shadow-sm">
             <div className="flex items-center justify-between mb-4">
               <div>
-                <h3 className="text-sm font-bold text-[#0F172A]">Subscriber Physical Fiber Path Linking</h3>
-                <p className="text-xs text-[#64748B]">Connect customer ONT to FAT terminal box port, splitter, and OLT PON port with full audit logging</p>
+                <h3 className="text-sm font-bold text-white">Subscriber Physical Fiber Path Linking</h3>
+                <p className="text-xs text-slate-400">Connect customer ONT to FAT terminal box port, splitter, and OLT PON port with full audit logging</p>
               </div>
             </div>
 
             {(!layers?.customers || layers.customers.length === 0) ? (
-              <div className="text-center py-12 text-[#64748B]">
+              <div className="text-center py-12 text-slate-400">
                 <Radio className="w-8 h-8 mx-auto mb-2 opacity-40 text-blue-600" />
                 <p className="text-xs">No customers found in your tenant context.</p>
               </div>
             ) : (
               <div className="overflow-x-auto">
                 <table className="w-full text-left text-xs">
-                  <thead className="bg-[#F8FAFC] text-[#64748B] font-semibold border-b border-[#E2E8F0]">
+                  <thead className="bg-[#060913] text-slate-400 font-semibold border-b border-slate-800">
                     <tr>
                       <th className="py-3 px-4">Customer</th>
                       <th className="py-3 px-4">Account / Phone</th>
@@ -1187,10 +1187,10 @@ export const FiberGIS: React.FC = () => {
                   </thead>
                   <tbody className="divide-y divide-[#F1F5F9]">
                     {layers.customers.map((c: any) => (
-                      <tr key={c.id} className="hover:bg-[#F8FAFC]">
+                      <tr key={c.id} className="hover:bg-[#060913]">
                         <td className="py-3 px-4">
-                          <p className="font-bold text-[#0F172A]">{c.name}</p>
-                          <span className="text-[11px] text-[#64748B]">{c.address}</span>
+                          <p className="font-bold text-white">{c.name}</p>
+                          <span className="text-[11px] text-slate-400">{c.address}</span>
                         </td>
                         <td className="py-3 px-4">
                           <p className="font-mono text-blue-600 font-bold">{c.accountNumber}</p>
@@ -1255,7 +1255,7 @@ export const FiberGIS: React.FC = () => {
           <form onSubmit={handleCreateOlt} className="space-y-4">
             <div className="grid grid-cols-2 gap-3">
               <div>
-                <label className="text-xs font-semibold text-[#0F172A]">OLT Name *</label>
+                <label className="text-xs font-semibold text-white">OLT Name *</label>
                 <Input
                   placeholder="e.g. Central POP OLT 01"
                   value={oltForm.name}
@@ -1264,7 +1264,7 @@ export const FiberGIS: React.FC = () => {
                 />
               </div>
               <div>
-                <label className="text-xs font-semibold text-[#0F172A]">Unique OLT Code *</label>
+                <label className="text-xs font-semibold text-white">Unique OLT Code *</label>
                 <Input
                   placeholder="e.g. OLT-MA5800-01"
                   value={oltForm.code}
@@ -1276,7 +1276,7 @@ export const FiberGIS: React.FC = () => {
 
             <div className="grid grid-cols-3 gap-3">
               <div>
-                <label className="text-xs font-semibold text-[#0F172A]">IP Address *</label>
+                <label className="text-xs font-semibold text-white">IP Address *</label>
                 <Input
                   placeholder="10.200.1.10"
                   value={oltForm.ipAddress}
@@ -1285,7 +1285,7 @@ export const FiberGIS: React.FC = () => {
                 />
               </div>
               <div>
-                <label className="text-xs font-semibold text-[#0F172A]">Hardware Vendor</label>
+                <label className="text-xs font-semibold text-white">Hardware Vendor</label>
                 <Input
                   placeholder="Huawei / ZTE / Nokia"
                   value={oltForm.vendor}
@@ -1293,7 +1293,7 @@ export const FiberGIS: React.FC = () => {
                 />
               </div>
               <div>
-                <label className="text-xs font-semibold text-[#0F172A]">Model Name</label>
+                <label className="text-xs font-semibold text-white">Model Name</label>
                 <Input
                   placeholder="MA5800-X7 / C320"
                   value={oltForm.modelName}
@@ -1304,7 +1304,7 @@ export const FiberGIS: React.FC = () => {
 
             <div className="grid grid-cols-2 gap-3">
               <div>
-                <label className="text-xs font-semibold text-[#0F172A]">Total Chassis Slots</label>
+                <label className="text-xs font-semibold text-white">Total Chassis Slots</label>
                 <Input
                   type="number"
                   value={oltForm.totalSlots}
@@ -1312,7 +1312,7 @@ export const FiberGIS: React.FC = () => {
                 />
               </div>
               <div>
-                <label className="text-xs font-semibold text-[#0F172A]">Total PON Ports</label>
+                <label className="text-xs font-semibold text-white">Total PON Ports</label>
                 <Input
                   type="number"
                   value={oltForm.totalPonPorts}
@@ -1323,7 +1323,7 @@ export const FiberGIS: React.FC = () => {
 
             <div className="grid grid-cols-2 gap-3">
               <div>
-                <label className="text-xs font-semibold text-[#0F172A]">GPS Latitude</label>
+                <label className="text-xs font-semibold text-white">GPS Latitude</label>
                 <Input
                   placeholder="12.9352"
                   value={oltForm.lat}
@@ -1331,7 +1331,7 @@ export const FiberGIS: React.FC = () => {
                 />
               </div>
               <div>
-                <label className="text-xs font-semibold text-[#0F172A]">GPS Longitude</label>
+                <label className="text-xs font-semibold text-white">GPS Longitude</label>
                 <Input
                   placeholder="77.6245"
                   value={oltForm.lng}
@@ -1341,7 +1341,7 @@ export const FiberGIS: React.FC = () => {
             </div>
 
             <div>
-              <label className="text-xs font-semibold text-[#0F172A]">Location Address / NOC Landmark</label>
+              <label className="text-xs font-semibold text-white">Location Address / NOC Landmark</label>
               <Input
                 placeholder="Central Server Room, 4th Floor NOC"
                 value={oltForm.address}
@@ -1350,7 +1350,7 @@ export const FiberGIS: React.FC = () => {
             </div>
 
             <div>
-              <label className="text-xs font-semibold text-[#0F172A]">Installation Photo URL</label>
+              <label className="text-xs font-semibold text-white">Installation Photo URL</label>
               <Input
                 placeholder="https://example.com/photos/olt-rack.jpg"
                 value={oltForm.photoUrl}
@@ -1374,7 +1374,7 @@ export const FiberGIS: React.FC = () => {
           <form onSubmit={handleCreateNode} className="space-y-4">
             <div className="grid grid-cols-2 gap-3">
               <div>
-                <label className="text-xs font-semibold text-[#0F172A]">Node Code *</label>
+                <label className="text-xs font-semibold text-white">Node Code *</label>
                 <Input
                   placeholder="FAT-KORM-04 / SPL-01"
                   value={nodeForm.nodeCode}
@@ -1383,7 +1383,7 @@ export const FiberGIS: React.FC = () => {
                 />
               </div>
               <div>
-                <label className="text-xs font-semibold text-[#0F172A]">Node Name *</label>
+                <label className="text-xs font-semibold text-white">Node Name *</label>
                 <Input
                   placeholder="FAT Box 4 - 5th Cross"
                   value={nodeForm.name}
@@ -1395,11 +1395,11 @@ export const FiberGIS: React.FC = () => {
 
             <div className="grid grid-cols-2 gap-3">
               <div>
-                <label className="text-xs font-semibold text-[#0F172A]">Node Type</label>
+                <label className="text-xs font-semibold text-white">Node Type</label>
                 <select
                   value={nodeForm.type}
                   onChange={(e) => setNodeForm({ ...nodeForm, type: e.target.value })}
-                  className="w-full text-xs p-2 rounded-lg border border-[#E2E8F0] bg-white"
+                  className="w-full text-xs p-2 rounded-lg border border-slate-800 bg-[#0E172A]"
                 >
                   <option value="FAT_NAP_BOX">FAT / NAP Terminal Box</option>
                   <option value="PRIMARY_SPLITTER">Primary Optical Splitter (1:4 / 1:8)</option>
@@ -1410,7 +1410,7 @@ export const FiberGIS: React.FC = () => {
                 </select>
               </div>
               <div>
-                <label className="text-xs font-semibold text-[#0F172A]">Port / Core Capacity</label>
+                <label className="text-xs font-semibold text-white">Port / Core Capacity</label>
                 <Input
                   type="number"
                   value={nodeForm.totalCapacity}
@@ -1421,7 +1421,7 @@ export const FiberGIS: React.FC = () => {
 
             <div className="grid grid-cols-2 gap-3">
               <div>
-                <label className="text-xs font-semibold text-[#0F172A]">GPS Latitude</label>
+                <label className="text-xs font-semibold text-white">GPS Latitude</label>
                 <Input
                   placeholder="12.9360"
                   value={nodeForm.lat}
@@ -1429,7 +1429,7 @@ export const FiberGIS: React.FC = () => {
                 />
               </div>
               <div>
-                <label className="text-xs font-semibold text-[#0F172A]">GPS Longitude</label>
+                <label className="text-xs font-semibold text-white">GPS Longitude</label>
                 <Input
                   placeholder="77.6250"
                   value={nodeForm.lng}
@@ -1439,7 +1439,7 @@ export const FiberGIS: React.FC = () => {
             </div>
 
             <div>
-              <label className="text-xs font-semibold text-[#0F172A]">Physical Address / Street Pole #</label>
+              <label className="text-xs font-semibold text-white">Physical Address / Street Pole #</label>
               <Input
                 placeholder="Pole #42, 5th Cross Road, Sector 4"
                 value={nodeForm.address}
@@ -1448,7 +1448,7 @@ export const FiberGIS: React.FC = () => {
             </div>
 
             <div>
-              <label className="text-xs font-semibold text-[#0F172A]">Site Photo URL</label>
+              <label className="text-xs font-semibold text-white">Site Photo URL</label>
               <Input
                 placeholder="https://example.com/photos/fat-box-pole.jpg"
                 value={nodeForm.photoUrl}
@@ -1472,7 +1472,7 @@ export const FiberGIS: React.FC = () => {
           <form onSubmit={handleCreateCable} className="space-y-4">
             <div className="grid grid-cols-2 gap-3">
               <div>
-                <label className="text-xs font-semibold text-[#0F172A]">Cable Code *</label>
+                <label className="text-xs font-semibold text-white">Cable Code *</label>
                 <Input
                   placeholder="FIB-DIST-01"
                   value={cableForm.cableCode}
@@ -1481,7 +1481,7 @@ export const FiberGIS: React.FC = () => {
                 />
               </div>
               <div>
-                <label className="text-xs font-semibold text-[#0F172A]">Cable Name *</label>
+                <label className="text-xs font-semibold text-white">Cable Name *</label>
                 <Input
                   placeholder="Main 24F Distribution Line"
                   value={cableForm.name}
@@ -1493,11 +1493,11 @@ export const FiberGIS: React.FC = () => {
 
             <div className="grid grid-cols-3 gap-3">
               <div>
-                <label className="text-xs font-semibold text-[#0F172A]">Category</label>
+                <label className="text-xs font-semibold text-white">Category</label>
                 <select
                   value={cableForm.category}
                   onChange={(e) => setCableForm({ ...cableForm, category: e.target.value })}
-                  className="w-full text-xs p-2 rounded-lg border border-[#E2E8F0] bg-white"
+                  className="w-full text-xs p-2 rounded-lg border border-slate-800 bg-[#0E172A]"
                 >
                   <option value="FEEDER">Feeder (OLT to Splitter)</option>
                   <option value="DISTRIBUTION">Distribution (Splitter to FAT)</option>
@@ -1505,7 +1505,7 @@ export const FiberGIS: React.FC = () => {
                 </select>
               </div>
               <div>
-                <label className="text-xs font-semibold text-[#0F172A]">Total Cores</label>
+                <label className="text-xs font-semibold text-white">Total Cores</label>
                 <Input
                   type="number"
                   value={cableForm.totalCores}
@@ -1513,7 +1513,7 @@ export const FiberGIS: React.FC = () => {
                 />
               </div>
               <div>
-                <label className="text-xs font-semibold text-[#0F172A]">Live/Used Cores</label>
+                <label className="text-xs font-semibold text-white">Live/Used Cores</label>
                 <Input
                   type="number"
                   value={cableForm.liveCores}
@@ -1524,7 +1524,7 @@ export const FiberGIS: React.FC = () => {
 
             <div className="grid grid-cols-2 gap-3">
               <div>
-                <label className="text-xs font-semibold text-[#0F172A]">Length (Meters)</label>
+                <label className="text-xs font-semibold text-white">Length (Meters)</label>
                 <Input
                   type="number"
                   value={cableForm.lengthMeters}
@@ -1532,7 +1532,7 @@ export const FiberGIS: React.FC = () => {
                 />
               </div>
               <div>
-                <label className="text-xs font-semibold text-[#0F172A]">Measured Loss (dB)</label>
+                <label className="text-xs font-semibold text-white">Measured Loss (dB)</label>
                 <Input
                   type="number"
                   step="0.01"
@@ -1543,7 +1543,7 @@ export const FiberGIS: React.FC = () => {
             </div>
 
             <div>
-              <label className="text-xs font-semibold text-[#0F172A]">GPS Polyline Coordinates (lat,lng; lat,lng...)</label>
+              <label className="text-xs font-semibold text-white">GPS Polyline Coordinates (lat,lng; lat,lng...)</label>
               <Input
                 placeholder="12.9352,77.6245; 12.9360,77.6250; 12.9370,77.6260"
                 value={cableForm.coordinatesRaw}
@@ -1552,7 +1552,7 @@ export const FiberGIS: React.FC = () => {
             </div>
 
             <div>
-              <label className="text-xs font-semibold text-[#0F172A]">Cable Photo URL</label>
+              <label className="text-xs font-semibold text-white">Cable Photo URL</label>
               <Input
                 placeholder="https://example.com/photos/cable-tray.jpg"
                 value={cableForm.photoUrl}
@@ -1582,11 +1582,11 @@ export const FiberGIS: React.FC = () => {
         >
           <form onSubmit={handleLinkCustomer} className="space-y-4">
             <div>
-              <label className="text-xs font-semibold text-[#0F172A]">Select Subscriber *</label>
+              <label className="text-xs font-semibold text-white">Select Subscriber *</label>
               <select
                 value={linkForm.customerId || selectedCustomerForLink?.id || ''}
                 onChange={(e) => setLinkForm({ ...linkForm, customerId: e.target.value })}
-                className="w-full text-xs p-2 rounded-lg border border-[#E2E8F0] bg-white"
+                className="w-full text-xs p-2 rounded-lg border border-slate-800 bg-[#0E172A]"
                 required
               >
                 <option value="">-- Choose Subscriber --</option>
@@ -1600,11 +1600,11 @@ export const FiberGIS: React.FC = () => {
 
             <div className="grid grid-cols-2 gap-3">
               <div>
-                <label className="text-xs font-semibold text-[#0F172A]">Target FAT / NAP Box</label>
+                <label className="text-xs font-semibold text-white">Target FAT / NAP Box</label>
                 <select
                   value={linkForm.fatBoxId}
                   onChange={(e) => setLinkForm({ ...linkForm, fatBoxId: e.target.value })}
-                  className="w-full text-xs p-2 rounded-lg border border-[#E2E8F0] bg-white"
+                  className="w-full text-xs p-2 rounded-lg border border-slate-800 bg-[#0E172A]"
                 >
                   <option value="">-- None / Select FAT Box --</option>
                   {layers?.nodes?.filter((n: any) => !n.type.includes('SPLITTER')).map((n: any) => (
@@ -1616,7 +1616,7 @@ export const FiberGIS: React.FC = () => {
               </div>
 
               <div>
-                <label className="text-xs font-semibold text-[#0F172A]">FAT Terminal Port #</label>
+                <label className="text-xs font-semibold text-white">FAT Terminal Port #</label>
                 <Input
                   type="number"
                   min="1"
@@ -1629,11 +1629,11 @@ export const FiberGIS: React.FC = () => {
 
             <div className="grid grid-cols-2 gap-3">
               <div>
-                <label className="text-xs font-semibold text-[#0F172A]">Parent OLT Chassis</label>
+                <label className="text-xs font-semibold text-white">Parent OLT Chassis</label>
                 <select
                   value={linkForm.oltId}
                   onChange={(e) => setLinkForm({ ...linkForm, oltId: e.target.value })}
-                  className="w-full text-xs p-2 rounded-lg border border-[#E2E8F0] bg-white"
+                  className="w-full text-xs p-2 rounded-lg border border-slate-800 bg-[#0E172A]"
                 >
                   <option value="">-- None / Select OLT --</option>
                   {layers?.olts?.map((o: any) => (
@@ -1645,7 +1645,7 @@ export const FiberGIS: React.FC = () => {
               </div>
 
               <div>
-                <label className="text-xs font-semibold text-[#0F172A]">Drop Cable Length (Meters)</label>
+                <label className="text-xs font-semibold text-white">Drop Cable Length (Meters)</label>
                 <Input
                   type="number"
                   value={linkForm.dropCableLengthMeters}

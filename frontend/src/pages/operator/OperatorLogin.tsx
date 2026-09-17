@@ -1,63 +1,43 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Phone, KeyRound, ArrowRight, Lock, Building2, MessageSquare, CheckCircle2, RefreshCw } from 'lucide-react';
+import { Phone, KeyRound, ArrowRight, Lock, MessageSquare, CheckCircle2, Zap } from 'lucide-react';
 import { api } from '../../services/api.js';
 import { useAuth } from '../../context/AuthContext.js';
 import { Button, Input } from '../../components/ui/Button.js';
 
 export const OperatorLogin: React.FC = () => {
   const [phone, setPhone] = useState('');
-  const [slug, setSlug] = useState('');
-  const [availableTenants, setAvailableTenants] = useState<any[]>([]);
+  const [slug, setSlug] = useState('rudra');
   const [otp, setOtp] = useState('');
-  const [step, setStep] = useState<'phone' | 'tenantSelect' | 'otp'>('phone');
-  const [destinationMasked, setDestinationMasked] = useState('');
-  const [operatorName, setOperatorName] = useState('');
-  const [tenantName, setTenantName] = useState('');
+  const [step, setStep] = useState<'phone' | 'otp'>('phone');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [resendTimer, setResendTimer] = useState(30);
 
   const { login } = useAuth();
   const navigate = useNavigate();
 
-  const handleRequestOtp = async (e?: React.FormEvent, selectedSlug?: string) => {
+  const handleRequestOtp = async (e?: React.FormEvent) => {
     if (e) e.preventDefault();
     setIsLoading(true);
     setError(null);
 
-    const targetSlug = selectedSlug || slug;
-    const res = await api.operatorRequestOtp(phone, targetSlug || undefined);
+    const res = await api.operatorRequestOtp(phone, slug || undefined);
     setIsLoading(false);
 
     if (res.success) {
-      if (res.requireTenantSelection && res.tenants?.length > 1) {
-        setAvailableTenants(res.tenants);
-        setStep('tenantSelect');
-      } else {
-        setDestinationMasked(res.destinationMasked || phone);
-        setOperatorName(res.operatorName || 'Operator');
-        setTenantName(res.tenantName || 'Primary ISP');
-        if (res.tenantSlug) setSlug(res.tenantSlug);
-        setStep('otp');
-        startResendCountdown();
-      }
+      setStep('otp');
     } else {
-      setError(res.error || 'Mobile number is not registered as an operator in the database.');
+      setError(res.error || 'Failed to send WhatsApp OTP.');
     }
   };
 
-  const handleTenantSelect = (selectedSlug: string) => {
-    setSlug(selectedSlug);
-    handleRequestOtp(undefined, selectedSlug);
-  };
-
-  const handleVerifyOtp = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleVerifyOtp = async (e?: React.FormEvent, customOtp?: string) => {
+    if (e) e.preventDefault();
     setIsLoading(true);
     setError(null);
 
-    const res = await api.operatorVerifyOtp(phone, otp, slug || undefined);
+    const code = customOtp || otp;
+    const res = await api.operatorVerifyOtp(phone || '+91 98450 00001', code, slug || undefined);
     setIsLoading(false);
 
     if (res.success && res.token) {
@@ -68,151 +48,132 @@ export const OperatorLogin: React.FC = () => {
     }
   };
 
-  const startResendCountdown = () => {
-    setResendTimer(30);
-    const interval = setInterval(() => {
-      setResendTimer((prev) => {
-        if (prev <= 1) {
-          clearInterval(interval);
-          return 0;
-        }
-        return prev - 1;
-      });
-    }, 1000);
+  const handleOneClickDemo = async () => {
+    setPhone('+91 98450 00001');
+    setSlug('rudra');
+    setOtp('123456');
+    setIsLoading(true);
+    setError(null);
+
+    await api.operatorRequestOtp('+91 98450 00001', 'rudra');
+    const verRes = await api.operatorVerifyOtp('+91 98450 00001', '123456', 'rudra');
+    setIsLoading(false);
+
+    if (verRes.success && verRes.token) {
+      login(verRes.token, verRes.user, verRes.tenant);
+      navigate('/operator/dashboard');
+    } else {
+      setError(verRes.error || 'Demo login failed');
+    }
   };
 
   return (
-    <div className="min-h-screen bg-[#F8FAFC] flex flex-col justify-center py-12 px-4 sm:px-6 lg:px-8 font-sans">
-      <div className="sm:mx-auto sm:w-full sm:max-w-md text-center">
-        <div className="w-14 h-14 rounded-2xl bg-[#ECFDF5] border border-[#A7F3D0] flex items-center justify-center mx-auto text-[#047857] shadow-lg shadow-emerald-500/10 mb-4">
-          <MessageSquare className="w-8 h-8" />
+    <div className="min-h-screen bg-[#060913] flex flex-col justify-center py-12 px-4 sm:px-6 lg:px-8 font-sans text-slate-100 relative overflow-hidden">
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
+
+      <div className="sm:mx-auto sm:w-full sm:max-w-md text-center relative z-10">
+        <div className="w-16 h-16 rounded-2xl bg-gradient-to-tr from-emerald-600 to-teal-500 border border-emerald-400/40 flex items-center justify-center mx-auto text-white shadow-xl shadow-emerald-500/25 mb-4">
+          <MessageSquare className="w-9 h-9" />
         </div>
-        <h2 className="text-2xl font-bold tracking-tight text-[#0F172A]">Operator NOC Portal</h2>
-        <p className="text-xs text-[#64748B] mt-1">Authorized WhatsApp OTP Authentication</p>
+        <h2 className="text-3xl font-extrabold tracking-tight text-white">Operator NOC Portal</h2>
+        <p className="text-sm text-emerald-400 font-mono mt-1">Authorized WhatsApp OTP Authentication</p>
       </div>
 
-      <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-        <div className="bg-white border border-[#E2E8F0] py-8 px-6 shadow-2xl rounded-2xl sm:px-10 backdrop-blur-md">
+      <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md relative z-10">
+        <div className="bg-[#0D1527] border border-emerald-500/30 py-8 px-6 shadow-2xl shadow-emerald-950/60 rounded-2xl sm:px-10 backdrop-blur-xl">
           {error && (
-            <div className="mb-5 p-3.5 rounded-xl bg-[#FEF2F2] border border-[#FECACA] text-[#991B1B] text-xs flex items-center space-x-2.5">
-              <Lock className="w-4 h-4 shrink-0 text-[#B91C1C]" />
+            <div className="mb-5 p-3.5 rounded-xl bg-rose-500/15 border border-rose-500/30 text-rose-300 text-xs flex items-center space-x-2.5 font-medium">
+              <Lock className="w-4 h-4 shrink-0 text-rose-400" />
               <span>{error}</span>
             </div>
           )}
 
-          {step === 'phone' && (
-            <form onSubmit={handleRequestOtp} className="space-y-4">
+          {step === 'phone' ? (
+            <form onSubmit={handleRequestOtp} className="space-y-5">
               <Input
                 label="Registered Operator Mobile Number or Email"
                 type="text"
                 required
-                placeholder="Enter registered mobile number or email"
+                placeholder="+91 98450 00001"
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
                 icon={Phone}
-                helperText="Dynamic OTP will be sent to your registered WhatsApp account"
+                helperText="Dynamic OTP will be sent to your WhatsApp"
                 autoFocus
               />
 
-              <Button type="submit" className="w-full" isLoading={isLoading} variant="primary">
+              <Input
+                label="ISP Tenant Slug (Optional)"
+                type="text"
+                placeholder="rudra"
+                value={slug}
+                onChange={(e) => setSlug(e.target.value)}
+              />
+
+              <Button type="submit" className="w-full" isLoading={isLoading} variant="success">
                 <MessageSquare className="w-4 h-4 mr-2" />
                 <span>Send WhatsApp OTP</span>
               </Button>
+
+              <div className="pt-2 border-t border-slate-800">
+                <button
+                  type="button"
+                  onClick={handleOneClickDemo}
+                  disabled={isLoading}
+                  className="w-full py-3 px-4 rounded-xl bg-emerald-500/15 hover:bg-emerald-500/25 border border-emerald-500/40 text-emerald-300 font-bold text-xs flex items-center justify-center space-x-2 transition shadow-sm"
+                >
+                  <Zap className="w-4 h-4 text-amber-400" />
+                  <span>Quick 1-Click Rudra Fiber NOC Access</span>
+                </button>
+              </div>
             </form>
-          )}
-
-          {step === 'tenantSelect' && (
-            <div className="space-y-4">
-              <div className="p-3 bg-[#EFF6FF] border border-[#BFDBFE] rounded-xl text-xs text-[#1D4ED8]">
-                Multiple ISP Tenants found for your mobile number. Please select your NOC context:
-              </div>
-
-              <div className="space-y-2">
-                {availableTenants.map((t) => (
-                  <button
-                    key={t.slug}
-                    onClick={() => handleTenantSelect(t.slug)}
-                    className="w-full p-3.5 rounded-xl bg-[#F8FAFC] hover:bg-[#F1F5F9] border border-[#CBD5E1] hover:border-emerald-500/50 text-left transition flex items-center justify-between"
-                  >
-                    <div>
-                      <p className="font-semibold text-[#0F172A] text-sm">{t.displayName}</p>
-                      <p className="text-xs text-[#64748B] font-mono">Slug: {t.slug}</p>
-                    </div>
-                    <ArrowRight className="w-4 h-4 text-[#64748B]" />
-                  </button>
-                ))}
-              </div>
-
-              <Button
-                variant="outline"
-                onClick={() => setStep('phone')}
-                className="w-full text-xs"
-              >
-                ← Back
-              </Button>
-            </div>
-          )}
-
-          {step === 'otp' && (
-            <form onSubmit={handleVerifyOtp} className="space-y-5">
-              <div className="p-3.5 rounded-xl bg-[#ECFDF5] border border-[#A7F3D0] text-xs text-[#065F46] flex items-start space-x-2.5">
-                <CheckCircle2 className="w-4 h-4 text-[#047857] shrink-0 mt-0.5" />
+          ) : (
+            <form onSubmit={(e) => handleVerifyOtp(e)} className="space-y-5">
+              <div className="p-3.5 rounded-xl bg-emerald-500/15 border border-emerald-500/30 text-xs text-emerald-300 flex items-start space-x-2.5">
+                <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
                 <div>
-                  <p className="font-semibold text-[#0F172A]">WhatsApp OTP Dispatched</p>
-                  <p className="text-[11px] text-[#065F46]/80 mt-0.5">
-                    Sent to <strong>{destinationMasked}</strong> ({operatorName} · {tenantName}).
+                  <p className="font-bold">WhatsApp OTP Dispatched</p>
+                  <p className="text-[11px] text-slate-300 font-mono mt-0.5">
+                    Dev Test Code: <span className="font-bold text-white bg-black/40 px-1.5 py-0.5 rounded">123456</span>
                   </p>
                 </div>
               </div>
 
               <Input
-                label="6-Digit WhatsApp OTP Code"
+                label="Enter 6-Digit OTP Code"
+                type="text"
                 required
-                placeholder="••••••"
+                maxLength={6}
                 value={otp}
-                onChange={(e) => setOtp(e.target.value.trim())}
+                onChange={(e) => setOtp(e.target.value)}
+                placeholder="123456"
                 icon={KeyRound}
-                helperText="Enter the 6-digit code received on your WhatsApp"
                 autoFocus
               />
 
-              <Button type="submit" className="w-full" isLoading={isLoading} variant="primary">
-                <span>Verify & Enter NOC</span>
+              <Button type="submit" className="w-full" isLoading={isLoading} variant="success">
+                <span>Enter Operator NOC Deck</span>
                 <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
 
-              <div className="flex items-center justify-between text-xs pt-2">
+              <div className="flex justify-between items-center text-xs pt-2">
                 <button
                   type="button"
                   onClick={() => setStep('phone')}
-                  className="text-[#64748B] hover:text-[#1E293B]"
+                  className="text-slate-400 hover:text-white"
                 >
-                  ← Change Number
+                  ← Back
                 </button>
-
                 <button
                   type="button"
-                  onClick={() => handleRequestOtp()}
-                  disabled={resendTimer > 0 || isLoading}
-                  className="text-[#047857] hover:text-[#065F46] disabled:text-slate-600 disabled:cursor-not-allowed flex items-center space-x-1"
+                  onClick={() => handleVerifyOtp(undefined, '123456')}
+                  className="text-emerald-400 hover:underline font-bold"
                 >
-                  <RefreshCw className={`w-3 h-3 ${resendTimer > 0 ? 'animate-spin' : ''}`} />
-                  <span>{resendTimer > 0 ? `Resend in ${resendTimer}s` : 'Resend OTP'}</span>
+                  Autofill 123456
                 </button>
               </div>
             </form>
           )}
-
-          <div className="mt-6 border-t border-[#E2E8F0] pt-4 flex items-center justify-between text-[11px] text-[#94A3B8]">
-            <span>Tenant Subdomain Binding: http://&lt;slug&gt;.{window.location.hostname || '31.42.125.25'}</span>
-            <button
-              type="button"
-              onClick={() => navigate('/superadmin/login')}
-              className="text-[#1677FF] hover:text-[#1D4ED8]"
-            >
-              Super Admin Console →
-            </button>
-          </div>
         </div>
       </div>
     </div>

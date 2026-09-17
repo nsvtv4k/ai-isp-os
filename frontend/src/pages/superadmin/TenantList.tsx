@@ -298,15 +298,15 @@ export const TenantList: React.FC = () => {
         const displayDomain = t.subdomain || `${t.slug}.${host}`;
         return (
           <div className="flex items-center space-x-3">
-            <div className="w-9 h-9 rounded-lg bg-[#EFF6FF] border border-[#BFDBFE] flex items-center justify-center text-[#1677FF] font-bold">
+            <div className="w-9 h-9 rounded-lg bg-sky-950 border border-sky-500/40 flex items-center justify-center text-sky-400 font-bold">
               <Building2 className="w-5 h-5" />
             </div>
             <div>
-              <p className="font-semibold text-[#0F172A]">{t.displayName || t.name}</p>
-              <p className="text-xs text-[#64748B] font-mono flex items-center space-x-1">
-                <Globe className="w-3 h-3 inline text-[#1677FF] mr-1" />
+              <p className="font-semibold text-white">{t.displayName || t.name}</p>
+              <p className="text-xs text-slate-400 font-mono flex items-center space-x-1">
+                <Globe className="w-3 h-3 inline text-sky-400 mr-1" />
                 <span>{displayDomain}</span>
-                <span className="text-[#047857] ml-2 font-bold">(Slug: {t.slug})</span>
+                <span className="text-emerald-400 ml-2 font-bold">(Slug: {t.slug})</span>
               </p>
             </div>
           </div>
@@ -321,18 +321,18 @@ export const TenantList: React.FC = () => {
       header: 'Owner / WhatsApp',
       accessor: (t) => (
         <div>
-          <p className="text-[#1E293B]">{t.owner?.name}</p>
-          <p className="text-xs text-[#047857] font-mono">{t.owner?.phone}</p>
-          <p className="text-xs text-[#64748B]">{t.owner?.email}</p>
+          <p className="text-slate-200">{t.owner?.name}</p>
+          <p className="text-xs text-emerald-400 font-mono">{t.owner?.phone}</p>
+          <p className="text-xs text-slate-400">{t.owner?.email}</p>
         </div>
       ),
     },
     {
       header: 'City / Region',
       accessor: (t) => (
-        <div className="text-xs text-[#334155]">
+        <div className="text-xs text-slate-300">
           <p>{t.address?.city || 'India'}, {t.address?.state || ''}</p>
-          <p className="text-[#94A3B8] font-mono">{t.address?.pincode || ''}</p>
+          <p className="text-slate-400 font-mono">{t.address?.pincode || ''}</p>
         </div>
       ),
     },
@@ -345,11 +345,11 @@ export const TenantList: React.FC = () => {
         return (
           <div className="space-y-1 text-xs">
             <div className="flex items-center space-x-1.5">
-              <Users className="w-3.5 h-3.5 text-[#1677FF]" />
-              <span className="font-semibold text-[#1E293B]">{subs} Subscribers</span>
+              <Users className="w-3.5 h-3.5 text-sky-400" />
+              <span className="font-semibold text-slate-200">{subs} Subscribers</span>
             </div>
-            <div className="flex items-center space-x-1.5 text-[11px] text-[#64748B] font-mono">
-              <Radio className="w-3 h-3 text-[#047857]" />
+            <div className="flex items-center space-x-1.5 text-[11px] text-slate-400 font-mono">
+              <Radio className="w-3 h-3 text-emerald-400" />
               <span>{online} / {devs} ONTs Reporting</span>
             </div>
           </div>
@@ -410,14 +410,14 @@ export const TenantList: React.FC = () => {
             }}
             title="Enter Operator NOC"
           >
-            <ExternalLink className="w-3.5 h-3.5 mr-1 text-[#1677FF]" />
+            <ExternalLink className="w-3.5 h-3.5 mr-1 text-sky-400" />
             <span>NOC</span>
           </Button>
 
           <Button
             size="sm"
             variant="ghost"
-            className="text-[#B91C1C] hover:text-[#991B1B] hover:bg-[#FEF2F2]"
+            className="text-rose-400 hover:text-rose-300 hover:bg-rose-500/15"
             onClick={(e) => {
               e.stopPropagation();
               openDeleteModal(t);
@@ -452,7 +452,7 @@ export const TenantList: React.FC = () => {
     >
       <div className="space-y-4">
         {/* Filters & Search Toolbar */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-3 bg-white p-4 border border-[#E2E8F0] rounded-xl">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-3 bg-[#0E172A] p-4 border border-slate-800 rounded-2xl">
           <form onSubmit={handleSearchSubmit} className="w-full sm:w-80">
             <Input
               placeholder="Search by name, slug, phone, email..."
@@ -463,7 +463,7 @@ export const TenantList: React.FC = () => {
           </form>
 
           <div className="flex items-center space-x-2 w-full sm:w-auto">
-            <span className="text-xs text-[#64748B]">Status:</span>
+            <span className="text-xs text-slate-400">Status:</span>
             {['all', 'active', 'trial', 'suspended'].map((st) => (
               <button
                 key={st}
@@ -471,7 +471,7 @@ export const TenantList: React.FC = () => {
                 className={`px-3 py-1.5 rounded-lg text-xs font-medium capitalize transition ${
                   statusFilter === st
                     ? 'bg-sky-600 text-white'
-                    : 'bg-[#F1F5F9] text-[#64748B] hover:text-[#1E293B]'
+                    : 'bg-[#F1F5F9] text-slate-400 hover:text-slate-200'
                 }`}
               >
                 {st}
@@ -514,7 +514,7 @@ export const TenantList: React.FC = () => {
         <form onSubmit={handleCreateTenant} className="space-y-6 max-h-[80vh] overflow-y-auto px-1">
           {/* Section 1: Business Identity */}
           <div className="space-y-4">
-            <h3 className="text-xs font-bold uppercase tracking-wider text-[#1677FF] flex items-center space-x-2">
+            <h3 className="text-xs font-bold uppercase tracking-wider text-sky-400 flex items-center space-x-2">
               <Building2 className="w-4 h-4" />
               <span>1. ISP Business Identity & Brand</span>
             </h3>
@@ -559,8 +559,8 @@ export const TenantList: React.FC = () => {
             </div>
 
             {/* Live Subdomain & CWMP URL Preview Box */}
-            <div className="p-4 rounded-xl bg-[#F8FAFC] border border-[#BFDBFE] space-y-2">
-              <div className="flex items-center justify-between text-xs font-semibold text-[#1D4ED8]">
+            <div className="p-4 rounded-xl bg-[#070C1A] border border-sky-500/40 space-y-2">
+              <div className="flex items-center justify-between text-xs font-semibold text-sky-300">
                 <span className="flex items-center space-x-1.5">
                   <Zap className="w-4 h-4 text-[#B45309]" />
                   <span>Deterministic Operator Routing & CWMP Endpoints</span>
@@ -569,21 +569,21 @@ export const TenantList: React.FC = () => {
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs font-mono pt-1">
-                <div className="p-2.5 rounded-lg bg-white border border-[#E2E8F0]">
-                  <span className="text-[#64748B] text-[10px] block font-sans font-bold">Tenant Subdomain URL:</span>
-                  <span className="text-[#1677FF] font-bold select-all">http://{previewDomain}</span>
+                <div className="p-2.5 rounded-lg bg-[#0E172A] border border-slate-800">
+                  <span className="text-slate-400 text-[10px] block font-sans font-bold">Tenant Subdomain URL:</span>
+                  <span className="text-sky-400 font-bold select-all">http://{previewDomain}</span>
                 </div>
-                <div className="p-2.5 rounded-lg bg-white border border-[#E2E8F0]">
-                  <span className="text-[#64748B] text-[10px] block font-sans font-bold">Direct TR-069 CWMP ACS URL (ONT Config):</span>
-                  <span className="text-[#047857] font-bold select-all">http://{currentHost}/tr069/{currentSlug}</span>
+                <div className="p-2.5 rounded-lg bg-[#0E172A] border border-slate-800">
+                  <span className="text-slate-400 text-[10px] block font-sans font-bold">Direct TR-069 CWMP ACS URL (ONT Config):</span>
+                  <span className="text-emerald-400 font-bold select-all">http://{currentHost}/tr069/{currentSlug}</span>
                 </div>
               </div>
             </div>
           </div>
 
           {/* Section 2: Owner & Principal Administrator */}
-          <div className="border-t border-[#E2E8F0] pt-5 space-y-4">
-            <h3 className="text-xs font-bold uppercase tracking-wider text-[#047857] flex items-center space-x-2">
+          <div className="border-t border-slate-800 pt-5 space-y-4">
+            <h3 className="text-xs font-bold uppercase tracking-wider text-emerald-400 flex items-center space-x-2">
               <ShieldCheck className="w-4 h-4" />
               <span>2. Operator Administrator & WhatsApp Auth</span>
             </h3>
@@ -616,7 +616,7 @@ export const TenantList: React.FC = () => {
           </div>
 
           {/* Section 3: Registered Office Address */}
-          <div className="border-t border-[#E2E8F0] pt-5 space-y-4">
+          <div className="border-t border-slate-800 pt-5 space-y-4">
             <h3 className="text-xs font-bold uppercase tracking-wider text-[#6D28D9] flex items-center space-x-2">
               <MapPin className="w-4 h-4" />
               <span>3. Registered Office & Operating Address</span>
@@ -663,7 +663,7 @@ export const TenantList: React.FC = () => {
           </div>
 
           {/* Section 4: SaaS Plan Tier Selection */}
-          <div className="border-t border-[#E2E8F0] pt-5 space-y-4">
+          <div className="border-t border-slate-800 pt-5 space-y-4">
             <h3 className="text-xs font-bold uppercase tracking-wider text-[#B45309] flex items-center space-x-2">
               <Radio className="w-4 h-4" />
               <span>4. Subscription Plan Tier</span>
@@ -680,20 +680,20 @@ export const TenantList: React.FC = () => {
                   onClick={() => setFormData({ ...formData, planTier: tier.name })}
                   className={`p-3.5 rounded-xl border cursor-pointer transition ${
                     formData.planTier === tier.name
-                      ? 'bg-[#EFF6FF] border-sky-500 text-[#0F172A]'
-                      : 'bg-white border-[#E2E8F0] text-[#334155] hover:border-[#CBD5E1]'
+                      ? 'bg-sky-500/15 border-sky-500 text-white'
+                      : 'bg-[#0E172A] border-slate-800 text-slate-300 hover:border-slate-700/80'
                   }`}
                 >
                   <p className="font-semibold text-xs">{tier.name}</p>
-                  <p className="text-[11px] text-[#64748B] mt-1">Capacity: {tier.subs}</p>
-                  <p className="text-xs font-bold text-[#1677FF] mt-0.5">{tier.fee}</p>
+                  <p className="text-[11px] text-slate-400 mt-1">Capacity: {tier.subs}</p>
+                  <p className="text-xs font-bold text-sky-400 mt-0.5">{tier.fee}</p>
                 </div>
               ))}
             </div>
           </div>
 
           {/* Actions */}
-          <div className="flex justify-end space-x-3 pt-4 border-t border-[#E2E8F0] sticky bottom-0 bg-white py-2">
+          <div className="flex justify-end space-x-3 pt-4 border-t border-slate-800 sticky bottom-0 bg-[#0E172A] py-2">
             <Button type="button" variant="outline" onClick={() => setIsCreateModalOpen(false)}>
               Cancel
             </Button>
@@ -751,9 +751,9 @@ export const TenantList: React.FC = () => {
                 }
               />
               <div className="space-y-1.5">
-                <label className="block text-xs font-semibold text-[#334155]">Operator Status</label>
+                <label className="block text-xs font-semibold text-slate-300">Operator Status</label>
                 <select
-                  className="w-full bg-[#F8FAFC] border border-[#E2E8F0] rounded-lg px-3.5 py-2 text-sm text-[#0F172A] focus:outline-none focus:ring-1 focus:ring-sky-500"
+                  className="w-full bg-[#070C1A] border border-slate-800 rounded-lg px-3.5 py-2 text-sm text-white focus:outline-none focus:ring-1 focus:ring-sky-500"
                   value={formData.status}
                   onChange={(e) => setFormData({ ...formData, status: e.target.value as any })}
                 >
@@ -766,8 +766,8 @@ export const TenantList: React.FC = () => {
           </div>
 
           {/* Administrator / WhatsApp Login */}
-          <div className="border-t border-[#E2E8F0] pt-5 space-y-4">
-            <h3 className="text-xs font-bold uppercase tracking-wider text-[#047857] flex items-center space-x-2">
+          <div className="border-t border-slate-800 pt-5 space-y-4">
+            <h3 className="text-xs font-bold uppercase tracking-wider text-emerald-400 flex items-center space-x-2">
               <ShieldCheck className="w-4 h-4" />
               <span>2. Operator Administrator Info</span>
             </h3>
@@ -796,7 +796,7 @@ export const TenantList: React.FC = () => {
           </div>
 
           {/* Registered Address */}
-          <div className="border-t border-[#E2E8F0] pt-5 space-y-4">
+          <div className="border-t border-slate-800 pt-5 space-y-4">
             <h3 className="text-xs font-bold uppercase tracking-wider text-[#6D28D9] flex items-center space-x-2">
               <MapPin className="w-4 h-4" />
               <span>3. Office & Operating Address</span>
@@ -838,8 +838,8 @@ export const TenantList: React.FC = () => {
           </div>
 
           {/* Subscription Tier */}
-          <div className="border-t border-[#E2E8F0] pt-5 space-y-4">
-            <h3 className="text-xs font-bold uppercase tracking-wider text-[#1677FF] flex items-center space-x-2">
+          <div className="border-t border-slate-800 pt-5 space-y-4">
+            <h3 className="text-xs font-bold uppercase tracking-wider text-sky-400 flex items-center space-x-2">
               <Radio className="w-4 h-4" />
               <span>4. Subscription Plan Tier</span>
             </h3>
@@ -855,20 +855,20 @@ export const TenantList: React.FC = () => {
                   onClick={() => setFormData({ ...formData, planTier: tier.name })}
                   className={`p-3.5 rounded-xl border cursor-pointer transition ${
                     formData.planTier === tier.name
-                      ? 'bg-[#EFF6FF] border-sky-500 text-[#0F172A]'
-                      : 'bg-white border-[#E2E8F0] text-[#334155] hover:border-[#CBD5E1]'
+                      ? 'bg-sky-500/15 border-sky-500 text-white'
+                      : 'bg-[#0E172A] border-slate-800 text-slate-300 hover:border-slate-700/80'
                   }`}
                 >
                   <p className="font-semibold text-xs">{tier.name}</p>
-                  <p className="text-[11px] text-[#64748B] mt-1">Capacity: {tier.subs}</p>
-                  <p className="text-xs font-bold text-[#1677FF] mt-0.5">{tier.fee}</p>
+                  <p className="text-[11px] text-slate-400 mt-1">Capacity: {tier.subs}</p>
+                  <p className="text-xs font-bold text-sky-400 mt-0.5">{tier.fee}</p>
                 </div>
               ))}
             </div>
           </div>
 
           {/* Actions */}
-          <div className="flex justify-end space-x-3 pt-4 border-t border-[#E2E8F0] sticky bottom-0 bg-white py-2">
+          <div className="flex justify-end space-x-3 pt-4 border-t border-slate-800 sticky bottom-0 bg-[#0E172A] py-2">
             <Button
               type="button"
               variant="outline"
@@ -898,16 +898,16 @@ export const TenantList: React.FC = () => {
         maxWidth="md"
       >
         <div className="space-y-4">
-          <p className="text-sm text-[#334155]">
+          <p className="text-sm text-slate-300">
             Are you sure you want to permanently delete{' '}
-            <strong className="text-[#0F172A]">{deletingTenant?.displayName || deletingTenant?.name}</strong> (
-            <code className="text-[#B91C1C]">{deletingTenant?.slug}</code>)?
+            <strong className="text-white">{deletingTenant?.displayName || deletingTenant?.name}</strong> (
+            <code className="text-rose-400">{deletingTenant?.slug}</code>)?
           </p>
-          <div className="p-3 rounded-lg bg-[#FEF2F2] border border-[#FECACA] text-[#991B1B] text-xs">
+          <div className="p-3 rounded-lg bg-rose-500/15 border border-rose-500/30 text-rose-300 text-xs">
             ⚠️ Warning: All customer accounts, hardware devices, and operator logins for this tenant will be purged.
           </div>
 
-          <div className="flex justify-end space-x-3 pt-4 border-t border-[#E2E8F0]">
+          <div className="flex justify-end space-x-3 pt-4 border-t border-slate-800">
             <Button
               type="button"
               variant="outline"

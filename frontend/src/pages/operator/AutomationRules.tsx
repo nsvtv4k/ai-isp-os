@@ -60,9 +60,9 @@ export const AutomationRules: React.FC = () => {
       header: 'Rule Name / Trigger',
       accessor: (r) => (
         <div>
-          <span className="font-bold text-[#0F172A] text-xs">{r.name}</span>
-          <div className="flex items-center space-x-2 text-[11px] text-[#64748B] mt-0.5">
-            <span className="font-mono text-[#1677FF]">{r.trigger}</span>
+          <span className="font-bold text-white text-xs">{r.name}</span>
+          <div className="flex items-center space-x-2 text-[11px] text-slate-400 mt-0.5">
+            <span className="font-mono text-sky-400">{r.trigger}</span>
             <span>•</span>
             <span>Cooldown: {r.cooldownMinutes} mins</span>
           </div>
@@ -75,7 +75,7 @@ export const AutomationRules: React.FC = () => {
     },
     {
       header: 'Executions',
-      accessor: (r) => <span className="text-xs font-semibold text-[#1E293B]">{r.executionCount || 0} runs</span>,
+      accessor: (r) => <span className="text-xs font-semibold text-slate-100">{r.executionCount || 0} runs</span>,
     },
     {
       header: 'State',
@@ -127,24 +127,24 @@ export const AutomationRules: React.FC = () => {
         </StateWrapper>
 
         {/* Execution Log Table */}
-        <div className="bg-white border border-[#E2E8F0] rounded-xl p-5 space-y-3 shadow-md">
-          <div className="flex items-center space-x-2 border-b border-[#E2E8F0] pb-3">
-            <Clock className="w-4 h-4 text-[#1677FF]" />
-            <h3 className="text-sm font-bold text-[#0F172A]">Recent Rule Executions & Audit</h3>
+        <div className="bg-[#0E172A] border border-slate-800 rounded-xl p-5 space-y-3 shadow-md">
+          <div className="flex items-center space-x-2 border-b border-slate-800 pb-3">
+            <Clock className="w-4 h-4 text-sky-400" />
+            <h3 className="text-sm font-bold text-white">Recent Rule Executions & Audit</h3>
           </div>
 
           <div className="space-y-2">
             {logs.length === 0 ? (
-              <p className="text-xs text-[#94A3B8] py-3 text-center">No recent rule executions logged.</p>
+              <p className="text-xs text-slate-400 py-3 text-center">No recent rule executions logged.</p>
             ) : (
               logs.map((log) => (
                 <div
                   key={log._id}
-                  className="p-3 bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl flex items-center justify-between text-xs"
+                  className="p-3 bg-[#060913] border border-slate-800 rounded-xl flex items-center justify-between text-xs"
                 >
                   <div>
                     <div className="flex items-center space-x-2">
-                      <span className="font-semibold text-[#1E293B]">{log.ruleName}</span>
+                      <span className="font-semibold text-slate-100">{log.ruleName}</span>
                       <Badge
                         variant={
                           log.result === 'SUCCESS'
@@ -157,9 +157,9 @@ export const AutomationRules: React.FC = () => {
                         {log.result}
                       </Badge>
                     </div>
-                    <p className="text-[11px] text-[#64748B] mt-0.5">{log.message}</p>
+                    <p className="text-[11px] text-slate-400 mt-0.5">{log.message}</p>
                   </div>
-                  <span className="text-[11px] text-[#94A3B8] font-mono">
+                  <span className="text-[11px] text-slate-400 font-mono">
                     {new Date(log.timestamp).toLocaleTimeString()}
                   </span>
                 </div>
@@ -185,9 +185,9 @@ export const AutomationRules: React.FC = () => {
           />
 
           <div className="space-y-1.5">
-            <label className="block text-xs font-semibold text-[#334155]">Trigger Event</label>
+            <label className="block text-xs font-semibold text-slate-300">Trigger Event</label>
             <select
-              className="w-full bg-[#F8FAFC] border border-[#E2E8F0] rounded-lg px-3.5 py-2 text-sm text-[#0F172A] focus:outline-none focus:ring-1 focus:ring-sky-500"
+              className="w-full bg-[#060913] border border-slate-800 rounded-lg px-3.5 py-2 text-sm text-white focus:outline-none focus:ring-1 focus:ring-sky-500"
               value={newRule.trigger}
               onChange={(e) => setNewRule({ ...newRule, trigger: e.target.value })}
             >
@@ -198,9 +198,9 @@ export const AutomationRules: React.FC = () => {
           </div>
 
           <div className="space-y-1.5">
-            <label className="block text-xs font-semibold text-[#334155]">Automated Action</label>
+            <label className="block text-xs font-semibold text-slate-300">Automated Action</label>
             <select
-              className="w-full bg-[#F8FAFC] border border-[#E2E8F0] rounded-lg px-3.5 py-2 text-sm text-[#0F172A] focus:outline-none focus:ring-1 focus:ring-sky-500"
+              className="w-full bg-[#060913] border border-slate-800 rounded-lg px-3.5 py-2 text-sm text-white focus:outline-none focus:ring-1 focus:ring-sky-500"
               value={newRule.action}
               onChange={(e) => setNewRule({ ...newRule, action: e.target.value })}
             >
@@ -217,7 +217,7 @@ export const AutomationRules: React.FC = () => {
             onChange={(e) => setNewRule({ ...newRule, cooldownMinutes: Number(e.target.value) })}
           />
 
-          <div className="flex justify-end space-x-3 pt-4 border-t border-[#E2E8F0]">
+          <div className="flex justify-end space-x-3 pt-4 border-t border-slate-800">
             <Button type="button" variant="outline" onClick={() => setIsAddModalOpen(false)}>
               Cancel
             </Button>

@@ -95,14 +95,14 @@ export const OperatorSettings: React.FC = () => {
     >
       <div className="max-w-4xl space-y-6">
         {savedSuccess && (
-          <div className="p-4 bg-[#ECFDF5] border border-[#A7F3D0] rounded-xl text-[#065F46] text-xs font-bold flex items-center space-x-2">
+          <div className="p-4 bg-emerald-500/15 border border-emerald-500/30 rounded-xl text-emerald-300 text-xs font-bold flex items-center space-x-2">
             <CheckCircle2 className="w-4 h-4 shrink-0" />
             <span>Settings saved successfully and synced across telemetry listeners.</span>
           </div>
         )}
 
         {waActionSuccess && (
-          <div className="p-4 bg-[#ECFDF5] border border-[#A7F3D0] rounded-xl text-[#065F46] text-xs font-bold flex items-center space-x-2">
+          <div className="p-4 bg-emerald-500/15 border border-emerald-500/30 rounded-xl text-emerald-300 text-xs font-bold flex items-center space-x-2">
             <CheckCircle2 className="w-4 h-4 shrink-0" />
             <span>{waActionSuccess}</span>
           </div>
@@ -110,50 +110,50 @@ export const OperatorSettings: React.FC = () => {
 
         <form onSubmit={handleSave} className="space-y-6">
           {/* Tenant Profile Information */}
-          <div className="bg-white border border-[#CBD5E1] rounded-2xl p-6 space-y-4 shadow-xs">
-            <div className="flex items-center space-x-3 pb-3 border-b border-[#E2E8F0]">
-              <Server className="w-5 h-5 text-[#1677FF]" />
+          <div className="bg-[#0E172A] border border-slate-700/80 rounded-2xl p-6 space-y-4 shadow-xs">
+            <div className="flex items-center space-x-3 pb-3 border-b border-slate-800">
+              <Server className="w-5 h-5 text-sky-400" />
               <div>
-                <h3 className="text-base font-bold text-[#0F172A]">Tenant Identity & Scoped Domain</h3>
-                <p className="text-xs text-[#64748B]">Operator organization boundaries and CWMP URL binding</p>
+                <h3 className="text-base font-bold text-white">Tenant Identity & Scoped Domain</h3>
+                <p className="text-xs text-slate-400">Operator organization boundaries and CWMP URL binding</p>
               </div>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
               <div>
-                <label className="text-[#0F172A] font-bold block mb-1">Company Display Name</label>
+                <label className="text-white font-bold block mb-1">Company Display Name</label>
                 <input
                   disabled
                   value={tenant?.displayName || 'Rudra Fiber Broadband'}
-                  className="w-full bg-[#F8FAFC] border border-[#CBD5E1] rounded-xl p-3 text-[#0F172A] font-bold"
+                  className="w-full bg-[#060913] border border-slate-700/80 rounded-xl p-3 text-white font-bold"
                 />
               </div>
               <div>
-                <label className="text-[#0F172A] font-bold block mb-1">Mandatory Tenant Slug</label>
+                <label className="text-white font-bold block mb-1">Mandatory Tenant Slug</label>
                 <input
                   disabled
                   value={tenant?.slug || 'rudra'}
-                  className="w-full bg-[#F8FAFC] border border-[#CBD5E1] rounded-xl p-3 text-[#047857] font-mono font-bold"
+                  className="w-full bg-[#060913] border border-slate-700/80 rounded-xl p-3 text-emerald-400 font-mono font-bold"
                 />
               </div>
               <div>
-                <label className="text-[#0F172A] font-bold block mb-1">Tenant Subdomain URL</label>
+                <label className="text-white font-bold block mb-1">Tenant Subdomain URL</label>
                 <input
                   disabled
                   value={`http://${tenant?.slug || 'rudra'}.${window.location.hostname || '31.42.125.25'}`}
-                  className="w-full bg-[#F8FAFC] border border-[#CBD5E1] rounded-xl p-3 text-[#1677FF] font-mono font-bold"
+                  className="w-full bg-[#060913] border border-slate-700/80 rounded-xl p-3 text-sky-400 font-mono font-bold"
                 />
               </div>
             </div>
           </div>
 
           {/* Optical Telemetry Thresholds */}
-          <div className="bg-white border border-[#CBD5E1] rounded-2xl p-6 space-y-4 shadow-xs">
-            <div className="flex items-center space-x-3 pb-3 border-b border-[#E2E8F0]">
+          <div className="bg-[#0E172A] border border-slate-700/80 rounded-2xl p-6 space-y-4 shadow-xs">
+            <div className="flex items-center space-x-3 pb-3 border-b border-slate-800">
               <Sliders className="w-5 h-5 text-[#B45309]" />
               <div>
-                <h3 className="text-base font-bold text-[#0F172A]">Optical Alarm Thresholds</h3>
-                <p className="text-xs text-[#64748B]">Define automatic alert triggers based on Rx optical power</p>
+                <h3 className="text-base font-bold text-white">Optical Alarm Thresholds</h3>
+                <p className="text-xs text-slate-400">Define automatic alert triggers based on Rx optical power</p>
               </div>
             </div>
 
@@ -176,15 +176,15 @@ export const OperatorSettings: React.FC = () => {
           </div>
 
           {/* Dedicated Operator WhatsApp Web Linking Card */}
-          <div className="bg-white border border-[#CBD5E1] rounded-2xl p-6 space-y-4 shadow-xs">
-            <div className="flex items-center justify-between pb-3 border-b border-[#E2E8F0]">
+          <div className="bg-[#0E172A] border border-slate-700/80 rounded-2xl p-6 space-y-4 shadow-xs">
+            <div className="flex items-center justify-between pb-3 border-b border-slate-800">
               <div className="flex items-center space-x-3">
-                <div className="w-10 h-10 rounded-xl bg-[#ECFDF5] border border-[#A7F3D0] flex items-center justify-center text-[#047857]">
+                <div className="w-10 h-10 rounded-xl bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
                   <Smartphone className="w-5 h-5" />
                 </div>
                 <div>
-                  <h3 className="text-base font-bold text-[#0F172A]">Operator Dedicated WhatsApp Business Web Session</h3>
-                  <p className="text-xs text-[#64748B]">Link your own WhatsApp Business number to send bills, OTPs, and alerts to your subscribers</p>
+                  <h3 className="text-base font-bold text-white">Operator Dedicated WhatsApp Business Web Session</h3>
+                  <p className="text-xs text-slate-400">Link your own WhatsApp Business number to send bills, OTPs, and alerts to your subscribers</p>
                 </div>
               </div>
               <Badge variant={waData?.status === 'CONNECTED' ? 'success' : 'warning'} dot>
@@ -192,12 +192,12 @@ export const OperatorSettings: React.FC = () => {
               </Badge>
             </div>
 
-            <div className="p-4 bg-[#F8FAFC] border border-[#CBD5E1] rounded-xl flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div className="p-4 bg-[#060913] border border-slate-700/80 rounded-xl flex flex-col sm:flex-row items-center justify-between gap-4">
               <div className="space-y-1">
-                <p className="text-sm font-bold text-[#0F172A]">
+                <p className="text-sm font-bold text-white">
                   {waData?.phone ? `Connected Number: ${waData.phone}` : 'No WhatsApp session linked to this operator account'}
                 </p>
-                <p className="text-xs text-[#64748B]">
+                <p className="text-xs text-slate-400">
                   {waData?.status === 'CONNECTED'
                     ? `Active multi-device session (${waData?.deviceInfo || 'Android / iOS App'})`
                     : 'Scan the QR code below using WhatsApp on your phone (Linked Devices) to activate.'}
@@ -242,21 +242,21 @@ export const OperatorSettings: React.FC = () => {
           <div className="space-y-4 text-center">
             {qrLoading ? (
               <div className="py-12 flex flex-col items-center justify-center space-y-2">
-                <RefreshCw className="w-8 h-8 text-[#1677FF] animate-spin" />
-                <p className="text-xs text-[#64748B]">Generating secure multi-device pairing QR...</p>
+                <RefreshCw className="w-8 h-8 text-sky-400 animate-spin" />
+                <p className="text-xs text-slate-400">Generating secure multi-device pairing QR...</p>
               </div>
             ) : waData?.qrCodeDataUrl ? (
-              <div className="p-4 bg-white border border-[#CBD5E1] rounded-2xl inline-block shadow-sm">
+              <div className="p-4 bg-[#0E172A] border border-slate-700/80 rounded-2xl inline-block shadow-sm">
                 <img src={waData.qrCodeDataUrl} alt="WhatsApp Web QR" className="w-64 h-64 mx-auto rounded-lg" />
               </div>
             ) : (
-              <div className="py-8 text-xs text-[#94A3B8] italic">
+              <div className="py-8 text-xs text-slate-400 italic">
                 QR code ready. Click below to confirm connection.
               </div>
             )}
 
-            <div className="p-3 bg-[#F8FAFC] rounded-xl border border-[#E2E8F0] text-left space-y-2">
-              <label className="text-xs font-bold text-[#0F172A] block">Operator WhatsApp Phone Number</label>
+            <div className="p-3 bg-[#060913] rounded-xl border border-slate-800 text-left space-y-2">
+              <label className="text-xs font-bold text-white block">Operator WhatsApp Phone Number</label>
               <Input
                 placeholder="+919949666907"
                 value={customPhone}
@@ -264,7 +264,7 @@ export const OperatorSettings: React.FC = () => {
               />
             </div>
 
-            <div className="flex justify-end space-x-3 pt-3 border-t border-[#E2E8F0]">
+            <div className="flex justify-end space-x-3 pt-3 border-t border-slate-800">
               <Button variant="outline" type="button" onClick={() => setIsQrModalOpen(false)}>
                 Cancel
               </Button>

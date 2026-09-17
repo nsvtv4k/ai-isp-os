@@ -133,7 +133,7 @@ export const WarehouseInventory: React.FC = () => {
                   <h4 className="text-xs font-bold text-amber-900 uppercase tracking-wider">Low Stock Threshold Warnings</h4>
                   <div className="flex flex-wrap gap-2 mt-1.5">
                     {lowStockAlerts.map((a: any) => (
-                      <span key={a.category} className="px-2.5 py-1 bg-white border border-amber-300 rounded-lg text-xs font-mono font-bold text-amber-800">
+                      <span key={a.category} className="px-2.5 py-1 bg-[#0E172A] border border-amber-300 rounded-lg text-xs font-mono font-bold text-amber-800">
                         {a.category}: {a.inStockCount} units left (Min: {a.minThreshold})
                       </span>
                     ))}
@@ -144,10 +144,10 @@ export const WarehouseInventory: React.FC = () => {
           )}
 
           {/* Main Stock Table */}
-          <Card className="overflow-hidden border border-slate-200 bg-white rounded-2xl shadow-xs">
+          <Card className="overflow-hidden border border-slate-800 bg-[#0E172A] rounded-2xl shadow-xs">
             <div className="p-4 border-b border-slate-100 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
               <div>
-                <h3 className="font-bold text-slate-900 text-sm">Warehouse Asset Inventory</h3>
+                <h3 className="font-bold text-white text-sm">Warehouse Asset Inventory</h3>
                 <p className="text-xs text-slate-500 mt-0.5">Track serials, batches, locations, and warranties</p>
               </div>
 
@@ -155,7 +155,7 @@ export const WarehouseInventory: React.FC = () => {
                 <select
                   value={categoryFilter}
                   onChange={(e) => setCategoryFilter(e.target.value)}
-                  className="px-2.5 py-1.5 text-xs border border-slate-300 rounded-lg bg-white font-semibold text-slate-700"
+                  className="px-2.5 py-1.5 text-xs border border-slate-700 rounded-lg bg-[#0E172A] font-semibold text-slate-700"
                 >
                   <option value="ALL">All Categories</option>
                   <option value="ONT">ONT Terminals</option>
@@ -173,7 +173,7 @@ export const WarehouseInventory: React.FC = () => {
             <div className="overflow-x-auto">
               <table className="w-full text-left text-xs border-collapse">
                 <thead>
-                  <tr className="bg-slate-50 border-b border-slate-200 text-slate-500 font-semibold uppercase">
+                  <tr className="bg-[#080D1A] border-b border-slate-800 text-slate-500 font-semibold uppercase">
                     <th className="py-3 px-4">Item Code / Serial</th>
                     <th className="py-3 px-4">Category</th>
                     <th className="py-3 px-4">Model & Brand</th>
@@ -192,13 +192,13 @@ export const WarehouseInventory: React.FC = () => {
                     </tr>
                   ) : (
                     items.map((item: any) => (
-                      <tr key={item._id} className="hover:bg-slate-50">
+                      <tr key={item._id} className="hover:bg-[#080D1A]">
                         <td className="py-3 px-4">
-                          <span className="font-mono font-bold text-slate-900 block">{item.itemCode}</span>
+                          <span className="font-mono font-bold text-white block">{item.itemCode}</span>
                           <span className="font-mono text-[10px] text-slate-400">{item.serialNumber || 'Batch Tracked'}</span>
                         </td>
                         <td className="py-3 px-4 font-mono font-bold text-sky-700">{item.category}</td>
-                        <td className="py-3 px-4 font-semibold text-slate-800">{item.brand} {item.modelName}</td>
+                        <td className="py-3 px-4 font-semibold text-slate-100">{item.brand} {item.modelName}</td>
                         <td className="py-3 px-4">
                           <Badge variant={item.status === 'IN_STOCK' ? 'success' : item.status === 'DEPLOYED' ? 'neutral' : 'warning'}>
                             {item.status}
@@ -248,7 +248,7 @@ export const WarehouseInventory: React.FC = () => {
               <select
                 value={stockInForm.category}
                 onChange={(e) => setStockInForm({ ...stockInForm, category: e.target.value })}
-                className="w-full px-3 py-2 text-xs border border-slate-300 rounded-lg bg-white font-semibold"
+                className="w-full px-3 py-2 text-xs border border-slate-700 rounded-lg bg-[#0E172A] font-semibold"
               >
                 <option value="ONT">ONT (Optical Network Terminal)</option>
                 <option value="ROUTER">Wi-Fi Router</option>
@@ -268,7 +268,7 @@ export const WarehouseInventory: React.FC = () => {
                 required
                 value={stockInForm.brand}
                 onChange={(e) => setStockInForm({ ...stockInForm, brand: e.target.value })}
-                className="w-full px-3 py-2 text-xs border border-slate-300 rounded-lg"
+                className="w-full px-3 py-2 text-xs border border-slate-700 rounded-lg"
               />
             </div>
           </div>
@@ -281,7 +281,7 @@ export const WarehouseInventory: React.FC = () => {
                 required
                 value={stockInForm.modelName}
                 onChange={(e) => setStockInForm({ ...stockInForm, modelName: e.target.value })}
-                className="w-full px-3 py-2 text-xs border border-slate-300 rounded-lg"
+                className="w-full px-3 py-2 text-xs border border-slate-700 rounded-lg"
               />
             </div>
 
@@ -293,7 +293,7 @@ export const WarehouseInventory: React.FC = () => {
                 max={100}
                 value={stockInForm.quantity}
                 onChange={(e) => setStockInForm({ ...stockInForm, quantity: Number(e.target.value) })}
-                className="w-full px-3 py-2 text-xs border border-slate-300 rounded-lg font-mono font-bold"
+                className="w-full px-3 py-2 text-xs border border-slate-700 rounded-lg font-mono font-bold"
               />
             </div>
           </div>
@@ -305,7 +305,7 @@ export const WarehouseInventory: React.FC = () => {
                 type="text"
                 value={stockInForm.purchaseOrderNumber}
                 onChange={(e) => setStockInForm({ ...stockInForm, purchaseOrderNumber: e.target.value })}
-                className="w-full px-3 py-2 text-xs border border-slate-300 rounded-lg font-mono"
+                className="w-full px-3 py-2 text-xs border border-slate-700 rounded-lg font-mono"
               />
             </div>
 
@@ -315,7 +315,7 @@ export const WarehouseInventory: React.FC = () => {
                 type="number"
                 value={stockInForm.purchasePrice}
                 onChange={(e) => setStockInForm({ ...stockInForm, purchasePrice: Number(e.target.value) })}
-                className="w-full px-3 py-2 text-xs border border-slate-300 rounded-lg font-mono"
+                className="w-full px-3 py-2 text-xs border border-slate-700 rounded-lg font-mono"
               />
             </div>
           </div>
@@ -345,7 +345,7 @@ export const WarehouseInventory: React.FC = () => {
               <select
                 value={stockOutForm.destinationType}
                 onChange={(e) => setStockOutForm({ ...stockOutForm, destinationType: e.target.value as any })}
-                className="w-full px-3 py-2 text-xs border border-slate-300 rounded-lg bg-white font-semibold"
+                className="w-full px-3 py-2 text-xs border border-slate-700 rounded-lg bg-[#0E172A] font-semibold"
               >
                 <option value="CUSTOMER">Subscriber Premise (Account #)</option>
                 <option value="TECHNICIAN_VAN">Field Technician Van</option>
@@ -361,7 +361,7 @@ export const WarehouseInventory: React.FC = () => {
                 placeholder="e.g. CUST-77210 or VAN-04"
                 value={stockOutForm.targetIdentifier}
                 onChange={(e) => setStockOutForm({ ...stockOutForm, targetIdentifier: e.target.value })}
-                className="w-full px-3 py-2 text-xs border border-slate-300 rounded-lg font-mono font-bold"
+                className="w-full px-3 py-2 text-xs border border-slate-700 rounded-lg font-mono font-bold"
               />
             </div>
 

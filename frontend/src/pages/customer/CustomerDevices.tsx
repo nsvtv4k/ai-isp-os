@@ -37,15 +37,15 @@ export const CustomerDevices: React.FC = () => {
           {devices.map((d) => (
             <div
               key={d.mac}
-              className="p-3.5 bg-white border border-[#E2E8F0] rounded-2xl flex items-center justify-between shadow-sm"
+              className="p-3.5 bg-[#0E172A] border border-slate-800 rounded-2xl flex items-center justify-between shadow-sm"
             >
               <div className="flex items-center space-x-3">
-                <div className="w-9 h-9 rounded-xl bg-[#F1F5F9] flex items-center justify-center text-[#1677FF]">
+                <div className="w-9 h-9 rounded-xl bg-[#F1F5F9] flex items-center justify-center text-sky-400">
                   <Smartphone className="w-5 h-5" />
                 </div>
                 <div>
-                  <p className="text-xs font-bold text-[#0F172A]">{d.hostname || 'Device'}</p>
-                  <p className="text-[11px] text-[#64748B] font-mono">{d.ip} • {d.interfaceType}</p>
+                  <p className="text-xs font-bold text-white">{d.hostname || 'Device'}</p>
+                  <p className="text-[11px] text-slate-400 font-mono">{d.ip} • {d.interfaceType}</p>
                 </div>
               </div>
 

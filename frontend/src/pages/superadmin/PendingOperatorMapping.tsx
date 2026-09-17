@@ -356,9 +356,9 @@ export const PendingOperatorMapping: React.FC = () => {
       case 'AMBIGUOUS_HOST':
         return { label: 'Ambiguous Inbound Host', color: 'bg-purple-50 text-purple-700 border-purple-200' };
       case 'UNREGISTERED_TENANT':
-        return { label: 'Inactive / Suspended Tenant', color: 'bg-slate-50 text-slate-700 border-slate-200' };
+        return { label: 'Inactive / Suspended Tenant', color: 'bg-[#080D1A] text-slate-700 border-slate-800' };
       default:
-        return { label: reason, color: 'bg-slate-50 text-slate-700 border-slate-200' };
+        return { label: reason, color: 'bg-[#080D1A] text-slate-700 border-slate-800' };
     }
   };
 
@@ -471,7 +471,7 @@ export const PendingOperatorMapping: React.FC = () => {
         </div>
 
         {/* Filter & Search Bar */}
-        <div className="bg-white border border-[#E2E8F0] rounded-2xl p-4 shadow-sm mb-4 flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div className="bg-[#0E172A] border border-slate-800 rounded-2xl p-4 shadow-sm mb-4 flex flex-col md:flex-row md:items-center justify-between gap-4">
           {/* Status Tabs */}
           <div className="flex items-center space-x-1 bg-slate-100 p-1 rounded-xl w-full md:w-auto overflow-x-auto">
             {[
@@ -488,8 +488,8 @@ export const PendingOperatorMapping: React.FC = () => {
                 }}
                 className={`px-3.5 py-1.5 rounded-lg text-xs font-bold transition whitespace-nowrap ${
                   statusFilter === tab.value
-                    ? 'bg-white text-[#0F172A] shadow-xs'
-                    : 'text-slate-600 hover:text-slate-900 hover:bg-slate-200/60'
+                    ? 'bg-[#0E172A] text-white shadow-xs'
+                    : 'text-slate-600 hover:text-white hover:bg-slate-200/60'
                 }`}
               >
                 {tab.label}
@@ -508,7 +508,7 @@ export const PendingOperatorMapping: React.FC = () => {
                 setSearchQuery(e.target.value);
                 setPage(1);
               }}
-              className="w-full pl-9 pr-4 py-2 text-xs border border-slate-200 rounded-xl bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#1677FF]"
+              className="w-full pl-9 pr-4 py-2 text-xs border border-slate-800 rounded-xl bg-[#080D1A] focus:bg-[#0E172A] focus:outline-none focus:ring-2 focus:ring-[#1677FF]"
             />
           </div>
         </div>
@@ -555,19 +555,19 @@ export const PendingOperatorMapping: React.FC = () => {
         )}
 
         {/* Table of Pending Devices */}
-        <div className="bg-white border border-[#E2E8F0] rounded-2xl shadow-sm overflow-hidden">
+        <div className="bg-[#0E172A] border border-slate-800 rounded-2xl shadow-sm overflow-hidden">
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs text-slate-700">
-              <thead className="bg-[#F8FAFC] border-b border-[#E2E8F0] text-[11px] font-bold uppercase text-slate-500 tracking-wider">
+              <thead className="bg-[#060913] border-b border-slate-800 text-[11px] font-bold uppercase text-slate-500 tracking-wider">
                 <tr>
                   <th className="py-3.5 px-3 w-10 text-center">
                     <button
                       onClick={handleSelectAllCurrent}
-                      className="text-slate-400 hover:text-[#1677FF] transition"
+                      className="text-slate-400 hover:text-sky-400 transition"
                       title="Select All on this page"
                     >
                       {items.length > 0 && selectedIds.length === items.length ? (
-                        <CheckSquare className="w-4 h-4 text-[#1677FF]" />
+                        <CheckSquare className="w-4 h-4 text-sky-400" />
                       ) : (
                         <Square className="w-4 h-4" />
                       )}
@@ -598,15 +598,15 @@ export const PendingOperatorMapping: React.FC = () => {
                     const reasonInfo = getReasonLabel(item.reason);
                     const isSelected = selectedIds.includes(item._id);
                     return (
-                      <tr key={item._id} className={`hover:bg-slate-50/80 transition ${isSelected ? 'bg-blue-50/40' : ''}`}>
+                      <tr key={item._id} className={`hover:bg-[#080D1A]/80 transition ${isSelected ? 'bg-blue-50/40' : ''}`}>
                         {/* Checkbox */}
                         <td className="py-3.5 px-3 text-center">
                           <button
                             onClick={() => handleToggleSelectRow(item._id)}
-                            className="text-slate-400 hover:text-[#1677FF] transition"
+                            className="text-slate-400 hover:text-sky-400 transition"
                           >
                             {isSelected ? (
-                              <CheckSquare className="w-4 h-4 text-[#1677FF]" />
+                              <CheckSquare className="w-4 h-4 text-sky-400" />
                             ) : (
                               <Square className="w-4 h-4" />
                             )}
@@ -620,7 +620,7 @@ export const PendingOperatorMapping: React.FC = () => {
                               <Radio className="w-4 h-4" />
                             </div>
                             <div>
-                              <p className="font-mono font-bold text-slate-900 text-xs">{item.serialNumber}</p>
+                              <p className="font-mono font-bold text-white text-xs">{item.serialNumber}</p>
                               <p className="text-[11px] text-slate-500">
                                 {item.productClass || 'GPON ONT'} · <span className="font-mono">{item.manufacturer}</span> {item.oui ? `(${item.oui})` : ''}
                               </p>
@@ -633,7 +633,7 @@ export const PendingOperatorMapping: React.FC = () => {
                           <div className="space-y-1">
                             <div className="flex items-center space-x-1.5">
                               <Wifi className="w-3.5 h-3.5 text-blue-600 shrink-0" />
-                              <span className="font-semibold text-slate-800 text-[11px]">
+                              <span className="font-semibold text-slate-100 text-[11px]">
                                 {item.wifi24?.ssid || item.wifi5g?.ssid || 'Default Wi-Fi'}
                               </span>
                               {item.wifi5g?.ssid && (
@@ -661,7 +661,7 @@ export const PendingOperatorMapping: React.FC = () => {
 
                         {/* Inbound Request */}
                         <td className="py-3.5 px-4">
-                          <p className="font-mono text-slate-800 text-[11px]">
+                          <p className="font-mono text-slate-100 text-[11px]">
                             Host: <span className="font-semibold">{item.incomingHost || 'N/A'}</span>
                           </p>
                           <p className="font-mono text-slate-500 text-[10px]">
@@ -677,7 +677,7 @@ export const PendingOperatorMapping: React.FC = () => {
                               Quarantine Cleared (Mapped)
                             </span>
                           ) : item.status === 'IGNORED' ? (
-                            <span className="inline-flex items-center text-[10px] font-bold px-2 py-0.5 rounded-md border bg-slate-100 text-slate-600 border-slate-200">
+                            <span className="inline-flex items-center text-[10px] font-bold px-2 py-0.5 rounded-md border bg-slate-100 text-slate-600 border-slate-800">
                               Ignored / Excluded
                             </span>
                           ) : (
@@ -707,7 +707,7 @@ export const PendingOperatorMapping: React.FC = () => {
                               )}
                             </div>
                           ) : (
-                            <span className="inline-flex items-center text-[10px] font-bold text-slate-600 bg-slate-100 border border-slate-200 px-2 py-0.5 rounded-full">
+                            <span className="inline-flex items-center text-[10px] font-bold text-slate-600 bg-slate-100 border border-slate-800 px-2 py-0.5 rounded-full">
                               Ignored
                             </span>
                           )}
@@ -734,10 +734,10 @@ export const PendingOperatorMapping: React.FC = () => {
                                 setShowWifi24Pass(false);
                                 setShowWifi5gPass(false);
                               }}
-                              className="text-xs px-2.5 py-1 text-slate-700 hover:text-slate-900 border-slate-200"
+                              className="text-xs px-2.5 py-1 text-slate-700 hover:text-white border-slate-800"
                               title="View Full Device Specs, Wi-Fi & TR-069 Payload"
                             >
-                              <Eye className="w-3.5 h-3.5 mr-1 text-[#1677FF]" />
+                              <Eye className="w-3.5 h-3.5 mr-1 text-sky-400" />
                               <span>View Device</span>
                             </Button>
 
@@ -803,15 +803,15 @@ export const PendingOperatorMapping: React.FC = () => {
       {/* Comprehensive View Device Specs & Wi-Fi Inspector Modal */}
       {viewDeviceItem && (
         <div className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4">
-          <div className="bg-white rounded-2xl max-w-3xl w-full p-6 shadow-2xl border border-slate-200 animate-in fade-in zoom-in-95 duration-150 max-h-[92vh] flex flex-col">
+          <div className="bg-[#0E172A] rounded-2xl max-w-3xl w-full p-6 shadow-2xl border border-slate-800 animate-in fade-in zoom-in-95 duration-150 max-h-[92vh] flex flex-col">
             <div className="flex items-center justify-between pb-4 border-b border-slate-100 shrink-0">
               <div className="flex items-center space-x-3">
-                <div className="w-11 h-11 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center text-[#1677FF]">
+                <div className="w-11 h-11 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center text-sky-400">
                   <Cpu className="w-6 h-6" />
                 </div>
                 <div>
                   <div className="flex items-center space-x-2">
-                    <h3 className="text-base font-bold text-slate-900">Router Telemetry & Full Wi-Fi Specifications</h3>
+                    <h3 className="text-base font-bold text-white">Router Telemetry & Full Wi-Fi Specifications</h3>
                     <Badge variant={viewDeviceItem.status === 'MAPPED' ? 'success' : viewDeviceItem.status === 'PENDING' ? 'warning' : 'neutral'} dot>
                       {viewDeviceItem.status}
                     </Badge>
@@ -839,11 +839,11 @@ export const PendingOperatorMapping: React.FC = () => {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                   {/* 2.4 GHz Band Card */}
-                  <div className="bg-white rounded-xl p-3.5 border border-blue-200/80 shadow-xs space-y-2.5">
+                  <div className="bg-[#0E172A] rounded-xl p-3.5 border border-blue-200/80 shadow-xs space-y-2.5">
                     <div className="flex items-center justify-between pb-2 border-b border-slate-100">
                       <div className="flex items-center space-x-2">
                         <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                        <span className="font-bold text-xs text-slate-900">2.4 GHz Wireless Band</span>
+                        <span className="font-bold text-xs text-white">2.4 GHz Wireless Band</span>
                       </div>
                       <span className="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
                         {viewDeviceItem.wifi24?.enabled !== false ? 'Active / Broadcasting' : 'Disabled'}
@@ -853,7 +853,7 @@ export const PendingOperatorMapping: React.FC = () => {
                     <div className="space-y-1.5 text-xs">
                       <div>
                         <span className="text-slate-400 block text-[10px] uppercase font-bold">SSID Network Name</span>
-                        <span className="font-semibold text-slate-900 font-mono">
+                        <span className="font-semibold text-white font-mono">
                           {viewDeviceItem.wifi24?.ssid || 'Default_2.4G_SSID'}
                         </span>
                       </div>
@@ -861,7 +861,7 @@ export const PendingOperatorMapping: React.FC = () => {
                       <div>
                         <span className="text-slate-400 block text-[10px] uppercase font-bold">WPA Password / Pre-Shared Key</span>
                         <div className="flex items-center space-x-2 mt-0.5">
-                          <span className="font-mono font-bold text-slate-800 bg-slate-50 px-2 py-0.5 rounded border border-slate-200">
+                          <span className="font-mono font-bold text-slate-100 bg-[#080D1A] px-2 py-0.5 rounded border border-slate-800">
                             {showWifi24Pass ? (viewDeviceItem.wifi24?.password || 'No Password (Open)') : '••••••••••••'}
                           </span>
                           <button
@@ -891,11 +891,11 @@ export const PendingOperatorMapping: React.FC = () => {
                   </div>
 
                   {/* 5.0 GHz Band Card */}
-                  <div className="bg-white rounded-xl p-3.5 border border-purple-200/80 shadow-xs space-y-2.5">
+                  <div className="bg-[#0E172A] rounded-xl p-3.5 border border-purple-200/80 shadow-xs space-y-2.5">
                     <div className="flex items-center justify-between pb-2 border-b border-slate-100">
                       <div className="flex items-center space-x-2">
                         <span className="w-2 h-2 rounded-full bg-purple-500 animate-pulse"></span>
-                        <span className="font-bold text-xs text-slate-900">5.0 GHz High-Speed Band</span>
+                        <span className="font-bold text-xs text-white">5.0 GHz High-Speed Band</span>
                       </div>
                       <span className="text-[10px] font-bold text-purple-700 bg-purple-50 px-2 py-0.5 rounded-full border border-purple-200">
                         {viewDeviceItem.wifi5g?.enabled !== false ? 'Active / 802.11ac' : 'Disabled'}
@@ -905,7 +905,7 @@ export const PendingOperatorMapping: React.FC = () => {
                     <div className="space-y-1.5 text-xs">
                       <div>
                         <span className="text-slate-400 block text-[10px] uppercase font-bold">SSID Network Name</span>
-                        <span className="font-semibold text-slate-900 font-mono">
+                        <span className="font-semibold text-white font-mono">
                           {viewDeviceItem.wifi5g?.ssid || (viewDeviceItem.wifi24?.ssid ? `${viewDeviceItem.wifi24.ssid}_5G` : 'Default_5G_SSID')}
                         </span>
                       </div>
@@ -913,7 +913,7 @@ export const PendingOperatorMapping: React.FC = () => {
                       <div>
                         <span className="text-slate-400 block text-[10px] uppercase font-bold">WPA Password / Pre-Shared Key</span>
                         <div className="flex items-center space-x-2 mt-0.5">
-                          <span className="font-mono font-bold text-slate-800 bg-slate-50 px-2 py-0.5 rounded border border-slate-200">
+                          <span className="font-mono font-bold text-slate-100 bg-[#080D1A] px-2 py-0.5 rounded border border-slate-800">
                             {showWifi5gPass ? (viewDeviceItem.wifi5g?.password || viewDeviceItem.wifi24?.password || 'No Password (Open)') : '••••••••••••'}
                           </span>
                           <button
@@ -947,8 +947,8 @@ export const PendingOperatorMapping: React.FC = () => {
               {/* WAN & Optical Diagnostics Grid */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                 {/* WAN & PPPoE Profile */}
-                <div className="bg-slate-50 rounded-xl p-3.5 border border-slate-200 space-y-2">
-                  <h4 className="text-xs font-bold text-slate-800 uppercase tracking-wider flex items-center">
+                <div className="bg-[#080D1A] rounded-xl p-3.5 border border-slate-800 space-y-2">
+                  <h4 className="text-xs font-bold text-slate-100 uppercase tracking-wider flex items-center">
                     <Globe className="w-3.5 h-3.5 mr-1.5 text-emerald-600" />
                     WAN & Subscriber Profile
                   </h4>
@@ -962,7 +962,7 @@ export const PendingOperatorMapping: React.FC = () => {
                     <div className="grid grid-cols-2 gap-2">
                       <div>
                         <span className="text-slate-400 block text-[10px] uppercase font-bold">VLAN ID</span>
-                        <span className="font-mono text-slate-800">
+                        <span className="font-mono text-slate-100">
                           {viewDeviceItem.wan?.vlanId !== undefined ? (viewDeviceItem.wan.vlanId === 0 ? '0 (Untagged)' : viewDeviceItem.wan.vlanId) : '100'}
                         </span>
                       </div>
@@ -979,8 +979,8 @@ export const PendingOperatorMapping: React.FC = () => {
                 </div>
 
                 {/* Optical & Device Health */}
-                <div className="bg-slate-50 rounded-xl p-3.5 border border-slate-200 space-y-2">
-                  <h4 className="text-xs font-bold text-slate-800 uppercase tracking-wider flex items-center">
+                <div className="bg-[#080D1A] rounded-xl p-3.5 border border-slate-800 space-y-2">
+                  <h4 className="text-xs font-bold text-slate-100 uppercase tracking-wider flex items-center">
                     <Activity className="w-3.5 h-3.5 mr-1.5 text-amber-600" />
                     Optical Signal & Health
                   </h4>
@@ -1011,7 +1011,7 @@ export const PendingOperatorMapping: React.FC = () => {
                     </div>
                     <div className="col-span-2">
                       <span className="text-slate-400 block text-[10px] uppercase font-bold">Active LAN/Wi-Fi Clients</span>
-                      <span className="font-semibold text-slate-800">
+                      <span className="font-semibold text-slate-100">
                         {viewDeviceItem.telemetry?.lanHostCount || 1} Connected Device(s)
                       </span>
                     </div>
@@ -1020,35 +1020,35 @@ export const PendingOperatorMapping: React.FC = () => {
               </div>
 
               {/* Hardware Specs Grid */}
-              <div className="bg-slate-50 rounded-xl p-4 border border-slate-200">
-                <h4 className="text-xs font-bold text-slate-800 uppercase tracking-wider mb-3 flex items-center">
-                  <Radio className="w-3.5 h-3.5 mr-1.5 text-[#1677FF]" />
+              <div className="bg-[#080D1A] rounded-xl p-4 border border-slate-800">
+                <h4 className="text-xs font-bold text-slate-100 uppercase tracking-wider mb-3 flex items-center">
+                  <Radio className="w-3.5 h-3.5 mr-1.5 text-sky-400" />
                   Hardware & Firmware Information
                 </h4>
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 text-xs">
                   <div>
                     <span className="text-slate-400 block text-[10px] uppercase font-bold">Manufacturer</span>
-                    <span className="font-semibold text-slate-900">{viewDeviceItem.manufacturer || 'N/A'}</span>
+                    <span className="font-semibold text-white">{viewDeviceItem.manufacturer || 'N/A'}</span>
                   </div>
                   <div>
                     <span className="text-slate-400 block text-[10px] uppercase font-bold">Model / Class</span>
-                    <span className="font-semibold text-slate-900">{viewDeviceItem.productClass || 'GPON ONT'}</span>
+                    <span className="font-semibold text-white">{viewDeviceItem.productClass || 'GPON ONT'}</span>
                   </div>
                   <div>
                     <span className="text-slate-400 block text-[10px] uppercase font-bold">OUI Identifier</span>
-                    <span className="font-mono text-slate-800">{viewDeviceItem.oui || 'N/A'}</span>
+                    <span className="font-mono text-slate-100">{viewDeviceItem.oui || 'N/A'}</span>
                   </div>
                   <div>
                     <span className="text-slate-400 block text-[10px] uppercase font-bold">MAC Address</span>
-                    <span className="font-mono font-bold text-slate-900">{viewDeviceItem.macAddress || 'N/A'}</span>
+                    <span className="font-mono font-bold text-white">{viewDeviceItem.macAddress || 'N/A'}</span>
                   </div>
                   <div>
                     <span className="text-slate-400 block text-[10px] uppercase font-bold">Hardware Version</span>
-                    <span className="font-mono text-slate-800">{viewDeviceItem.hardwareVersion || 'V1.0'}</span>
+                    <span className="font-mono text-slate-100">{viewDeviceItem.hardwareVersion || 'V1.0'}</span>
                   </div>
                   <div>
                     <span className="text-slate-400 block text-[10px] uppercase font-bold">Software Version</span>
-                    <span className="font-mono text-slate-800">{viewDeviceItem.softwareVersion || 'V1.0.0'}</span>
+                    <span className="font-mono text-slate-100">{viewDeviceItem.softwareVersion || 'V1.0.0'}</span>
                   </div>
                 </div>
               </div>
@@ -1134,14 +1134,14 @@ export const PendingOperatorMapping: React.FC = () => {
       {/* Bulk Assign Modal */}
       {isBulkAssignOpen && (
         <div className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4">
-          <div className="bg-white rounded-2xl max-w-lg w-full p-6 shadow-2xl border border-slate-200 animate-in fade-in zoom-in-95 duration-150">
+          <div className="bg-[#0E172A] rounded-2xl max-w-lg w-full p-6 shadow-2xl border border-slate-800 animate-in fade-in zoom-in-95 duration-150">
             <div className="flex items-center justify-between pb-4 border-b border-slate-100">
               <div className="flex items-center space-x-2.5">
-                <div className="w-9 h-9 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center text-[#1677FF]">
+                <div className="w-9 h-9 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center text-sky-400">
                   <Building2 className="w-5 h-5" />
                 </div>
                 <div>
-                  <h3 className="text-base font-bold text-slate-900">
+                  <h3 className="text-base font-bold text-white">
                     {bulkAssignAllMode ? `Bulk Assign ALL Pending Devices (${counts.pending})` : `Bulk Assign Selected Devices (${selectedIds.length})`}
                   </h3>
                   <p className="text-xs text-slate-500">Super Admin Batch Assignment</p>
@@ -1168,7 +1168,7 @@ export const PendingOperatorMapping: React.FC = () => {
                   <select
                     value={bulkTenantId}
                     onChange={(e) => setBulkTenantId(e.target.value)}
-                    className="w-full px-3.5 py-2.5 text-xs font-medium border border-slate-300 rounded-xl bg-white focus:outline-none focus:ring-2 focus:ring-[#1677FF]"
+                    className="w-full px-3.5 py-2.5 text-xs font-medium border border-slate-700 rounded-xl bg-[#0E172A] focus:outline-none focus:ring-2 focus:ring-[#1677FF]"
                   >
                     <option value="">-- Choose Operator Tenant --</option>
                     {tenants.map((t) => (
@@ -1222,14 +1222,14 @@ export const PendingOperatorMapping: React.FC = () => {
       {/* Assign Operator Modal (Single Item) */}
       {assignModalItem && (
         <div className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4">
-          <div className="bg-white rounded-2xl max-w-lg w-full p-6 shadow-2xl border border-slate-200 animate-in fade-in zoom-in-95 duration-150">
+          <div className="bg-[#0E172A] rounded-2xl max-w-lg w-full p-6 shadow-2xl border border-slate-800 animate-in fade-in zoom-in-95 duration-150">
             <div className="flex items-center justify-between pb-4 border-b border-slate-100">
               <div className="flex items-center space-x-2.5">
-                <div className="w-9 h-9 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center text-[#1677FF]">
+                <div className="w-9 h-9 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center text-sky-400">
                   <Building2 className="w-5 h-5" />
                 </div>
                 <div>
-                  <h3 className="text-base font-bold text-slate-900">Assign Device to Operator</h3>
+                  <h3 className="text-base font-bold text-white">Assign Device to Operator</h3>
                   <p className="text-xs text-slate-500">Super Admin Explicit Operator Binding</p>
                 </div>
               </div>
@@ -1243,15 +1243,15 @@ export const PendingOperatorMapping: React.FC = () => {
 
             <div className="py-4 space-y-4">
               {/* Device Summary Box */}
-              <div className="bg-slate-50 rounded-xl p-3.5 border border-slate-200">
+              <div className="bg-[#080D1A] rounded-xl p-3.5 border border-slate-800">
                 <div className="grid grid-cols-2 gap-2 text-xs">
                   <div>
                     <span className="text-slate-400 block text-[10px] uppercase font-bold">Serial Number</span>
-                    <span className="font-mono font-bold text-slate-900">{assignModalItem.serialNumber}</span>
+                    <span className="font-mono font-bold text-white">{assignModalItem.serialNumber}</span>
                   </div>
                   <div>
                     <span className="text-slate-400 block text-[10px] uppercase font-bold">Model / Class</span>
-                    <span className="font-semibold text-slate-900">{assignModalItem.productClass || 'GPON ONT'}</span>
+                    <span className="font-semibold text-white">{assignModalItem.productClass || 'GPON ONT'}</span>
                   </div>
                   <div>
                     <span className="text-slate-400 block text-[10px] uppercase font-bold">Manufacturer</span>
@@ -1272,7 +1272,7 @@ export const PendingOperatorMapping: React.FC = () => {
                 <select
                   value={selectedTenantId}
                   onChange={(e) => setSelectedTenantId(e.target.value)}
-                  className="w-full px-3.5 py-2.5 text-xs font-medium border border-slate-300 rounded-xl bg-white focus:outline-none focus:ring-2 focus:ring-[#1677FF]"
+                  className="w-full px-3.5 py-2.5 text-xs font-medium border border-slate-700 rounded-xl bg-[#0E172A] focus:outline-none focus:ring-2 focus:ring-[#1677FF]"
                 >
                   <option value="">-- Choose Operator Tenant --</option>
                   {tenants.map((t) => (

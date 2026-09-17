@@ -114,16 +114,16 @@ export const CustomerBilling: React.FC = () => {
           </Card>
 
           {/* Invoices Ledger */}
-          <Card className="overflow-hidden border border-slate-200 bg-white rounded-2xl shadow-xs">
+          <Card className="overflow-hidden border border-slate-800 bg-[#0E172A] rounded-2xl shadow-xs">
             <div className="p-4 border-b border-slate-100 flex items-center justify-between">
-              <h3 className="font-bold text-slate-900 text-sm">Tax Invoices & Official Payment Receipts</h3>
+              <h3 className="font-bold text-white text-sm">Tax Invoices & Official Payment Receipts</h3>
               <Badge variant="info">GST Tax Compliant</Badge>
             </div>
 
             <div className="overflow-x-auto">
               <table className="w-full text-left text-xs border-collapse">
                 <thead>
-                  <tr className="bg-slate-50 border-b border-slate-200 text-slate-500 font-semibold uppercase">
+                  <tr className="bg-[#080D1A] border-b border-slate-800 text-slate-500 font-semibold uppercase">
                     <th className="py-3 px-4">Invoice #</th>
                     <th className="py-3 px-4">Description</th>
                     <th className="py-3 px-4">Amount</th>
@@ -142,9 +142,9 @@ export const CustomerBilling: React.FC = () => {
                     </tr>
                   ) : (
                     invoices.map((inv: any) => (
-                      <tr key={inv.invoiceId} className="hover:bg-slate-50">
-                        <td className="py-3 px-4 font-mono font-bold text-slate-900">{inv.invoiceId}</td>
-                        <td className="py-3 px-4 font-semibold text-slate-800">{inv.planName}</td>
+                      <tr key={inv.invoiceId} className="hover:bg-[#080D1A]">
+                        <td className="py-3 px-4 font-mono font-bold text-white">{inv.invoiceId}</td>
+                        <td className="py-3 px-4 font-semibold text-slate-100">{inv.planName}</td>
                         <td className="py-3 px-4 font-mono font-black text-emerald-700">₹{inv.amount}</td>
                         <td className="py-3 px-4 text-slate-600 font-mono">{inv.paymentMode}</td>
                         <td className="py-3 px-4">
@@ -182,7 +182,7 @@ export const CustomerBilling: React.FC = () => {
         subtitle="Instant renewal with zero transaction fee."
       >
         <div className="space-y-4">
-          <div className="p-3 bg-slate-50 rounded-xl border border-slate-200 flex justify-between items-center text-xs">
+          <div className="p-3 bg-[#080D1A] rounded-xl border border-slate-800 flex justify-between items-center text-xs">
             <span className="text-slate-600 font-semibold">Total Payable Amount:</span>
             <span className="font-mono font-black text-xl text-emerald-700">₹{plan?.price || 699}</span>
           </div>
@@ -197,7 +197,7 @@ export const CustomerBilling: React.FC = () => {
                   <label
                     key={gw.gateway}
                     className={`flex items-center justify-between p-3 rounded-xl border cursor-pointer transition-all ${
-                      selectedGateway === gw.gateway ? 'border-sky-500 bg-sky-50/50 ring-2 ring-sky-500' : 'border-slate-200 hover:bg-slate-50'
+                      selectedGateway === gw.gateway ? 'border-sky-500 bg-sky-50/50 ring-2 ring-sky-500' : 'border-slate-800 hover:bg-[#080D1A]'
                     }`}
                   >
                     <div className="flex items-center space-x-2.5">
@@ -209,7 +209,7 @@ export const CustomerBilling: React.FC = () => {
                         onChange={() => setSelectedGateway(gw.gateway)}
                         className="text-sky-600"
                       />
-                      <span className="font-bold text-xs text-slate-900">{gw.displayName}</span>
+                      <span className="font-bold text-xs text-white">{gw.displayName}</span>
                     </div>
                     <Badge variant="neutral" className="text-[10px] font-mono">UPI / Cards</Badge>
                   </label>

@@ -55,10 +55,10 @@ export const ApprovalsWorkbench: React.FC = () => {
       accessor: (r) => (
         <div>
           <div className="flex items-center space-x-2">
-            <span className="font-bold text-[#0F172A] font-mono text-xs">{r.requestNumber}</span>
+            <span className="font-bold text-white font-mono text-xs">{r.requestNumber}</span>
             <Badge variant="warning">{r.actionType}</Badge>
           </div>
-          <p className="text-xs text-[#64748B] mt-1">{r.reason}</p>
+          <p className="text-xs text-slate-400 mt-1">{r.reason}</p>
         </div>
       ),
     },
@@ -66,8 +66,8 @@ export const ApprovalsWorkbench: React.FC = () => {
       header: 'Target Resource',
       accessor: (r) => (
         <div>
-          <span className="text-xs font-semibold text-[#1E293B]">{r.targetResource}</span>
-          <p className="text-[11px] font-mono text-[#1677FF]">{r.targetIdentifier}</p>
+          <span className="text-xs font-semibold text-slate-100">{r.targetResource}</span>
+          <p className="text-[11px] font-mono text-sky-400">{r.targetIdentifier}</p>
         </div>
       ),
     },
@@ -75,8 +75,8 @@ export const ApprovalsWorkbench: React.FC = () => {
       header: 'Requested By',
       accessor: (r) => (
         <div>
-          <p className="text-xs font-semibold text-[#1E293B]">{r.requestedBy?.fullName}</p>
-          <span className="text-[11px] text-[#64748B]">{r.requestedBy?.role}</span>
+          <p className="text-xs font-semibold text-slate-100">{r.requestedBy?.fullName}</p>
+          <span className="text-[11px] text-slate-400">{r.requestedBy?.role}</span>
         </div>
       ),
     },
@@ -119,14 +119,14 @@ export const ApprovalsWorkbench: React.FC = () => {
     >
       <div className="space-y-4">
         {/* Status Filter Bar */}
-        <div className="flex items-center space-x-2 bg-white p-4 border border-[#E2E8F0] rounded-xl">
-          <span className="text-xs text-[#64748B]">Filter Status:</span>
+        <div className="flex items-center space-x-2 bg-[#0E172A] p-4 border border-slate-800 rounded-xl">
+          <span className="text-xs text-slate-400">Filter Status:</span>
           {['pending', 'approved', 'rejected'].map((st) => (
             <button
               key={st}
               onClick={() => setStatusFilter(st)}
               className={`px-3 py-1.5 rounded-lg text-xs font-medium capitalize transition ${
-                statusFilter === st ? 'bg-sky-600 text-white' : 'bg-[#F1F5F9] text-[#64748B]'
+                statusFilter === st ? 'bg-sky-600 text-white' : 'bg-[#F1F5F9] text-slate-400'
               }`}
             >
               {st}
@@ -155,25 +155,25 @@ export const ApprovalsWorkbench: React.FC = () => {
           subtitle={`Action: ${selectedReq.actionType} on ${selectedReq.targetResource} (${selectedReq.targetIdentifier})`}
         >
           <div className="space-y-4 text-xs">
-            <div className="p-3 bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl space-y-2">
-              <span className="font-bold text-[#334155]">Requested Parameters / Diff:</span>
-              <pre className="p-2 bg-white rounded text-[11px] font-mono text-[#047857] overflow-x-auto">
+            <div className="p-3 bg-[#060913] border border-slate-800 rounded-xl space-y-2">
+              <span className="font-bold text-slate-300">Requested Parameters / Diff:</span>
+              <pre className="p-2 bg-[#0E172A] rounded text-[11px] font-mono text-emerald-400 overflow-x-auto">
                 {JSON.stringify(selectedReq.parameters, null, 2)}
               </pre>
             </div>
 
             {selectedReq.status === 'pending' && (
               <div className="space-y-3 pt-2">
-                <label className="block text-[#334155] font-semibold">Decision / Audit Notes</label>
+                <label className="block text-slate-300 font-semibold">Decision / Audit Notes</label>
                 <textarea
-                  className="w-full bg-[#F8FAFC] border border-[#E2E8F0] rounded-lg p-2.5 text-[#0F172A] focus:outline-none focus:ring-1 focus:ring-sky-500"
+                  className="w-full bg-[#060913] border border-slate-800 rounded-lg p-2.5 text-white focus:outline-none focus:ring-1 focus:ring-sky-500"
                   rows={2}
                   placeholder="e.g. Authorized during scheduled midnight maintenance..."
                   value={decisionNotes}
                   onChange={(e) => setDecisionNotes(e.target.value)}
                 />
 
-                <div className="flex justify-end space-x-3 pt-3 border-t border-[#E2E8F0]">
+                <div className="flex justify-end space-x-3 pt-3 border-t border-slate-800">
                   <Button
                     variant="danger"
                     isLoading={isDeciding}

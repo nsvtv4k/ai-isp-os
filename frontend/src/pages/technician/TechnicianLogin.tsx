@@ -32,19 +32,19 @@ export const TechnicianLogin: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#F8FAFC] flex flex-col justify-center py-12 px-4 sm:px-6 lg:px-8 font-sans">
+    <div className="min-h-screen bg-[#060913] flex flex-col justify-center py-12 px-4 sm:px-6 lg:px-8 font-sans">
       <div className="sm:mx-auto sm:w-full sm:max-w-md text-center">
         <div className="w-14 h-14 rounded-2xl bg-[#FFFBEB] border border-[#FDE68A] flex items-center justify-center mx-auto text-[#B45309] shadow-lg shadow-amber-500/10 mb-4">
           <Wrench className="w-8 h-8" />
         </div>
-        <h2 className="text-2xl font-bold tracking-tight text-[#0F172A]">Field Workforce Portal</h2>
-        <p className="text-xs text-[#64748B] mt-1">Technician Dispatch & Optical Diagnostics App</p>
+        <h2 className="text-2xl font-bold tracking-tight text-white">Field Workforce Portal</h2>
+        <p className="text-xs text-slate-400 mt-1">Technician Dispatch & Optical Diagnostics App</p>
       </div>
 
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-        <div className="bg-white border border-[#E2E8F0] py-8 px-6 shadow-2xl rounded-2xl sm:px-10 backdrop-blur-md">
+        <div className="bg-[#0E172A] border border-slate-800 py-8 px-6 shadow-2xl rounded-2xl sm:px-10 backdrop-blur-md">
           {error && (
-            <div className="mb-4 p-3 rounded-lg bg-[#FEF2F2] border border-[#FECACA] text-[#991B1B] text-xs flex items-center space-x-2">
+            <div className="mb-4 p-3 rounded-lg bg-rose-500/15 border border-rose-500/30 text-rose-300 text-xs flex items-center space-x-2">
               <Lock className="w-4 h-4 shrink-0" />
               <span>{error}</span>
             </div>
@@ -76,12 +76,12 @@ export const TechnicianLogin: React.FC = () => {
             </Button>
           </form>
 
-          <div className="mt-6 border-t border-[#E2E8F0] pt-4 flex items-center justify-between text-[11px] text-[#94A3B8]">
+          <div className="mt-6 border-t border-slate-800 pt-4 flex items-center justify-between text-[11px] text-slate-400">
             <span>Role: Field Technician</span>
             <button
               type="button"
               onClick={() => navigate('/operator/login')}
-              className="text-[#1677FF] hover:text-[#1D4ED8]"
+              className="text-sky-400 hover:text-sky-300"
             >
               Operator NOC →
             </button>

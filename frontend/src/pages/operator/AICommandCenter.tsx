@@ -56,14 +56,14 @@ export const AICommandCenter: React.FC = () => {
     >
       <div className="space-y-6 max-w-4xl mx-auto">
         {/* Prompt Inquiry Card */}
-        <div className="bg-white border border-[#E2E8F0] rounded-2xl p-6 shadow-xl space-y-4">
+        <div className="bg-[#0E172A] border border-slate-800 rounded-2xl p-6 shadow-xl space-y-4">
           <div className="flex items-center space-x-3">
-            <div className="p-2.5 rounded-xl bg-[#EFF6FF] border border-[#BFDBFE] text-[#1677FF]">
+            <div className="p-2.5 rounded-xl bg-sky-500/15 border border-sky-500/30 text-sky-400">
               <Bot className="w-6 h-6" />
             </div>
             <div>
-              <h3 className="text-sm font-bold text-[#0F172A]">Natural Language Network Diagnostic Query</h3>
-              <p className="text-xs text-[#64748B]">
+              <h3 className="text-sm font-bold text-white">Natural Language Network Diagnostic Query</h3>
+              <p className="text-xs text-slate-400">
                 Inquire about optical power drops, fiber break correlations, offline clusters, or Wi-Fi interference.
               </p>
             </div>
@@ -87,37 +87,37 @@ export const AICommandCenter: React.FC = () => {
         {result && (
           <div className="space-y-6 animate-fadeIn">
             {/* Multi-Domain Evidence Panel */}
-            <div className="bg-white border border-[#E2E8F0] rounded-2xl p-6 space-y-4">
-              <div className="flex items-center justify-between border-b border-[#E2E8F0] pb-3">
+            <div className="bg-[#0E172A] border border-slate-800 rounded-2xl p-6 space-y-4">
+              <div className="flex items-center justify-between border-b border-slate-800 pb-3">
                 <div className="flex items-center space-x-2">
-                  <Activity className="w-4 h-4 text-[#1677FF]" />
-                  <h4 className="text-sm font-bold text-[#0F172A]">Telemetry & Topology Evidence Synthesis</h4>
+                  <Activity className="w-4 h-4 text-sky-400" />
+                  <h4 className="text-sm font-bold text-white">Telemetry & Topology Evidence Synthesis</h4>
                 </div>
                 <Badge variant="info">Confidence Score: {(result.confidenceScore * 100).toFixed(0)}%</Badge>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
-                <div className="p-3 bg-[#F8FAFC] border border-[#E2E8F0] rounded-lg space-y-1">
-                  <span className="text-[#94A3B8]">Affected Scope</span>
-                  <p className="font-semibold text-[#1E293B]">{result.evidence?.affectedScope}</p>
+                <div className="p-3 bg-[#060913] border border-slate-800 rounded-lg space-y-1">
+                  <span className="text-slate-400">Affected Scope</span>
+                  <p className="font-semibold text-slate-100">{result.evidence?.affectedScope}</p>
                 </div>
-                <div className="p-3 bg-[#F8FAFC] border border-[#E2E8F0] rounded-lg space-y-1">
-                  <span className="text-[#94A3B8]">Suspected Infrastructure</span>
-                  <p className="font-semibold text-[#1677FF] font-mono">{result.evidence?.identifiedComponent || 'Splitter SPL-01'}</p>
+                <div className="p-3 bg-[#060913] border border-slate-800 rounded-lg space-y-1">
+                  <span className="text-slate-400">Suspected Infrastructure</span>
+                  <p className="font-semibold text-sky-400 font-mono">{result.evidence?.identifiedComponent || 'Splitter SPL-01'}</p>
                 </div>
-                <div className="p-3 bg-[#F8FAFC] border border-[#E2E8F0] rounded-lg space-y-1">
-                  <span className="text-[#94A3B8]">Optical Power Profile</span>
-                  <p className="font-semibold text-[#1E293B]">{result.evidence?.opticalTrendSummary}</p>
+                <div className="p-3 bg-[#060913] border border-slate-800 rounded-lg space-y-1">
+                  <span className="text-slate-400">Optical Power Profile</span>
+                  <p className="font-semibold text-slate-100">{result.evidence?.opticalTrendSummary}</p>
                 </div>
               </div>
 
               {/* Step-by-step Reasoning */}
               <div className="space-y-2 pt-2">
-                <span className="text-xs font-bold text-[#334155]">Diagnostic Reasoning Chain:</span>
-                <div className="space-y-1.5 text-xs text-[#334155]">
+                <span className="text-xs font-bold text-slate-300">Diagnostic Reasoning Chain:</span>
+                <div className="space-y-1.5 text-xs text-slate-300">
                   {result.reasoningSteps?.map((step: string, idx: number) => (
-                    <div key={idx} className="flex items-start space-x-2.5 p-2 bg-[#F8FAFC] rounded-lg">
-                      <span className="w-4 h-4 rounded-full bg-[#DBEAFE] text-[#1677FF] font-bold flex items-center justify-center text-[10px] shrink-0">
+                    <div key={idx} className="flex items-start space-x-2.5 p-2 bg-[#060913] rounded-lg">
+                      <span className="w-4 h-4 rounded-full bg-[#DBEAFE] text-sky-400 font-bold flex items-center justify-center text-[10px] shrink-0">
                         {idx + 1}
                       </span>
                       <span>{step}</span>
@@ -128,9 +128,9 @@ export const AICommandCenter: React.FC = () => {
             </div>
 
             {/* Proposed Remediation & Human Approval Gate */}
-            <div className="bg-white border border-[#BFDBFE] rounded-2xl p-6 space-y-4">
+            <div className="bg-[#0E172A] border border-sky-500/30 rounded-2xl p-6 space-y-4">
               <div className="flex items-center justify-between">
-                <h4 className="text-sm font-bold text-[#0F172A]">Recommended Resolution & Workflows</h4>
+                <h4 className="text-sm font-bold text-white">Recommended Resolution & Workflows</h4>
                 {result.requiresHumanApproval && (
                   <Badge variant={result.approvalStatus === 'approved' ? 'success' : 'warning'} dot>
                     {result.approvalStatus === 'approved' ? 'Authorized & Executed' : 'Human Approval Required'}
@@ -142,14 +142,14 @@ export const AICommandCenter: React.FC = () => {
                 {result.recommendedActions?.map((action: any, idx: number) => (
                   <div
                     key={idx}
-                    className="p-4 bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl flex items-center justify-between"
+                    className="p-4 bg-[#060913] border border-slate-800 rounded-xl flex items-center justify-between"
                   >
                     <div>
                       <div className="flex items-center space-x-2">
-                        <span className="font-semibold text-[#0F172A] text-xs">{action.description}</span>
+                        <span className="font-semibold text-white text-xs">{action.description}</span>
                         {action.isPrivileged && <Badge variant="warning">Privileged Action</Badge>}
                       </div>
-                      <p className="text-[11px] font-mono text-[#94A3B8] mt-0.5">Action ID: {action.actionType}</p>
+                      <p className="text-[11px] font-mono text-slate-400 mt-0.5">Action ID: {action.actionType}</p>
                     </div>
 
                     {action.isPrivileged && result.approvalStatus !== 'approved' && (

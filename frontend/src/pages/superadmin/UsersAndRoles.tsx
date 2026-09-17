@@ -201,12 +201,12 @@ export const UsersAndRoles: React.FC = () => {
       header: 'Full Name / Email',
       accessor: (u) => (
         <div className="flex items-center space-x-3">
-          <div className="w-9 h-9 rounded-xl bg-[#F1F5F9] border border-[#CBD5E1] flex items-center justify-center text-[#334155] shrink-0 font-bold text-xs uppercase">
+          <div className="w-9 h-9 rounded-xl bg-[#F1F5F9] border border-slate-700/80 flex items-center justify-center text-slate-300 shrink-0 font-bold text-xs uppercase">
             {u.fullName?.charAt(0) || 'U'}
           </div>
           <div>
-            <p className="font-semibold text-[#0F172A]">{u.fullName}</p>
-            <p className="text-xs text-[#64748B] font-mono">{u.email}</p>
+            <p className="font-semibold text-white">{u.fullName}</p>
+            <p className="text-xs text-slate-400 font-mono">{u.email}</p>
           </div>
         </div>
       ),
@@ -214,8 +214,8 @@ export const UsersAndRoles: React.FC = () => {
     {
       header: 'Mobile Phone',
       accessor: (u) => (
-        <div className="flex items-center space-x-1.5 text-xs font-mono text-[#334155]">
-          <Smartphone className="w-3.5 h-3.5 text-[#047857] shrink-0" />
+        <div className="flex items-center space-x-1.5 text-xs font-mono text-slate-300">
+          <Smartphone className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
           <span>{u.phone || 'N/A'}</span>
         </div>
       ),
@@ -223,7 +223,7 @@ export const UsersAndRoles: React.FC = () => {
     {
       header: 'Tenant Context',
       accessor: (u) => (
-        <span className="text-xs font-semibold px-2.5 py-1 rounded-lg bg-[#EFF6FF] border border-[#BFDBFE] text-[#1677FF]">
+        <span className="text-xs font-semibold px-2.5 py-1 rounded-lg bg-sky-500/15 border border-sky-500/30 text-sky-400">
           {u.tenantId?.displayName || (u.role === 'super_admin' ? 'Global Super Admin' : 'None')}
         </span>
       ),
@@ -250,7 +250,7 @@ export const UsersAndRoles: React.FC = () => {
     {
       header: 'Last Active',
       accessor: (u) => (
-        <span className="text-xs text-[#64748B]">
+        <span className="text-xs text-slate-400">
           {u.lastLoginAt ? new Date(u.lastLoginAt).toLocaleString() : 'Never'}
         </span>
       ),
@@ -265,7 +265,7 @@ export const UsersAndRoles: React.FC = () => {
             onClick={() => openEditModal(u)}
             className="text-xs px-2.5 py-1 h-8"
           >
-            <Edit2 className="w-3.5 h-3.5 mr-1 text-[#1677FF]" />
+            <Edit2 className="w-3.5 h-3.5 mr-1 text-sky-400" />
             <span>Edit</span>
           </Button>
 
@@ -273,7 +273,7 @@ export const UsersAndRoles: React.FC = () => {
             <button
               onClick={() => openDeleteModal(u)}
               title="Delete User"
-              className="p-1.5 rounded-lg text-[#64748B] hover:text-[#B91C1C] hover:bg-[#FEF2F2] transition"
+              className="p-1.5 rounded-lg text-slate-400 hover:text-rose-400 hover:bg-rose-500/15 transition"
             >
               <Trash2 className="w-4 h-4" />
             </button>
@@ -297,7 +297,7 @@ export const UsersAndRoles: React.FC = () => {
     >
       <div className="space-y-6">
         {/* Search and Filters Bar */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 bg-white p-4 rounded-2xl border border-[#E2E8F0]">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 bg-[#0E172A] p-4 rounded-2xl border border-slate-800">
           <form onSubmit={handleSearchSubmit} className="flex items-center space-x-2 w-full sm:w-80">
             <Input
               placeholder="Search by name, email, or phone..."
@@ -313,11 +313,11 @@ export const UsersAndRoles: React.FC = () => {
           <div className="flex flex-wrap items-center gap-3 w-full sm:w-auto">
             {/* Role Filter */}
             <div className="flex items-center space-x-2 text-xs">
-              <span className="text-[#64748B]">Role:</span>
+              <span className="text-slate-400">Role:</span>
               <select
                 value={roleFilter}
                 onChange={(e) => setRoleFilter(e.target.value)}
-                className="bg-[#F1F5F9] border border-[#CBD5E1] text-[#1E293B] rounded-xl px-3 py-1.5 text-xs focus:ring-2 focus:ring-sky-500 outline-none"
+                className="bg-[#F1F5F9] border border-slate-700/80 text-slate-100 rounded-xl px-3 py-1.5 text-xs focus:ring-2 focus:ring-sky-500 outline-none"
               >
                 <option value="all">All Roles</option>
                 {AVAILABLE_ROLES.map((r) => (
@@ -330,11 +330,11 @@ export const UsersAndRoles: React.FC = () => {
 
             {/* Status Filter */}
             <div className="flex items-center space-x-2 text-xs">
-              <span className="text-[#64748B]">Status:</span>
+              <span className="text-slate-400">Status:</span>
               <select
                 value={statusFilter}
                 onChange={(e) => setStatusFilter(e.target.value)}
-                className="bg-[#F1F5F9] border border-[#CBD5E1] text-[#1E293B] rounded-xl px-3 py-1.5 text-xs focus:ring-2 focus:ring-sky-500 outline-none"
+                className="bg-[#F1F5F9] border border-slate-700/80 text-slate-100 rounded-xl px-3 py-1.5 text-xs focus:ring-2 focus:ring-sky-500 outline-none"
               >
                 <option value="all">All Statuses</option>
                 <option value="active">Active</option>
@@ -360,8 +360,8 @@ export const UsersAndRoles: React.FC = () => {
         maxWidth="lg"
       >
         {formError && (
-          <div className="mb-4 p-3.5 rounded-xl bg-[#FEF2F2] border border-[#FECACA] text-[#991B1B] text-xs flex items-center space-x-2">
-            <AlertCircle className="w-4 h-4 shrink-0 text-[#B91C1C]" />
+          <div className="mb-4 p-3.5 rounded-xl bg-rose-500/15 border border-rose-500/30 text-rose-300 text-xs flex items-center space-x-2">
+            <AlertCircle className="w-4 h-4 shrink-0 text-rose-400" />
             <span>{formError}</span>
           </div>
         )}
@@ -401,11 +401,11 @@ export const UsersAndRoles: React.FC = () => {
             />
 
             <div className="space-y-1.5">
-              <label className="block text-xs font-semibold text-[#334155]">User Role</label>
+              <label className="block text-xs font-semibold text-slate-300">User Role</label>
               <select
                 value={formData.role}
                 onChange={(e) => setFormData({ ...formData, role: e.target.value })}
-                className="w-full bg-[#F8FAFC] border border-[#CBD5E1] text-[#0F172A] rounded-xl px-3 py-2 text-xs focus:ring-2 focus:ring-sky-500 outline-none"
+                className="w-full bg-[#060913] border border-slate-700/80 text-white rounded-xl px-3 py-2 text-xs focus:ring-2 focus:ring-sky-500 outline-none"
               >
                 {AVAILABLE_ROLES.map((r) => (
                   <option key={r.value} value={r.value}>
@@ -418,11 +418,11 @@ export const UsersAndRoles: React.FC = () => {
 
           {formData.role !== 'super_admin' && (
             <div className="space-y-1.5">
-              <label className="block text-xs font-semibold text-[#334155]">Assigned ISP Tenant Context</label>
+              <label className="block text-xs font-semibold text-slate-300">Assigned ISP Tenant Context</label>
               <select
                 value={formData.tenantId}
                 onChange={(e) => setFormData({ ...formData, tenantId: e.target.value })}
-                className="w-full bg-[#F8FAFC] border border-[#CBD5E1] text-[#0F172A] rounded-xl px-3 py-2 text-xs focus:ring-2 focus:ring-sky-500 outline-none"
+                className="w-full bg-[#060913] border border-slate-700/80 text-white rounded-xl px-3 py-2 text-xs focus:ring-2 focus:ring-sky-500 outline-none"
                 required
               >
                 <option value="">Select Tenant...</option>
@@ -436,11 +436,11 @@ export const UsersAndRoles: React.FC = () => {
           )}
 
           <div className="space-y-1.5">
-            <label className="block text-xs font-semibold text-[#334155]">Account Status</label>
+            <label className="block text-xs font-semibold text-slate-300">Account Status</label>
             <select
               value={formData.status}
               onChange={(e) => setFormData({ ...formData, status: e.target.value })}
-              className="w-full bg-[#F8FAFC] border border-[#CBD5E1] text-[#0F172A] rounded-xl px-3 py-2 text-xs focus:ring-2 focus:ring-sky-500 outline-none"
+              className="w-full bg-[#060913] border border-slate-700/80 text-white rounded-xl px-3 py-2 text-xs focus:ring-2 focus:ring-sky-500 outline-none"
             >
               <option value="active">Active</option>
               <option value="inactive">Inactive</option>
@@ -448,7 +448,7 @@ export const UsersAndRoles: React.FC = () => {
             </select>
           </div>
 
-          <div className="pt-4 flex items-center justify-end space-x-3 border-t border-[#E2E8F0]">
+          <div className="pt-4 flex items-center justify-end space-x-3 border-t border-slate-800">
             <Button
               type="button"
               variant="outline"
@@ -472,8 +472,8 @@ export const UsersAndRoles: React.FC = () => {
         maxWidth="lg"
       >
         {formError && (
-          <div className="mb-4 p-3.5 rounded-xl bg-[#FEF2F2] border border-[#FECACA] text-[#991B1B] text-xs flex items-center space-x-2">
-            <AlertCircle className="w-4 h-4 shrink-0 text-[#B91C1C]" />
+          <div className="mb-4 p-3.5 rounded-xl bg-rose-500/15 border border-rose-500/30 text-rose-300 text-xs flex items-center space-x-2">
+            <AlertCircle className="w-4 h-4 shrink-0 text-rose-400" />
             <span>{formError}</span>
           </div>
         )}
@@ -510,11 +510,11 @@ export const UsersAndRoles: React.FC = () => {
             />
 
             <div className="space-y-1.5">
-              <label className="block text-xs font-semibold text-[#334155]">User Role</label>
+              <label className="block text-xs font-semibold text-slate-300">User Role</label>
               <select
                 value={formData.role}
                 onChange={(e) => setFormData({ ...formData, role: e.target.value })}
-                className="w-full bg-[#F8FAFC] border border-[#CBD5E1] text-[#0F172A] rounded-xl px-3 py-2 text-xs focus:ring-2 focus:ring-sky-500 outline-none"
+                className="w-full bg-[#060913] border border-slate-700/80 text-white rounded-xl px-3 py-2 text-xs focus:ring-2 focus:ring-sky-500 outline-none"
               >
                 {AVAILABLE_ROLES.map((r) => (
                   <option key={r.value} value={r.value}>
@@ -527,11 +527,11 @@ export const UsersAndRoles: React.FC = () => {
 
           {formData.role !== 'super_admin' && (
             <div className="space-y-1.5">
-              <label className="block text-xs font-semibold text-[#334155]">Assigned ISP Tenant Context</label>
+              <label className="block text-xs font-semibold text-slate-300">Assigned ISP Tenant Context</label>
               <select
                 value={formData.tenantId}
                 onChange={(e) => setFormData({ ...formData, tenantId: e.target.value })}
-                className="w-full bg-[#F8FAFC] border border-[#CBD5E1] text-[#0F172A] rounded-xl px-3 py-2 text-xs focus:ring-2 focus:ring-sky-500 outline-none"
+                className="w-full bg-[#060913] border border-slate-700/80 text-white rounded-xl px-3 py-2 text-xs focus:ring-2 focus:ring-sky-500 outline-none"
               >
                 <option value="">Select Tenant...</option>
                 {tenants.map((t) => (
@@ -544,11 +544,11 @@ export const UsersAndRoles: React.FC = () => {
           )}
 
           <div className="space-y-1.5">
-            <label className="block text-xs font-semibold text-[#334155]">Account Status</label>
+            <label className="block text-xs font-semibold text-slate-300">Account Status</label>
             <select
               value={formData.status}
               onChange={(e) => setFormData({ ...formData, status: e.target.value })}
-              className="w-full bg-[#F8FAFC] border border-[#CBD5E1] text-[#0F172A] rounded-xl px-3 py-2 text-xs focus:ring-2 focus:ring-sky-500 outline-none"
+              className="w-full bg-[#060913] border border-slate-700/80 text-white rounded-xl px-3 py-2 text-xs focus:ring-2 focus:ring-sky-500 outline-none"
             >
               <option value="active">Active</option>
               <option value="inactive">Inactive</option>
@@ -556,7 +556,7 @@ export const UsersAndRoles: React.FC = () => {
             </select>
           </div>
 
-          <div className="pt-4 flex items-center justify-end space-x-3 border-t border-[#E2E8F0]">
+          <div className="pt-4 flex items-center justify-end space-x-3 border-t border-slate-800">
             <Button
               type="button"
               variant="outline"
@@ -579,11 +579,11 @@ export const UsersAndRoles: React.FC = () => {
         maxWidth="sm"
       >
         <div className="space-y-4">
-          <p className="text-xs text-[#334155] leading-relaxed">
-            Are you sure you want to delete user <strong className="text-[#0F172A]">{selectedUser?.fullName}</strong> ({selectedUser?.email})? This action will permanently revoke access and cannot be undone.
+          <p className="text-xs text-slate-300 leading-relaxed">
+            Are you sure you want to delete user <strong className="text-white">{selectedUser?.fullName}</strong> ({selectedUser?.email})? This action will permanently revoke access and cannot be undone.
           </p>
 
-          <div className="flex items-center justify-end space-x-3 pt-4 border-t border-[#E2E8F0]">
+          <div className="flex items-center justify-end space-x-3 pt-4 border-t border-slate-800">
             <Button
               variant="outline"
               onClick={() => setIsDeleteModalOpen(false)}

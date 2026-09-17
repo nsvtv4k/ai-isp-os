@@ -23,28 +23,28 @@ export function DataTable<T>({
 }: DataTableProps<T>) {
   if (isLoading) {
     return (
-      <div className="w-full py-8 text-center text-[#64748B] text-sm animate-pulse bg-white border border-[#E2E8F0] rounded-[10px]">
+      <div className="w-full py-12 text-center text-slate-400 text-sm animate-pulse bg-[#111827] border border-slate-800 rounded-2xl">
         Loading records...
       </div>
     );
   }
 
   return (
-    <div className="w-full overflow-x-auto border border-[#E2E8F0] rounded-[10px] bg-white shadow-xs">
-      <table className="w-full text-left text-sm text-[#334155]">
-        <thead className="bg-[#F8FAFC] border-b border-[#E2E8F0] text-xs font-semibold text-[#475569] uppercase tracking-wider">
+    <div className="w-full overflow-x-auto border border-slate-800 rounded-2xl bg-[#111827] shadow-xl">
+      <table className="w-full text-left text-sm text-slate-200">
+        <thead className="bg-[#0B0F19] border-b border-slate-800 text-xs font-bold text-sky-400 uppercase tracking-wider font-mono">
           <tr>
             {columns.map((col, idx) => (
-              <th key={idx} className={`px-4 py-3.5 ${col.className || ''}`}>
+              <th key={idx} className={`px-5 py-4 ${col.className || ''}`}>
                 {col.header}
               </th>
             ))}
           </tr>
         </thead>
-        <tbody className="divide-y divide-[#EEF2F7]">
+        <tbody className="divide-y divide-slate-800/80">
           {data.length === 0 ? (
             <tr>
-              <td colSpan={columns.length} className="px-4 py-8 text-center text-[#94A3B8]">
+              <td colSpan={columns.length} className="px-5 py-12 text-center text-slate-500 font-mono">
                 No matching records found.
               </td>
             </tr>
@@ -53,16 +53,16 @@ export function DataTable<T>({
               <tr
                 key={keyExtractor(item)}
                 onClick={() => onRowClick && onRowClick(item)}
-                className={`hover:bg-[#F8FAFC] transition ${
+                className={`hover:bg-slate-800/60 transition ${
                   onRowClick ? 'cursor-pointer' : ''
                 }`}
               >
                 {columns.map((col, idx) => (
-                  <td key={idx} className={`px-4 py-3 text-[#334155] ${col.className || ''}`}>
+                  <td key={idx} className={`px-5 py-4 ${col.className || ''}`}>
                     {typeof col.accessor === 'function'
                       ? col.accessor(item)
                       : col.accessor
-                      ? (item[col.accessor] as any)
+                      ? (item[col.accessor] as React.ReactNode)
                       : null}
                   </td>
                 ))}

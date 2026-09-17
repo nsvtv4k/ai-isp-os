@@ -112,16 +112,16 @@ export const SuperAdminDashboard: React.FC = () => {
         </div>
 
         {/* AI Executive Briefing Banner */}
-        <div className="p-4 bg-white border border-[#BFDBFE] rounded-xl flex items-start space-x-3.5 shadow-sm">
-          <div className="p-2 rounded-lg bg-[#EFF6FF] text-[#1677FF] shrink-0">
+        <div className="p-4 bg-[#0E172A] border border-sky-500/30 rounded-xl flex items-start space-x-3.5 shadow-sm">
+          <div className="p-2 rounded-lg bg-sky-500/15 text-sky-400 shrink-0">
             <Bot className="w-5 h-5" />
           </div>
           <div className="flex-1">
             <div className="flex items-center justify-between">
-              <h3 className="text-sm font-semibold text-[#0F172A]">AI Platform Synthesis & Executive Summary</h3>
+              <h3 className="text-sm font-semibold text-white">AI Platform Synthesis & Executive Summary</h3>
               <Badge variant="info">Realtime Diagnostics</Badge>
             </div>
-            <p className="text-xs text-[#334155] mt-1 leading-relaxed">
+            <p className="text-xs text-slate-300 mt-1 leading-relaxed">
               {data?.aiExecutiveSummary ||
                 'Global SaaS services operating at optimal performance. No cross-tenant latency anomalies detected.'}
             </p>
@@ -131,11 +131,11 @@ export const SuperAdminDashboard: React.FC = () => {
         {/* Two-Column Grid: Platform Health & Recent Tenants */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {/* Microservice Health Matrix */}
-          <div className="bg-white border border-[#E2E8F0] rounded-xl p-5 space-y-4">
-            <div className="flex items-center justify-between border-b border-[#E2E8F0] pb-3">
+          <div className="bg-[#0E172A] border border-slate-800 rounded-xl p-5 space-y-4">
+            <div className="flex items-center justify-between border-b border-slate-800 pb-3">
               <div className="flex items-center space-x-2">
-                <Activity className="w-4 h-4 text-[#047857]" />
-                <h3 className="text-sm font-bold text-[#0F172A]">Platform Microservice Health</h3>
+                <Activity className="w-4 h-4 text-emerald-400" />
+                <h3 className="text-sm font-bold text-white">Platform Microservice Health</h3>
               </div>
               <Badge variant="success" dot>
                 All Systems Normal
@@ -143,33 +143,33 @@ export const SuperAdminDashboard: React.FC = () => {
             </div>
 
             <div className="grid grid-cols-2 gap-3 text-xs">
-              <div className="p-3 bg-[#F8FAFC] border border-[#E2E8F0] rounded-lg space-y-1">
-                <span className="text-[#64748B]">Core REST API</span>
-                <p className="font-semibold text-[#0F172A] flex items-center justify-between">
+              <div className="p-3 bg-[#070C1A] border border-slate-800 rounded-lg space-y-1">
+                <span className="text-slate-400">Core REST API</span>
+                <p className="font-semibold text-white flex items-center justify-between">
                   <span>Latency: {health.api?.latencyMs || 14}ms</span>
                   <Badge variant="success">99.99%</Badge>
                 </p>
               </div>
 
-              <div className="p-3 bg-[#F8FAFC] border border-[#E2E8F0] rounded-lg space-y-1">
-                <span className="text-[#64748B]">TR-069 / CWMP ACS</span>
-                <p className="font-semibold text-[#0F172A] flex items-center justify-between">
+              <div className="p-3 bg-[#070C1A] border border-slate-800 rounded-lg space-y-1">
+                <span className="text-slate-400">TR-069 / CWMP ACS</span>
+                <p className="font-semibold text-white flex items-center justify-between">
                   <span>Sessions: {health.acs?.activeSessions || 42}</span>
                   <Badge variant="success">Active</Badge>
                 </p>
               </div>
 
-              <div className="p-3 bg-[#F8FAFC] border border-[#E2E8F0] rounded-lg space-y-1">
-                <span className="text-[#64748B]">Event Stream / Queues</span>
-                <p className="font-semibold text-[#0F172A] flex items-center justify-between">
+              <div className="p-3 bg-[#070C1A] border border-slate-800 rounded-lg space-y-1">
+                <span className="text-slate-400">Event Stream / Queues</span>
+                <p className="font-semibold text-white flex items-center justify-between">
                   <span>185 msg/sec</span>
                   <Badge variant="success">0 Queue</Badge>
                 </p>
               </div>
 
-              <div className="p-3 bg-[#F8FAFC] border border-[#E2E8F0] rounded-lg space-y-1">
-                <span className="text-[#64748B]">AI Inference Engine</span>
-                <p className="font-semibold text-[#0F172A] flex items-center justify-between">
+              <div className="p-3 bg-[#070C1A] border border-slate-800 rounded-lg space-y-1">
+                <span className="text-slate-400">AI Inference Engine</span>
+                <p className="font-semibold text-white flex items-center justify-between">
                   <span>Avg: 140ms</span>
                   <Badge variant="purple">Ready</Badge>
                 </p>
@@ -178,15 +178,15 @@ export const SuperAdminDashboard: React.FC = () => {
           </div>
 
           {/* Tenant Health Leaderboard */}
-          <div className="bg-white border border-[#E2E8F0] rounded-xl p-5 space-y-4">
-            <div className="flex items-center justify-between border-b border-[#E2E8F0] pb-3">
+          <div className="bg-[#0E172A] border border-slate-800 rounded-xl p-5 space-y-4">
+            <div className="flex items-center justify-between border-b border-slate-800 pb-3">
               <div className="flex items-center space-x-2">
-                <Building2 className="w-4 h-4 text-[#1677FF]" />
-                <h3 className="text-sm font-bold text-[#0F172A]">Active Tenant Portals</h3>
+                <Building2 className="w-4 h-4 text-sky-400" />
+                <h3 className="text-sm font-bold text-white">Active Tenant Portals</h3>
               </div>
               <button
                 onClick={() => navigate('/superadmin/tenants')}
-                className="text-xs text-[#1677FF] hover:text-[#1D4ED8] font-medium"
+                className="text-xs text-sky-400 hover:text-sky-300 font-medium"
               >
                 View All →
               </button>
@@ -197,11 +197,11 @@ export const SuperAdminDashboard: React.FC = () => {
                 <div
                   key={t._id}
                   onClick={() => navigate(`/superadmin/tenants/${t._id}`)}
-                  className="p-3 bg-[#F8FAFC] hover:bg-[#F8FAFC] border border-[#E2E8F0] rounded-lg flex items-center justify-between cursor-pointer transition"
+                  className="p-3 bg-[#070C1A] hover:bg-[#070C1A] border border-slate-800 rounded-lg flex items-center justify-between cursor-pointer transition"
                 >
                   <div>
-                    <p className="text-xs font-semibold text-[#1E293B]">{t.displayName}</p>
-                    <p className="text-[11px] text-[#64748B] font-mono">https://{t.subdomain}</p>
+                    <p className="text-xs font-semibold text-slate-100">{t.displayName}</p>
+                    <p className="text-[11px] text-slate-400 font-mono">https://{t.subdomain}</p>
                   </div>
                   <div className="flex items-center space-x-2">
                     <Badge variant={t.status === 'active' ? 'success' : 'warning'}>
@@ -218,11 +218,11 @@ export const SuperAdminDashboard: React.FC = () => {
         {/* Global Multi-Tenant Active Reporting & Offline Fleets */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {/* Active Reporting Devices */}
-          <div className="bg-white border border-[#CBD5E1] rounded-2xl p-5 shadow-xs space-y-3.5">
-            <div className="flex items-center justify-between border-b border-[#E2E8F0] pb-2.5">
+          <div className="bg-[#0E172A] border border-slate-800 rounded-2xl p-5 shadow-xs space-y-3.5">
+            <div className="flex items-center justify-between border-b border-slate-800 pb-2.5">
               <div className="flex items-center space-x-2">
-                <Radio className="w-4 h-4 text-[#047857] animate-pulse" />
-                <h3 className="text-sm font-bold text-[#0F172A]">Live Active TR-069 / TR-369 Fleet ({kpis.onlineDevices || 0})</h3>
+                <Radio className="w-4 h-4 text-emerald-400 animate-pulse" />
+                <h3 className="text-sm font-bold text-white">Live Active TR-069 / TR-369 Fleet ({kpis.onlineDevices || 0})</h3>
               </div>
               <Badge variant="success" dot>Global Live Fleet</Badge>
             </div>
@@ -230,21 +230,21 @@ export const SuperAdminDashboard: React.FC = () => {
             {data?.reportingDevices && data.reportingDevices.length > 0 ? (
               <div className="divide-y divide-[#EEF2F7]">
                 {data.reportingDevices.map((d: any) => (
-                  <div key={d._id} className="py-2.5 flex items-center justify-between hover:bg-[#F8FAFC] px-1 rounded-lg transition">
+                  <div key={d._id} className="py-2.5 flex items-center justify-between hover:bg-[#070C1A] px-1 rounded-lg transition">
                     <div>
                       <div className="flex items-center space-x-2">
-                        <span className="font-mono font-bold text-xs text-[#0F172A]">{d.serialNumber}</span>
+                        <span className="font-mono font-bold text-xs text-white">{d.serialNumber}</span>
                         <Badge variant="success" dot>Online</Badge>
                       </div>
-                      <p className="text-[11px] text-[#64748B]">
-                        Tenant: <span className="font-semibold text-[#1677FF]">{(typeof d?.tenantId === 'object' ? d?.tenantId?.displayName : d?.tenantSlug) || 'Global'}</span> · {d?.manufacturer} {d?.modelName || 'GPON ONT'}
+                      <p className="text-[11px] text-slate-400">
+                        Tenant: <span className="font-semibold text-sky-400">{(typeof d?.tenantId === 'object' ? d?.tenantId?.displayName : d?.tenantSlug) || 'Global'}</span> · {d?.manufacturer} {d?.modelName || 'GPON ONT'}
                       </p>
                     </div>
                     <div className="text-right">
-                      <span className="text-xs font-mono font-bold text-[#047857]">
+                      <span className="text-xs font-mono font-bold text-emerald-400">
                         {d?.currentRxPowerDbm != null ? `${d.currentRxPowerDbm} dBm` : 'Online'}
                       </span>
-                      <p className="text-[10px] text-[#94A3B8] font-mono">
+                      <p className="text-[10px] text-slate-400 font-mono">
                         {d?.lastInform ? new Date(d.lastInform).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : 'Live'}
                       </p>
                     </div>
@@ -252,18 +252,18 @@ export const SuperAdminDashboard: React.FC = () => {
                 ))}
               </div>
             ) : (
-              <div className="py-8 text-center text-xs text-[#94A3B8] italic">
+              <div className="py-8 text-center text-xs text-slate-400 italic">
                 No active reporting ONTs online at this moment.
               </div>
             )}
           </div>
 
           {/* Offline Fleets */}
-          <div className="bg-white border border-[#CBD5E1] rounded-2xl p-5 shadow-xs space-y-3.5">
-            <div className="flex items-center justify-between border-b border-[#E2E8F0] pb-2.5">
+          <div className="bg-[#0E172A] border border-slate-800 rounded-2xl p-5 shadow-xs space-y-3.5">
+            <div className="flex items-center justify-between border-b border-slate-800 pb-2.5">
               <div className="flex items-center space-x-2">
-                <Power className="w-4 h-4 text-[#B91C1C]" />
-                <h3 className="text-sm font-bold text-[#0F172A]">Offline / Unreachable ONT Fleet ({kpis.offlineDevices || 0})</h3>
+                <Power className="w-4 h-4 text-rose-400" />
+                <h3 className="text-sm font-bold text-white">Offline / Unreachable ONT Fleet ({kpis.offlineDevices || 0})</h3>
               </div>
               <Badge variant="danger" dot>Offline Fleet</Badge>
             </div>
@@ -271,18 +271,18 @@ export const SuperAdminDashboard: React.FC = () => {
             {data?.offlineDevicesList && data.offlineDevicesList.length > 0 ? (
               <div className="divide-y divide-[#EEF2F7]">
                 {data.offlineDevicesList.map((d: any) => (
-                  <div key={d?._id || Math.random()} className="py-2.5 flex items-center justify-between hover:bg-[#F8FAFC] px-1 rounded-lg transition">
+                  <div key={d?._id || Math.random()} className="py-2.5 flex items-center justify-between hover:bg-[#070C1A] px-1 rounded-lg transition">
                     <div>
                       <div className="flex items-center space-x-2">
-                        <span className="font-mono font-bold text-xs text-[#0F172A]">{d?.serialNumber}</span>
+                        <span className="font-mono font-bold text-xs text-white">{d?.serialNumber}</span>
                         <Badge variant="danger" dot>Offline</Badge>
                       </div>
-                      <p className="text-[11px] text-[#64748B]">
-                        Tenant: <span className="font-semibold text-[#1677FF]">{(typeof d?.tenantId === 'object' ? d?.tenantId?.displayName : d?.tenantSlug) || 'Global'}</span> · {d?.manufacturer} {d?.modelName || 'GPON ONT'}
+                      <p className="text-[11px] text-slate-400">
+                        Tenant: <span className="font-semibold text-sky-400">{(typeof d?.tenantId === 'object' ? d?.tenantId?.displayName : d?.tenantSlug) || 'Global'}</span> · {d?.manufacturer} {d?.modelName || 'GPON ONT'}
                       </p>
                     </div>
                     <div className="text-right">
-                      <span className="text-[11px] text-[#94A3B8] font-mono">
+                      <span className="text-[11px] text-slate-400 font-mono">
                         {d.lastInform ? `Last seen: ${new Date(d.lastInform).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}` : 'Never reported'}
                       </span>
                     </div>
@@ -290,7 +290,7 @@ export const SuperAdminDashboard: React.FC = () => {
                 ))}
               </div>
             ) : (
-              <div className="py-8 text-center text-xs text-[#94A3B8] italic">
+              <div className="py-8 text-center text-xs text-slate-400 italic">
                 No devices are offline across the platform.
               </div>
             )}

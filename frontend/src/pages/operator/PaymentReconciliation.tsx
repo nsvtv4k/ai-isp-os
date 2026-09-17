@@ -81,7 +81,7 @@ export const PaymentReconciliation: React.FC = () => {
         <div className="space-y-6 max-w-7xl mx-auto pb-12">
           {/* Top Daily Summary Cards */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
-            <Card className="p-4 bg-white border border-slate-200 rounded-2xl shadow-xs space-y-1">
+            <Card className="p-4 bg-[#0E172A] border border-slate-800 rounded-2xl shadow-xs space-y-1">
               <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Today's Collections</span>
               <p className="text-2xl font-black text-emerald-700 font-mono">
                 ₹{summary?.totalCollected?.toLocaleString() || 0}
@@ -89,7 +89,7 @@ export const PaymentReconciliation: React.FC = () => {
               <p className="text-[11px] text-slate-500 font-sans">{summary?.successfulCount || 0} Successful Transactions</p>
             </Card>
 
-            <Card className="p-4 bg-white border border-slate-200 rounded-2xl shadow-xs space-y-1">
+            <Card className="p-4 bg-[#0E172A] border border-slate-800 rounded-2xl shadow-xs space-y-1">
               <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Gateway Fees</span>
               <p className="text-2xl font-black text-slate-700 font-mono">
                 ₹{summary?.totalFees?.toLocaleString() || 0}
@@ -97,7 +97,7 @@ export const PaymentReconciliation: React.FC = () => {
               <p className="text-[11px] text-slate-500 font-sans">Avg MDR ~1.8%</p>
             </Card>
 
-            <Card className="p-4 bg-white border border-slate-200 rounded-2xl shadow-xs space-y-1">
+            <Card className="p-4 bg-[#0E172A] border border-slate-800 rounded-2xl shadow-xs space-y-1">
               <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Net Bank Settlements</span>
               <p className="text-2xl font-black text-sky-700 font-mono">
                 ₹{summary?.netSettled?.toLocaleString() || 0}
@@ -105,7 +105,7 @@ export const PaymentReconciliation: React.FC = () => {
               <p className="text-[11px] text-emerald-600 font-sans font-semibold">T+1 Settlement Active</p>
             </Card>
 
-            <Card className="p-4 bg-white border border-slate-200 rounded-2xl shadow-xs space-y-1">
+            <Card className="p-4 bg-[#0E172A] border border-slate-800 rounded-2xl shadow-xs space-y-1">
               <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Pending Orders</span>
               <p className="text-2xl font-black text-amber-600 font-mono">
                 {summary?.pendingCount || 0}
@@ -113,7 +113,7 @@ export const PaymentReconciliation: React.FC = () => {
               <p className="text-[11px] text-slate-500 font-sans">Awaiting payment capture</p>
             </Card>
 
-            <Card className="p-4 bg-white border border-slate-200 rounded-2xl shadow-xs space-y-1">
+            <Card className="p-4 bg-[#0E172A] border border-slate-800 rounded-2xl shadow-xs space-y-1">
               <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Failed / Rejected</span>
               <p className="text-2xl font-black text-rose-600 font-mono">
                 {summary?.failedCount || 0}
@@ -125,8 +125,8 @@ export const PaymentReconciliation: React.FC = () => {
           {/* Branch Breakdown & Gateway Split */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
             {/* Gateway Split */}
-            <Card className="p-5 border border-slate-200 bg-white rounded-2xl shadow-xs space-y-3">
-              <h3 className="text-xs font-bold uppercase text-slate-800 tracking-wider flex items-center">
+            <Card className="p-5 border border-slate-800 bg-[#0E172A] rounded-2xl shadow-xs space-y-3">
+              <h3 className="text-xs font-bold uppercase text-slate-100 tracking-wider flex items-center">
                 <CreditCard className="w-3.5 h-3.5 mr-1.5 text-sky-600" />
                 Gateway Volume Split
               </h3>
@@ -136,9 +136,9 @@ export const PaymentReconciliation: React.FC = () => {
                   { gateway: 'CASHFREE', amount: 9800, count: 12 },
                   { gateway: 'PHONEPE', amount: 7600, count: 9 },
                 ]).map((gw: any) => (
-                  <div key={gw.gateway} className="flex items-center justify-between p-2.5 bg-slate-50 rounded-xl text-xs">
+                  <div key={gw.gateway} className="flex items-center justify-between p-2.5 bg-[#080D1A] rounded-xl text-xs">
                     <div>
-                      <span className="font-bold text-slate-800 font-mono">{gw.gateway}</span>
+                      <span className="font-bold text-slate-100 font-mono">{gw.gateway}</span>
                       <span className="text-[10px] text-slate-400 block font-sans">{gw.count} payments</span>
                     </div>
                     <span className="font-mono font-bold text-emerald-700">₹{gw.amount.toLocaleString()}</span>
@@ -148,8 +148,8 @@ export const PaymentReconciliation: React.FC = () => {
             </Card>
 
             {/* Branch Revenue Breakdown */}
-            <Card className="p-5 border border-slate-200 bg-white rounded-2xl shadow-xs space-y-3 lg:col-span-2">
-              <h3 className="text-xs font-bold uppercase text-slate-800 tracking-wider flex items-center">
+            <Card className="p-5 border border-slate-800 bg-[#0E172A] rounded-2xl shadow-xs space-y-3 lg:col-span-2">
+              <h3 className="text-xs font-bold uppercase text-slate-100 tracking-wider flex items-center">
                 <Building2 className="w-3.5 h-3.5 mr-1.5 text-purple-600" />
                 Operator Branch / Franchise Collections
               </h3>
@@ -158,12 +158,12 @@ export const PaymentReconciliation: React.FC = () => {
                   <p className="text-xs text-slate-400 italic">No branch breakdown available.</p>
                 ) : (
                   branchReport.map((b: any) => (
-                    <div key={b.branch} className="p-3 bg-slate-50 border border-slate-200 rounded-xl flex items-center justify-between text-xs">
+                    <div key={b.branch} className="p-3 bg-[#080D1A] border border-slate-800 rounded-xl flex items-center justify-between text-xs">
                       <div>
-                        <p className="font-bold text-slate-900">{b.branch}</p>
+                        <p className="font-bold text-white">{b.branch}</p>
                         <span className="text-[11px] text-slate-500 font-mono">{b.transactionCount} Txns • Avg ₹{b.averageTicketSize}</span>
                       </div>
-                      <span className="font-mono font-black text-slate-800 text-sm">₹{b.totalRevenue.toLocaleString()}</span>
+                      <span className="font-mono font-black text-slate-100 text-sm">₹{b.totalRevenue.toLocaleString()}</span>
                     </div>
                   ))
                 )}
@@ -172,10 +172,10 @@ export const PaymentReconciliation: React.FC = () => {
           </div>
 
           {/* Transactions Ledger */}
-          <Card className="overflow-hidden border border-slate-200 bg-white rounded-2xl shadow-xs">
+          <Card className="overflow-hidden border border-slate-800 bg-[#0E172A] rounded-2xl shadow-xs">
             <div className="p-4 border-b border-slate-100 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
               <div>
-                <h3 className="font-bold text-slate-900 text-sm">Payment Transactions Ledger</h3>
+                <h3 className="font-bold text-white text-sm">Payment Transactions Ledger</h3>
                 <p className="text-xs text-slate-500 mt-0.5">Real-time payment capture & settlement audit stream</p>
               </div>
 
@@ -184,7 +184,7 @@ export const PaymentReconciliation: React.FC = () => {
                 <select
                   value={statusFilter}
                   onChange={(e) => setStatusFilter(e.target.value)}
-                  className="px-2.5 py-1.5 text-xs border border-slate-300 rounded-lg bg-white font-semibold text-slate-700"
+                  className="px-2.5 py-1.5 text-xs border border-slate-700 rounded-lg bg-[#0E172A] font-semibold text-slate-700"
                 >
                   <option value="ALL">All Statuses</option>
                   <option value="SUCCESS">SUCCESS</option>
@@ -201,7 +201,7 @@ export const PaymentReconciliation: React.FC = () => {
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
                     onKeyDown={(e) => e.key === 'Enter' && fetchReconciliationData()}
-                    className="pl-8 pr-3 py-1.5 text-xs border border-slate-300 rounded-lg w-48"
+                    className="pl-8 pr-3 py-1.5 text-xs border border-slate-700 rounded-lg w-48"
                   />
                 </div>
               </div>
@@ -210,7 +210,7 @@ export const PaymentReconciliation: React.FC = () => {
             <div className="overflow-x-auto">
               <table className="w-full text-left text-xs border-collapse">
                 <thead>
-                  <tr className="bg-slate-50 border-b border-slate-200 text-slate-500 font-semibold uppercase">
+                  <tr className="bg-[#080D1A] border-b border-slate-800 text-slate-500 font-semibold uppercase">
                     <th className="py-3 px-4">Transaction Reference</th>
                     <th className="py-3 px-4">Customer</th>
                     <th className="py-3 px-4">Gateway</th>
@@ -230,13 +230,13 @@ export const PaymentReconciliation: React.FC = () => {
                     </tr>
                   ) : (
                     transactions.map((t: any) => (
-                      <tr key={t._id} className="hover:bg-slate-50">
+                      <tr key={t._id} className="hover:bg-[#080D1A]">
                         <td className="py-3 px-4">
-                          <span className="font-mono font-bold text-slate-900 block">{t.transactionId}</span>
+                          <span className="font-mono font-bold text-white block">{t.transactionId}</span>
                           <span className="font-mono text-[10px] text-slate-400">{t.orderId || 'Direct'}</span>
                         </td>
                         <td className="py-3 px-4">
-                          <p className="font-bold text-slate-800">{t.customerName}</p>
+                          <p className="font-bold text-slate-100">{t.customerName}</p>
                           <span className="font-mono text-[11px] text-slate-500">{t.accountNumber}</span>
                         </td>
                         <td className="py-3 px-4 font-mono font-semibold text-slate-700">{t.gateway}</td>

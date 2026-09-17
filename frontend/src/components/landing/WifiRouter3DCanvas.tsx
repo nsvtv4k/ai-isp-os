@@ -475,7 +475,7 @@ export const WifiRouter3DCanvas: React.FC = () => {
     <div
       ref={containerRef}
       onMouseMove={handleMouseMove}
-      className="relative w-full h-[540px] rounded-3xl bg-gradient-to-b from-white via-[#F8FAFC] to-[#F1F5F9] border border-[#E2E8F0] shadow-xl overflow-hidden select-none flex items-center justify-center"
+      className="relative w-full h-[540px] rounded-3xl bg-gradient-to-b from-white via-[#F8FAFC] to-[#F1F5F9] border border-slate-800 shadow-xl overflow-hidden select-none flex items-center justify-center"
     >
       {/* Background Interactive Canvas */}
       <canvas ref={canvasRef} className="absolute inset-0 w-full h-full pointer-events-none z-0" />
@@ -483,13 +483,13 @@ export const WifiRouter3DCanvas: React.FC = () => {
       {/* Top Floating Control Bar */}
       <div className="absolute top-4 left-4 right-4 flex items-center justify-between z-20 pointer-events-auto">
         {/* Live Band Filter Pills */}
-        <div className="flex items-center space-x-1.5 p-1 bg-white/80 backdrop-blur-md border border-[#E2E8F0] rounded-xl shadow-sm">
+        <div className="flex items-center space-x-1.5 p-1 bg-[#0E172A]/80 backdrop-blur-md border border-slate-800 rounded-xl shadow-sm">
           <button
             onClick={() => setActiveBandFilter('ALL')}
             className={`px-3 py-1 text-xs font-semibold rounded-lg transition-all ${
               activeBandFilter === 'ALL'
                 ? 'bg-slate-900 text-white shadow-sm'
-                : 'text-[#64748B] hover:text-[#0F172A]'
+                : 'text-slate-400 hover:text-white'
             }`}
           >
             All Bands (6)
@@ -499,7 +499,7 @@ export const WifiRouter3DCanvas: React.FC = () => {
             className={`px-3 py-1 text-xs font-semibold rounded-lg flex items-center space-x-1 transition-all ${
               activeBandFilter === '5GHz'
                 ? 'bg-cyan-600 text-white shadow-sm'
-                : 'text-[#64748B] hover:text-cyan-600'
+                : 'text-slate-400 hover:text-cyan-600'
             }`}
           >
             <Zap className="w-3 h-3 text-cyan-300" />
@@ -510,7 +510,7 @@ export const WifiRouter3DCanvas: React.FC = () => {
             className={`px-3 py-1 text-xs font-semibold rounded-lg flex items-center space-x-1 transition-all ${
               activeBandFilter === '2.4GHz'
                 ? 'bg-emerald-600 text-white shadow-sm'
-                : 'text-[#64748B] hover:text-emerald-600'
+                : 'text-slate-400 hover:text-emerald-600'
             }`}
           >
             <Radio className="w-3 h-3 text-emerald-300" />
@@ -624,7 +624,7 @@ export const WifiRouter3DCanvas: React.FC = () => {
             }}
           >
             {/* Device Icon Circle */}
-            <div className="w-9 h-9 rounded-full bg-white border border-[#CBD5E1] shadow-md flex items-center justify-center text-[#334155] hover:scale-110 hover:border-emerald-500 hover:text-emerald-600 transition-all">
+            <div className="w-9 h-9 rounded-full bg-[#0E172A] border border-slate-700/80 shadow-md flex items-center justify-center text-slate-300 hover:scale-110 hover:border-emerald-500 hover:text-emerald-600 transition-all">
               {dev.type === 'laptop' && <Laptop className="w-4 h-4" />}
               {dev.type === 'phone' && <Smartphone className="w-4 h-4" />}
               {dev.type === 'tv' && <Tv className="w-4 h-4" />}
@@ -647,14 +647,14 @@ export const WifiRouter3DCanvas: React.FC = () => {
       {/* HOVER TOOLTIP CARD */}
       {hoveredNode && (
         <div
-          className="absolute z-30 pointer-events-none w-56 p-3 bg-white/95 backdrop-blur-md border border-[#CBD5E1] rounded-2xl shadow-2xl text-left animate-in fade-in zoom-in-95 duration-100"
+          className="absolute z-30 pointer-events-none w-56 p-3 bg-[#0E172A]/95 backdrop-blur-md border border-slate-700/80 rounded-2xl shadow-2xl text-left animate-in fade-in zoom-in-95 duration-100"
           style={{
             left: `${Math.min(Math.max(hoveredNode.x, 120), 400)}px`,
             top: `${hoveredNode.y - 70}px`,
           }}
         >
           <div className="flex items-center justify-between pb-1.5 border-b border-[#F1F5F9] mb-1.5">
-            <div className="font-bold text-xs text-[#0F172A] truncate">{hoveredNode.name}</div>
+            <div className="font-bold text-xs text-white truncate">{hoveredNode.name}</div>
             <span
               className={`text-[9px] font-semibold px-1.5 py-0.5 rounded ${
                 hoveredNode.band === '5GHz'
@@ -666,33 +666,33 @@ export const WifiRouter3DCanvas: React.FC = () => {
             </span>
           </div>
 
-          <div className="grid grid-cols-2 gap-1 text-[10px] text-[#64748B]">
-            <div>IP: <span className="font-mono text-[#0F172A]">{hoveredNode.ip}</span></div>
+          <div className="grid grid-cols-2 gap-1 text-[10px] text-slate-400">
+            <div>IP: <span className="font-mono text-white">{hoveredNode.ip}</span></div>
             <div>Signal: <span className="font-semibold text-emerald-600">{hoveredNode.signalDbm} dBm</span></div>
             <div>Link: <span className="font-semibold text-cyan-600">{hoveredNode.speedMbps} Mbps</span></div>
-            <div>Traffic: <span className="font-semibold text-[#0F172A]">↓ {hoveredNode.downloadSpeed}</span></div>
+            <div>Traffic: <span className="font-semibold text-white">↓ {hoveredNode.downloadSpeed}</span></div>
           </div>
         </div>
       )}
 
       {/* Bottom Telemetry Legend */}
-      <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-[11px] text-[#64748B] pointer-events-none z-20">
-        <div className="flex items-center space-x-4 bg-white/80 backdrop-blur-md px-3 py-1.5 rounded-xl border border-[#E2E8F0] shadow-sm">
+      <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-[11px] text-slate-400 pointer-events-none z-20">
+        <div className="flex items-center space-x-4 bg-[#0E172A]/80 backdrop-blur-md px-3 py-1.5 rounded-xl border border-slate-800 shadow-sm">
           <div className="flex items-center space-x-1.5">
             <span className="w-2 h-2 rounded-full bg-cyan-500 shadow-sm shadow-cyan-400"></span>
-            <span className="font-medium text-[#334155]">5 GHz High-Bandwidth Sparks</span>
+            <span className="font-medium text-slate-300">5 GHz High-Bandwidth Sparks</span>
           </div>
           <div className="flex items-center space-x-1.5">
             <span className="w-2 h-2 rounded-full bg-emerald-500 shadow-sm shadow-emerald-400"></span>
-            <span className="font-medium text-[#334155]">2.4 GHz Wide-Coverage Sparks</span>
+            <span className="font-medium text-slate-300">2.4 GHz Wide-Coverage Sparks</span>
           </div>
           <div className="flex items-center space-x-1.5">
             <span className="w-2 h-2 rounded-full bg-purple-500 shadow-sm shadow-purple-400"></span>
-            <span className="font-medium text-[#334155]">Uplink Feedback</span>
+            <span className="font-medium text-slate-300">Uplink Feedback</span>
           </div>
         </div>
 
-        <div className="hidden md:flex items-center space-x-1 bg-white/80 backdrop-blur-md px-3 py-1.5 rounded-xl border border-[#E2E8F0] shadow-sm">
+        <div className="hidden md:flex items-center space-x-1 bg-[#0E172A]/80 backdrop-blur-md px-3 py-1.5 rounded-xl border border-slate-800 shadow-sm">
           <Sparkles className="w-3.5 h-3.5 text-emerald-600 mr-1" />
           <span>Move mouse to tilt 3D perspective</span>
         </div>

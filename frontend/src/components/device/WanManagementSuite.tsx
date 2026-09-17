@@ -554,10 +554,10 @@ export const WanManagementSuite: React.FC<WanManagementSuiteProps> = ({
       {/* Main 2-Column Suite Layout */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
         {/* LEFT COLUMN: WAN CONNECTION INVENTORY & SELECTOR (4 Cols) */}
-        <div className="lg:col-span-4 bg-white border border-[#CBD5E1] rounded-2xl p-4 shadow-sm space-y-4">
+        <div className="lg:col-span-4 bg-[#0E172A] border border-slate-700/80 rounded-2xl p-4 shadow-sm space-y-4">
           <div className="flex items-center justify-between pb-3 border-b border-slate-100">
             <div>
-              <h4 className="text-xs font-bold text-slate-900 uppercase tracking-wider">WAN Connections ({profiles.length})</h4>
+              <h4 className="text-xs font-bold text-white uppercase tracking-wider">WAN Connections ({profiles.length})</h4>
               <p className="text-[11px] text-slate-500">Configured on ONT</p>
             </div>
             <Button
@@ -584,13 +584,13 @@ export const WanManagementSuite: React.FC<WanManagementSuiteProps> = ({
                   className={`p-3.5 rounded-xl border transition cursor-pointer relative ${
                     isSelected
                       ? 'bg-blue-50/70 border-[#1677FF] shadow-xs'
-                      : 'bg-white border-slate-200 hover:border-slate-300 hover:bg-slate-50/80'
+                      : 'bg-[#0E172A] border-slate-800 hover:border-slate-700 hover:bg-[#080D1A]/80'
                   }`}
                 >
                   <div className="flex items-start justify-between">
                     <div>
                       <div className="flex items-center space-x-1.5">
-                        <span className="font-mono font-bold text-xs text-slate-900">{prof.name}</span>
+                        <span className="font-mono font-bold text-xs text-white">{prof.name}</span>
                         {prof.isDefault && (
                           <span className="bg-emerald-50 text-emerald-700 border border-emerald-200 text-[9px] font-bold px-1.5 py-0.2 rounded">
                             Default
@@ -666,7 +666,7 @@ export const WanManagementSuite: React.FC<WanManagementSuiteProps> = ({
         </div>
 
         {/* RIGHT COLUMN: ROUTER UI WAN CONFIGURATION FORM (8 Cols) */}
-        <div className="lg:col-span-8 bg-white border border-[#CBD5E1] rounded-2xl shadow-sm overflow-hidden">
+        <div className="lg:col-span-8 bg-[#0E172A] border border-slate-700/80 rounded-2xl shadow-sm overflow-hidden">
           {/* Header */}
           <div className="bg-[#7928CA]/5 border-b border-[#7928CA]/15 px-6 py-4 flex items-center justify-between">
             <div className="flex items-center space-x-3">
@@ -674,7 +674,7 @@ export const WanManagementSuite: React.FC<WanManagementSuiteProps> = ({
                 <Globe className="w-5 h-5" />
               </div>
               <div>
-                <h4 className="text-sm font-bold text-slate-900">WAN Configuration</h4>
+                <h4 className="text-sm font-bold text-white">WAN Configuration</h4>
                 <p className="text-xs text-slate-500">Configure PON WAN interface parameters for {device.modelName || 'Genexis Platinum-4410'}</p>
               </div>
             </div>
@@ -725,7 +725,7 @@ export const WanManagementSuite: React.FC<WanManagementSuiteProps> = ({
                 </div>
               )}
               {/* Top Configuration Table matching Router Interface */}
-              <div className="bg-slate-50/70 p-5 rounded-2xl border border-slate-200 space-y-4">
+              <div className="bg-[#080D1A]/70 p-5 rounded-2xl border border-slate-800 space-y-4">
                 {/* Row 1: TransMode */}
                 <div className="grid grid-cols-1 sm:grid-cols-3 items-center gap-2">
                   <label className="text-xs font-bold text-slate-700">TransMode:</label>
@@ -733,7 +733,7 @@ export const WanManagementSuite: React.FC<WanManagementSuiteProps> = ({
                     <select
                       value={activeForm.transMode || 'PON'}
                       onChange={(e: any) => setActiveForm({ ...activeForm, transMode: e.target.value })}
-                      className="px-3 py-1.5 text-xs font-semibold border border-slate-300 rounded-lg bg-white focus:ring-2 focus:ring-[#7928CA]"
+                      className="px-3 py-1.5 text-xs font-semibold border border-slate-700 rounded-lg bg-[#0E172A] focus:ring-2 focus:ring-[#7928CA]"
                     >
                       <option value="PON">PON</option>
                       <option value="Ethernet">Ethernet</option>
@@ -741,7 +741,7 @@ export const WanManagementSuite: React.FC<WanManagementSuiteProps> = ({
                     <button
                       type="button"
                       onClick={() => setActiveForm({ ...activeForm, transMode: activeForm.transMode === 'PON' ? 'Ethernet' : 'PON' })}
-                      className="px-3 py-1 text-xs font-bold border border-slate-300 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700"
+                      className="px-3 py-1 text-xs font-bold border border-slate-700 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700"
                     >
                       Switch
                     </button>
@@ -758,7 +758,7 @@ export const WanManagementSuite: React.FC<WanManagementSuiteProps> = ({
                         const prof = profiles.find((p) => p._id === e.target.value);
                         if (prof) handleSelectProfile(prof);
                       }}
-                      className="flex-1 px-3 py-1.5 text-xs font-mono font-bold border border-slate-300 rounded-lg bg-white focus:ring-2 focus:ring-[#7928CA]"
+                      className="flex-1 px-3 py-1.5 text-xs font-mono font-bold border border-slate-700 rounded-lg bg-[#0E172A] focus:ring-2 focus:ring-[#7928CA]"
                     >
                       {profiles.map((p, i) => (
                         <option key={p._id || i} value={p._id || String(i)}>
@@ -770,7 +770,7 @@ export const WanManagementSuite: React.FC<WanManagementSuiteProps> = ({
                     <button
                       type="button"
                       onClick={handleAddNewWanConnection}
-                      className="px-3 py-1 text-xs font-bold border border-slate-300 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700"
+                      className="px-3 py-1 text-xs font-bold border border-slate-700 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700"
                     >
                       New
                     </button>
@@ -799,7 +799,7 @@ export const WanManagementSuite: React.FC<WanManagementSuiteProps> = ({
                     <select
                       value={activeForm.mode || 'Route'}
                       onChange={(e: any) => setActiveForm({ ...activeForm, mode: e.target.value })}
-                      className="px-3 py-1.5 text-xs font-semibold border border-slate-300 rounded-lg bg-white focus:ring-2 focus:ring-[#7928CA]"
+                      className="px-3 py-1.5 text-xs font-semibold border border-slate-700 rounded-lg bg-[#0E172A] focus:ring-2 focus:ring-[#7928CA]"
                     >
                       <option value="Route">Route</option>
                       <option value="Bridge">Bridge</option>
@@ -837,7 +837,7 @@ export const WanManagementSuite: React.FC<WanManagementSuiteProps> = ({
                           ssidBindings: isV || isT ? [] : ['SSID1'],
                         });
                       }}
-                      className="w-full sm:w-64 px-3 py-1.5 text-xs font-bold border border-slate-300 rounded-lg bg-white focus:ring-2 focus:ring-[#7928CA]"
+                      className="w-full sm:w-64 px-3 py-1.5 text-xs font-bold border border-slate-700 rounded-lg bg-[#0E172A] focus:ring-2 focus:ring-[#7928CA]"
                     >
                       <option value="INTERNET">INTERNET</option>
                       <option value="TR069">TR069</option>
@@ -852,12 +852,12 @@ export const WanManagementSuite: React.FC<WanManagementSuiteProps> = ({
 
                 {/* Row 5: Binding Options (FE, GE, SSID1, SSID2, SSID3, SSID4) - Only for INTERNET / Bridge */}
                 {!isTr069Service && !isVoipService && (
-                  <div className="grid grid-cols-1 sm:grid-cols-3 items-start gap-2 pt-2 border-t border-slate-200">
+                  <div className="grid grid-cols-1 sm:grid-cols-3 items-start gap-2 pt-2 border-t border-slate-800">
                     <label className="text-xs font-bold text-slate-700 pt-1">Binding Option:</label>
                     <div className="sm:col-span-2 space-y-2">
                       <div className="flex flex-wrap items-center gap-4">
                         {availableLanPorts.map((port) => (
-                          <label key={port.id} className="flex items-center space-x-1.5 cursor-pointer text-xs font-semibold text-slate-800">
+                          <label key={port.id} className="flex items-center space-x-1.5 cursor-pointer text-xs font-semibold text-slate-100">
                             <input
                               type="checkbox"
                               checked={(activeForm.lanPortBindings || []).includes(port.id)}
@@ -869,7 +869,7 @@ export const WanManagementSuite: React.FC<WanManagementSuiteProps> = ({
                         ))}
 
                         {availableSsids.map((ssid) => (
-                          <label key={ssid.id} className="flex items-center space-x-1.5 cursor-pointer text-xs font-semibold text-slate-800">
+                          <label key={ssid.id} className="flex items-center space-x-1.5 cursor-pointer text-xs font-semibold text-slate-100">
                             <input
                               type="checkbox"
                               checked={(activeForm.ssidBindings || []).includes(ssid.id)}
@@ -914,7 +914,7 @@ export const WanManagementSuite: React.FC<WanManagementSuiteProps> = ({
                           mtu: e.target.value === 'PPP' ? 1492 : 1500,
                         })
                       }
-                      className="px-3 py-1.5 text-xs font-bold border border-slate-300 rounded-lg bg-white focus:ring-2 focus:ring-[#7928CA] disabled:bg-slate-100"
+                      className="px-3 py-1.5 text-xs font-bold border border-slate-700 rounded-lg bg-[#0E172A] focus:ring-2 focus:ring-[#7928CA] disabled:bg-slate-100"
                     >
                       {!isVoipService && !isTr069Service && <option value="PPP">PPP</option>}
                       <option value="IP">IP (Auto DHCP / Static)</option>
@@ -933,7 +933,7 @@ export const WanManagementSuite: React.FC<WanManagementSuiteProps> = ({
                           value={activeForm.pppoeUsername || ''}
                           onChange={(e) => setActiveForm({ ...activeForm, pppoeUsername: e.target.value })}
                           placeholder="e.g. bsnl_user_100"
-                          className="w-full px-3 py-1.5 text-xs font-mono font-bold border border-purple-300 rounded-lg bg-white"
+                          className="w-full px-3 py-1.5 text-xs font-mono font-bold border border-purple-300 rounded-lg bg-[#0E172A]"
                         />
                       </div>
 
@@ -955,7 +955,7 @@ export const WanManagementSuite: React.FC<WanManagementSuiteProps> = ({
                           value={activeForm.pppoePassword || activeForm.pppoePasswordEncrypted || ''}
                           onChange={(e) => setActiveForm({ ...activeForm, pppoePassword: e.target.value })}
                           placeholder="••••••••••••"
-                          className="w-full px-3 py-1.5 text-xs font-mono font-bold border border-purple-300 rounded-lg bg-white"
+                          className="w-full px-3 py-1.5 text-xs font-mono font-bold border border-purple-300 rounded-lg bg-[#0E172A]"
                         />
                       </div>
                     </div>
@@ -968,7 +968,7 @@ export const WanManagementSuite: React.FC<WanManagementSuiteProps> = ({
                           value={activeForm.serviceName || ''}
                           onChange={(e) => setActiveForm({ ...activeForm, serviceName: e.target.value })}
                           placeholder="Optional"
-                          className="w-full px-3 py-1.5 text-xs border border-purple-300 rounded-lg bg-white"
+                          className="w-full px-3 py-1.5 text-xs border border-purple-300 rounded-lg bg-[#0E172A]"
                         />
                       </div>
 
@@ -992,7 +992,7 @@ export const WanManagementSuite: React.FC<WanManagementSuiteProps> = ({
                   <label className="text-xs font-bold text-slate-700">IP Protocol Version:</label>
                   <div className="sm:col-span-2 flex items-center space-x-6">
                     {['IPv4', 'IPv6', 'IPv4/IPv6'].map((ver) => (
-                      <label key={ver} className="flex items-center space-x-1.5 text-xs font-semibold cursor-pointer text-slate-800">
+                      <label key={ver} className="flex items-center space-x-1.5 text-xs font-semibold cursor-pointer text-slate-100">
                         <input
                           type="radio"
                           name="ipProtocol"
@@ -1011,7 +1011,7 @@ export const WanManagementSuite: React.FC<WanManagementSuiteProps> = ({
                 {isIpMode && (
                   <div className="p-4 bg-blue-50/70 rounded-xl border border-blue-200 space-y-3">
                     <div className="flex items-center space-x-6">
-                      <label className="flex items-center space-x-2 text-xs font-bold cursor-pointer text-slate-800">
+                      <label className="flex items-center space-x-2 text-xs font-bold cursor-pointer text-slate-100">
                         <input
                           type="radio"
                           name="ipAssignment"
@@ -1023,7 +1023,7 @@ export const WanManagementSuite: React.FC<WanManagementSuiteProps> = ({
                         <span>DHCP (Get an IP automatically from ISP.)</span>
                       </label>
 
-                      <label className="flex items-center space-x-2 text-xs font-bold cursor-pointer text-slate-800">
+                      <label className="flex items-center space-x-2 text-xs font-bold cursor-pointer text-slate-100">
                         <input
                           type="radio"
                           name="ipAssignment"
@@ -1045,7 +1045,7 @@ export const WanManagementSuite: React.FC<WanManagementSuiteProps> = ({
                             value={activeForm.ipAddress || ''}
                             onChange={(e) => setActiveForm({ ...activeForm, ipAddress: e.target.value })}
                             placeholder="192.168.1.100"
-                            className="w-full px-3 py-1.5 text-xs font-mono font-bold border border-slate-300 rounded-lg bg-white"
+                            className="w-full px-3 py-1.5 text-xs font-mono font-bold border border-slate-700 rounded-lg bg-[#0E172A]"
                           />
                         </div>
                         <div>
@@ -1054,7 +1054,7 @@ export const WanManagementSuite: React.FC<WanManagementSuiteProps> = ({
                             type="text"
                             value={activeForm.subnetMask || '255.255.255.0'}
                             onChange={(e) => setActiveForm({ ...activeForm, subnetMask: e.target.value })}
-                            className="w-full px-3 py-1.5 text-xs font-mono font-bold border border-slate-300 rounded-lg bg-white"
+                            className="w-full px-3 py-1.5 text-xs font-mono font-bold border border-slate-700 rounded-lg bg-[#0E172A]"
                           />
                         </div>
                         <div>
@@ -1064,7 +1064,7 @@ export const WanManagementSuite: React.FC<WanManagementSuiteProps> = ({
                             value={activeForm.gateway || ''}
                             onChange={(e) => setActiveForm({ ...activeForm, gateway: e.target.value })}
                             placeholder="192.168.1.1"
-                            className="w-full px-3 py-1.5 text-xs font-mono font-bold border border-slate-300 rounded-lg bg-white"
+                            className="w-full px-3 py-1.5 text-xs font-mono font-bold border border-slate-700 rounded-lg bg-[#0E172A]"
                           />
                         </div>
                       </div>
@@ -1073,7 +1073,7 @@ export const WanManagementSuite: React.FC<WanManagementSuiteProps> = ({
                 )}
 
                 {/* Row 9: VLAN Settings */}
-                <div className="space-y-3 pt-2 border-t border-slate-200">
+                <div className="space-y-3 pt-2 border-t border-slate-800">
                   <div className="grid grid-cols-1 sm:grid-cols-3 items-center gap-2">
                     <label className="text-xs font-bold text-slate-700">VLAN Mode:</label>
                     <div className="sm:col-span-2">
@@ -1086,7 +1086,7 @@ export const WanManagementSuite: React.FC<WanManagementSuiteProps> = ({
                             vlanEnabled: e.target.value === 'TAG',
                           })
                         }
-                        className="px-3 py-1.5 text-xs font-semibold border border-slate-300 rounded-lg bg-white focus:ring-2 focus:ring-[#7928CA]"
+                        className="px-3 py-1.5 text-xs font-semibold border border-slate-700 rounded-lg bg-[#0E172A] focus:ring-2 focus:ring-[#7928CA]"
                       >
                         <option value="TAG">TAG</option>
                         <option value="UNTAG">UNTAG</option>
@@ -1106,7 +1106,7 @@ export const WanManagementSuite: React.FC<WanManagementSuiteProps> = ({
                           value={activeForm.vlanId && activeForm.vlanId !== 0 ? activeForm.vlanId : ''}
                           onChange={(e) => setActiveForm({ ...activeForm, vlanId: e.target.value ? Number(e.target.value) : ('' as any) })}
                           placeholder="e.g. 100"
-                          className="w-full px-3 py-1.5 text-xs font-mono font-bold border border-slate-300 rounded-lg bg-white"
+                          className="w-full px-3 py-1.5 text-xs font-mono font-bold border border-slate-700 rounded-lg bg-[#0E172A]"
                           required
                         />
                       </div>
@@ -1118,7 +1118,7 @@ export const WanManagementSuite: React.FC<WanManagementSuiteProps> = ({
                           max="7"
                           value={activeForm.vlanPriority8021p || 0}
                           onChange={(e) => setActiveForm({ ...activeForm, vlanPriority8021p: Number(e.target.value) })}
-                          className="w-full px-3 py-1.5 text-xs font-mono font-bold border border-slate-300 rounded-lg bg-white"
+                          className="w-full px-3 py-1.5 text-xs font-mono font-bold border border-slate-700 rounded-lg bg-[#0E172A]"
                         />
                       </div>
                       <div>
@@ -1130,7 +1130,7 @@ export const WanManagementSuite: React.FC<WanManagementSuiteProps> = ({
                           value={activeForm.multicastVlanId || ''}
                           onChange={(e) => setActiveForm({ ...activeForm, multicastVlanId: Number(e.target.value) })}
                           placeholder="Optional"
-                          className="w-full px-3 py-1.5 text-xs font-mono font-bold border border-slate-300 rounded-lg bg-white"
+                          className="w-full px-3 py-1.5 text-xs font-mono font-bold border border-slate-700 rounded-lg bg-[#0E172A]"
                         />
                       </div>
                     </div>
@@ -1147,7 +1147,7 @@ export const WanManagementSuite: React.FC<WanManagementSuiteProps> = ({
                         max={isPppMode ? 1492 : 1500}
                         value={activeForm.mtu || (isPppMode ? 1492 : 1500)}
                         onChange={(e) => setActiveForm({ ...activeForm, mtu: Number(e.target.value) })}
-                        className="w-full px-3 py-1.5 text-xs font-mono font-bold border border-slate-300 rounded-lg bg-white"
+                        className="w-full px-3 py-1.5 text-xs font-mono font-bold border border-slate-700 rounded-lg bg-[#0E172A]"
                       />
                     </div>
 
@@ -1168,11 +1168,11 @@ export const WanManagementSuite: React.FC<WanManagementSuiteProps> = ({
                 </div>
 
                 {/* Row 10: DNS Status & DNS Servers */}
-                <div className="space-y-3 pt-2 border-t border-slate-200">
+                <div className="space-y-3 pt-2 border-t border-slate-800">
                   <div className="grid grid-cols-1 sm:grid-cols-3 items-center gap-2">
                     <label className="text-xs font-bold text-slate-700">DNS Status:</label>
                     <div className="sm:col-span-2 flex items-center space-x-6">
-                      <label className="flex items-center space-x-1.5 text-xs font-semibold cursor-pointer text-slate-800">
+                      <label className="flex items-center space-x-1.5 text-xs font-semibold cursor-pointer text-slate-100">
                         <input
                           type="radio"
                           name="dnsStatus"
@@ -1183,7 +1183,7 @@ export const WanManagementSuite: React.FC<WanManagementSuiteProps> = ({
                         />
                         <span>Enable</span>
                       </label>
-                      <label className="flex items-center space-x-1.5 text-xs font-semibold cursor-pointer text-slate-800">
+                      <label className="flex items-center space-x-1.5 text-xs font-semibold cursor-pointer text-slate-100">
                         <input
                           type="radio"
                           name="dnsStatus"
@@ -1206,7 +1206,7 @@ export const WanManagementSuite: React.FC<WanManagementSuiteProps> = ({
                         onChange={(e) => setActiveForm({ ...activeForm, primaryDns: e.target.value })}
                         disabled={activeForm.dnsStatus !== 'Enable'}
                         placeholder="8.8.8.8"
-                        className="w-full px-3 py-1.5 text-xs font-mono border border-slate-300 rounded-lg bg-white disabled:bg-slate-100"
+                        className="w-full px-3 py-1.5 text-xs font-mono border border-slate-700 rounded-lg bg-[#0E172A] disabled:bg-slate-100"
                       />
                     </div>
                     <div>
@@ -1217,7 +1217,7 @@ export const WanManagementSuite: React.FC<WanManagementSuiteProps> = ({
                         onChange={(e) => setActiveForm({ ...activeForm, secondaryDns: e.target.value })}
                         disabled={activeForm.dnsStatus !== 'Enable'}
                         placeholder="1.1.1.1"
-                        className="w-full px-3 py-1.5 text-xs font-mono border border-slate-300 rounded-lg bg-white disabled:bg-slate-100"
+                        className="w-full px-3 py-1.5 text-xs font-mono border border-slate-700 rounded-lg bg-[#0E172A] disabled:bg-slate-100"
                       />
                     </div>
                   </div>
@@ -1240,7 +1240,7 @@ export const WanManagementSuite: React.FC<WanManagementSuiteProps> = ({
                           type="text"
                           value={activeForm.acsUrl || 'http://31.42.125.25:7547/tr069/rudra'}
                           onChange={(e) => setActiveForm({ ...activeForm, acsUrl: e.target.value })}
-                          className="w-full px-3 py-1.5 text-xs font-mono font-bold border border-emerald-300 rounded-lg bg-white"
+                          className="w-full px-3 py-1.5 text-xs font-mono font-bold border border-emerald-300 rounded-lg bg-[#0E172A]"
                         />
                       </div>
                     </div>
@@ -1252,7 +1252,7 @@ export const WanManagementSuite: React.FC<WanManagementSuiteProps> = ({
                           type="text"
                           value={activeForm.acsUsername || 'admin'}
                           onChange={(e) => setActiveForm({ ...activeForm, acsUsername: e.target.value })}
-                          className="w-full px-3 py-1.5 text-xs font-mono border border-emerald-300 rounded-lg bg-white"
+                          className="w-full px-3 py-1.5 text-xs font-mono border border-emerald-300 rounded-lg bg-[#0E172A]"
                         />
                       </div>
                       <div>
@@ -1261,7 +1261,7 @@ export const WanManagementSuite: React.FC<WanManagementSuiteProps> = ({
                           type={showAcsPassword ? 'text' : 'password'}
                           value={activeForm.acsPassword || 'admin'}
                           onChange={(e) => setActiveForm({ ...activeForm, acsPassword: e.target.value })}
-                          className="w-full px-3 py-1.5 text-xs font-mono border border-emerald-300 rounded-lg bg-white"
+                          className="w-full px-3 py-1.5 text-xs font-mono border border-emerald-300 rounded-lg bg-[#0E172A]"
                         />
                       </div>
                     </div>
@@ -1283,7 +1283,7 @@ export const WanManagementSuite: React.FC<WanManagementSuiteProps> = ({
                           type="text"
                           value={activeForm.voipSipServer || 'sip.isp.net'}
                           onChange={(e) => setActiveForm({ ...activeForm, voipSipServer: e.target.value })}
-                          className="w-full px-3 py-1.5 text-xs font-mono border border-amber-300 rounded-lg bg-white"
+                          className="w-full px-3 py-1.5 text-xs font-mono border border-amber-300 rounded-lg bg-[#0E172A]"
                         />
                       </div>
                       <div>
@@ -1292,7 +1292,7 @@ export const WanManagementSuite: React.FC<WanManagementSuiteProps> = ({
                           type="number"
                           value={activeForm.voipSipPort || 5060}
                           onChange={(e) => setActiveForm({ ...activeForm, voipSipPort: Number(e.target.value) })}
-                          className="w-full px-3 py-1.5 text-xs font-mono border border-amber-300 rounded-lg bg-white"
+                          className="w-full px-3 py-1.5 text-xs font-mono border border-amber-300 rounded-lg bg-[#0E172A]"
                         />
                       </div>
                       <div>
@@ -1302,7 +1302,7 @@ export const WanManagementSuite: React.FC<WanManagementSuiteProps> = ({
                           value={activeForm.voipAccount || ''}
                           onChange={(e) => setActiveForm({ ...activeForm, voipAccount: e.target.value })}
                           placeholder="e.g. +914023456789"
-                          className="w-full px-3 py-1.5 text-xs font-mono border border-amber-300 rounded-lg bg-white"
+                          className="w-full px-3 py-1.5 text-xs font-mono border border-amber-300 rounded-lg bg-[#0E172A]"
                         />
                       </div>
                       <div>
@@ -1311,7 +1311,7 @@ export const WanManagementSuite: React.FC<WanManagementSuiteProps> = ({
                           type={showVoipPassword ? 'text' : 'password'}
                           value={activeForm.voipPassword || ''}
                           onChange={(e) => setActiveForm({ ...activeForm, voipPassword: e.target.value })}
-                          className="w-full px-3 py-1.5 text-xs font-mono border border-amber-300 rounded-lg bg-white"
+                          className="w-full px-3 py-1.5 text-xs font-mono border border-amber-300 rounded-lg bg-[#0E172A]"
                         />
                       </div>
                     </div>
@@ -1320,7 +1320,7 @@ export const WanManagementSuite: React.FC<WanManagementSuiteProps> = ({
               </div>
 
               {/* Form Action Buttons (OK / Cancel / Delete) */}
-              <div className="flex items-center justify-between pt-4 border-t border-slate-200">
+              <div className="flex items-center justify-between pt-4 border-t border-slate-800">
                 <div>
                   {activeForm && !(activeForm.bearerService === 'TR069' || activeForm.name?.includes('TR069') || (activeForm as any).isProtected) ? (
                     <button
@@ -1396,9 +1396,9 @@ export const WanManagementSuite: React.FC<WanManagementSuiteProps> = ({
           </p>
 
           {diffList.length > 0 ? (
-            <div className="border border-slate-200 rounded-xl overflow-hidden text-xs">
+            <div className="border border-slate-800 rounded-xl overflow-hidden text-xs">
               <table className="w-full text-left">
-                <thead className="bg-slate-100 text-slate-700 font-bold border-b border-slate-200">
+                <thead className="bg-slate-100 text-slate-700 font-bold border-b border-slate-800">
                   <tr>
                     <th className="p-2.5">Parameter</th>
                     <th className="p-2.5 text-slate-500">Current / Previous</th>
@@ -1407,8 +1407,8 @@ export const WanManagementSuite: React.FC<WanManagementSuiteProps> = ({
                 </thead>
                 <tbody className="divide-y divide-slate-100 font-mono">
                   {diffList.map((d, i) => (
-                    <tr key={i} className="hover:bg-slate-50">
-                      <td className="p-2.5 font-sans font-bold text-slate-800">{d.label}</td>
+                    <tr key={i} className="hover:bg-[#080D1A]">
+                      <td className="p-2.5 font-sans font-bold text-slate-100">{d.label}</td>
                       <td className="p-2.5 text-slate-400 line-through">{d.oldValue}</td>
                       <td className="p-2.5 text-blue-700 font-bold bg-blue-50/50">{d.newValue}</td>
                     </tr>
@@ -1417,7 +1417,7 @@ export const WanManagementSuite: React.FC<WanManagementSuiteProps> = ({
               </table>
             </div>
           ) : (
-            <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-600 text-center">
+            <div className="p-4 rounded-xl bg-[#080D1A] border border-slate-800 text-xs text-slate-600 text-center">
               No parameter changes detected compared to existing state.
             </div>
           )}
@@ -1448,7 +1448,7 @@ export const WanManagementSuite: React.FC<WanManagementSuiteProps> = ({
         <div className="space-y-4">
           <div className="p-3.5 bg-rose-50 border border-rose-200 rounded-xl text-xs text-rose-900 space-y-1.5">
             <p className="font-bold text-sm text-rose-900">Are you sure you want to delete this Customer WAN?</p>
-            <div className="font-mono text-[11px] bg-white/70 p-2.5 rounded-lg border border-rose-200/80 space-y-1">
+            <div className="font-mono text-[11px] bg-[#0E172A]/70 p-2.5 rounded-lg border border-rose-200/80 space-y-1">
               <div>Profile Name: <strong>{deleteConfirmProfile?.name}</strong></div>
               <div>CPE Object: <strong>{deleteConfirmProfile?.cpeObjectPath || 'Allocated Slot on ONT'}</strong></div>
               <div>Service: <strong>{deleteConfirmProfile?.bearerService || deleteConfirmProfile?.serviceType || 'INTERNET'} (VLAN: {deleteConfirmProfile?.vlanId})</strong></div>

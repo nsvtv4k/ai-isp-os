@@ -194,14 +194,14 @@ export const WhatsAppChatCenter: React.FC = () => {
       <StateWrapper isLoading={isLoading} error={error} onRetry={fetchThreadsAndLeads}>
         <div className="space-y-4 max-w-7xl mx-auto pb-16 font-sans">
           {/* TOP HEADER STATUS & QUICK ACTIONS */}
-          <div className="p-4 bg-white border border-slate-200 rounded-2xl shadow-xs flex flex-wrap items-center justify-between gap-3">
+          <div className="p-4 bg-[#0E172A] border border-slate-800 rounded-2xl shadow-xs flex flex-wrap items-center justify-between gap-3">
             <div className="flex items-center space-x-3">
               <div className="w-10 h-10 rounded-xl bg-emerald-600 text-white flex items-center justify-center font-bold shadow-xs">
                 <MessageSquare className="w-5 h-5" />
               </div>
               <div>
                 <div className="flex items-center space-x-2">
-                  <h2 className="text-sm font-black text-slate-900">WhatsApp Operations Hub</h2>
+                  <h2 className="text-sm font-black text-white">WhatsApp Operations Hub</h2>
                   <Badge variant="success" className="text-[10px]">
                     🟢 Bot Active & Listening
                   </Badge>
@@ -257,13 +257,13 @@ export const WhatsAppChatCenter: React.FC = () => {
           )}
 
           {/* TAB SWITCHER: LIVE CHAT vs LEADS TABLE */}
-          <div className="flex items-center space-x-2 border-b border-slate-200 pb-1">
+          <div className="flex items-center space-x-2 border-b border-slate-800 pb-1">
             <button
               onClick={() => setActiveTab('chat')}
               className={`flex items-center space-x-1.5 px-4 py-2 rounded-t-xl text-xs font-bold transition-all ${
                 activeTab === 'chat'
-                  ? 'bg-white border-t-2 border-emerald-600 text-emerald-700 shadow-xs border-x border-slate-200 -mb-px'
-                  : 'text-slate-500 hover:text-slate-900 hover:bg-slate-100'
+                  ? 'bg-[#0E172A] border-t-2 border-emerald-600 text-emerald-700 shadow-xs border-x border-slate-800 -mb-px'
+                  : 'text-slate-500 hover:text-white hover:bg-slate-100'
               }`}
             >
               <MessageSquare className="w-3.5 h-3.5" />
@@ -274,8 +274,8 @@ export const WhatsAppChatCenter: React.FC = () => {
               onClick={() => setActiveTab('leads')}
               className={`flex items-center space-x-1.5 px-4 py-2 rounded-t-xl text-xs font-bold transition-all ${
                 activeTab === 'leads'
-                  ? 'bg-white border-t-2 border-sky-600 text-sky-700 shadow-xs border-x border-slate-200 -mb-px'
-                  : 'text-slate-500 hover:text-slate-900 hover:bg-slate-100'
+                  ? 'bg-[#0E172A] border-t-2 border-sky-600 text-sky-700 shadow-xs border-x border-slate-800 -mb-px'
+                  : 'text-slate-500 hover:text-white hover:bg-slate-100'
               }`}
             >
               <Sparkles className="w-3.5 h-3.5" />
@@ -287,7 +287,7 @@ export const WhatsAppChatCenter: React.FC = () => {
           {activeTab === 'chat' && (
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 h-[720px]">
               {/* LEFT PANE: THREAD LIST (4 Cols) */}
-              <Card className="lg:col-span-4 p-0 border border-slate-200 bg-white rounded-2xl shadow-xs flex flex-col h-full overflow-hidden">
+              <Card className="lg:col-span-4 p-0 border border-slate-800 bg-[#0E172A] rounded-2xl shadow-xs flex flex-col h-full overflow-hidden">
                 {/* Search & Filter Bar */}
                 <div className="p-3 border-b border-slate-100 space-y-2">
                   <div className="relative">
@@ -297,7 +297,7 @@ export const WhatsAppChatCenter: React.FC = () => {
                       placeholder="Search phone or name..."
                       value={searchQuery}
                       onChange={(e) => setSearchQuery(e.target.value)}
-                      className="w-full pl-8 pr-3 py-1.5 text-xs bg-slate-50 border border-slate-200 rounded-xl focus:bg-white"
+                      className="w-full pl-8 pr-3 py-1.5 text-xs bg-[#080D1A] border border-slate-800 rounded-xl focus:bg-[#0E172A]"
                     />
                   </div>
 
@@ -332,12 +332,12 @@ export const WhatsAppChatCenter: React.FC = () => {
                           key={th.phone}
                           onClick={() => setSelectedPhone(th.phone)}
                           className={`p-3 cursor-pointer transition-all flex items-start justify-between ${
-                            isSelected ? 'bg-emerald-50/80 border-l-4 border-emerald-600' : 'hover:bg-slate-50'
+                            isSelected ? 'bg-emerald-50/80 border-l-4 border-emerald-600' : 'hover:bg-[#080D1A]'
                           }`}
                         >
                           <div className="space-y-0.5 min-w-0 pr-2">
                             <div className="flex items-center space-x-1.5">
-                              <span className="font-bold text-slate-900 text-xs truncate">
+                              <span className="font-bold text-white text-xs truncate">
                                 {th.senderName}
                               </span>
                               <Badge
@@ -366,15 +366,15 @@ export const WhatsAppChatCenter: React.FC = () => {
               </Card>
 
               {/* MIDDLE PANE: TWO-WAY CHAT STREAM (5 Cols) */}
-              <Card className="lg:col-span-5 p-0 border border-slate-200 bg-white rounded-2xl shadow-xs flex flex-col h-full overflow-hidden">
+              <Card className="lg:col-span-5 p-0 border border-slate-800 bg-[#0E172A] rounded-2xl shadow-xs flex flex-col h-full overflow-hidden">
                 {/* Chat Header */}
-                <div className="p-3 bg-slate-50 border-b border-slate-200 flex items-center justify-between">
+                <div className="p-3 bg-[#080D1A] border-b border-slate-800 flex items-center justify-between">
                   <div className="flex items-center space-x-2">
                     <div className="w-8 h-8 rounded-full bg-emerald-600 text-white flex items-center justify-center font-bold text-xs">
                       {selectedThread?.senderName?.charAt(0) || 'U'}
                     </div>
                     <div>
-                      <h3 className="font-bold text-slate-900 text-xs">{selectedThread?.senderName || 'Select Thread'}</h3>
+                      <h3 className="font-bold text-white text-xs">{selectedThread?.senderName || 'Select Thread'}</h3>
                       <p className="text-[10px] font-mono text-slate-500">{selectedPhone || 'No chat selected'}</p>
                     </div>
                   </div>
@@ -389,7 +389,7 @@ export const WhatsAppChatCenter: React.FC = () => {
                 </div>
 
                 {/* Message Bubble Stream */}
-                <div className="flex-1 p-4 overflow-y-auto space-y-3 bg-slate-50/50">
+                <div className="flex-1 p-4 overflow-y-auto space-y-3 bg-[#080D1A]/50">
                   {isChatLoading ? (
                     <div className="flex items-center justify-center h-full text-xs text-slate-400">
                       Loading chat history...
@@ -417,7 +417,7 @@ export const WhatsAppChatCenter: React.FC = () => {
                           <div
                             className={`p-3 rounded-2xl max-w-[85%] text-xs whitespace-pre-wrap leading-relaxed shadow-xs ${
                               isInbound
-                                ? 'bg-white border border-slate-200 text-slate-900 rounded-tl-xs'
+                                ? 'bg-[#0E172A] border border-slate-800 text-white rounded-tl-xs'
                                 : isBot
                                 ? 'bg-emerald-50 border border-emerald-200 text-emerald-950 rounded-tr-xs'
                                 : 'bg-sky-600 text-white rounded-tr-xs'
@@ -435,14 +435,14 @@ export const WhatsAppChatCenter: React.FC = () => {
                 </div>
 
                 {/* Chat Reply Composer */}
-                <form onSubmit={handleSendReply} className="p-2.5 bg-white border-t border-slate-200 flex items-center space-x-2">
+                <form onSubmit={handleSendReply} className="p-2.5 bg-[#0E172A] border-t border-slate-800 flex items-center space-x-2">
                   <input
                     type="text"
                     placeholder="Type official WhatsApp reply to customer..."
                     value={replyText}
                     onChange={(e) => setReplyText(e.target.value)}
                     disabled={isSending || !selectedPhone}
-                    className="flex-1 px-3 py-2 text-xs bg-slate-50 border border-slate-200 rounded-xl focus:bg-white"
+                    className="flex-1 px-3 py-2 text-xs bg-[#080D1A] border border-slate-800 rounded-xl focus:bg-[#0E172A]"
                   />
                   <Button
                     type="submit"
@@ -456,8 +456,8 @@ export const WhatsAppChatCenter: React.FC = () => {
               </Card>
 
               {/* RIGHT PANE: CONTEXT & LEAD ACTION CARD (3 Cols) */}
-              <Card className="lg:col-span-3 p-4 border border-slate-200 bg-white rounded-2xl shadow-xs space-y-4 overflow-y-auto">
-                <h3 className="text-xs font-bold uppercase text-slate-900 tracking-wider flex items-center">
+              <Card className="lg:col-span-3 p-4 border border-slate-800 bg-[#0E172A] rounded-2xl shadow-xs space-y-4 overflow-y-auto">
+                <h3 className="text-xs font-bold uppercase text-white tracking-wider flex items-center">
                   <User className="w-3.5 h-3.5 mr-1.5 text-sky-600" />
                   Subscriber Context
                 </h3>
@@ -466,14 +466,14 @@ export const WhatsAppChatCenter: React.FC = () => {
                   <div className="space-y-3 text-xs">
                     <div className="p-3 bg-emerald-50 border border-emerald-100 rounded-xl space-y-1">
                       <span className="text-[10px] font-bold text-emerald-800 uppercase font-mono">Active Subscriber</span>
-                      <p className="font-bold text-slate-900 text-sm">{selectedThread.senderName}</p>
+                      <p className="font-bold text-white text-sm">{selectedThread.senderName}</p>
                       <p className="font-mono text-slate-600">Acc: {selectedThread.accountNumber}</p>
                       <p className="font-mono text-slate-600">Plan: {selectedThread.customer?.plan}</p>
                     </div>
 
-                    <div className="p-3 bg-slate-50 rounded-xl space-y-1 font-mono text-xs">
+                    <div className="p-3 bg-[#080D1A] rounded-xl space-y-1 font-mono text-xs">
                       <span className="text-[10px] text-slate-400 uppercase font-bold font-sans">TR-069 CPE Telemetry</span>
-                      <p className="text-slate-800">Status: {selectedThread.customer?.deviceStatus}</p>
+                      <p className="text-slate-100">Status: {selectedThread.customer?.deviceStatus}</p>
                       <p className="text-emerald-700 font-bold">
                         RX Power: {selectedThread.customer?.opticalPower != null ? `${selectedThread.customer.opticalPower} dBm` : 'N/A'}
                       </p>
@@ -509,14 +509,14 @@ export const WhatsAppChatCenter: React.FC = () => {
                   <div className="space-y-3 text-xs">
                     <div className="p-3 bg-sky-50 border border-sky-100 rounded-xl space-y-1">
                       <span className="text-[10px] font-bold text-sky-800 uppercase font-mono">Prospective Lead</span>
-                      <p className="font-bold text-slate-900 text-sm">{selectedThread.lead?.fullName}</p>
+                      <p className="font-bold text-white text-sm">{selectedThread.lead?.fullName}</p>
                       <p className="font-mono text-slate-600">Ref: {selectedThread.lead?.leadNumber}</p>
                       <Badge variant="warning" className="text-[10px]">{selectedThread.lead?.status}</Badge>
                     </div>
 
-                    <div className="p-3 bg-slate-50 rounded-xl space-y-1 text-xs">
+                    <div className="p-3 bg-[#080D1A] rounded-xl space-y-1 text-xs">
                       <span className="text-[10px] text-slate-400 uppercase font-bold font-mono">Premise Location</span>
-                      <p className="font-medium text-slate-800">{selectedThread.lead?.address}</p>
+                      <p className="font-medium text-slate-100">{selectedThread.lead?.address}</p>
                       <p className="font-mono text-slate-500">Pincode: {selectedThread.lead?.pincode}</p>
                     </div>
 
@@ -538,10 +538,10 @@ export const WhatsAppChatCenter: React.FC = () => {
 
           {/* TAB 2: WHATSAPP CAPTURED LEADS CRM TABLE */}
           {activeTab === 'leads' && (
-            <Card className="overflow-hidden border border-slate-200 bg-white rounded-2xl shadow-xs">
+            <Card className="overflow-hidden border border-slate-800 bg-[#0E172A] rounded-2xl shadow-xs">
               <div className="p-4 border-b border-slate-100 flex items-center justify-between">
                 <div>
-                  <h3 className="font-bold text-slate-900 text-sm">Prospective FTTH Leads from WhatsApp Bot</h3>
+                  <h3 className="font-bold text-white text-sm">Prospective FTTH Leads from WhatsApp Bot</h3>
                   <p className="text-xs text-slate-500 mt-0.5">
                     Unregistered callers who provided their Name, Address & Pincode for new fiber connection
                   </p>
@@ -555,7 +555,7 @@ export const WhatsAppChatCenter: React.FC = () => {
               <div className="overflow-x-auto">
                 <table className="w-full text-left text-xs border-collapse">
                   <thead>
-                    <tr className="bg-slate-50 border-b border-slate-200 text-slate-500 font-semibold uppercase">
+                    <tr className="bg-[#080D1A] border-b border-slate-800 text-slate-500 font-semibold uppercase">
                       <th className="py-3 px-4">Lead #</th>
                       <th className="py-3 px-4">Full Name</th>
                       <th className="py-3 px-4">Mobile Phone</th>
@@ -575,9 +575,9 @@ export const WhatsAppChatCenter: React.FC = () => {
                       </tr>
                     ) : (
                       leads.map((ld) => (
-                        <tr key={ld._id} className="hover:bg-slate-50">
-                          <td className="py-3 px-4 font-mono font-bold text-slate-900">{ld.leadNumber}</td>
-                          <td className="py-3 px-4 font-bold text-slate-800">{ld.fullName}</td>
+                        <tr key={ld._id} className="hover:bg-[#080D1A]">
+                          <td className="py-3 px-4 font-mono font-bold text-white">{ld.leadNumber}</td>
+                          <td className="py-3 px-4 font-bold text-slate-100">{ld.fullName}</td>
                           <td className="py-3 px-4 font-mono text-slate-700">{ld.phone}</td>
                           <td className="py-3 px-4 text-slate-700 max-w-xs truncate">{ld.address}</td>
                           <td className="py-3 px-4 font-mono text-slate-700">{ld.pincode}</td>
@@ -630,7 +630,7 @@ export const WhatsAppChatCenter: React.FC = () => {
                 placeholder="e.g. 9845012345"
                 value={simPhone}
                 onChange={(e) => setSimPhone(e.target.value)}
-                className="w-full px-3 py-2 border border-slate-300 rounded-lg font-mono font-bold"
+                className="w-full px-3 py-2 border border-slate-700 rounded-lg font-mono font-bold"
               />
             </div>
 
@@ -640,7 +640,7 @@ export const WhatsAppChatCenter: React.FC = () => {
                 type="text"
                 value={simName}
                 onChange={(e) => setSimName(e.target.value)}
-                className="w-full px-3 py-2 border border-slate-300 rounded-lg"
+                className="w-full px-3 py-2 border border-slate-700 rounded-lg"
               />
             </div>
           </div>
@@ -653,19 +653,19 @@ export const WhatsAppChatCenter: React.FC = () => {
               placeholder="e.g. Hi, Menu, 1, 2, 3, 4, 5, 6..."
               value={simText}
               onChange={(e) => setSimText(e.target.value)}
-              className="w-full px-3 py-2 border border-slate-300 rounded-lg font-mono"
+              className="w-full px-3 py-2 border border-slate-700 rounded-lg font-mono"
             />
           </div>
 
-          <div className="p-3 bg-slate-50 rounded-xl border border-slate-200 text-slate-600 text-[11px] space-y-1">
-            <span className="font-bold text-slate-800">Quick Test Prompts:</span>
+          <div className="p-3 bg-[#080D1A] rounded-xl border border-slate-800 text-slate-600 text-[11px] space-y-1">
+            <span className="font-bold text-slate-100">Quick Test Prompts:</span>
             <div className="flex flex-wrap gap-1.5 pt-1">
               {['Hi', '1', '2', '3', '4', '5', '6', 'Menu'].map((prompt) => (
                 <button
                   type="button"
                   key={prompt}
                   onClick={() => setSimText(prompt)}
-                  className="px-2 py-0.5 bg-white border border-slate-300 rounded-md font-mono hover:bg-slate-100"
+                  className="px-2 py-0.5 bg-[#0E172A] border border-slate-700 rounded-md font-mono hover:bg-slate-100"
                 >
                   {prompt}
                 </button>
@@ -693,10 +693,10 @@ export const WhatsAppChatCenter: React.FC = () => {
           subtitle="Creates active customer profile and prepares for FTTH ONT provisioning."
         >
           <form onSubmit={handleConvertLead} className="space-y-4 text-xs font-sans">
-            <div className="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-1 text-xs">
-              <p><span className="text-slate-500">Applicant:</span> <strong className="text-slate-900">{selectedLeadForConvert.fullName}</strong></p>
-              <p><span className="text-slate-500">Phone:</span> <strong className="font-mono text-slate-900">{selectedLeadForConvert.phone}</strong></p>
-              <p><span className="text-slate-500">Address:</span> <strong className="text-slate-900">{selectedLeadForConvert.address} ({selectedLeadForConvert.pincode})</strong></p>
+            <div className="p-3 bg-[#080D1A] rounded-xl border border-slate-800 space-y-1 text-xs">
+              <p><span className="text-slate-500">Applicant:</span> <strong className="text-white">{selectedLeadForConvert.fullName}</strong></p>
+              <p><span className="text-slate-500">Phone:</span> <strong className="font-mono text-white">{selectedLeadForConvert.phone}</strong></p>
+              <p><span className="text-slate-500">Address:</span> <strong className="text-white">{selectedLeadForConvert.address} ({selectedLeadForConvert.pincode})</strong></p>
             </div>
 
             <div className="grid grid-cols-2 gap-3">
@@ -707,7 +707,7 @@ export const WhatsAppChatCenter: React.FC = () => {
                   required
                   value={convertForm.planName}
                   onChange={(e) => setConvertForm({ ...convertForm, planName: e.target.value })}
-                  className="w-full px-3 py-2 border border-slate-300 rounded-lg font-bold"
+                  className="w-full px-3 py-2 border border-slate-700 rounded-lg font-bold"
                 />
               </div>
 
@@ -718,7 +718,7 @@ export const WhatsAppChatCenter: React.FC = () => {
                   required
                   value={convertForm.planPrice}
                   onChange={(e) => setConvertForm({ ...convertForm, planPrice: Number(e.target.value) })}
-                  className="w-full px-3 py-2 border border-slate-300 rounded-lg font-mono font-bold"
+                  className="w-full px-3 py-2 border border-slate-700 rounded-lg font-mono font-bold"
                 />
               </div>
             </div>

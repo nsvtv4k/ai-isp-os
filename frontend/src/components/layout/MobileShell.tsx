@@ -39,20 +39,20 @@ export const MobileShell: React.FC<MobileShellProps> = ({
   const tabs = portalType === 'technician' ? techTabs : customerTabs;
 
   return (
-    <div className="flex flex-col min-h-screen bg-[#F8FAFC] text-[#0F172A] max-w-md mx-auto border-x border-[#E2E8F0] shadow-sm font-sans">
+    <div className="flex flex-col min-h-screen bg-[#060913] text-white max-w-md mx-auto border-x border-slate-800 shadow-sm font-sans">
       {/* Mobile Top App Bar */}
-      <header className="sticky top-0 z-30 bg-white/95 backdrop-blur-md border-b border-[#E2E8F0] px-4 py-3 flex items-center justify-between">
+      <header className="sticky top-0 z-30 bg-[#0E172A]/95 backdrop-blur-md border-b border-slate-800 px-4 py-3 flex items-center justify-between">
         <div className="flex items-center space-x-2">
           <div
-            className={`w-7 h-7 rounded-lg flex items-center justify-center font-bold text-xs text-[#0F172A] shadow-xs ${
+            className={`w-7 h-7 rounded-lg flex items-center justify-center font-bold text-xs text-white shadow-xs ${
               portalType === 'technician' ? 'bg-amber-500' : 'bg-[#1677FF]'
             }`}
           >
             {portalType === 'technician' ? 'TECH' : 'ISP'}
           </div>
           <div>
-            <h1 className="text-sm font-bold text-[#0F172A]">{title}</h1>
-            <p className="text-[10px] text-[#64748B]">
+            <h1 className="text-sm font-bold text-white">{title}</h1>
+            <p className="text-[10px] text-slate-400">
               {portalType === 'technician'
                 ? `Technician: ${user?.fullName || 'Field Tech'} (${tenant?.displayName || 'Apex'})`
                 : `Subscriber: ${user?.fullName || 'Customer'} (${tenant?.displayName || 'Apex'})`}
@@ -62,7 +62,7 @@ export const MobileShell: React.FC<MobileShellProps> = ({
         <div className="flex items-center space-x-2">
           <button
             onClick={handleLogout}
-            className="p-1.5 text-[#64748B] hover:text-rose-600 hover:bg-[#F1F5F9] rounded-lg transition"
+            className="p-1.5 text-slate-400 hover:text-rose-600 hover:bg-[#F1F5F9] rounded-lg transition"
             title="Sign Out"
           >
             <LogOut className="w-4 h-4" />
@@ -71,10 +71,10 @@ export const MobileShell: React.FC<MobileShellProps> = ({
       </header>
 
       {/* Main Screen Content */}
-      <main className="flex-1 p-4 pb-20 overflow-y-auto space-y-4 bg-[#F8FAFC]">{children}</main>
+      <main className="flex-1 p-4 pb-20 overflow-y-auto space-y-4 bg-[#060913]">{children}</main>
 
       {/* Bottom Navigation Bar */}
-      <nav className="fixed bottom-0 left-0 right-0 max-w-md mx-auto bg-white/95 backdrop-blur-md border-t border-[#E2E8F0] flex items-center justify-around py-2 z-40">
+      <nav className="fixed bottom-0 left-0 right-0 max-w-md mx-auto bg-[#0E172A]/95 backdrop-blur-md border-t border-slate-800 flex items-center justify-around py-2 z-40">
         {tabs.map((tab) => {
           const Icon = tab.icon;
           const isActive = location.pathname === tab.path;
@@ -86,8 +86,8 @@ export const MobileShell: React.FC<MobileShellProps> = ({
                 isActive
                   ? portalType === 'technician'
                     ? 'text-amber-600 font-semibold'
-                    : 'text-[#1677FF] font-semibold'
-                  : 'text-[#64748B] hover:text-[#0F172A]'
+                    : 'text-sky-400 font-semibold'
+                  : 'text-slate-400 hover:text-white'
               }`}
             >
               <Icon
@@ -95,8 +95,8 @@ export const MobileShell: React.FC<MobileShellProps> = ({
                   isActive
                     ? portalType === 'technician'
                       ? 'text-amber-600 stroke-[2.5]'
-                      : 'text-[#1677FF] stroke-[2.5]'
-                    : 'text-[#64748B]'
+                      : 'text-sky-400 stroke-[2.5]'
+                    : 'text-slate-400'
                 }`}
               />
               <span className="text-[10px] mt-1">{tab.label}</span>

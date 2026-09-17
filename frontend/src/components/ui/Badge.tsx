@@ -14,12 +14,12 @@ export const Badge: React.FC<BadgeProps> = ({
   dot = false,
 }) => {
   const styles = {
-    success: 'bg-[#ECFDF5] text-[#047857] border-[#A7F3D0]',
+    success: 'bg-emerald-500/15 text-emerald-400 border-emerald-500/30',
     warning: 'bg-[#FFFBEB] text-[#B45309] border-[#FDE68A]',
-    danger: 'bg-[#FEF2F2] text-[#B91C1C] border-[#FECACA]',
-    info: 'bg-[#EFF6FF] text-[#1D4ED8] border-[#BFDBFE]',
+    danger: 'bg-rose-500/15 text-rose-400 border-rose-500/30',
+    info: 'bg-sky-500/15 text-sky-300 border-sky-500/30',
     purple: 'bg-[#F5F3FF] text-[#6D28D9] border-[#DDD6FE]',
-    neutral: 'bg-[#F1F5F9] text-[#334155] border-[#CBD5E1]',
+    neutral: 'bg-[#F1F5F9] text-slate-300 border-slate-700/80',
   };
 
   const dotColors = {

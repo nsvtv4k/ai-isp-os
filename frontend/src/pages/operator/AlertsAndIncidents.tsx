@@ -55,19 +55,19 @@ export const AlertsAndIncidents: React.FC = () => {
       accessor: (inc) => (
         <div>
           <div className="flex items-center space-x-2">
-            <span className="font-bold text-[#0F172A]">{inc.title}</span>
+            <span className="font-bold text-white">{inc.title}</span>
             <Badge variant={inc.severity === 'critical' ? 'danger' : 'warning'}>
               {inc.severity}
             </Badge>
           </div>
-          <p className="text-xs text-[#64748B] mt-0.5 font-mono">{inc.incidentNumber}</p>
+          <p className="text-xs text-slate-400 mt-0.5 font-mono">{inc.incidentNumber}</p>
         </div>
       ),
     },
     {
       header: 'Affected Scope',
       accessor: (inc) => (
-        <span className="text-xs font-semibold text-[#1E293B]">
+        <span className="text-xs font-semibold text-slate-100">
           {inc.affectedCustomersCount || 1} Subscribers
         </span>
       ),
@@ -75,8 +75,8 @@ export const AlertsAndIncidents: React.FC = () => {
     {
       header: 'Assigned Tech',
       accessor: (inc) => (
-        <span className="text-xs text-[#334155]">
-          {inc.assignedTechnicianId?.fullName || <span className="text-[#94A3B8] italic">Unassigned</span>}
+        <span className="text-xs text-slate-300">
+          {inc.assignedTechnicianId?.fullName || <span className="text-slate-400 italic">Unassigned</span>}
         </span>
       ),
     },
@@ -126,10 +126,10 @@ export const AlertsAndIncidents: React.FC = () => {
       >
         <form onSubmit={handleDispatch} className="space-y-4">
           <div className="space-y-1.5">
-            <label className="block text-xs font-semibold text-[#334155]">Select Field Technician</label>
+            <label className="block text-xs font-semibold text-slate-300">Select Field Technician</label>
             <select
               required
-              className="w-full bg-[#F8FAFC] border border-[#E2E8F0] rounded-lg px-3.5 py-2 text-sm text-[#0F172A] focus:outline-none focus:ring-1 focus:ring-sky-500"
+              className="w-full bg-[#060913] border border-slate-800 rounded-lg px-3.5 py-2 text-sm text-white focus:outline-none focus:ring-1 focus:ring-sky-500"
               value={dispatchTechId}
               onChange={(e) => setDispatchTechId(e.target.value)}
             >
@@ -142,7 +142,7 @@ export const AlertsAndIncidents: React.FC = () => {
             </select>
           </div>
 
-          <div className="flex justify-end space-x-3 pt-4 border-t border-[#E2E8F0]">
+          <div className="flex justify-end space-x-3 pt-4 border-t border-slate-800">
             <Button type="button" variant="outline" onClick={() => setIsDispatchModalOpen(false)}>
               Cancel
             </Button>

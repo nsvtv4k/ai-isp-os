@@ -219,7 +219,7 @@ export const PaymentGatewaySettings: React.FC = () => {
               return (
                 <Card
                   key={gwKey}
-                  className="overflow-hidden border border-slate-200 bg-white rounded-2xl shadow-xs flex flex-col justify-between hover:shadow-md transition-all"
+                  className="overflow-hidden border border-slate-800 bg-[#0E172A] rounded-2xl shadow-xs flex flex-col justify-between hover:shadow-md transition-all"
                 >
                   <div className="p-5 space-y-4">
                     {/* Header */}
@@ -229,7 +229,7 @@ export const PaymentGatewaySettings: React.FC = () => {
                           {gwKey.slice(0, 2)}
                         </div>
                         <div>
-                          <h4 className="font-bold text-slate-900 text-sm">{meta.name}</h4>
+                          <h4 className="font-bold text-white text-sm">{meta.name}</h4>
                           <span className="text-[11px] text-slate-400 font-mono">{gwKey}</span>
                         </div>
                       </div>
@@ -242,9 +242,9 @@ export const PaymentGatewaySettings: React.FC = () => {
                     <p className="text-xs text-slate-600 leading-relaxed">{meta.description}</p>
 
                     {config?.publicMetadata?.keyId && (
-                      <div className="p-2.5 bg-slate-50 border border-slate-200 rounded-lg text-[11px] font-mono space-y-1">
+                      <div className="p-2.5 bg-[#080D1A] border border-slate-800 rounded-lg text-[11px] font-mono space-y-1">
                         <span className="text-slate-400 uppercase text-[10px] block">Merchant / App Key</span>
-                        <p className="font-bold text-slate-800 truncate">{config.publicMetadata.keyId}</p>
+                        <p className="font-bold text-slate-100 truncate">{config.publicMetadata.keyId}</p>
                       </div>
                     )}
 
@@ -255,7 +255,7 @@ export const PaymentGatewaySettings: React.FC = () => {
                     )}
                   </div>
 
-                  <div className="p-4 bg-slate-50 border-t border-slate-100 flex items-center justify-between">
+                  <div className="p-4 bg-[#080D1A] border-t border-slate-100 flex items-center justify-between">
                     <span className="text-[11px] text-slate-400 font-mono">
                       {isConfigured ? 'Active Gateway' : 'Not Configured'}
                     </span>
@@ -285,8 +285,8 @@ export const PaymentGatewaySettings: React.FC = () => {
         >
           <form onSubmit={handleSaveGateway} className="space-y-4">
             {/* Toggles */}
-            <div className="grid grid-cols-2 gap-3 p-3 bg-slate-50 rounded-xl border border-slate-200">
-              <label className="flex items-center space-x-2 text-xs font-bold text-slate-800 cursor-pointer">
+            <div className="grid grid-cols-2 gap-3 p-3 bg-[#080D1A] rounded-xl border border-slate-800">
+              <label className="flex items-center space-x-2 text-xs font-bold text-slate-100 cursor-pointer">
                 <input
                   type="checkbox"
                   checked={gwForm.isEnabled}
@@ -296,7 +296,7 @@ export const PaymentGatewaySettings: React.FC = () => {
                 <span>Enable Gateway</span>
               </label>
 
-              <label className="flex items-center space-x-2 text-xs font-bold text-slate-800 cursor-pointer">
+              <label className="flex items-center space-x-2 text-xs font-bold text-slate-100 cursor-pointer">
                 <input
                   type="checkbox"
                   checked={gwForm.isTestMode}
@@ -323,7 +323,7 @@ export const PaymentGatewaySettings: React.FC = () => {
                         credentials: { ...gwForm.credentials, [field.key]: e.target.value },
                       })
                     }
-                    className="w-full px-3 py-2 text-xs border border-slate-300 rounded-lg font-mono focus:ring-2 focus:ring-sky-500"
+                    className="w-full px-3 py-2 text-xs border border-slate-700 rounded-lg font-mono focus:ring-2 focus:ring-sky-500"
                   />
                 </div>
               ))}
@@ -333,7 +333,7 @@ export const PaymentGatewaySettings: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setShowSecrets(!showSecrets)}
-                className="text-xs text-slate-500 hover:text-slate-800 flex items-center space-x-1"
+                className="text-xs text-slate-500 hover:text-slate-100 flex items-center space-x-1"
               >
                 {showSecrets ? <EyeOff className="w-3.5 h-3.5" /> : <Eye className="w-3.5 h-3.5" />}
                 <span>{showSecrets ? 'Hide Secrets' : 'Unmask Secrets'}</span>

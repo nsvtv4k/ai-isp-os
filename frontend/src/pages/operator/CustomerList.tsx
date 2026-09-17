@@ -43,9 +43,9 @@ export const CustomerList: React.FC = () => {
       header: 'Subscriber / Account',
       accessor: (c) => (
         <div>
-          <p className="font-semibold text-[#0F172A]">{c.fullName}</p>
-          <div className="flex items-center space-x-2 text-xs text-[#64748B]">
-            <span className="font-mono text-[#1677FF]">{c.accountNumber}</span>
+          <p className="font-semibold text-white">{c.fullName}</p>
+          <div className="flex items-center space-x-2 text-xs text-slate-400">
+            <span className="font-mono text-sky-400">{c.accountNumber}</span>
             <span>•</span>
             <span>{c.phone}</span>
           </div>
@@ -56,8 +56,8 @@ export const CustomerList: React.FC = () => {
       header: 'Service Plan',
       accessor: (c) => (
         <div>
-          <p className="text-xs font-semibold text-[#1E293B]">{c.servicePlan?.name || 'Broadband'}</p>
-          <p className="text-[11px] text-[#64748B]">
+          <p className="text-xs font-semibold text-slate-100">{c.servicePlan?.name || 'Broadband'}</p>
+          <p className="text-[11px] text-slate-400">
             {c.servicePlan?.downloadSpeedMbps} Mbps | ₹{c.servicePlan?.monthlyFee}/mo
           </p>
         </div>
@@ -67,13 +67,13 @@ export const CustomerList: React.FC = () => {
       header: 'Assigned ONT Device',
       accessor: (c) => {
         const dev = c.assignedDeviceId;
-        if (!dev) return <span className="text-xs text-[#94A3B8] italic">No Device Assigned</span>;
+        if (!dev) return <span className="text-xs text-slate-400 italic">No Device Assigned</span>;
         return (
           <div className="flex items-center space-x-2">
-            <Radio className={`w-3.5 h-3.5 ${dev.status === 'online' ? 'text-[#047857]' : 'text-[#94A3B8]'}`} />
+            <Radio className={`w-3.5 h-3.5 ${dev.status === 'online' ? 'text-emerald-400' : 'text-slate-400'}`} />
             <div>
-              <p className="text-xs font-mono text-[#1E293B]">{dev.serialNumber}</p>
-              <p className="text-[10px] text-[#64748B]">{dev.manufacturer} {dev.modelName}</p>
+              <p className="text-xs font-mono text-slate-100">{dev.serialNumber}</p>
+              <p className="text-[10px] text-slate-400">{dev.manufacturer} {dev.modelName}</p>
             </div>
           </div>
         );
@@ -83,7 +83,7 @@ export const CustomerList: React.FC = () => {
       header: 'Optical RX Signal',
       accessor: (c) => {
         const dev = c.assignedDeviceId;
-        if (!dev || !dev.currentRxPowerDbm) return <span className="text-xs text-[#94A3B8]">-</span>;
+        if (!dev || !dev.currentRxPowerDbm) return <span className="text-xs text-slate-400">-</span>;
         const pwr = dev.currentRxPowerDbm;
         let variant: 'success' | 'warning' | 'danger' = 'success';
         if (pwr < -27) variant = 'danger';
@@ -136,7 +136,7 @@ export const CustomerList: React.FC = () => {
     >
       <div className="space-y-4">
         {/* Search & Status Toolbar */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-3 bg-white p-4 border border-[#E2E8F0] rounded-xl">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-3 bg-[#0E172A] p-4 border border-slate-800 rounded-xl">
           <form onSubmit={handleSearchSubmit} className="w-full sm:w-80">
             <Input
               placeholder="Search by name, phone, account #..."
@@ -147,7 +147,7 @@ export const CustomerList: React.FC = () => {
           </form>
 
           <div className="flex items-center space-x-2 w-full sm:w-auto">
-            <span className="text-xs text-[#64748B]">Filter:</span>
+            <span className="text-xs text-slate-400">Filter:</span>
             {['all', 'active', 'pending_install', 'suspended'].map((st) => (
               <button
                 key={st}
@@ -155,7 +155,7 @@ export const CustomerList: React.FC = () => {
                 className={`px-3 py-1.5 rounded-lg text-xs font-medium capitalize transition ${
                   statusFilter === st
                     ? 'bg-sky-600 text-white'
-                    : 'bg-[#F1F5F9] text-[#64748B] hover:text-[#1E293B]'
+                    : 'bg-[#F1F5F9] text-slate-400 hover:text-slate-100'
                 }`}
               >
                 {st}

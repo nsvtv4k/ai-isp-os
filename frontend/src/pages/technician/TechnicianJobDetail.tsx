@@ -93,20 +93,20 @@ export const TechnicianJobDetail: React.FC = () => {
         {job && (
           <div className="space-y-4">
             {/* Header Status Card */}
-            <div className="bg-white border border-[#E2E8F0] rounded-2xl p-4 space-y-2">
+            <div className="bg-[#0E172A] border border-slate-800 rounded-2xl p-4 space-y-2">
               <div className="flex justify-between items-start">
                 <div>
-                  <h2 className="text-sm font-bold text-[#0F172A]">{job.title}</h2>
-                  <p className="text-xs text-[#64748B] mt-0.5">{customer?.fullName} • {customer?.phone}</p>
+                  <h2 className="text-sm font-bold text-white">{job.title}</h2>
+                  <p className="text-xs text-slate-400 mt-0.5">{customer?.fullName} • {customer?.phone}</p>
                 </div>
                 <Badge variant={job.status === 'completed' ? 'success' : 'warning'}>
                   {job.status}
                 </Badge>
               </div>
 
-              <div className="pt-2 border-t border-[#E2E8F0] flex items-center justify-between text-xs">
-                <span className="text-[#64748B]">ONT Serial:</span>
-                <span className="font-mono text-[#1E293B]">{device?.serialNumber || 'HWTC-7890'}</span>
+              <div className="pt-2 border-t border-slate-800 flex items-center justify-between text-xs">
+                <span className="text-slate-400">ONT Serial:</span>
+                <span className="font-mono text-slate-100">{device?.serialNumber || 'HWTC-7890'}</span>
               </div>
             </div>
 
@@ -115,15 +115,15 @@ export const TechnicianJobDetail: React.FC = () => {
               <Bot className="w-4 h-4 text-[#6D28D9] shrink-0 mt-0.5" />
               <div className="text-xs">
                 <p className="font-bold text-[#5B21B6]">Field AI Assistant</p>
-                <p className="text-[#334155] mt-0.5">
+                <p className="text-slate-300 mt-0.5">
                   Pre-test telemetry indicates high splice loss at drop terminal. Clean SC-APC ferrule before re-fusion.
                 </p>
               </div>
             </div>
 
             {/* Guided Checklist Steps */}
-            <div className="bg-white border border-[#E2E8F0] rounded-2xl p-4 space-y-3">
-              <h3 className="text-xs font-bold text-[#1E293B] uppercase tracking-wider">
+            <div className="bg-[#0E172A] border border-slate-800 rounded-2xl p-4 space-y-3">
+              <h3 className="text-xs font-bold text-slate-100 uppercase tracking-wider">
                 Guided Repair Checklist
               </h3>
               <div className="space-y-2">
@@ -131,16 +131,16 @@ export const TechnicianJobDetail: React.FC = () => {
                   <div
                     key={step.id}
                     onClick={() => toggleChecklist(step.id, step.completed)}
-                    className="flex items-center space-x-3 p-2.5 bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl cursor-pointer hover:border-[#CBD5E1] transition"
+                    className="flex items-center space-x-3 p-2.5 bg-[#060913] border border-slate-800 rounded-xl cursor-pointer hover:border-slate-700/80 transition"
                   >
                     {step.completed ? (
-                      <CheckSquare className="w-4 h-4 text-[#047857] shrink-0" />
+                      <CheckSquare className="w-4 h-4 text-emerald-400 shrink-0" />
                     ) : (
-                      <Square className="w-4 h-4 text-[#94A3B8] shrink-0" />
+                      <Square className="w-4 h-4 text-slate-400 shrink-0" />
                     )}
                     <span
                       className={`text-xs ${
-                        step.completed ? 'line-through text-[#94A3B8]' : 'text-[#1E293B]'
+                        step.completed ? 'line-through text-slate-400' : 'text-slate-100'
                       }`}
                     >
                       {step.label}
@@ -151,20 +151,20 @@ export const TechnicianJobDetail: React.FC = () => {
             </div>
 
             {/* Optical Power Verification */}
-            <div className="bg-white border border-[#E2E8F0] rounded-2xl p-4 space-y-3">
-              <h3 className="text-xs font-bold text-[#1E293B] uppercase tracking-wider flex items-center space-x-2">
-                <Signal className="w-4 h-4 text-[#047857]" />
+            <div className="bg-[#0E172A] border border-slate-800 rounded-2xl p-4 space-y-3">
+              <h3 className="text-xs font-bold text-slate-100 uppercase tracking-wider flex items-center space-x-2">
+                <Signal className="w-4 h-4 text-emerald-400" />
                 <span>Live Optical Power Measurement</span>
               </h3>
 
               <div className="grid grid-cols-2 gap-3 text-xs">
-                <div className="p-3 bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl">
-                  <span className="text-[#94A3B8]">Before Repair</span>
-                  <p className="text-sm font-bold text-[#B91C1C] mt-1">-29.2 dBm (Fault)</p>
+                <div className="p-3 bg-[#060913] border border-slate-800 rounded-xl">
+                  <span className="text-slate-400">Before Repair</span>
+                  <p className="text-sm font-bold text-rose-400 mt-1">-29.2 dBm (Fault)</p>
                 </div>
-                <div className="p-3 bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl">
-                  <span className="text-[#94A3B8]">After Measurement</span>
-                  <p className="text-sm font-bold text-[#047857] mt-1">{job.evidence?.postRxPowerDbm || '-19.4'} dBm (Optimal)</p>
+                <div className="p-3 bg-[#060913] border border-slate-800 rounded-xl">
+                  <span className="text-slate-400">After Measurement</span>
+                  <p className="text-sm font-bold text-emerald-400 mt-1">{job.evidence?.postRxPowerDbm || '-19.4'} dBm (Optimal)</p>
                 </div>
               </div>
 
@@ -184,23 +184,23 @@ export const TechnicianJobDetail: React.FC = () => {
             </div>
 
             {/* Closure Evidence & Signature */}
-            <div className="bg-white border border-[#E2E8F0] rounded-2xl p-4 space-y-3">
-              <h3 className="text-xs font-bold text-[#1E293B] uppercase tracking-wider flex items-center space-x-2">
-                <Camera className="w-4 h-4 text-[#1677FF]" />
+            <div className="bg-[#0E172A] border border-slate-800 rounded-2xl p-4 space-y-3">
+              <h3 className="text-xs font-bold text-slate-100 uppercase tracking-wider flex items-center space-x-2">
+                <Camera className="w-4 h-4 text-sky-400" />
                 <span>Photo Evidence & Notes</span>
               </h3>
 
               <div className="space-y-2">
-                <label className="block text-[11px] text-[#64748B]">Technician Resolution Notes</label>
+                <label className="block text-[11px] text-slate-400">Technician Resolution Notes</label>
                 <textarea
-                  className="w-full bg-[#F8FAFC] border border-[#E2E8F0] rounded-lg p-2.5 text-xs text-[#0F172A] focus:outline-none focus:ring-1 focus:ring-sky-500"
+                  className="w-full bg-[#060913] border border-slate-800 rounded-lg p-2.5 text-xs text-white focus:outline-none focus:ring-1 focus:ring-sky-500"
                   rows={2}
                   value={techNotes}
                   onChange={(e) => setTechNotes(e.target.value)}
                 />
               </div>
 
-              <div className="p-3 bg-[#ECFDF5] border border-[#A7F3D0] rounded-xl flex items-center space-x-2 text-xs text-[#065F46]">
+              <div className="p-3 bg-emerald-500/15 border border-emerald-500/30 rounded-xl flex items-center space-x-2 text-xs text-emerald-300">
                 <CheckCircle2 className="w-4 h-4 shrink-0" />
                 <span>Customer Digital Signature / SMS OTP Verified</span>
               </div>

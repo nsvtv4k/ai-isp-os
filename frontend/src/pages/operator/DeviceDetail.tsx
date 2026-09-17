@@ -373,7 +373,7 @@ const ModelSpecificOntGraphic: React.FC<ModelSpecificOntGraphicProps> = ({
   // 3. HUAWEI ECHOLIFE HG8145V5 / EG8145V5 (Glossy White Dual-Antenna Gateway)
   if (profile.profileType === 'HUAWEI_HG8145V5' || profile.profileType === 'HUAWEI_HG8546M') {
     return (
-      <div className={`flex flex-col items-center justify-center p-3 bg-gradient-to-b from-slate-50 to-slate-100 rounded-2xl border border-slate-300 shadow-md text-center ${className}`}>
+      <div className={`flex flex-col items-center justify-center p-3 bg-gradient-to-b from-slate-50 to-slate-100 rounded-2xl border border-slate-700 shadow-md text-center ${className}`}>
         <svg viewBox="0 0 260 185" className="w-full max-w-[195px] h-auto drop-shadow-md" fill="none" xmlns="http://www.w3.org/2000/svg">
           <rect x="32" y="12" width="10" height="115" rx="5" fill="#FFFFFF" stroke="#CBD5E1" strokeWidth="2" />
           <line x1="37" y1="20" x2="37" y2="105" stroke="#E2E8F0" strokeWidth="1.5" />
@@ -394,7 +394,7 @@ const ModelSpecificOntGraphic: React.FC<ModelSpecificOntGraphicProps> = ({
           <rect x="180" y="160" width="18" height="6" rx="2" fill="#CBD5E1" />
         </svg>
         <div className="mt-2 space-y-0.5">
-          <span className="text-[11px] font-bold text-slate-800 font-mono block">{profile.displayName}</span>
+          <span className="text-[11px] font-bold text-slate-100 font-mono block">{profile.displayName}</span>
           <span className="text-[9px] text-slate-500 font-medium block">{profile.subTitle}</span>
         </div>
       </div>
@@ -433,7 +433,7 @@ const ModelSpecificOntGraphic: React.FC<ModelSpecificOntGraphicProps> = ({
   // 5. SYROTECH / REALTEK (High-Gain Pure White ONT)
   if (profile.profileType === 'SYROTECH_GPON_1110' || profile.profileType === 'GENEXIS_EARTH_2022') {
     return (
-      <div className={`flex flex-col items-center justify-center p-3 bg-gradient-to-b from-slate-50 to-slate-100 rounded-2xl border border-slate-300 shadow-md text-center ${className}`}>
+      <div className={`flex flex-col items-center justify-center p-3 bg-gradient-to-b from-slate-50 to-slate-100 rounded-2xl border border-slate-700 shadow-md text-center ${className}`}>
         <svg viewBox="0 0 250 180" className="w-full max-w-[190px] h-auto drop-shadow-md" fill="none" xmlns="http://www.w3.org/2000/svg">
           <rect x="32" y="14" width="9" height="110" rx="4.5" fill="#FFFFFF" stroke="#CBD5E1" strokeWidth="2" />
           <line x1="36" y1="26" x2="36" y2="105" stroke="#38BDF8" strokeWidth="1.5" />
@@ -463,7 +463,7 @@ const ModelSpecificOntGraphic: React.FC<ModelSpecificOntGraphicProps> = ({
   // 6. DEFAULT / NEUTRAL PROFESSIONAL HARDWARE PLACEHOLDER
   // Unrecognized models display a clean, neutral hardware chassis with real TR-069 LED telemetry
   return (
-    <div className={`flex flex-col items-center justify-center p-3 bg-gradient-to-b from-[#F8FAFC] to-[#F1F5F9] rounded-2xl border border-[#CBD5E1] shadow-xs text-center ${className}`}>
+    <div className={`flex flex-col items-center justify-center p-3 bg-gradient-to-b from-[#F8FAFC] to-[#F1F5F9] rounded-2xl border border-slate-700/80 shadow-xs text-center ${className}`}>
       <svg viewBox="0 0 240 180" className="w-full max-w-[185px] h-auto drop-shadow-sm" fill="none" xmlns="http://www.w3.org/2000/svg">
         <rect x="28" y="10" width="10" height="120" rx="5" fill="#E2E8F0" stroke="#CBD5E1" strokeWidth="2" />
         <rect x="31" y="20" width="4" height="100" rx="2" fill="#94A3B8" />
@@ -482,8 +482,8 @@ const ModelSpecificOntGraphic: React.FC<ModelSpecificOntGraphicProps> = ({
         <rect x="170" y="153" width="18" height="6" rx="2" fill="#CBD5E1" />
       </svg>
       <div className="mt-2 space-y-0.5">
-        <span className="text-[11px] font-bold text-[#0F172A] font-mono block">{profile.displayName}</span>
-        <span className="text-[9px] text-[#64748B] font-medium block">{profile.subTitle}</span>
+        <span className="text-[11px] font-bold text-white font-mono block">{profile.displayName}</span>
+        <span className="text-[9px] text-slate-400 font-medium block">{profile.subTitle}</span>
       </div>
     </div>
   );
@@ -496,7 +496,7 @@ const CircularGauge: React.FC<{ score: number | null; quality: string }> = ({ sc
 
   return (
     <div className="flex flex-col items-center justify-center">
-      <span className="text-xs font-semibold text-[#64748B] mb-2">Overall Health Score</span>
+      <span className="text-xs font-semibold text-slate-400 mb-2">Overall Health Score</span>
       <div className="relative w-28 h-28 flex items-center justify-center">
         <svg className="w-full h-full -rotate-90" viewBox="0 0 100 100">
           <circle cx="50" cy="50" r={radius} stroke="#1E293B" strokeWidth="7" fill="transparent" />
@@ -514,10 +514,10 @@ const CircularGauge: React.FC<{ score: number | null; quality: string }> = ({ sc
           />
         </svg>
         <div className="absolute inset-0 flex flex-col items-center justify-center">
-          <span className="text-xl font-bold font-mono text-[#0F172A]">
+          <span className="text-xl font-bold font-mono text-white">
             {score != null ? score.toFixed(1) : 'N/A'}
           </span>
-          <span className="text-[10px] text-[#047857] font-semibold">{quality}</span>
+          <span className="text-[10px] text-emerald-400 font-semibold">{quality}</span>
         </div>
       </div>
     </div>
@@ -1501,18 +1501,18 @@ export const DeviceDetail: React.FC = () => {
         {workspace && (
           <div className="space-y-5">
             {/* Top Back Navigation & Action Bar */}
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 bg-white p-4 border border-[#CBD5E1] rounded-2xl shadow-xs">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 bg-[#0E172A] p-4 border border-slate-700/80 rounded-2xl shadow-xs">
               <div className="flex items-center space-x-3.5">
                 <button
                   onClick={() => navigate('/operator/devices')}
-                  className="p-2 rounded-xl bg-[#F1F5F9] hover:bg-[#E2E8F0] text-[#0F172A] transition"
+                  className="p-2 rounded-xl bg-[#F1F5F9] hover:bg-[#E2E8F0] text-white transition"
                   title="Back to ONT Fleet"
                 >
                   <ArrowLeft className="w-5 h-5" />
                 </button>
                 <div>
                   <div className="flex items-center space-x-2.5">
-                    <h2 className="text-lg font-bold text-[#0F172A] font-mono tracking-tight">{workspace.header.serialNumber}</h2>
+                    <h2 className="text-lg font-bold text-white font-mono tracking-tight">{workspace.header.serialNumber}</h2>
                     <Badge variant={isOnline ? 'success' : 'danger'} dot>
                       {isOnline ? 'ONLINE' : 'OFFLINE'}
                     </Badge>
@@ -1521,7 +1521,7 @@ export const DeviceDetail: React.FC = () => {
                     </Badge>
                   </div>
                   <p className="text-xs text-[#475569] font-medium mt-0.5">
-                    {workspace.header.vendor} {workspace.header.model} | FW: <span className="font-mono text-[#0F172A] font-semibold">{workspace.header.firmwareVersion}</span>
+                    {workspace.header.vendor} {workspace.header.model} | FW: <span className="font-mono text-white font-semibold">{workspace.header.firmwareVersion}</span>
                   </p>
                 </div>
               </div>
@@ -1589,14 +1589,14 @@ export const DeviceDetail: React.FC = () => {
 
             {/* Cached Report & Synchronization Status Banner */}
             {workspace.cachedReport && (
-              <div className="flex flex-wrap items-center justify-between gap-2 px-4 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-700">
+              <div className="flex flex-wrap items-center justify-between gap-2 px-4 py-2 bg-[#080D1A] border border-slate-800 rounded-xl text-xs text-slate-700">
                 <div className="flex items-center space-x-2.5">
-                  <span className="inline-flex items-center px-2 py-0.5 rounded-md text-[11px] font-bold bg-slate-200 text-slate-800">
+                  <span className="inline-flex items-center px-2 py-0.5 rounded-md text-[11px] font-bold bg-slate-200 text-slate-100">
                     {workspace.cachedReport.dataSource === 'CACHED_TR069_GPV' ? 'CACHED ROUTER REPORT' : 'UNSYNCHRONIZED'}
                   </span>
                   <span>
                     Last Live CPE Sync:{' '}
-                    <strong className="text-slate-900 font-mono">
+                    <strong className="text-white font-mono">
                       {workspace.cachedReport.lastSyncAt ? new Date(workspace.cachedReport.lastSyncAt).toLocaleString() : 'Never synced'}
                     </strong>
                   </span>
@@ -1653,8 +1653,8 @@ export const DeviceDetail: React.FC = () => {
             )}
 
             {summonSuccess && (
-              <div className="p-3.5 bg-[#ECFDF5] border border-[#A7F3D0] rounded-xl text-xs font-bold text-[#065F46] flex items-center space-x-2 animate-fadeIn">
-                <CheckCircle2 className="w-4 h-4 text-[#047857] shrink-0" />
+              <div className="p-3.5 bg-emerald-500/15 border border-emerald-500/30 rounded-xl text-xs font-bold text-emerald-300 flex items-center space-x-2 animate-fadeIn">
+                <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
                 <span>{summonSuccess}</span>
               </div>
             )}
@@ -1667,7 +1667,7 @@ export const DeviceDetail: React.FC = () => {
             )}
 
             {/* Top Horizontal Navigation Tabs */}
-            <div className="border-b border-[#E2E8F0] flex space-x-4 overflow-x-auto pb-0.5 scrollbar-thin">
+            <div className="border-b border-slate-800 flex space-x-4 overflow-x-auto pb-0.5 scrollbar-thin">
               {tabs.map(({ key, label, icon: Icon }) => (
                 <button
                   key={key}
@@ -1675,11 +1675,11 @@ export const DeviceDetail: React.FC = () => {
                   className={`flex items-center space-x-1.5 pb-2.5 pt-1 text-xs font-semibold whitespace-nowrap border-b-2 transition ${
                     activeTab === key
                       ? 'border-[#E05638] text-[#E05638] font-bold'
-                      : 'border-transparent text-[#64748B] hover:text-[#1E293B]'
+                      : 'border-transparent text-slate-400 hover:text-slate-100'
                   }`}
                 >
                   <span className="capitalize">{label}</span>
-                  <Icon className={`w-3.5 h-3.5 ${activeTab === key ? 'text-[#E05638]' : 'text-[#64748B]'}`} />
+                  <Icon className={`w-3.5 h-3.5 ${activeTab === key ? 'text-[#E05638]' : 'text-slate-400'}`} />
                 </button>
               ))}
             </div>
@@ -1688,8 +1688,8 @@ export const DeviceDetail: React.FC = () => {
             {activeTab === 'analysis' && (
               <div className="space-y-5">
                 {/* 1. Device Information Card (With Left ONT Graphic) */}
-                <div className="bg-white border border-[#E2E8F0] rounded-2xl p-6 shadow-sm">
-                  <h3 className="text-sm font-bold text-[#0F172A] mb-5">
+                <div className="bg-[#0E172A] border border-slate-800 rounded-2xl p-6 shadow-sm">
+                  <h3 className="text-sm font-bold text-white mb-5">
                     Device Information
                   </h3>
 
@@ -1712,48 +1712,48 @@ export const DeviceDetail: React.FC = () => {
                     {/* Right Metadata Grid */}
                     <div className="lg:col-span-4 grid grid-cols-2 sm:grid-cols-4 gap-y-4 gap-x-6 text-xs">
                       <div>
-                        <span className="text-[#64748B] block mb-0.5">Serial Number</span>
-                        <span className="font-mono font-bold text-[#0F172A] text-sm">{workspace.header.serialNumber}</span>
+                        <span className="text-slate-400 block mb-0.5">Serial Number</span>
+                        <span className="font-mono font-bold text-white text-sm">{workspace.header.serialNumber}</span>
                       </div>
                       <div>
-                        <span className="text-[#64748B] block mb-0.5">Model</span>
-                        <span className="font-semibold text-[#1E293B]">{workspace.header.model}</span>
+                        <span className="text-slate-400 block mb-0.5">Model</span>
+                        <span className="font-semibold text-slate-100">{workspace.header.model}</span>
                       </div>
                       <div>
-                        <span className="text-[#64748B] block mb-0.5">Vendor</span>
-                        <span className="font-semibold text-[#1E293B]">{workspace.header.vendor}</span>
+                        <span className="text-slate-400 block mb-0.5">Vendor</span>
+                        <span className="font-semibold text-slate-100">{workspace.header.vendor}</span>
                       </div>
                       <div>
-                        <span className="text-[#64748B] block mb-0.5">Firmware Version</span>
-                        <span className="font-mono text-[#1E293B]">{workspace.header.firmwareVersion}</span>
+                        <span className="text-slate-400 block mb-0.5">Firmware Version</span>
+                        <span className="font-mono text-slate-100">{workspace.header.firmwareVersion}</span>
                       </div>
 
                       <div>
-                        <span className="text-[#64748B] block mb-0.5">WAN IP</span>
-                        <span className="font-mono font-bold text-[#1677FF]">{workspace.header.wanIp}</span>
+                        <span className="text-slate-400 block mb-0.5">WAN IP</span>
+                        <span className="font-mono font-bold text-sky-400">{workspace.header.wanIp}</span>
                       </div>
                       <div>
-                        <span className="text-[#64748B] block mb-0.5">WAN MAC</span>
-                        <span className="font-mono text-[#334155]">{workspace.header.wanMac}</span>
+                        <span className="text-slate-400 block mb-0.5">WAN MAC</span>
+                        <span className="font-mono text-slate-300">{workspace.header.wanMac}</span>
                       </div>
                       <div>
-                        <span className="text-[#64748B] block mb-0.5">Data Model</span>
+                        <span className="text-slate-400 block mb-0.5">Data Model</span>
                         <span className="font-mono text-[#5B21B6]">{workspace.header.dataModel}</span>
                       </div>
                       <div>
-                        <span className="text-[#64748B] block mb-0.5">Uptime</span>
-                        <span className="font-mono text-[#334155]">{workspace.header.uptime}</span>
+                        <span className="text-slate-400 block mb-0.5">Uptime</span>
+                        <span className="font-mono text-slate-300">{workspace.header.uptime}</span>
                       </div>
 
                       <div>
-                        <span className="text-[#64748B] block mb-1">Quality</span>
-                        <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-[#ECFDF5] text-[#047857] border border-[#A7F3D0]">
+                        <span className="text-slate-400 block mb-1">Quality</span>
+                        <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">
                           {workspace.header?.quality || 'Good'}
                         </span>
                       </div>
                       <div className="sm:col-span-3">
-                        <span className="text-[#64748B] block mb-0.5">Last Seen</span>
-                        <span className="font-mono text-[#334155]">
+                        <span className="text-slate-400 block mb-0.5">Last Seen</span>
+                        <span className="font-mono text-slate-300">
                           {workspace.header?.lastSeen ? new Date(workspace.header.lastSeen).toLocaleString() : 'Just now'}
                         </span>
                       </div>
@@ -1762,8 +1762,8 @@ export const DeviceDetail: React.FC = () => {
                 </div>
 
                 {/* 2. Quality Ratings Card */}
-                <div className="bg-white border border-[#E2E8F0] rounded-2xl p-6 shadow-sm">
-                  <h3 className="text-sm font-bold text-[#0F172A] mb-5">
+                <div className="bg-[#0E172A] border border-slate-800 rounded-2xl p-6 shadow-sm">
+                  <h3 className="text-sm font-bold text-white mb-5">
                     Quality Ratings
                   </h3>
 
@@ -1777,8 +1777,8 @@ export const DeviceDetail: React.FC = () => {
                     <div className="md:col-span-3 grid grid-cols-1 sm:grid-cols-2 gap-6">
                       <div className="space-y-1.5">
                         <div className="flex justify-between text-xs">
-                          <span className="text-[#334155] font-medium">Ping Health Score</span>
-                          <span className="font-mono font-bold text-[#0F172A]">{workspace.ratings?.pingHealth || '100%'}</span>
+                          <span className="text-slate-300 font-medium">Ping Health Score</span>
+                          <span className="font-mono font-bold text-white">{workspace.ratings?.pingHealth || '100%'}</span>
                         </div>
                         <div className="w-full bg-[#F1F5F9] h-1.5 rounded-full overflow-hidden">
                           <div className="h-full bg-emerald-500 rounded-full" style={{ width: '100%' }}></div>
@@ -1787,8 +1787,8 @@ export const DeviceDetail: React.FC = () => {
 
                       <div className="space-y-1.5">
                         <div className="flex justify-between text-xs">
-                          <span className="text-[#334155] font-medium">Signal Health Score</span>
-                          <span className="font-mono font-bold text-[#0F172A]">{workspace.ratings?.signalHealth || '100%'}</span>
+                          <span className="text-slate-300 font-medium">Signal Health Score</span>
+                          <span className="font-mono font-bold text-white">{workspace.ratings?.signalHealth || '100%'}</span>
                         </div>
                         <div className="w-full bg-[#F1F5F9] h-1.5 rounded-full overflow-hidden">
                           <div className="h-full bg-emerald-500 rounded-full" style={{ width: `${workspace.ratings?.overallScore || 100}%` }}></div>
@@ -1797,8 +1797,8 @@ export const DeviceDetail: React.FC = () => {
 
                       <div className="space-y-1.5 sm:col-span-2">
                         <div className="flex justify-between text-xs">
-                          <span className="text-[#334155] font-medium">Hardware Health Score</span>
-                          <span className="font-mono font-bold text-[#0F172A]">{workspace.ratings?.hardwareHealth || '100%'}</span>
+                          <span className="text-slate-300 font-medium">Hardware Health Score</span>
+                          <span className="font-mono font-bold text-white">{workspace.ratings?.hardwareHealth || '100%'}</span>
                         </div>
                         <div className="w-full bg-[#F1F5F9] h-1.5 rounded-full overflow-hidden">
                           <div className="h-full bg-emerald-500 rounded-full" style={{ width: '100%' }}></div>
@@ -1810,54 +1810,54 @@ export const DeviceDetail: React.FC = () => {
 
                 {/* 3. Hardware Metrics & Average Ping Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                  <div className="bg-white border border-[#E2E8F0] rounded-2xl p-5 space-y-3">
-                    <h4 className="text-xs font-bold uppercase tracking-wider text-[#334155] flex items-center space-x-2">
+                  <div className="bg-[#0E172A] border border-slate-800 rounded-2xl p-5 space-y-3">
+                    <h4 className="text-xs font-bold uppercase tracking-wider text-slate-300 flex items-center space-x-2">
                       <Cpu className="w-4 h-4 text-[#6D28D9]" />
                       <span>Hardware Metrics</span>
                     </h4>
                     <div className="grid grid-cols-3 gap-3">
-                      <div className="p-3 bg-[#F8FAFC] rounded-xl border border-[#E2E8F0]">
-                        <span className="text-[11px] text-[#64748B] block">CPU Usage</span>
-                        <span className="text-base font-mono font-bold text-[#1677FF] mt-0.5 block">
+                      <div className="p-3 bg-[#060913] rounded-xl border border-slate-800">
+                        <span className="text-[11px] text-slate-400 block">CPU Usage</span>
+                        <span className="text-base font-mono font-bold text-sky-400 mt-0.5 block">
                           {workspace.hardware?.cpuUsagePercent != null ? `${workspace.hardware.cpuUsagePercent}%` : 'N/A'}
                         </span>
                       </div>
-                      <div className="p-3 bg-[#F8FAFC] rounded-xl border border-[#E2E8F0]">
-                        <span className="text-[11px] text-[#64748B] block">RAM Usage</span>
+                      <div className="p-3 bg-[#060913] rounded-xl border border-slate-800">
+                        <span className="text-[11px] text-slate-400 block">RAM Usage</span>
                         <span className="text-base font-mono font-bold text-[#6D28D9] mt-0.5 block">
                           {workspace.hardware?.memoryUsagePercent != null ? `${workspace.hardware.memoryUsagePercent}%` : 'N/A'}
                         </span>
                       </div>
-                      <div className="p-3 bg-[#F8FAFC] rounded-xl border border-[#E2E8F0]">
-                        <span className="text-[11px] text-[#64748B] block">Board Temp</span>
-                        <span className="text-base font-mono font-bold text-[#1E293B] mt-0.5 block">
+                      <div className="p-3 bg-[#060913] rounded-xl border border-slate-800">
+                        <span className="text-[11px] text-slate-400 block">Board Temp</span>
+                        <span className="text-base font-mono font-bold text-slate-100 mt-0.5 block">
                           {workspace.hardware?.temperatureC != null ? `${workspace.hardware.temperatureC} °C` : 'N/A'}
                         </span>
                       </div>
                     </div>
                   </div>
 
-                  <div className="bg-white border border-[#E2E8F0] rounded-2xl p-5 space-y-3">
-                    <h4 className="text-xs font-bold uppercase tracking-wider text-[#334155] flex items-center space-x-2">
-                      <Clock className="w-4 h-4 text-[#1677FF]" />
+                  <div className="bg-[#0E172A] border border-slate-800 rounded-2xl p-5 space-y-3">
+                    <h4 className="text-xs font-bold uppercase tracking-wider text-slate-300 flex items-center space-x-2">
+                      <Clock className="w-4 h-4 text-sky-400" />
                       <span>Diagnostics & Latency</span>
                     </h4>
                     <div className="grid grid-cols-3 gap-3">
-                      <div className="p-3 bg-[#F8FAFC] rounded-xl border border-[#E2E8F0]">
-                        <span className="text-[11px] text-[#64748B] block">ICMP Latency</span>
-                        <span className="text-base font-mono font-bold text-[#047857] mt-0.5 block">
+                      <div className="p-3 bg-[#060913] rounded-xl border border-slate-800">
+                        <span className="text-[11px] text-slate-400 block">ICMP Latency</span>
+                        <span className="text-base font-mono font-bold text-emerald-400 mt-0.5 block">
                           {workspace.diagnostics?.[0]?.latencyAvgMs != null ? `${workspace.diagnostics[0].latencyAvgMs} ms` : 'Not Measured'}
                         </span>
                       </div>
-                      <div className="p-3 bg-[#F8FAFC] rounded-xl border border-[#E2E8F0]">
-                        <span className="text-[11px] text-[#64748B] block">Last Result</span>
-                        <span className="text-base font-mono font-bold text-[#1677FF] mt-0.5 block">
+                      <div className="p-3 bg-[#060913] rounded-xl border border-slate-800">
+                        <span className="text-[11px] text-slate-400 block">Last Result</span>
+                        <span className="text-base font-mono font-bold text-sky-400 mt-0.5 block">
                           {workspace.diagnostics?.[0]?.success != null ? (workspace.diagnostics[0].success ? 'PASS' : 'FAIL') : 'No Run'}
                         </span>
                       </div>
-                      <div className="p-3 bg-[#F8FAFC] rounded-xl border border-[#E2E8F0]">
-                        <span className="text-[11px] text-[#64748B] block">Packet Loss</span>
-                        <span className="text-base font-mono font-bold text-[#047857] mt-0.5 block">
+                      <div className="p-3 bg-[#060913] rounded-xl border border-slate-800">
+                        <span className="text-[11px] text-slate-400 block">Packet Loss</span>
+                        <span className="text-base font-mono font-bold text-emerald-400 mt-0.5 block">
                           {workspace.diagnostics?.[0]?.success != null ? '0.0%' : 'N/A'}
                         </span>
                       </div>
@@ -1866,11 +1866,11 @@ export const DeviceDetail: React.FC = () => {
                 </div>
 
                 {/* 4. Optical Telemetry Panel */}
-                <div className="bg-white border border-[#E2E8F0] rounded-2xl p-5 space-y-4">
-                  <div className="flex justify-between items-center border-b border-[#E2E8F0] pb-3">
+                <div className="bg-[#0E172A] border border-slate-800 rounded-2xl p-5 space-y-4">
+                  <div className="flex justify-between items-center border-b border-slate-800 pb-3">
                     <div className="flex items-center space-x-2">
-                      <Signal className="w-4 h-4 text-[#047857]" />
-                      <h3 className="text-xs font-bold uppercase tracking-wider text-[#0F172A]">Live Optical Telemetry</h3>
+                      <Signal className="w-4 h-4 text-emerald-400" />
+                      <h3 className="text-xs font-bold uppercase tracking-wider text-white">Live Optical Telemetry</h3>
                     </div>
                     <div className="flex items-center space-x-2">
                       {workspace.optical?.deltaDbm != null && (
@@ -1880,28 +1880,28 @@ export const DeviceDetail: React.FC = () => {
                         </Badge>
                       )}
                       <Badge variant="neutral">Source: {workspace.optical?.source || 'Physical CPE'}</Badge>
-                      <span className="text-xs text-[#64748B]">
-                        Updated: <span className="font-mono text-[#1E293B]">{workspace.optical?.lastUpdated ? new Date(workspace.optical.lastUpdated).toLocaleTimeString() : 'Just now'}</span>
+                      <span className="text-xs text-slate-400">
+                        Updated: <span className="font-mono text-slate-100">{workspace.optical?.lastUpdated ? new Date(workspace.optical.lastUpdated).toLocaleTimeString() : 'Just now'}</span>
                       </span>
                     </div>
                   </div>
 
                   <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
                     {[
-                      { label: 'RX Optical Power', value: workspace.optical?.rxPowerDbm, unit: 'dBm', color: 'text-[#047857]' },
-                      { label: 'TX Optical Power', value: workspace.optical?.txPowerDbm, unit: 'dBm', color: 'text-[#1677FF]' },
+                      { label: 'RX Optical Power', value: workspace.optical?.rxPowerDbm, unit: 'dBm', color: 'text-emerald-400' },
+                      { label: 'TX Optical Power', value: workspace.optical?.txPowerDbm, unit: 'dBm', color: 'text-sky-400' },
                       { label: 'Bias Current', value: workspace.optical?.biasCurrentMa, unit: 'mA', color: 'text-[#B45309]' },
                       { label: 'Optical Voltage', value: workspace.optical?.opticalVoltageV, unit: 'V', color: 'text-[#5B21B6]' },
                     ].map(({ label, value, unit, color }) => (
-                      <div key={label} className="p-3.5 bg-[#F8FAFC] rounded-xl border border-[#E2E8F0]">
-                        <span className="text-[11px] text-[#64748B] block">{label}:</span>
+                      <div key={label} className="p-3.5 bg-[#060913] rounded-xl border border-slate-800">
+                        <span className="text-[11px] text-slate-400 block">{label}:</span>
                         {value != null ? (
                           <div className="mt-1">
                             <span className={`text-xl font-mono font-bold ${color}`}>{value}</span>
-                            <span className="text-xs text-[#64748B] ml-1">{unit}</span>
+                            <span className="text-xs text-slate-400 ml-1">{unit}</span>
                           </div>
                         ) : (
-                          <span className="text-xs text-[#94A3B8] italic mt-1 block">Not available</span>
+                          <span className="text-xs text-slate-400 italic mt-1 block">Not available</span>
                         )}
                       </div>
                     ))}
@@ -1910,14 +1910,14 @@ export const DeviceDetail: React.FC = () => {
                   {/* Optical History Timeline */}
                   <div className="pt-2">
                     <div className="flex justify-between items-center mb-3">
-                      <span className="text-xs font-semibold text-[#334155]">RX Power Attenuation History Timeline</span>
+                      <span className="text-xs font-semibold text-slate-300">RX Power Attenuation History Timeline</span>
                       <div className="flex space-x-1">
                         {(['1h', '6h', '24h', '7d', '30d'] as const).map((tf) => (
                           <button
                             key={tf}
                             onClick={() => setHistoryFilter(tf)}
                             className={`px-2.5 py-1 rounded text-[11px] font-mono transition ${
-                              historyFilter === tf ? 'bg-[#E05638] text-white font-bold' : 'bg-[#F1F5F9] text-[#64748B] hover:text-white'
+                              historyFilter === tf ? 'bg-[#E05638] text-white font-bold' : 'bg-[#F1F5F9] text-slate-400 hover:text-white'
                             }`}
                           >
                             {tf}
@@ -1927,24 +1927,24 @@ export const DeviceDetail: React.FC = () => {
                     </div>
 
                     {workspace.optical.history && workspace.optical.history.length > 0 ? (
-                      <div className="p-4 bg-[#F8FAFC] rounded-xl border border-[#E2E8F0] space-y-2">
-                        <div className="flex justify-between text-[11px] text-[#64748B] font-mono pb-2 border-b border-[#E2E8F0]">
+                      <div className="p-4 bg-[#060913] rounded-xl border border-slate-800 space-y-2">
+                        <div className="flex justify-between text-[11px] text-slate-400 font-mono pb-2 border-b border-slate-800">
                           <span>Timestamp</span>
                           <span>RX Power (dBm)</span>
                           <span>TX Power (dBm)</span>
                           <span>Temperature (°C)</span>
                         </div>
                         {workspace.optical.history.slice(-5).map((rec: any, idx: number) => (
-                          <div key={idx} className="flex justify-between text-xs font-mono text-[#334155]">
-                            <span className="text-[#64748B]">{new Date(rec.timestamp).toLocaleTimeString()}</span>
-                            <span className="text-[#047857] font-bold">{rec.valueDbm} dBm</span>
-                            <span className="text-[#1677FF]">{rec.txPowerDbm != null ? `${rec.txPowerDbm} dBm` : '-'}</span>
-                            <span className="text-[#334155]">{rec.temperatureC != null ? `${rec.temperatureC} °C` : '-'}</span>
+                          <div key={idx} className="flex justify-between text-xs font-mono text-slate-300">
+                            <span className="text-slate-400">{new Date(rec.timestamp).toLocaleTimeString()}</span>
+                            <span className="text-emerald-400 font-bold">{rec.valueDbm} dBm</span>
+                            <span className="text-sky-400">{rec.txPowerDbm != null ? `${rec.txPowerDbm} dBm` : '-'}</span>
+                            <span className="text-slate-300">{rec.temperatureC != null ? `${rec.temperatureC} °C` : '-'}</span>
                           </div>
                         ))}
                       </div>
                     ) : (
-                      <div className="p-6 bg-[#F8FAFC] rounded-xl text-center text-xs text-[#94A3B8] italic">
+                      <div className="p-6 bg-[#060913] rounded-xl text-center text-xs text-slate-400 italic">
                         No historical telemetry points stored yet.
                       </div>
                     )}
@@ -1959,14 +1959,14 @@ export const DeviceDetail: React.FC = () => {
                 {/* Header Row */}
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-1">
                   <div>
-                    <h2 className="text-xl font-bold text-[#0F172A]">Dual-Band Wireless Radio Management</h2>
-                    <p className="text-xs text-[#64748B] mt-0.5">TR-069 Annex G STUN Enabled • Real-time CPE Configuration</p>
+                    <h2 className="text-xl font-bold text-white">Dual-Band Wireless Radio Management</h2>
+                    <p className="text-xs text-slate-400 mt-0.5">TR-069 Annex G STUN Enabled • Real-time CPE Configuration</p>
                   </div>
                   <div className="flex items-center space-x-2.5">
                     <button
                       type="button"
                       onClick={handleOpenAddSsid}
-                      className="inline-flex items-center px-4 py-2 bg-white border border-[#1677FF] text-[#1677FF] hover:bg-[#EFF6FF] rounded-xl text-xs font-bold transition shadow-xs"
+                      className="inline-flex items-center px-4 py-2 bg-[#0E172A] border border-[#1677FF] text-sky-400 hover:bg-sky-500/15 rounded-xl text-xs font-bold transition shadow-xs"
                     >
                       <Plus className="w-3.5 h-3.5 mr-1.5" />
                       <span>Add SSID</span>
@@ -2005,31 +2005,31 @@ export const DeviceDetail: React.FC = () => {
                 {/* Two Dual-Band Radio Cards */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
                   {/* 2.4 GHz Primary Radio Card */}
-                  <div className="bg-white border border-[#CBD5E1] rounded-2xl p-5 space-y-4 shadow-xs">
+                  <div className="bg-[#0E172A] border border-slate-700/80 rounded-2xl p-5 space-y-4 shadow-xs">
                     {/* Card Header */}
                     <div className="flex justify-between items-center pb-1">
                       <div className="flex items-center space-x-2">
                         <Wifi className="w-4 h-4 text-[#10B981]" />
-                        <h3 className="text-xs font-bold text-[#0F172A] tracking-wider uppercase">2.4 GHz PRIMARY RADIO</h3>
+                        <h3 className="text-xs font-bold text-white tracking-wider uppercase">2.4 GHz PRIMARY RADIO</h3>
                       </div>
                       <span className={`inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold ${
                         workspace.wifi?.band24?.status === 'Active'
-                          ? 'bg-[#ECFDF5] text-[#047857] border border-[#A7F3D0]'
-                          : 'bg-[#F1F5F9] text-[#64748B] border border-[#E2E8F0]'
+                          ? 'bg-emerald-500/15 text-emerald-400 border border-emerald-500/30'
+                          : 'bg-[#F1F5F9] text-slate-400 border border-slate-800'
                       }`}>
                         {workspace.wifi?.band24?.status || 'Active'}
                       </span>
                     </div>
 
                     {/* BSSID Box */}
-                    <div className="p-3.5 bg-[#F8FAFC] rounded-xl border border-[#E2E8F0] flex justify-between items-center">
+                    <div className="p-3.5 bg-[#060913] rounded-xl border border-slate-800 flex justify-between items-center">
                       <div>
-                        <span className="text-[10px] text-[#64748B] block font-semibold uppercase tracking-wider">BSSID</span>
-                        <span className="font-bold text-[#0F172A] text-sm">
+                        <span className="text-[10px] text-slate-400 block font-semibold uppercase tracking-wider">BSSID</span>
+                        <span className="font-bold text-white text-sm">
                           {workspace.wifi?.band24?.ssid || 'Not Configured'}
                         </span>
                       </div>
-                      <div className="flex items-center space-x-1 px-2.5 py-1 rounded-full text-xs font-semibold bg-[#ECFDF5] text-[#047857] border border-[#A7F3D0]">
+                      <div className="flex items-center space-x-1 px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">
                         <span>{workspace.wifi?.band24?.connectedClients ?? workspace.connectedDevices?.filter((c: any) => String(c.connectionType || '').includes('2.4')).length ?? 0} Connected Device{((workspace.wifi?.band24?.connectedClients ?? workspace.connectedDevices?.filter((c: any) => String(c.connectionType || '').includes('2.4')).length ?? 0) === 1 ? '' : 's')}</span>
                         <ChevronDown className="w-3 h-3 ml-0.5 opacity-70" />
                       </div>
@@ -2038,47 +2038,47 @@ export const DeviceDetail: React.FC = () => {
                     {/* 2x2 Telemetry Info Grid */}
                     <div className="grid grid-cols-2 gap-3">
                       {/* Security */}
-                      <div className="p-3 bg-[#F8FAFC] rounded-xl border border-[#E2E8F0] flex items-center space-x-3">
-                        <Shield className="w-4 h-4 text-[#1677FF] shrink-0" />
+                      <div className="p-3 bg-[#060913] rounded-xl border border-slate-800 flex items-center space-x-3">
+                        <Shield className="w-4 h-4 text-sky-400 shrink-0" />
                         <div>
-                          <span className="text-[10px] text-[#64748B] block font-medium">Security</span>
-                          <span className="text-xs font-bold text-[#0F172A]">{workspace.wifi?.band24?.security || 'WPA2-PSK'}</span>
+                          <span className="text-[10px] text-slate-400 block font-medium">Security</span>
+                          <span className="text-xs font-bold text-white">{workspace.wifi?.band24?.security || 'WPA2-PSK'}</span>
                         </div>
                       </div>
 
                       {/* Width */}
-                      <div className="p-3 bg-[#F8FAFC] rounded-xl border border-[#E2E8F0] flex items-center space-x-3">
-                        <BarChart2 className="w-4 h-4 text-[#1677FF] shrink-0" />
+                      <div className="p-3 bg-[#060913] rounded-xl border border-slate-800 flex items-center space-x-3">
+                        <BarChart2 className="w-4 h-4 text-sky-400 shrink-0" />
                         <div>
-                          <span className="text-[10px] text-[#64748B] block font-medium">Width</span>
-                          <span className="text-xs font-bold text-[#0F172A]">{workspace.wifi?.band24?.bandwidthMhz ? `${workspace.wifi.band24.bandwidthMhz} MHz` : '20 MHz'}</span>
+                          <span className="text-[10px] text-slate-400 block font-medium">Width</span>
+                          <span className="text-xs font-bold text-white">{workspace.wifi?.band24?.bandwidthMhz ? `${workspace.wifi.band24.bandwidthMhz} MHz` : '20 MHz'}</span>
                         </div>
                       </div>
 
                       {/* Noise Floor */}
-                      <div className="p-3 bg-[#F8FAFC] rounded-xl border border-[#E2E8F0] flex items-center space-x-3">
-                        <Activity className="w-4 h-4 text-[#64748B] shrink-0" />
+                      <div className="p-3 bg-[#060913] rounded-xl border border-slate-800 flex items-center space-x-3">
+                        <Activity className="w-4 h-4 text-slate-400 shrink-0" />
                         <div>
-                          <span className="text-[10px] text-[#64748B] block font-medium">Noise Floor</span>
-                          <span className="text-xs font-bold text-[#0F172A]">{workspace.wifi?.band24?.noiseDbm != null ? `${workspace.wifi.band24.noiseDbm} dBm` : '—'}</span>
+                          <span className="text-[10px] text-slate-400 block font-medium">Noise Floor</span>
+                          <span className="text-xs font-bold text-white">{workspace.wifi?.band24?.noiseDbm != null ? `${workspace.wifi.band24.noiseDbm} dBm` : '—'}</span>
                         </div>
                       </div>
 
                       {/* Signal Quality */}
-                      <div className="p-3 bg-[#F8FAFC] rounded-xl border border-[#E2E8F0] flex items-center space-x-3">
-                        <Radio className="w-4 h-4 text-[#047857] shrink-0" />
+                      <div className="p-3 bg-[#060913] rounded-xl border border-slate-800 flex items-center space-x-3">
+                        <Radio className="w-4 h-4 text-emerald-400 shrink-0" />
                         <div>
-                          <span className="text-[10px] text-[#64748B] block font-medium">Signal Quality</span>
-                          <span className="text-xs font-bold text-[#047857]">{workspace.wifi?.band24?.signalQuality || (workspace.wifi?.band24?.ssid ? 'Good' : '—')}</span>
+                          <span className="text-[10px] text-slate-400 block font-medium">Signal Quality</span>
+                          <span className="text-xs font-bold text-emerald-400">{workspace.wifi?.band24?.signalQuality || (workspace.wifi?.band24?.ssid ? 'Good' : '—')}</span>
                         </div>
                       </div>
                     </div>
 
                     {/* Wi-Fi Password Box */}
-                    <div className="p-3 bg-[#F8FAFC] rounded-xl border border-[#E2E8F0] flex items-center justify-between">
+                    <div className="p-3 bg-[#060913] rounded-xl border border-slate-800 flex items-center justify-between">
                       <div>
-                        <span className="text-[10px] text-[#64748B] block font-medium">Wi-Fi Password</span>
-                        <span className="font-mono text-xs font-bold text-[#0F172A] tracking-wider">
+                        <span className="text-[10px] text-slate-400 block font-medium">Wi-Fi Password</span>
+                        <span className="font-mono text-xs font-bold text-white tracking-wider">
                           {show24Password ? (workspace.wifi?.band24?.password || (workspace.wifi?.band24?.passwordConfigured ? '••••••••' : 'Not Configured')) : '••••••••••'}
                         </span>
                       </div>
@@ -2086,7 +2086,7 @@ export const DeviceDetail: React.FC = () => {
                         <button
                           type="button"
                           onClick={() => setShow24Password(!show24Password)}
-                          className="p-1.5 rounded-lg border border-[#CBD5E1] bg-white text-[#64748B] hover:text-[#0F172A] hover:bg-[#F1F5F9] transition"
+                          className="p-1.5 rounded-lg border border-slate-700/80 bg-[#0E172A] text-slate-400 hover:text-white hover:bg-[#F1F5F9] transition"
                           title={show24Password ? 'Hide Password' : 'Show Password'}
                         >
                           {show24Password ? <EyeOff className="w-3.5 h-3.5" /> : <Eye className="w-3.5 h-3.5" />}
@@ -2100,7 +2100,7 @@ export const DeviceDetail: React.FC = () => {
                               setTimeout(() => setWifiCopied(null), 2000);
                             }
                           }}
-                          className="p-1.5 rounded-lg border border-[#CBD5E1] bg-white text-[#64748B] hover:text-[#0F172A] hover:bg-[#F1F5F9] transition"
+                          className="p-1.5 rounded-lg border border-slate-700/80 bg-[#0E172A] text-slate-400 hover:text-white hover:bg-[#F1F5F9] transition"
                           title="Copy Password"
                         >
                           {wifiCopied === '24' ? <Check className="w-3.5 h-3.5 text-green-600" /> : <Copy className="w-3.5 h-3.5" />}
@@ -2110,29 +2110,29 @@ export const DeviceDetail: React.FC = () => {
                   </div>
 
                   {/* 5.0 GHz High-Speed Radio Card */}
-                  <div className="bg-white border border-[#CBD5E1] rounded-2xl p-5 space-y-4 shadow-xs">
+                  <div className="bg-[#0E172A] border border-slate-700/80 rounded-2xl p-5 space-y-4 shadow-xs">
                     {/* Card Header */}
                     <div className="flex justify-between items-center pb-1">
                       <div className="flex items-center space-x-2">
                         <Wifi className="w-4 h-4 text-[#8B5CF6]" />
-                        <h3 className="text-xs font-bold text-[#0F172A] tracking-wider uppercase">5.0 GHz HIGH-SPEED RADIO</h3>
+                        <h3 className="text-xs font-bold text-white tracking-wider uppercase">5.0 GHz HIGH-SPEED RADIO</h3>
                       </div>
                       <span className={`inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold ${
                         workspace.wifi?.band5g?.supported === false
-                          ? 'bg-[#F1F5F9] text-[#64748B] border border-[#CBD5E1]'
+                          ? 'bg-[#F1F5F9] text-slate-400 border border-slate-700/80'
                           : workspace.wifi?.band5g?.status === 'Active'
                           ? 'bg-[#F5F3FF] text-[#6D28D9] border border-[#DDD6FE]'
-                          : 'bg-[#F1F5F9] text-[#64748B] border border-[#E2E8F0]'
+                          : 'bg-[#F1F5F9] text-slate-400 border border-slate-800'
                       }`}>
                         {workspace.wifi?.band5g?.supported === false ? 'Not Supported' : workspace.wifi?.band5g?.status || 'Active'}
                       </span>
                     </div>
 
                     {/* BSSID Box */}
-                    <div className="p-3.5 bg-[#F8FAFC] rounded-xl border border-[#E2E8F0] flex justify-between items-center">
+                    <div className="p-3.5 bg-[#060913] rounded-xl border border-slate-800 flex justify-between items-center">
                       <div>
-                        <span className="text-[10px] text-[#64748B] block font-semibold uppercase tracking-wider">BSSID</span>
-                        <span className="font-bold text-[#0F172A] text-sm">
+                        <span className="text-[10px] text-slate-400 block font-semibold uppercase tracking-wider">BSSID</span>
+                        <span className="font-bold text-white text-sm">
                           {workspace.wifi?.band5g?.ssid || (workspace.wifi?.band5g?.supported === false ? 'Hardware Not Supported' : 'Not Configured')}
                         </span>
                       </div>
@@ -2145,47 +2145,47 @@ export const DeviceDetail: React.FC = () => {
                     {/* 2x2 Telemetry Info Grid */}
                     <div className="grid grid-cols-2 gap-3">
                       {/* Security */}
-                      <div className="p-3 bg-[#F8FAFC] rounded-xl border border-[#E2E8F0] flex items-center space-x-3">
-                        <Shield className="w-4 h-4 text-[#1677FF] shrink-0" />
+                      <div className="p-3 bg-[#060913] rounded-xl border border-slate-800 flex items-center space-x-3">
+                        <Shield className="w-4 h-4 text-sky-400 shrink-0" />
                         <div>
-                          <span className="text-[10px] text-[#64748B] block font-medium">Security</span>
-                          <span className="text-xs font-bold text-[#0F172A]">{workspace.wifi?.band5g?.supported === false ? '—' : workspace.wifi?.band5g?.security || 'WPA2-PSK'}</span>
+                          <span className="text-[10px] text-slate-400 block font-medium">Security</span>
+                          <span className="text-xs font-bold text-white">{workspace.wifi?.band5g?.supported === false ? '—' : workspace.wifi?.band5g?.security || 'WPA2-PSK'}</span>
                         </div>
                       </div>
 
                       {/* Width */}
-                      <div className="p-3 bg-[#F8FAFC] rounded-xl border border-[#E2E8F0] flex items-center space-x-3">
-                        <BarChart2 className="w-4 h-4 text-[#1677FF] shrink-0" />
+                      <div className="p-3 bg-[#060913] rounded-xl border border-slate-800 flex items-center space-x-3">
+                        <BarChart2 className="w-4 h-4 text-sky-400 shrink-0" />
                         <div>
-                          <span className="text-[10px] text-[#64748B] block font-medium">Width</span>
-                          <span className="text-xs font-bold text-[#0F172A]">{workspace.wifi?.band5g?.supported === false ? '—' : workspace.wifi?.band5g?.bandwidthMhz ? `${workspace.wifi.band5g.bandwidthMhz} MHz` : '80 MHz'}</span>
+                          <span className="text-[10px] text-slate-400 block font-medium">Width</span>
+                          <span className="text-xs font-bold text-white">{workspace.wifi?.band5g?.supported === false ? '—' : workspace.wifi?.band5g?.bandwidthMhz ? `${workspace.wifi.band5g.bandwidthMhz} MHz` : '80 MHz'}</span>
                         </div>
                       </div>
 
                       {/* Noise Floor */}
-                      <div className="p-3 bg-[#F8FAFC] rounded-xl border border-[#E2E8F0] flex items-center space-x-3">
-                        <Activity className="w-4 h-4 text-[#64748B] shrink-0" />
+                      <div className="p-3 bg-[#060913] rounded-xl border border-slate-800 flex items-center space-x-3">
+                        <Activity className="w-4 h-4 text-slate-400 shrink-0" />
                         <div>
-                          <span className="text-[10px] text-[#64748B] block font-medium">Noise Floor</span>
-                          <span className="text-xs font-bold text-[#0F172A]">{workspace.wifi?.band5g?.noiseDbm != null ? `${workspace.wifi.band5g.noiseDbm} dBm` : '—'}</span>
+                          <span className="text-[10px] text-slate-400 block font-medium">Noise Floor</span>
+                          <span className="text-xs font-bold text-white">{workspace.wifi?.band5g?.noiseDbm != null ? `${workspace.wifi.band5g.noiseDbm} dBm` : '—'}</span>
                         </div>
                       </div>
 
                       {/* Signal Quality */}
-                      <div className="p-3 bg-[#F8FAFC] rounded-xl border border-[#E2E8F0] flex items-center space-x-3">
-                        <Radio className="w-4 h-4 text-[#047857] shrink-0" />
+                      <div className="p-3 bg-[#060913] rounded-xl border border-slate-800 flex items-center space-x-3">
+                        <Radio className="w-4 h-4 text-emerald-400 shrink-0" />
                         <div>
-                          <span className="text-[10px] text-[#64748B] block font-medium">Signal Quality</span>
-                          <span className="text-xs font-bold text-[#047857]">{workspace.wifi?.band5g?.signalQuality || (workspace.wifi?.band5g?.ssid ? 'Excellent' : '—')}</span>
+                          <span className="text-[10px] text-slate-400 block font-medium">Signal Quality</span>
+                          <span className="text-xs font-bold text-emerald-400">{workspace.wifi?.band5g?.signalQuality || (workspace.wifi?.band5g?.ssid ? 'Excellent' : '—')}</span>
                         </div>
                       </div>
                     </div>
 
                     {/* Wi-Fi Password Box */}
-                    <div className="p-3 bg-[#F8FAFC] rounded-xl border border-[#E2E8F0] flex items-center justify-between">
+                    <div className="p-3 bg-[#060913] rounded-xl border border-slate-800 flex items-center justify-between">
                       <div>
-                        <span className="text-[10px] text-[#64748B] block font-medium">Wi-Fi Password</span>
-                        <span className="font-mono text-xs font-bold text-[#0F172A] tracking-wider">
+                        <span className="text-[10px] text-slate-400 block font-medium">Wi-Fi Password</span>
+                        <span className="font-mono text-xs font-bold text-white tracking-wider">
                           {show5gPassword ? (workspace.wifi?.band5g?.password || (workspace.wifi?.band5g?.passwordConfigured ? '••••••••' : 'Not Configured')) : '••••••••••'}
                         </span>
                       </div>
@@ -2193,7 +2193,7 @@ export const DeviceDetail: React.FC = () => {
                         <button
                           type="button"
                           onClick={() => setShow5gPassword(!show5gPassword)}
-                          className="p-1.5 rounded-lg border border-[#CBD5E1] bg-white text-[#64748B] hover:text-[#0F172A] hover:bg-[#F1F5F9] transition"
+                          className="p-1.5 rounded-lg border border-slate-700/80 bg-[#0E172A] text-slate-400 hover:text-white hover:bg-[#F1F5F9] transition"
                           title={show5gPassword ? 'Hide Password' : 'Show Password'}
                         >
                           {show5gPassword ? <EyeOff className="w-3.5 h-3.5" /> : <Eye className="w-3.5 h-3.5" />}
@@ -2207,7 +2207,7 @@ export const DeviceDetail: React.FC = () => {
                               setTimeout(() => setWifiCopied(null), 2000);
                             }
                           }}
-                          className="p-1.5 rounded-lg border border-[#CBD5E1] bg-white text-[#64748B] hover:text-[#0F172A] hover:bg-[#F1F5F9] transition"
+                          className="p-1.5 rounded-lg border border-slate-700/80 bg-[#0E172A] text-slate-400 hover:text-white hover:bg-[#F1F5F9] transition"
                           title="Copy Password"
                         >
                           {wifiCopied === '5g' ? <Check className="w-3.5 h-3.5 text-green-600" /> : <Copy className="w-3.5 h-3.5" />}
@@ -2219,13 +2219,13 @@ export const DeviceDetail: React.FC = () => {
 
                 {/* Discovered WLAN Radio Interfaces Table Card */}
                 {workspace.wifi?.discoveredInterfaces && workspace.wifi.discoveredInterfaces.length > 0 && (
-                  <div className="bg-white border border-[#CBD5E1] rounded-2xl p-5 space-y-4 shadow-xs">
-                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-1 border-b border-[#E2E8F0]">
-                      <h3 className="text-xs font-bold text-[#0F172A] uppercase tracking-wider">
+                  <div className="bg-[#0E172A] border border-slate-700/80 rounded-2xl p-5 space-y-4 shadow-xs">
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-1 border-b border-slate-800">
+                      <h3 className="text-xs font-bold text-white uppercase tracking-wider">
                         DISCOVERED WLAN RADIO INTERFACES ({workspace.wifi.discoveredInterfaces.length})
                       </h3>
                       <div className="flex items-center space-x-2.5">
-                        <span className="px-2.5 py-1 rounded-lg border border-[#E2E8F0] bg-[#F8FAFC] text-[11px] font-semibold text-[#64748B]">
+                        <span className="px-2.5 py-1 rounded-lg border border-slate-800 bg-[#060913] text-[11px] font-semibold text-slate-400">
                           TR-098 / TR-181 Model
                         </span>
                         <button
@@ -2241,7 +2241,7 @@ export const DeviceDetail: React.FC = () => {
 
                     <div className="overflow-x-auto">
                       <table className="w-full text-left text-xs font-sans">
-                        <thead className="bg-[#F8FAFC] text-[#64748B] border-b border-[#E2E8F0] font-semibold text-[11px]">
+                        <thead className="bg-[#060913] text-slate-400 border-b border-slate-800 font-semibold text-[11px]">
                           <tr>
                             <th className="py-2.5 px-3">Instance</th>
                             <th className="py-2.5 px-3">SSID</th>
@@ -2255,28 +2255,28 @@ export const DeviceDetail: React.FC = () => {
                         <tbody className="divide-y divide-[#F1F5F9] text-xs">
                           {workspace.wifi.discoveredInterfaces.map((iface: any, idx: number) => {
                             const bandColor = iface.band === '2.4GHz'
-                              ? 'bg-[#ECFDF5] text-[#047857] border-[#A7F3D0]'
+                              ? 'bg-emerald-500/15 text-emerald-400 border-emerald-500/30'
                               : iface.band === '5GHz'
                               ? 'bg-[#F5F3FF] text-[#6D28D9] border-[#DDD6FE]'
-                              : 'bg-[#F1F5F9] text-[#64748B] border-[#CBD5E1]';
+                              : 'bg-[#F1F5F9] text-slate-400 border-slate-700/80';
                             return (
-                              <tr key={iface.instance || idx} className="hover:bg-[#F8FAFC] transition">
-                                <td className="py-3 px-3 text-[#64748B] font-medium">WLAN {iface.instance}</td>
-                                <td className="py-3 px-3 font-bold text-[#0F172A]">{iface.ssid}</td>
+                              <tr key={iface.instance || idx} className="hover:bg-[#060913] transition">
+                                <td className="py-3 px-3 text-slate-400 font-medium">WLAN {iface.instance}</td>
+                                <td className="py-3 px-3 font-bold text-white">{iface.ssid}</td>
                                 <td className="py-3 px-3">
                                   <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-bold border ${bandColor}`}>
                                     {iface.band || 'UNKNOWN'}
                                   </span>
                                 </td>
-                                <td className="py-3 px-3 text-[#334155]">
+                                <td className="py-3 px-3 text-slate-300">
                                   {iface.channel != null && iface.channel !== 0 ? iface.channel : '0 (Auto)'}
                                 </td>
-                                <td className="py-3 px-3 text-[#334155]">{iface.security || 'None'}</td>
+                                <td className="py-3 px-3 text-slate-300">{iface.security || 'None'}</td>
                                 <td className="py-3 px-3">
                                   <span className={`inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold ${
                                     iface.status === 'Active'
-                                      ? 'bg-[#ECFDF5] text-[#047857] border border-[#A7F3D0]'
-                                      : 'bg-[#F1F5F9] text-[#64748B] border border-[#E2E8F0]'
+                                      ? 'bg-emerald-500/15 text-emerald-400 border border-emerald-500/30'
+                                      : 'bg-[#F1F5F9] text-slate-400 border border-slate-800'
                                   }`}>
                                     {iface.status || 'Active'}
                                   </span>
@@ -2286,7 +2286,7 @@ export const DeviceDetail: React.FC = () => {
                                     <button
                                       type="button"
                                       onClick={() => handleOpenEditSsid(iface)}
-                                      className="p-1.5 rounded-lg border border-[#CBD5E1] bg-white text-[#1677FF] hover:bg-[#EFF6FF] transition"
+                                      className="p-1.5 rounded-lg border border-slate-700/80 bg-[#0E172A] text-sky-400 hover:bg-sky-500/15 transition"
                                       title="Edit SSID"
                                     >
                                       <Edit3 className="w-3.5 h-3.5" />
@@ -2294,7 +2294,7 @@ export const DeviceDetail: React.FC = () => {
                                     <button
                                       type="button"
                                       onClick={() => handleDuplicateSsid(iface)}
-                                      className="p-1.5 rounded-lg border border-[#CBD5E1] bg-white text-[#64748B] hover:bg-[#F8FAFC] transition"
+                                      className="p-1.5 rounded-lg border border-slate-700/80 bg-[#0E172A] text-slate-400 hover:bg-[#060913] transition"
                                       title="Duplicate SSID"
                                     >
                                       <Copy className="w-3.5 h-3.5" />
@@ -2302,7 +2302,7 @@ export const DeviceDetail: React.FC = () => {
                                     <button
                                       type="button"
                                       onClick={() => setDeleteSsidConfirm({ instance: iface.instance, ssid: iface.ssid })}
-                                      className="p-1.5 rounded-lg border border-[#CBD5E1] bg-white text-[#DC2626] hover:bg-[#FEF2F2] transition"
+                                      className="p-1.5 rounded-lg border border-slate-700/80 bg-[#0E172A] text-[#DC2626] hover:bg-rose-500/15 transition"
                                       title="Delete SSID"
                                     >
                                       <Trash2 className="w-3.5 h-3.5" />
@@ -2319,7 +2319,7 @@ export const DeviceDetail: React.FC = () => {
                 )}
 
                 {/* Bottom Information Bar */}
-                <div className="p-3.5 bg-[#EFF6FF] border border-[#BFDBFE] rounded-xl text-xs text-[#1D4ED8] flex items-center space-x-2.5">
+                <div className="p-3.5 bg-sky-500/15 border border-sky-500/30 rounded-xl text-xs text-sky-300 flex items-center space-x-2.5">
                   <Info className="w-4 h-4 shrink-0 text-[#2563EB]" />
                   <span>Click on “Add SSID” to create a new wireless network. You can also edit, clone or delete existing SSIDs.</span>
                 </div>
@@ -2335,13 +2335,13 @@ export const DeviceDetail: React.FC = () => {
                   >
                     <form onSubmit={handleSaveWlanModal} className="space-y-4">
                       {wlanModalError && (
-                        <div className="p-3 rounded-lg bg-[#FEF2F2] border border-[#FECACA] text-[#991B1B] text-xs flex items-center space-x-2">
+                        <div className="p-3 rounded-lg bg-rose-500/15 border border-rose-500/30 text-rose-300 text-xs flex items-center space-x-2">
                           <AlertCircle className="w-4 h-4 shrink-0" />
                           <span>{wlanModalError}</span>
                         </div>
                       )}
                       {wlanModalSuccess && (
-                        <div className="p-3 rounded-lg bg-[#ECFDF5] border border-[#A7F3D0] text-[#065F46] text-xs flex items-center space-x-2">
+                        <div className="p-3 rounded-lg bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 text-xs flex items-center space-x-2">
                           <CheckCircle2 className="w-4 h-4 shrink-0" />
                           <span>{wlanModalSuccess}</span>
                         </div>
@@ -2349,12 +2349,12 @@ export const DeviceDetail: React.FC = () => {
 
                       <div className="space-y-3">
                         <div>
-                          <label className="text-xs font-bold text-[#0F172A] block mb-1">SSID Network Name *</label>
+                          <label className="text-xs font-bold text-white block mb-1">SSID Network Name *</label>
                           <input
                             type="text"
                             value={wlanSsid}
                             onChange={(e) => setWlanSsid(e.target.value)}
-                            className="w-full bg-[#F8FAFC] border border-[#CBD5E1] rounded-xl px-3 py-2 text-xs font-semibold text-[#0F172A] outline-none focus:border-[#1677FF] focus:bg-white transition"
+                            className="w-full bg-[#060913] border border-slate-700/80 rounded-xl px-3 py-2 text-xs font-semibold text-white outline-none focus:border-[#1677FF] focus:bg-[#0E172A] transition"
                             placeholder="MyHome_WiFi"
                             required
                           />
@@ -2362,11 +2362,11 @@ export const DeviceDetail: React.FC = () => {
 
                         <div className="grid grid-cols-2 gap-3">
                           <div>
-                            <label className="text-xs font-bold text-[#0F172A] block mb-1">RF Frequency Band</label>
+                            <label className="text-xs font-bold text-white block mb-1">RF Frequency Band</label>
                             <select
                               value={wlanBand}
                               onChange={(e: any) => setWlanBand(e.target.value)}
-                              className="w-full bg-[#F8FAFC] border border-[#CBD5E1] rounded-xl px-3 py-2 text-xs font-semibold text-[#0F172A] outline-none focus:border-[#1677FF] focus:bg-white transition"
+                              className="w-full bg-[#060913] border border-slate-700/80 rounded-xl px-3 py-2 text-xs font-semibold text-white outline-none focus:border-[#1677FF] focus:bg-[#0E172A] transition"
                             >
                               <option value="2.4GHz">2.4 GHz (Primary)</option>
                               <option value="5GHz">5.0 GHz (High-Speed)</option>
@@ -2374,11 +2374,11 @@ export const DeviceDetail: React.FC = () => {
                           </div>
 
                           <div>
-                            <label className="text-xs font-bold text-[#0F172A] block mb-1">Security Mode</label>
+                            <label className="text-xs font-bold text-white block mb-1">Security Mode</label>
                             <select
                               value={wlanSecurity}
                               onChange={(e) => setWlanSecurity(e.target.value)}
-                              className="w-full bg-[#F8FAFC] border border-[#CBD5E1] rounded-xl px-3 py-2 text-xs font-semibold text-[#0F172A] outline-none focus:border-[#1677FF] focus:bg-white transition"
+                              className="w-full bg-[#060913] border border-slate-700/80 rounded-xl px-3 py-2 text-xs font-semibold text-white outline-none focus:border-[#1677FF] focus:bg-[#0E172A] transition"
                             >
                               <option value="WPA2-PSK">WPA2-PSK (AES)</option>
                               <option value="WPA/WPA2-PSK">WPA/WPA2 Mixed</option>
@@ -2389,7 +2389,7 @@ export const DeviceDetail: React.FC = () => {
 
                         {wlanSecurity !== 'Open' && (
                           <div>
-                            <label className="text-xs font-bold text-[#0F172A] block mb-1">
+                            <label className="text-xs font-bold text-white block mb-1">
                               Wi-Fi Password {wlanModalMode === 'edit' ? '(Leave blank to keep unchanged)' : '*'}
                             </label>
                             <div className="relative">
@@ -2397,14 +2397,14 @@ export const DeviceDetail: React.FC = () => {
                                 type={showWlanModalPassword ? 'text' : 'password'}
                                 value={wlanPassword}
                                 onChange={(e) => setWlanPassword(e.target.value)}
-                                className="w-full bg-[#F8FAFC] border border-[#CBD5E1] rounded-xl px-3 py-2 pr-9 text-xs font-semibold text-[#0F172A] outline-none focus:border-[#1677FF] focus:bg-white transition"
+                                className="w-full bg-[#060913] border border-slate-700/80 rounded-xl px-3 py-2 pr-9 text-xs font-semibold text-white outline-none focus:border-[#1677FF] focus:bg-[#0E172A] transition"
                                 placeholder={wlanModalMode === 'edit' ? '••••••••••••' : 'Min. 8 characters'}
                                 required={wlanModalMode === 'create'}
                               />
                               <button
                                 type="button"
                                 onClick={() => setShowWlanModalPassword(!showWlanModalPassword)}
-                                className="absolute right-2.5 top-2.5 text-[#94A3B8] hover:text-[#0F172A] transition"
+                                className="absolute right-2.5 top-2.5 text-slate-400 hover:text-white transition"
                               >
                                 {showWlanModalPassword ? <EyeOff className="w-3.5 h-3.5" /> : <Eye className="w-3.5 h-3.5" />}
                               </button>
@@ -2414,11 +2414,11 @@ export const DeviceDetail: React.FC = () => {
 
                         <div className="grid grid-cols-2 gap-3">
                           <div>
-                            <label className="text-xs font-bold text-[#0F172A] block mb-1">Radio Channel</label>
+                            <label className="text-xs font-bold text-white block mb-1">Radio Channel</label>
                             <select
                               value={wlanChannel}
                               onChange={(e) => setWlanChannel(e.target.value)}
-                              className="w-full bg-[#F8FAFC] border border-[#CBD5E1] rounded-xl px-3 py-2 text-xs font-semibold text-[#0F172A] outline-none focus:border-[#1677FF] focus:bg-white transition"
+                              className="w-full bg-[#060913] border border-slate-700/80 rounded-xl px-3 py-2 text-xs font-semibold text-white outline-none focus:border-[#1677FF] focus:bg-[#0E172A] transition"
                             >
                               <option value="0">0 (Auto Channel)</option>
                               {wlanBand === '2.4GHz' ? (
@@ -2434,11 +2434,11 @@ export const DeviceDetail: React.FC = () => {
                           </div>
 
                           <div>
-                            <label className="text-xs font-bold text-[#0F172A] block mb-1">Channel Width</label>
+                            <label className="text-xs font-bold text-white block mb-1">Channel Width</label>
                             <select
                               value={wlanWidth}
                               onChange={(e) => setWlanWidth(e.target.value)}
-                              className="w-full bg-[#F8FAFC] border border-[#CBD5E1] rounded-xl px-3 py-2 text-xs font-semibold text-[#0F172A] outline-none focus:border-[#1677FF] focus:bg-white transition"
+                              className="w-full bg-[#060913] border border-slate-700/80 rounded-xl px-3 py-2 text-xs font-semibold text-white outline-none focus:border-[#1677FF] focus:bg-[#0E172A] transition"
                             >
                               <option value="20">20 MHz (Standard)</option>
                               <option value="40">40 MHz (Wide)</option>
@@ -2453,14 +2453,14 @@ export const DeviceDetail: React.FC = () => {
                               type="checkbox"
                               checked={wlanEnabled}
                               onChange={(e) => setWlanEnabled(e.target.checked)}
-                              className="w-4 h-4 rounded text-[#1677FF]"
+                              className="w-4 h-4 rounded text-sky-400"
                             />
-                            <span className="text-xs font-bold text-[#0F172A]">Enable SSID Broadcast</span>
+                            <span className="text-xs font-bold text-white">Enable SSID Broadcast</span>
                           </label>
                         </div>
                       </div>
 
-                      <div className="flex justify-end space-x-3 pt-3 border-t border-[#E2E8F0]">
+                      <div className="flex justify-end space-x-3 pt-3 border-t border-slate-800">
                         <Button type="button" variant="outline" size="md" onClick={() => setIsWlanModalOpen(false)}>
                           Cancel
                         </Button>
@@ -2482,7 +2482,7 @@ export const DeviceDetail: React.FC = () => {
                     maxWidth="md"
                   >
                     <div className="space-y-4">
-                      <div className="p-4 bg-[#FEF2F2] border border-[#FECACA] rounded-xl flex items-start space-x-3 text-[#991B1B]">
+                      <div className="p-4 bg-rose-500/15 border border-rose-500/30 rounded-xl flex items-start space-x-3 text-rose-300">
                         <AlertTriangle className="w-5 h-5 shrink-0 mt-0.5" />
                         <div className="text-xs space-y-1">
                           <p className="font-bold">Are you sure you want to disable and delete this SSID?</p>
@@ -2492,7 +2492,7 @@ export const DeviceDetail: React.FC = () => {
                         </div>
                       </div>
 
-                      <div className="flex justify-end space-x-3 pt-3 border-t border-[#E2E8F0]">
+                      <div className="flex justify-end space-x-3 pt-3 border-t border-slate-800">
                         <Button variant="outline" size="md" onClick={() => setDeleteSsidConfirm(null)}>
                           Cancel
                         </Button>
@@ -2550,15 +2550,15 @@ export const DeviceDetail: React.FC = () => {
                   {/* Header Row */}
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-1">
                     <div>
-                      <h2 className="text-xl font-bold text-[#0F172A]">Associated LAN / Wi-Fi Client Inventory</h2>
-                      <p className="text-xs text-[#64748B] mt-0.5">Real-time active DHCP leases and Wi-Fi associated clients • TR-069 & TR-181 Model</p>
+                      <h2 className="text-xl font-bold text-white">Associated LAN / Wi-Fi Client Inventory</h2>
+                      <p className="text-xs text-slate-400 mt-0.5">Real-time active DHCP leases and Wi-Fi associated clients • TR-069 & TR-181 Model</p>
                     </div>
                     <div className="flex items-center space-x-2.5">
                       <button
                         type="button"
                         onClick={handleRefreshClients}
                         disabled={isRefreshingClients}
-                        className="inline-flex items-center px-4 py-2 bg-white border border-[#1677FF] text-[#1677FF] hover:bg-[#EFF6FF] rounded-xl text-xs font-bold transition shadow-xs disabled:opacity-50"
+                        className="inline-flex items-center px-4 py-2 bg-[#0E172A] border border-[#1677FF] text-sky-400 hover:bg-sky-500/15 rounded-xl text-xs font-bold transition shadow-xs disabled:opacity-50"
                       >
                         <RefreshCw className={`w-3.5 h-3.5 mr-1.5 ${isRefreshingClients ? 'animate-spin' : ''}`} />
                         <span>{isRefreshingClients ? 'Refreshing Leases...' : 'Refresh Client Inventory'}</span>
@@ -2578,15 +2578,15 @@ export const DeviceDetail: React.FC = () => {
                   {/* 4 Summary Stat Cards */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                     {/* Card 1: Total Active Hosts */}
-                    <div className="p-4 bg-white border border-[#CBD5E1] rounded-2xl shadow-xs flex items-center space-x-3.5">
-                      <div className="p-3 bg-[#EFF6FF] rounded-xl text-[#1677FF]">
+                    <div className="p-4 bg-[#0E172A] border border-slate-700/80 rounded-2xl shadow-xs flex items-center space-x-3.5">
+                      <div className="p-3 bg-sky-500/15 rounded-xl text-sky-400">
                         <Monitor className="w-5 h-5" />
                       </div>
                       <div>
-                        <span className="text-[11px] font-semibold text-[#64748B] block">Total Active Hosts</span>
+                        <span className="text-[11px] font-semibold text-slate-400 block">Total Active Hosts</span>
                         <div className="flex items-baseline space-x-2">
-                          <span className="text-xl font-bold text-[#0F172A]">{allClients.length || workspace.lanHostCount || 0}</span>
-                          <span className="text-[10px] font-bold text-[#047857] bg-[#ECFDF5] px-1.5 py-0.5 rounded border border-[#A7F3D0]">
+                          <span className="text-xl font-bold text-white">{allClients.length || workspace.lanHostCount || 0}</span>
+                          <span className="text-[10px] font-bold text-emerald-400 bg-emerald-500/15 px-1.5 py-0.5 rounded border border-emerald-500/30">
                             {workspace.liveOnlineCount ?? allClients.filter((c: any) => c.status === 'Online').length} ONLINE
                           </span>
                         </div>
@@ -2594,89 +2594,89 @@ export const DeviceDetail: React.FC = () => {
                     </div>
 
                     {/* Card 2: 2.4 GHz Clients */}
-                    <div className="p-4 bg-white border border-[#CBD5E1] rounded-2xl shadow-xs flex items-center space-x-3.5">
-                      <div className="p-3 bg-[#ECFDF5] rounded-xl text-[#047857]">
+                    <div className="p-4 bg-[#0E172A] border border-slate-700/80 rounded-2xl shadow-xs flex items-center space-x-3.5">
+                      <div className="p-3 bg-emerald-500/15 rounded-xl text-emerald-400">
                         <Wifi className="w-5 h-5" />
                       </div>
                       <div>
-                        <span className="text-[11px] font-semibold text-[#64748B] block">2.4 GHz Primary Clients</span>
+                        <span className="text-[11px] font-semibold text-slate-400 block">2.4 GHz Primary Clients</span>
                         <div className="flex items-baseline space-x-2">
-                          <span className="text-xl font-bold text-[#0F172A]">{clients24.length}</span>
-                          <span className="text-[10px] text-[#64748B]">Active BSSID</span>
+                          <span className="text-xl font-bold text-white">{clients24.length}</span>
+                          <span className="text-[10px] text-slate-400">Active BSSID</span>
                         </div>
                       </div>
                     </div>
 
                     {/* Card 3: 5.0 GHz Clients */}
-                    <div className="p-4 bg-white border border-[#CBD5E1] rounded-2xl shadow-xs flex items-center space-x-3.5">
+                    <div className="p-4 bg-[#0E172A] border border-slate-700/80 rounded-2xl shadow-xs flex items-center space-x-3.5">
                       <div className="p-3 bg-[#F5F3FF] rounded-xl text-[#6D28D9]">
                         <Wifi className="w-5 h-5" />
                       </div>
                       <div>
-                        <span className="text-[11px] font-semibold text-[#64748B] block">5.0 GHz High-Speed Clients</span>
+                        <span className="text-[11px] font-semibold text-slate-400 block">5.0 GHz High-Speed Clients</span>
                         <div className="flex items-baseline space-x-2">
-                          <span className="text-xl font-bold text-[#0F172A]">{clients5g.length}</span>
-                          <span className="text-[10px] text-[#64748B]">Dual-Band</span>
+                          <span className="text-xl font-bold text-white">{clients5g.length}</span>
+                          <span className="text-[10px] text-slate-400">Dual-Band</span>
                         </div>
                       </div>
                     </div>
 
                     {/* Card 4: Wired Ethernet Clients */}
-                    <div className="p-4 bg-white border border-[#CBD5E1] rounded-2xl shadow-xs flex items-center space-x-3.5">
-                      <div className="p-3 bg-[#F8FAFC] rounded-xl text-[#334155] border border-[#E2E8F0]">
+                    <div className="p-4 bg-[#0E172A] border border-slate-700/80 rounded-2xl shadow-xs flex items-center space-x-3.5">
+                      <div className="p-3 bg-[#060913] rounded-xl text-slate-300 border border-slate-800">
                         <Network className="w-5 h-5" />
                       </div>
                       <div>
-                        <span className="text-[11px] font-semibold text-[#64748B] block">LAN Ethernet Wired</span>
+                        <span className="text-[11px] font-semibold text-slate-400 block">LAN Ethernet Wired</span>
                         <div className="flex items-baseline space-x-2">
-                          <span className="text-xl font-bold text-[#0F172A]">{clientsEth.length}</span>
-                          <span className="text-[10px] text-[#64748B]">GE Ports</span>
+                          <span className="text-xl font-bold text-white">{clientsEth.length}</span>
+                          <span className="text-[10px] text-slate-400">GE Ports</span>
                         </div>
                       </div>
                     </div>
                   </div>
 
                   {/* Main Inventory Card */}
-                  <div className="bg-white border border-[#CBD5E1] rounded-2xl p-5 space-y-4 shadow-xs">
+                  <div className="bg-[#0E172A] border border-slate-700/80 rounded-2xl p-5 space-y-4 shadow-xs">
                     {/* Card Controls Header */}
-                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-[#E2E8F0]">
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-800">
                       <div className="flex items-center space-x-2">
-                        <h3 className="text-xs font-bold text-[#0F172A] uppercase tracking-wider">
+                        <h3 className="text-xs font-bold text-white uppercase tracking-wider">
                           Active Client Leases & Associations ({filteredClients.length})
                         </h3>
-                        <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-[#ECFDF5] text-[#047857] border border-[#A7F3D0]">
+                        <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">
                           Live Telemetry
                         </span>
                       </div>
 
                       <div className="flex flex-wrap items-center gap-2.5">
                         {/* Band Filter Pills */}
-                        <div className="inline-flex rounded-xl p-0.5 bg-[#F1F5F9] border border-[#E2E8F0] text-xs font-semibold text-[#64748B]">
+                        <div className="inline-flex rounded-xl p-0.5 bg-[#F1F5F9] border border-slate-800 text-xs font-semibold text-slate-400">
                           <button
                             type="button"
                             onClick={() => setClientFilterBand('ALL')}
-                            className={`px-2.5 py-1 rounded-lg transition ${clientFilterBand === 'ALL' ? 'bg-white text-[#0F172A] shadow-xs font-bold' : 'hover:text-[#0F172A]'}`}
+                            className={`px-2.5 py-1 rounded-lg transition ${clientFilterBand === 'ALL' ? 'bg-[#0E172A] text-white shadow-xs font-bold' : 'hover:text-white'}`}
                           >
                             All ({allClients.length})
                           </button>
                           <button
                             type="button"
                             onClick={() => setClientFilterBand('2.4G')}
-                            className={`px-2.5 py-1 rounded-lg transition ${clientFilterBand === '2.4G' ? 'bg-white text-[#047857] shadow-xs font-bold' : 'hover:text-[#0F172A]'}`}
+                            className={`px-2.5 py-1 rounded-lg transition ${clientFilterBand === '2.4G' ? 'bg-[#0E172A] text-emerald-400 shadow-xs font-bold' : 'hover:text-white'}`}
                           >
                             2.4 GHz ({clients24.length})
                           </button>
                           <button
                             type="button"
                             onClick={() => setClientFilterBand('5G')}
-                            className={`px-2.5 py-1 rounded-lg transition ${clientFilterBand === '5G' ? 'bg-white text-[#6D28D9] shadow-xs font-bold' : 'hover:text-[#0F172A]'}`}
+                            className={`px-2.5 py-1 rounded-lg transition ${clientFilterBand === '5G' ? 'bg-[#0E172A] text-[#6D28D9] shadow-xs font-bold' : 'hover:text-white'}`}
                           >
                             5 GHz ({clients5g.length})
                           </button>
                           <button
                             type="button"
                             onClick={() => setClientFilterBand('ETH')}
-                            className={`px-2.5 py-1 rounded-lg transition ${clientFilterBand === 'ETH' ? 'bg-white text-[#1677FF] shadow-xs font-bold' : 'hover:text-[#0F172A]'}`}
+                            className={`px-2.5 py-1 rounded-lg transition ${clientFilterBand === 'ETH' ? 'bg-[#0E172A] text-sky-400 shadow-xs font-bold' : 'hover:text-white'}`}
                           >
                             Ethernet ({clientsEth.length})
                           </button>
@@ -2684,13 +2684,13 @@ export const DeviceDetail: React.FC = () => {
 
                         {/* Search Input */}
                         <div className="relative">
-                          <Search className="w-3.5 h-3.5 absolute left-3 top-2.5 text-[#94A3B8]" />
+                          <Search className="w-3.5 h-3.5 absolute left-3 top-2.5 text-slate-400" />
                           <input
                             type="text"
                             value={clientSearchTerm}
                             onChange={(e) => setClientSearchTerm(e.target.value)}
                             placeholder="Search host, IP, MAC..."
-                            className="bg-[#F8FAFC] border border-[#CBD5E1] rounded-xl pl-8 pr-3 py-1.5 text-xs font-semibold text-[#0F172A] outline-none focus:border-[#1677FF] focus:bg-white transition w-44 sm:w-56"
+                            className="bg-[#060913] border border-slate-700/80 rounded-xl pl-8 pr-3 py-1.5 text-xs font-semibold text-white outline-none focus:border-[#1677FF] focus:bg-[#0E172A] transition w-44 sm:w-56"
                           />
                         </div>
                       </div>
@@ -2699,7 +2699,7 @@ export const DeviceDetail: React.FC = () => {
                     {filteredClients.length > 0 ? (
                       <div className="overflow-x-auto">
                         <table className="w-full text-left text-xs font-sans">
-                          <thead className="bg-[#F8FAFC] text-[#64748B] border-b border-[#E2E8F0] font-semibold text-[11px]">
+                          <thead className="bg-[#060913] text-slate-400 border-b border-slate-800 font-semibold text-[11px]">
                             <tr>
                               <th className="py-3 px-3">Device / Hostname</th>
                               <th className="py-3 px-3">IP Address</th>
@@ -2718,12 +2718,12 @@ export const DeviceDetail: React.FC = () => {
                               const bandBadge = is5G
                                 ? 'bg-[#F5F3FF] text-[#6D28D9] border-[#DDD6FE]'
                                 : isEth
-                                ? 'bg-[#EFF6FF] text-[#1D4ED8] border-[#BFDBFE]'
-                                : 'bg-[#ECFDF5] text-[#047857] border-[#A7F3D0]';
+                                ? 'bg-sky-500/15 text-sky-300 border-sky-500/30'
+                                : 'bg-emerald-500/15 text-emerald-400 border-emerald-500/30';
 
                               const rssiNum = parseInt(String(client.signal || '').replace(/[^0-9-]/g, ''), 10);
                               const signalColor = !isNaN(rssiNum) && rssiNum >= -55
-                                ? 'text-[#047857] font-bold'
+                                ? 'text-emerald-400 font-bold'
                                 : !isNaN(rssiNum) && rssiNum >= -70
                                 ? 'text-[#0D9488]'
                                 : 'text-[#D97706]';
@@ -2739,17 +2739,17 @@ export const DeviceDetail: React.FC = () => {
                                 : Monitor;
 
                               return (
-                                <tr key={client.mac || idx} className="hover:bg-[#F8FAFC] transition">
+                                <tr key={client.mac || idx} className="hover:bg-[#060913] transition">
                                   <td className="py-3 px-3 font-sans">
-                                    <div className="font-bold text-[#0F172A] flex items-center space-x-1.5">
-                                      <DeviceIcon className="w-3.5 h-3.5 text-[#1677FF]" />
+                                    <div className="font-bold text-white flex items-center space-x-1.5">
+                                      <DeviceIcon className="w-3.5 h-3.5 text-sky-400" />
                                       <span>{client.name}</span>
                                     </div>
-                                    <div className="text-[10px] text-[#94A3B8] font-mono pl-5">{client.hostname || 'dhcp-client.lan'}</div>
+                                    <div className="text-[10px] text-slate-400 font-mono pl-5">{client.hostname || 'dhcp-client.lan'}</div>
                                   </td>
                                   <td className="py-3 px-3">
                                     <div className="flex items-center space-x-1.5">
-                                      <span className="font-bold text-[#1677FF]">{client.ip}</span>
+                                      <span className="font-bold text-sky-400">{client.ip}</span>
                                       <button
                                         type="button"
                                         onClick={() => {
@@ -2757,14 +2757,14 @@ export const DeviceDetail: React.FC = () => {
                                           setClientCopiedIp(client.ip);
                                           setTimeout(() => setClientCopiedIp(null), 2000);
                                         }}
-                                        className="text-[#94A3B8] hover:text-[#0F172A] transition"
+                                        className="text-slate-400 hover:text-white transition"
                                         title="Copy IP"
                                       >
                                         {clientCopiedIp === client.ip ? <Check className="w-3 h-3 text-green-600" /> : <Copy className="w-3 h-3" />}
                                       </button>
                                     </div>
                                   </td>
-                                  <td className="py-3 px-3 text-[#334155]">
+                                  <td className="py-3 px-3 text-slate-300">
                                     <div className="font-bold">{client.mac}</div>
                                   </td>
                                   <td className="py-3 px-3 font-sans">
@@ -2775,14 +2775,14 @@ export const DeviceDetail: React.FC = () => {
                                   <td className="py-3 px-3">
                                     <span className={signalColor}>{client.signal || '-50 dBm'}</span>
                                   </td>
-                                  <td className="py-3 px-3 text-[#64748B] font-sans text-[11px]">
+                                  <td className="py-3 px-3 text-slate-400 font-sans text-[11px]">
                                     {client.leaseTimeRemaining || '23h 45m'}
                                   </td>
                                   <td className="py-3 px-3 text-right">
                                     <span className={`inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold ${
                                       client.status === 'Online'
-                                        ? 'bg-[#ECFDF5] text-[#047857] border border-[#A7F3D0]'
-                                        : 'bg-[#F1F5F9] text-[#64748B] border border-[#CBD5E1]'
+                                        ? 'bg-emerald-500/15 text-emerald-400 border border-emerald-500/30'
+                                        : 'bg-[#F1F5F9] text-slate-400 border border-slate-700/80'
                                     }`}>
                                       <span className={`w-1.5 h-1.5 rounded-full mr-1 ${client.status === 'Online' ? 'bg-[#10B981]' : 'bg-[#94A3B8]'}`} />
                                       {client.status || 'Online'}
@@ -2795,16 +2795,16 @@ export const DeviceDetail: React.FC = () => {
                         </table>
                       </div>
                     ) : (
-                      <div className="py-12 bg-[#F8FAFC] rounded-2xl border border-dashed border-[#CBD5E1] text-center space-y-2">
-                        <Monitor className="w-8 h-8 text-[#94A3B8] mx-auto opacity-70" />
-                        <p className="text-sm font-semibold text-[#0F172A]">No Connected Clients Found</p>
-                        <p className="text-xs text-[#64748B]">No active DHCP leases match your filter criteria or no wireless devices are currently associated.</p>
+                      <div className="py-12 bg-[#060913] rounded-2xl border border-dashed border-slate-700/80 text-center space-y-2">
+                        <Monitor className="w-8 h-8 text-slate-400 mx-auto opacity-70" />
+                        <p className="text-sm font-semibold text-white">No Connected Clients Found</p>
+                        <p className="text-xs text-slate-400">No active DHCP leases match your filter criteria or no wireless devices are currently associated.</p>
                       </div>
                     )}
                   </div>
 
                   {/* Bottom Information Bar */}
-                  <div className="p-3.5 bg-[#EFF6FF] border border-[#BFDBFE] rounded-xl text-xs text-[#1D4ED8] flex items-center space-x-2.5">
+                  <div className="p-3.5 bg-sky-500/15 border border-sky-500/30 rounded-xl text-xs text-sky-300 flex items-center space-x-2.5">
                     <Info className="w-4 h-4 shrink-0 text-[#2563EB]" />
                     <span>Connected client telemetry is dynamically synchronized via TR-069 LANDevice.Hosts and WLANConfiguration.AssociatedDevice parameter trees.</span>
                   </div>
@@ -2814,11 +2814,11 @@ export const DeviceDetail: React.FC = () => {
 
             {/* TAB CONTENT 4: SITE SURVEY */}
             {activeTab === 'survey' && (
-              <div className="bg-white border border-[#E2E8F0] rounded-2xl p-5 space-y-4 shadow-xs">
+              <div className="bg-[#0E172A] border border-slate-800 rounded-2xl p-5 space-y-4 shadow-xs">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                   <div>
-                    <h3 className="text-base font-bold text-[#0F172A]">Neighboring Wi-Fi RF Environment & Channel Survey</h3>
-                    <p className="text-xs text-[#64748B]">Real-time TR-181 Radio Diagnostics Neighbor BSSID scan</p>
+                    <h3 className="text-base font-bold text-white">Neighboring Wi-Fi RF Environment & Channel Survey</h3>
+                    <p className="text-xs text-slate-400">Real-time TR-181 Radio Diagnostics Neighbor BSSID scan</p>
                   </div>
                   <div className="flex items-center space-x-2">
                     <Button size="sm" variant="primary" onClick={handleScanNeighborWiFi} isLoading={surveyScanning}>
@@ -2830,7 +2830,7 @@ export const DeviceDetail: React.FC = () => {
                 </div>
 
                 {surveyMessage && (
-                  <div className="p-3 bg-[#EFF6FF] border border-[#BFDBFE] text-[#1D4ED8] rounded-xl text-xs font-semibold flex items-center space-x-2">
+                  <div className="p-3 bg-sky-500/15 border border-sky-500/30 text-sky-300 rounded-xl text-xs font-semibold flex items-center space-x-2">
                     <Info className="w-4 h-4 shrink-0" />
                     <span>{surveyMessage}</span>
                   </div>
@@ -2839,7 +2839,7 @@ export const DeviceDetail: React.FC = () => {
                 {workspace.siteSurvey && workspace.siteSurvey.length > 0 ? (
                   <div className="overflow-x-auto">
                     <table className="w-full text-left text-xs font-mono">
-                      <thead className="bg-[#F8FAFC] text-[#334155] border-b border-[#CBD5E1] font-bold uppercase text-[11px]">
+                      <thead className="bg-[#060913] text-slate-300 border-b border-slate-700/80 font-bold uppercase text-[11px]">
                         <tr>
                           <th className="p-3.5">Channel</th>
                           <th className="p-3.5">SSID</th>
@@ -2852,24 +2852,24 @@ export const DeviceDetail: React.FC = () => {
                       </thead>
                       <tbody className="divide-y divide-[#EEF2F7]">
                         {workspace.siteSurvey.map((sv: any, idx: number) => (
-                          <tr key={idx} className="hover:bg-[#F8FAFC]">
-                            <td className="p-3.5 font-bold text-[#1677FF]">Ch {sv.channel}</td>
-                            <td className="p-3.5 text-[#0F172A] font-bold">{sv.ssid}</td>
-                            <td className="p-3.5 text-[#64748B]">{sv.bssid || 'N/A'}</td>
+                          <tr key={idx} className="hover:bg-[#060913]">
+                            <td className="p-3.5 font-bold text-sky-400">Ch {sv.channel}</td>
+                            <td className="p-3.5 text-white font-bold">{sv.ssid}</td>
+                            <td className="p-3.5 text-slate-400">{sv.bssid || 'N/A'}</td>
                             <td className="p-3.5 text-[#6D28D9] font-medium">{sv.band}</td>
-                            <td className="p-3.5 text-[#334155]">{sv.widthMhz} MHz</td>
-                            <td className="p-3.5 font-bold text-[#047857]">{sv.rssiDbm} dBm</td>
-                            <td className="p-3.5 text-[#64748B]">{sv.security || 'WPA2-PSK'}</td>
+                            <td className="p-3.5 text-slate-300">{sv.widthMhz} MHz</td>
+                            <td className="p-3.5 font-bold text-emerald-400">{sv.rssiDbm} dBm</td>
+                            <td className="p-3.5 text-slate-400">{sv.security || 'WPA2-PSK'}</td>
                           </tr>
                         ))}
                       </tbody>
                     </table>
                   </div>
                 ) : (
-                  <div className="py-12 bg-[#F8FAFC] rounded-2xl border border-dashed border-[#CBD5E1] text-center space-y-2">
-                    <Compass className="w-8 h-8 text-[#94A3B8] mx-auto" />
-                    <p className="text-sm font-semibold text-[#0F172A]">No RF Survey Data Recorded</p>
-                    <p className="text-xs text-[#64748B]">Click "Run RF Neighbor Scan" above to trigger an active diagnostic scan on the live ONT.</p>
+                  <div className="py-12 bg-[#060913] rounded-2xl border border-dashed border-slate-700/80 text-center space-y-2">
+                    <Compass className="w-8 h-8 text-slate-400 mx-auto" />
+                    <p className="text-sm font-semibold text-white">No RF Survey Data Recorded</p>
+                    <p className="text-xs text-slate-400">Click "Run RF Neighbor Scan" above to trigger an active diagnostic scan on the live ONT.</p>
                   </div>
                 )}
               </div>
@@ -2877,19 +2877,19 @@ export const DeviceDetail: React.FC = () => {
 
             {/* TAB CONTENT 5: DIAGNOSTICS */}
             {activeTab === 'diagnostics' && (
-              <div className="bg-white border border-[#E2E8F0] rounded-2xl p-5 space-y-4">
+              <div className="bg-[#0E172A] border border-slate-800 rounded-2xl p-5 space-y-4">
                 <div className="flex justify-between items-center">
-                  <h3 className="text-sm font-bold text-[#0F172A]">Live Network Diagnostics Workbench</h3>
+                  <h3 className="text-sm font-bold text-white">Live Network Diagnostics Workbench</h3>
                   <Badge variant="info">Real CPE Execution</Badge>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                   <div>
-                    <label className="text-xs text-[#64748B] block mb-1">Diagnostic Test</label>
+                    <label className="text-xs text-slate-400 block mb-1">Diagnostic Test</label>
                     <select
                       value={diagType}
                       onChange={(e: any) => setDiagType(e.target.value)}
-                      className="w-full bg-[#F8FAFC] border border-[#E2E8F0] rounded-lg px-3 py-2 text-xs text-[#0F172A]"
+                      className="w-full bg-[#060913] border border-slate-800 rounded-lg px-3 py-2 text-xs text-white"
                     >
                       <option value="ping">ICMP Ping Test</option>
                       <option value="traceroute">Traceroute Diagnostics</option>
@@ -2898,12 +2898,12 @@ export const DeviceDetail: React.FC = () => {
                     </select>
                   </div>
                   <div>
-                    <label className="text-xs text-[#64748B] block mb-1">Target Host / IP</label>
+                    <label className="text-xs text-slate-400 block mb-1">Target Host / IP</label>
                     <input
                       type="text"
                       value={diagHost}
                       onChange={(e) => setDiagHost(e.target.value)}
-                      className="w-full bg-[#F8FAFC] border border-[#E2E8F0] rounded-lg px-3 py-2 text-xs text-[#0F172A] font-mono"
+                      className="w-full bg-[#060913] border border-slate-800 rounded-lg px-3 py-2 text-xs text-white font-mono"
                     />
                   </div>
                   <div className="flex items-end">
@@ -2920,9 +2920,9 @@ export const DeviceDetail: React.FC = () => {
                 </div>
 
                 {diagResult && (
-                  <div className="p-4 bg-[#F8FAFC] rounded-xl border border-[#E2E8F0] space-y-2">
-                    <span className="text-[11px] font-bold text-[#1677FF] uppercase tracking-wider block">Diagnostic Terminal Output:</span>
-                    <pre className="text-xs font-mono text-[#047857] bg-white p-3 rounded-lg overflow-x-auto whitespace-pre-wrap">
+                  <div className="p-4 bg-[#060913] rounded-xl border border-slate-800 space-y-2">
+                    <span className="text-[11px] font-bold text-sky-400 uppercase tracking-wider block">Diagnostic Terminal Output:</span>
+                    <pre className="text-xs font-mono text-emerald-400 bg-[#0E172A] p-3 rounded-lg overflow-x-auto whitespace-pre-wrap">
                       {diagResult.rawOutput || JSON.stringify(diagResult, null, 2)}
                     </pre>
                   </div>
@@ -2932,14 +2932,14 @@ export const DeviceDetail: React.FC = () => {
 
             {/* TAB CONTENT 6: ACTIONS */}
             {activeTab === 'actions' && (
-              <div className="bg-white border border-[#E2E8F0] rounded-2xl p-5 space-y-4">
+              <div className="bg-[#0E172A] border border-slate-800 rounded-2xl p-5 space-y-4">
                 <div>
-                  <h3 className="text-sm font-bold text-[#0F172A]">ACS / USP Remote Operations & Commands</h3>
-                  <p className="text-xs text-[#64748B]">Authenticated actions dispatched directly to device parameter tree</p>
+                  <h3 className="text-sm font-bold text-white">ACS / USP Remote Operations & Commands</h3>
+                  <p className="text-xs text-slate-400">Authenticated actions dispatched directly to device parameter tree</p>
                 </div>
 
                 {actionMessage && (
-                  <div className="p-3 bg-[#ECFDF5] border border-emerald-500/40 text-[#065F46] rounded-xl text-xs flex items-center space-x-2">
+                  <div className="p-3 bg-emerald-500/15 border border-emerald-500/40 text-emerald-300 rounded-xl text-xs flex items-center space-x-2">
                     <CheckCircle2 className="w-4 h-4 shrink-0" />
                     <span>{actionMessage}</span>
                   </div>
@@ -2953,13 +2953,13 @@ export const DeviceDetail: React.FC = () => {
                     { action: 'refresh', label: 'Poll Telemetry', desc: 'Requests immediate Inform upload', icon: Activity, danger: false },
                     { action: 'reset', label: 'Factory Reset', desc: 'Wipes parameters to factory firmware default', icon: AlertTriangle, danger: true },
                   ].map(({ action, label, desc, icon: Icon, danger }) => (
-                    <div key={action} className="p-4 bg-[#F8FAFC] rounded-xl border border-[#E2E8F0] flex flex-col justify-between space-y-3">
+                    <div key={action} className="p-4 bg-[#060913] rounded-xl border border-slate-800 flex flex-col justify-between space-y-3">
                       <div>
                         <div className="flex items-center space-x-2 mb-1">
-                          <Icon className={`w-4 h-4 ${danger ? 'text-[#B91C1C]' : 'text-[#1677FF]'}`} />
-                          <h4 className="text-xs font-bold text-[#0F172A]">{label}</h4>
+                          <Icon className={`w-4 h-4 ${danger ? 'text-rose-400' : 'text-sky-400'}`} />
+                          <h4 className="text-xs font-bold text-white">{label}</h4>
                         </div>
-                        <p className="text-[11px] text-[#64748B]">{desc}</p>
+                        <p className="text-[11px] text-slate-400">{desc}</p>
                       </div>
                       <Button
                         size="sm"
@@ -2978,11 +2978,11 @@ export const DeviceDetail: React.FC = () => {
 
             {/* TAB CONTENT 7: PORTS */}
             {activeTab === 'ports' && (
-              <div className="bg-white border border-[#E2E8F0] rounded-2xl p-5 space-y-4">
+              <div className="bg-[#0E172A] border border-slate-800 rounded-2xl p-5 space-y-4">
                 <div className="flex justify-between items-center">
                   <div>
-                    <h3 className="text-sm font-bold text-[#0F172A]">Physical Ethernet Port Matrix</h3>
-                    <p className="text-xs text-[#64748B]">TR-098 / TR-181 Ethernet.Interface</p>
+                    <h3 className="text-sm font-bold text-white">Physical Ethernet Port Matrix</h3>
+                    <p className="text-xs text-slate-400">TR-098 / TR-181 Ethernet.Interface</p>
                   </div>
                   <Badge variant={workspace.ports && workspace.ports.length > 0 ? 'success' : 'neutral'}>
                     {workspace.portsStatus || (workspace.ports?.length > 0 ? 'LIVE' : 'NOT_RETURNED_BY_CPE')}
@@ -2992,14 +2992,14 @@ export const DeviceDetail: React.FC = () => {
                 {workspace.ports && workspace.ports.length > 0 ? (
                   <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3.5">
                     {workspace.ports.map((pt: any, idx: number) => (
-                      <div key={idx} className="p-4 bg-[#F8FAFC] rounded-xl border border-[#E2E8F0] space-y-2.5 shadow-xs">
+                      <div key={idx} className="p-4 bg-[#060913] rounded-xl border border-slate-800 space-y-2.5 shadow-xs">
                         <div className="flex justify-between items-center">
-                          <span className="font-bold text-xs text-[#0F172A]">{pt.port}</span>
+                          <span className="font-bold text-xs text-white">{pt.port}</span>
                           <div className="flex items-center space-x-1.5">
                             <span className={`px-2 py-0.5 rounded text-[10px] font-bold border ${
                               pt.isTagged
                                 ? 'bg-purple-50 text-purple-700 border-purple-200'
-                                : 'bg-slate-100 text-slate-700 border-slate-200'
+                                : 'bg-slate-100 text-slate-700 border-slate-800'
                             }`}>
                               {pt.mode || (pt.isTagged ? 'Tagged (Trunk)' : 'Untagged (Access)')}
                             </span>
@@ -3008,9 +3008,9 @@ export const DeviceDetail: React.FC = () => {
                             </Badge>
                           </div>
                         </div>
-                        <div className="text-xs font-mono space-y-1 text-[#334155]">
+                        <div className="text-xs font-mono space-y-1 text-slate-300">
                           <p>Tagging: <span className={pt.isTagged ? "text-purple-700 font-bold" : "text-slate-600 font-medium"}>{pt.vlanTag || 'Untagged / Access'}</span></p>
-                          <p>Speed: <span className="text-[#1677FF] font-bold">{pt.speed}</span></p>
+                          <p>Speed: <span className="text-sky-400 font-bold">{pt.speed}</span></p>
                           <p>Duplex: {pt.duplex}</p>
                           <p>RX: {pt.rxBytes}</p>
                           <p>TX: {pt.txBytes}</p>
@@ -3019,10 +3019,10 @@ export const DeviceDetail: React.FC = () => {
                     ))}
                   </div>
                 ) : (
-                  <div className="py-12 bg-[#F8FAFC] rounded-2xl border border-dashed border-[#CBD5E1] text-center space-y-2">
-                    <Network className="w-8 h-8 text-[#94A3B8] mx-auto" />
-                    <p className="text-sm font-semibold text-[#0F172A]">Ethernet Port Telemetry Not Exposed by Firmware</p>
-                    <p className="text-xs text-[#64748B]">This ONT's TR-069 firmware does not export physical port telemetry parameters under LANEthernetInterfaceConfig.</p>
+                  <div className="py-12 bg-[#060913] rounded-2xl border border-dashed border-slate-700/80 text-center space-y-2">
+                    <Network className="w-8 h-8 text-slate-400 mx-auto" />
+                    <p className="text-sm font-semibold text-white">Ethernet Port Telemetry Not Exposed by Firmware</p>
+                    <p className="text-xs text-slate-400">This ONT's TR-069 firmware does not export physical port telemetry parameters under LANEthernetInterfaceConfig.</p>
                     <Badge variant="neutral">Status: NOT_RETURNED_BY_CPE</Badge>
                   </div>
                 )}
@@ -3031,11 +3031,11 @@ export const DeviceDetail: React.FC = () => {
 
             {/* TAB CONTENT 8: LOGS */}
             {activeTab === 'logs' && (
-              <div className="bg-white border border-[#E2E8F0] rounded-2xl p-5 space-y-4">
-                <h3 className="text-sm font-bold text-[#0F172A]">Device Event & CWMP Protocol Logs</h3>
+              <div className="bg-[#0E172A] border border-slate-800 rounded-2xl p-5 space-y-4">
+                <h3 className="text-sm font-bold text-white">Device Event & CWMP Protocol Logs</h3>
                 <div className="overflow-x-auto">
                   <table className="w-full text-left text-xs font-mono">
-                    <thead className="bg-[#F8FAFC] text-[#64748B] border-b border-[#E2E8F0]">
+                    <thead className="bg-[#060913] text-slate-400 border-b border-slate-800">
                       <tr>
                         <th className="p-3">Timestamp</th>
                         <th className="p-3">Severity</th>
@@ -3046,14 +3046,14 @@ export const DeviceDetail: React.FC = () => {
                     </thead>
                     <tbody className="divide-y divide-[#EEF2F7]">
                       {workspace.logs.map((lg: any, idx: number) => (
-                        <tr key={idx} className="hover:bg-[#F8FAFC]">
-                          <td className="p-3 text-[#64748B]">{new Date(lg.timestamp).toLocaleTimeString()}</td>
+                        <tr key={idx} className="hover:bg-[#060913]">
+                          <td className="p-3 text-slate-400">{new Date(lg.timestamp).toLocaleTimeString()}</td>
                           <td className="p-3">
                             <Badge variant={lg.severity === 'WARN' ? 'warning' : 'info'}>{lg.severity}</Badge>
                           </td>
                           <td className="p-3 text-[#5B21B6]">{lg.source}</td>
-                          <td className="p-3 text-[#1E293B]">{lg.message}</td>
-                          <td className="p-3 text-[#94A3B8]">{lg.correlationId}</td>
+                          <td className="p-3 text-slate-100">{lg.message}</td>
+                          <td className="p-3 text-slate-400">{lg.correlationId}</td>
                         </tr>
                       ))}
                     </tbody>
@@ -3064,25 +3064,25 @@ export const DeviceDetail: React.FC = () => {
 
             {/* TAB CONTENT 9: LOCATION */}
             {activeTab === 'location' && (
-              <div className="bg-white border border-[#E2E8F0] rounded-2xl p-5 space-y-4">
+              <div className="bg-[#0E172A] border border-slate-800 rounded-2xl p-5 space-y-4">
                 <div className="flex justify-between items-center">
-                  <h3 className="text-sm font-bold text-[#0F172A]">Subscriber Physical & Fiber Topology Location</h3>
+                  <h3 className="text-sm font-bold text-white">Subscriber Physical & Fiber Topology Location</h3>
                   <Badge variant={workspace.location?.status === 'LIVE' ? 'success' : 'neutral'}>
                     {workspace.location?.status || 'NO_DATA'}
                   </Badge>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div className="p-4 bg-[#F8FAFC] rounded-xl border border-[#E2E8F0] space-y-2">
-                    <span className="text-[11px] font-bold text-[#64748B] uppercase">Assigned Subscriber & Address</span>
-                    <p className="text-sm font-bold text-[#0F172A]">{workspace.location.subscriberName}</p>
-                    <p className="text-xs text-[#1677FF] font-mono">Account: {workspace.location.accountNumber}</p>
-                    <p className="text-xs text-[#334155]">{workspace.location.address}</p>
+                  <div className="p-4 bg-[#060913] rounded-xl border border-slate-800 space-y-2">
+                    <span className="text-[11px] font-bold text-slate-400 uppercase">Assigned Subscriber & Address</span>
+                    <p className="text-sm font-bold text-white">{workspace.location.subscriberName}</p>
+                    <p className="text-xs text-sky-400 font-mono">Account: {workspace.location.accountNumber}</p>
+                    <p className="text-xs text-slate-300">{workspace.location.address}</p>
                   </div>
-                  <div className="p-4 bg-[#F8FAFC] rounded-xl border border-[#E2E8F0] space-y-2">
-                    <span className="text-[11px] font-bold text-[#64748B] uppercase">Fiber Network Topology</span>
-                    <p className="text-xs font-mono text-[#334155]">OLT Core: <span className="text-[#5B21B6] font-bold">{workspace.location.oltName}</span></p>
-                    <p className="text-xs font-mono text-[#334155]">PON Port: <span className="text-[#1D4ED8] font-bold">{workspace.location.ponPort}</span></p>
-                    <p className="text-xs font-mono text-[#334155]">Fiber Route: <span className="text-[#065F46] font-bold">{workspace.location.fiberRoute}</span></p>
+                  <div className="p-4 bg-[#060913] rounded-xl border border-slate-800 space-y-2">
+                    <span className="text-[11px] font-bold text-slate-400 uppercase">Fiber Network Topology</span>
+                    <p className="text-xs font-mono text-slate-300">OLT Core: <span className="text-[#5B21B6] font-bold">{workspace.location.oltName}</span></p>
+                    <p className="text-xs font-mono text-slate-300">PON Port: <span className="text-sky-300 font-bold">{workspace.location.ponPort}</span></p>
+                    <p className="text-xs font-mono text-slate-300">Fiber Route: <span className="text-emerald-300 font-bold">{workspace.location.fiberRoute}</span></p>
                   </div>
                 </div>
               </div>
@@ -3090,12 +3090,12 @@ export const DeviceDetail: React.FC = () => {
 
             {/* TAB CONTENT 10: HISTORY */}
             {activeTab === 'history' && (
-              <div className="bg-white border border-[#E2E8F0] rounded-2xl p-5 space-y-4">
-                <h3 className="text-sm font-bold text-[#0F172A]">Telemetry & State Mutation Timeline</h3>
+              <div className="bg-[#0E172A] border border-slate-800 rounded-2xl p-5 space-y-4">
+                <h3 className="text-sm font-bold text-white">Telemetry & State Mutation Timeline</h3>
                 {workspace.optical?.history && workspace.optical.history.length > 0 ? (
                   <div className="overflow-x-auto">
                     <table className="w-full text-left text-xs font-mono">
-                      <thead className="bg-[#F8FAFC] text-[#64748B] border-b border-[#E2E8F0]">
+                      <thead className="bg-[#060913] text-slate-400 border-b border-slate-800">
                         <tr>
                           <th className="p-3">Timestamp</th>
                           <th className="p-3">RX Power</th>
@@ -3106,11 +3106,11 @@ export const DeviceDetail: React.FC = () => {
                       </thead>
                       <tbody className="divide-y divide-[#EEF2F7]">
                         {workspace.optical.history.map((h: any, idx: number) => (
-                          <tr key={idx} className="hover:bg-[#F8FAFC]">
-                            <td className="p-3 text-[#64748B]">{new Date(h.timestamp).toLocaleString()}</td>
-                            <td className="p-3 text-[#1677FF] font-bold">{h.rxPowerDbm != null ? `${h.rxPowerDbm} dBm` : 'N/A'}</td>
-                            <td className="p-3 text-[#047857]">{h.txPowerDbm != null ? `${h.txPowerDbm} dBm` : 'N/A'}</td>
-                            <td className="p-3 text-[#334155]">{h.temperatureC != null ? `${h.temperatureC} °C` : 'N/A'}</td>
+                          <tr key={idx} className="hover:bg-[#060913]">
+                            <td className="p-3 text-slate-400">{new Date(h.timestamp).toLocaleString()}</td>
+                            <td className="p-3 text-sky-400 font-bold">{h.rxPowerDbm != null ? `${h.rxPowerDbm} dBm` : 'N/A'}</td>
+                            <td className="p-3 text-emerald-400">{h.txPowerDbm != null ? `${h.txPowerDbm} dBm` : 'N/A'}</td>
+                            <td className="p-3 text-slate-300">{h.temperatureC != null ? `${h.temperatureC} °C` : 'N/A'}</td>
                             <td className="p-3 text-[#5B21B6]">{h.source || 'TR-069'}</td>
                           </tr>
                         ))}
@@ -3118,7 +3118,7 @@ export const DeviceDetail: React.FC = () => {
                     </table>
                   </div>
                 ) : (
-                  <div className="py-8 bg-[#F8FAFC] rounded-xl text-center text-xs text-[#94A3B8] italic">
+                  <div className="py-8 bg-[#060913] rounded-xl text-center text-xs text-slate-400 italic">
                     No historical telemetry mutations recorded for this device session.
                   </div>
                 )}
@@ -3127,11 +3127,11 @@ export const DeviceDetail: React.FC = () => {
 
             {/* TAB CONTENT 11: DISCOVERY */}
             {activeTab === 'discovery' && (
-              <div className="bg-white border border-[#E2E8F0] rounded-2xl p-5 space-y-4">
+              <div className="bg-[#0E172A] border border-slate-800 rounded-2xl p-5 space-y-4">
                 <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
                   <div>
-                    <h3 className="text-sm font-bold text-[#0F172A]">TR-098 / TR-181 Parameter Tree Explorer</h3>
-                    <p className="text-xs text-[#64748B]">Real parameters returned by CPE ({workspace.rawParametersCount || workspace.discoveryTree?.length || 0} paths discovered)</p>
+                    <h3 className="text-sm font-bold text-white">TR-098 / TR-181 Parameter Tree Explorer</h3>
+                    <p className="text-xs text-slate-400">Real parameters returned by CPE ({workspace.rawParametersCount || workspace.discoveryTree?.length || 0} paths discovered)</p>
                   </div>
                   <div className="w-full sm:w-64">
                     <Input
@@ -3145,7 +3145,7 @@ export const DeviceDetail: React.FC = () => {
 
                 <div className="overflow-x-auto">
                   <table className="w-full text-left text-xs font-mono">
-                    <thead className="bg-[#F8FAFC] text-[#64748B] border-b border-[#E2E8F0]">
+                    <thead className="bg-[#060913] text-slate-400 border-b border-slate-800">
                       <tr>
                         <th className="p-3">Data Model Path</th>
                         <th className="p-3">Category</th>
@@ -3160,13 +3160,13 @@ export const DeviceDetail: React.FC = () => {
                         workspace.discoveryTree
                           .filter((p: any) => p.path.toLowerCase().includes(discoverySearch.toLowerCase()) || (p.category && p.category.toLowerCase().includes(discoverySearch.toLowerCase())))
                           .map((param: any, idx: number) => (
-                            <tr key={idx} className="hover:bg-[#F8FAFC]">
-                              <td className="p-3 text-[#1D4ED8] font-semibold">{param.path}</td>
+                            <tr key={idx} className="hover:bg-[#060913]">
+                              <td className="p-3 text-sky-300 font-semibold">{param.path}</td>
                               <td className="p-3">
                                 <Badge variant="info">{param.category || 'OTHER'}</Badge>
                               </td>
-                              <td className="p-3 text-[#0F172A] font-bold break-all">{String(param.value)}</td>
-                              <td className="p-3 text-[#64748B]">{param.type}</td>
+                              <td className="p-3 text-white font-bold break-all">{String(param.value)}</td>
+                              <td className="p-3 text-slate-400">{param.type}</td>
                               <td className="p-3">
                                 <Badge variant={param.writable ? 'warning' : 'neutral'}>
                                   {param.writable ? 'Read/Write' : 'Read-Only'}
@@ -3181,7 +3181,7 @@ export const DeviceDetail: React.FC = () => {
                           ))
                       ) : (
                         <tr>
-                          <td colSpan={6} className="p-8 text-center text-[#94A3B8] italic">
+                          <td colSpan={6} className="p-8 text-center text-slate-400 italic">
                             No parameter tree paths discovered yet for this ONT.
                           </td>
                         </tr>
@@ -3194,16 +3194,16 @@ export const DeviceDetail: React.FC = () => {
 
             {/* TAB CONTENT 12: CUSTOM RPCS */}
             {activeTab === 'rpc' && (
-              <div className="bg-white border border-[#E2E8F0] rounded-2xl p-5 space-y-4">
-                <h3 className="text-sm font-bold text-[#0F172A]">Custom ACS / USP Remote Procedure Calls (RPCs)</h3>
+              <div className="bg-[#0E172A] border border-slate-800 rounded-2xl p-5 space-y-4">
+                <h3 className="text-sm font-bold text-white">Custom ACS / USP Remote Procedure Calls (RPCs)</h3>
 
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                   <div>
-                    <label className="text-xs text-[#64748B] block mb-1">Select RPC Method</label>
+                    <label className="text-xs text-slate-400 block mb-1">Select RPC Method</label>
                     <select
                       value={rpcSelected}
                       onChange={(e) => setRpcSelected(e.target.value)}
-                      className="w-full bg-[#F8FAFC] border border-[#E2E8F0] rounded-lg px-3 py-2 text-xs text-[#0F172A] font-mono"
+                      className="w-full bg-[#060913] border border-slate-800 rounded-lg px-3 py-2 text-xs text-white font-mono"
                     >
                       {workspace.rpcMethods.map((r: any) => (
                         <option key={r.name} value={r.name}>{r.name} ({r.protocol})</option>
@@ -3211,12 +3211,12 @@ export const DeviceDetail: React.FC = () => {
                     </select>
                   </div>
                   <div>
-                    <label className="text-xs text-[#64748B] block mb-1">Parameter Path / Argument</label>
+                    <label className="text-xs text-slate-400 block mb-1">Parameter Path / Argument</label>
                     <input
                       type="text"
                       value={rpcParam}
                       onChange={(e) => setRpcParam(e.target.value)}
-                      className="w-full bg-[#F8FAFC] border border-[#E2E8F0] rounded-lg px-3 py-2 text-xs text-[#0F172A] font-mono"
+                      className="w-full bg-[#060913] border border-slate-800 rounded-lg px-3 py-2 text-xs text-white font-mono"
                     />
                   </div>
                   <div className="flex items-end">
@@ -3233,9 +3233,9 @@ export const DeviceDetail: React.FC = () => {
                 </div>
 
                 {rpcOutput && (
-                  <div className="p-4 bg-[#F8FAFC] rounded-xl border border-[#E2E8F0] space-y-1.5">
-                    <span className="text-[11px] font-bold text-[#1677FF] uppercase">RPC Execution Response:</span>
-                    <pre className="text-xs font-mono text-[#047857] bg-white p-3 rounded-lg overflow-x-auto whitespace-pre-wrap">
+                  <div className="p-4 bg-[#060913] rounded-xl border border-slate-800 space-y-1.5">
+                    <span className="text-[11px] font-bold text-sky-400 uppercase">RPC Execution Response:</span>
+                    <pre className="text-xs font-mono text-emerald-400 bg-[#0E172A] p-3 rounded-lg overflow-x-auto whitespace-pre-wrap">
                       {rpcOutput}
                     </pre>
                   </div>
@@ -3245,11 +3245,11 @@ export const DeviceDetail: React.FC = () => {
 
             {/* TAB CONTENT 13: AUDIT TRAILS */}
             {activeTab === 'audit' && (
-              <div className="bg-white border border-[#E2E8F0] rounded-2xl p-5 space-y-4">
-                <h3 className="text-sm font-bold text-[#0F172A]">Immutable Device Security Audit Trail</h3>
+              <div className="bg-[#0E172A] border border-slate-800 rounded-2xl p-5 space-y-4">
+                <h3 className="text-sm font-bold text-white">Immutable Device Security Audit Trail</h3>
                 <div className="overflow-x-auto">
                   <table className="w-full text-left text-xs font-mono">
-                    <thead className="bg-[#F8FAFC] text-[#64748B] border-b border-[#E2E8F0]">
+                    <thead className="bg-[#060913] text-slate-400 border-b border-slate-800">
                       <tr>
                         <th className="p-3">Timestamp</th>
                         <th className="p-3">User</th>
@@ -3259,18 +3259,18 @@ export const DeviceDetail: React.FC = () => {
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-[#EEF2F7]">
-                      <tr className="hover:bg-[#F8FAFC]">
-                        <td className="p-3 text-[#64748B]">2026-08-23 23:10:20</td>
-                        <td className="p-3 text-[#0F172A]">operator@ciniplay.in</td>
-                        <td className="p-3 text-[#1677FF]">DEVICE_CONFIG_UPDATED</td>
-                        <td className="p-3 text-[#94A3B8]">cfg_1787508622100</td>
+                      <tr className="hover:bg-[#060913]">
+                        <td className="p-3 text-slate-400">2026-08-23 23:10:20</td>
+                        <td className="p-3 text-white">operator@ciniplay.in</td>
+                        <td className="p-3 text-sky-400">DEVICE_CONFIG_UPDATED</td>
+                        <td className="p-3 text-slate-400">cfg_1787508622100</td>
                         <td className="p-3"><Badge variant="success">SUCCESS</Badge></td>
                       </tr>
-                      <tr className="hover:bg-[#F8FAFC]">
-                        <td className="p-3 text-[#64748B]">2026-08-23 23:08:45</td>
-                        <td className="p-3 text-[#0F172A]">operator@ciniplay.in</td>
+                      <tr className="hover:bg-[#060913]">
+                        <td className="p-3 text-slate-400">2026-08-23 23:08:45</td>
+                        <td className="p-3 text-white">operator@ciniplay.in</td>
                         <td className="p-3 text-[#6D28D9]">DEVICE_INSPECTED</td>
-                        <td className="p-3 text-[#94A3B8]">inspect_1787508525000</td>
+                        <td className="p-3 text-slate-400">inspect_1787508525000</td>
                         <td className="p-3"><Badge variant="success">SUCCESS</Badge></td>
                       </tr>
                     </tbody>
@@ -3281,14 +3281,14 @@ export const DeviceDetail: React.FC = () => {
 
             {/* TAB CONTENT 14: PENDING UPDATES & COMMAND QUEUE */}
             {activeTab === 'queue' && (
-              <div className="bg-white border border-[#E2E8F0] rounded-2xl p-5 space-y-4 shadow-sm">
-                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 border-b border-[#E2E8F0] pb-4">
+              <div className="bg-[#0E172A] border border-slate-800 rounded-2xl p-5 space-y-4 shadow-sm">
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 border-b border-slate-800 pb-4">
                   <div>
                     <div className="flex items-center space-x-2">
                       <ListOrdered className="w-5 h-5 text-[#E05638]" />
-                      <h3 className="text-sm font-bold text-[#0F172A]">Asynchronous TR-069 Configuration Updates & Queue</h3>
+                      <h3 className="text-sm font-bold text-white">Asynchronous TR-069 Configuration Updates & Queue</h3>
                     </div>
-                    <p className="text-xs text-[#64748B] mt-0.5">
+                    <p className="text-xs text-slate-400 mt-0.5">
                       Live dispatch tracking, pending acknowledgments, error diagnostics, and audit logs
                     </p>
                   </div>
@@ -3324,7 +3324,7 @@ export const DeviceDetail: React.FC = () => {
                       const isTimedOut = cmd.status === 'timed_out' || cmd.status === 'expired';
                       const isCanceled = cmd.status === 'canceled' || cmd.status === 'cancelled';
 
-                      let badgeClass = 'bg-slate-100 text-slate-700 border-slate-300';
+                      let badgeClass = 'bg-slate-100 text-slate-700 border-slate-700';
                       let badgeLabel = cmd.status ? cmd.status.toUpperCase() : 'UNKNOWN';
                       let badgeHelp = '';
 
@@ -3361,11 +3361,11 @@ export const DeviceDetail: React.FC = () => {
                         badgeLabel = 'FAILED / REJECTED';
                         badgeHelp = 'CPE returned a CWMP fault or a definite transport failure.';
                       } else if (isTimedOut) {
-                        badgeClass = 'bg-slate-100 text-slate-800 border-slate-300';
+                        badgeClass = 'bg-slate-100 text-slate-100 border-slate-700';
                         badgeLabel = 'TIMED_OUT';
                         badgeHelp = 'ACS-configured timeout expired without a response or verification result.';
                       } else if (isCanceled) {
-                        badgeClass = 'bg-slate-100 text-slate-600 border-slate-300';
+                        badgeClass = 'bg-slate-100 text-slate-600 border-slate-700';
                         badgeLabel = 'CANCELED';
                         badgeHelp = 'Command was cancelled.';
                       }
@@ -3373,7 +3373,7 @@ export const DeviceDetail: React.FC = () => {
                       return (
                         <div
                           key={cmd._id || cmd.id}
-                          className="p-4 rounded-xl border border-[#E2E8F0] bg-[#F8FAFC] space-y-3 transition hover:border-[#CBD5E1]"
+                          className="p-4 rounded-xl border border-slate-800 bg-[#060913] space-y-3 transition hover:border-slate-700/80"
                         >
                           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
                             <div className="flex flex-col space-y-1">
@@ -3390,7 +3390,7 @@ export const DeviceDetail: React.FC = () => {
                                   {isTimedOut && <Clock className="w-3 h-3 text-slate-600" />}
                                   <span>{badgeLabel}</span>
                                 </span>
-                                <span className="text-xs font-bold font-mono text-[#0F172A]">{cmd.action}</span>
+                                <span className="text-xs font-bold font-mono text-white">{cmd.action}</span>
                                 {cmd.dataModel && (
                                   <span className="text-[10px] px-1.5 py-0.5 rounded bg-slate-200 text-slate-700 font-mono font-semibold">
                                     {cmd.dataModel}
@@ -3403,7 +3403,7 @@ export const DeviceDetail: React.FC = () => {
                                 )}
                               </div>
                               {badgeHelp && (
-                                <p className="text-[11px] text-[#64748B] italic pl-1">{badgeHelp}</p>
+                                <p className="text-[11px] text-slate-400 italic pl-1">{badgeHelp}</p>
                               )}
                             </div>
 
@@ -3477,7 +3477,7 @@ export const DeviceDetail: React.FC = () => {
                                   </div>
                                   <div className="pl-6 space-y-1.5">
                                     <p className="text-slate-600 font-semibold">Parameter:</p>
-                                    <code className="px-2.5 py-1 bg-white border border-rose-200 rounded-md font-mono text-[11px] text-rose-950 font-bold break-all block shadow-xs">
+                                    <code className="px-2.5 py-1 bg-[#0E172A] border border-rose-200 rounded-md font-mono text-[11px] text-rose-950 font-bold break-all block shadow-xs">
                                       {rejectedParam || 'Parameter not accepted by CPE'}
                                     </code>
                                     <p className="text-rose-700 font-medium text-[11px] pt-0.5">
@@ -3528,16 +3528,16 @@ export const DeviceDetail: React.FC = () => {
 
                           {/* Command Payload Summary */}
                           {cmd.parameters && (
-                            <div className="p-3 bg-white border border-[#E2E8F0] rounded-lg text-xs font-mono text-[#334155] space-y-1">
-                              <span className="text-[10px] uppercase font-bold text-[#64748B] block font-sans">Parameters Dispatched:</span>
-                              {cmd.parameters.wifi24?.ssid && <p>• 2.4G SSID: <span className="font-bold text-[#0F172A]">{cmd.parameters.wifi24.ssid}</span></p>}
-                              {cmd.parameters.wifi5g?.ssid && <p>• 5G SSID: <span className="font-bold text-[#0F172A]">{cmd.parameters.wifi5g.ssid}</span></p>}
-                              {cmd.parameters.wan?.pppoeUsername && <p>• PPPoE Username: <span className="font-bold text-[#1677FF]">{cmd.parameters.wan.pppoeUsername}</span></p>}
-                              {cmd.parameters.wan?.vlanId && <p>• VLAN ID: <span className="font-bold text-[#047857]">{cmd.parameters.wan.vlanId}</span></p>}
+                            <div className="p-3 bg-[#0E172A] border border-slate-800 rounded-lg text-xs font-mono text-slate-300 space-y-1">
+                              <span className="text-[10px] uppercase font-bold text-slate-400 block font-sans">Parameters Dispatched:</span>
+                              {cmd.parameters.wifi24?.ssid && <p>• 2.4G SSID: <span className="font-bold text-white">{cmd.parameters.wifi24.ssid}</span></p>}
+                              {cmd.parameters.wifi5g?.ssid && <p>• 5G SSID: <span className="font-bold text-white">{cmd.parameters.wifi5g.ssid}</span></p>}
+                              {cmd.parameters.wan?.pppoeUsername && <p>• PPPoE Username: <span className="font-bold text-sky-400">{cmd.parameters.wan.pppoeUsername}</span></p>}
+                              {cmd.parameters.wan?.vlanId && <p>• VLAN ID: <span className="font-bold text-emerald-400">{cmd.parameters.wan.vlanId}</span></p>}
                               {cmd.parameters.action && <p>• Action: <span className="font-bold text-[#6D28D9]">{cmd.parameters.action}</span></p>}
                               {cmd.parameters.tr069ParamValues && cmd.parameters.tr069ParamValues.length > 0 && (
                                 <div className="mt-2 pt-2 border-t border-slate-100 space-y-1">
-                                  <p className="text-[10px] uppercase font-bold text-[#64748B] font-sans">
+                                  <p className="text-[10px] uppercase font-bold text-slate-400 font-sans">
                                     TR-069 SetParameterValues Dispatched ({cmd.parameters.tr069ParamValues.length}):
                                   </p>
                                   {cmd.parameters.tr069ParamValues.map((p: any, idx: number) => {
@@ -3548,11 +3548,11 @@ export const DeviceDetail: React.FC = () => {
                                       pVal = '••••••••';
                                     }
                                     return (
-                                      <div key={idx} className="flex flex-wrap items-center justify-between text-[11px] bg-slate-50 p-1.5 rounded border border-slate-200">
-                                        <span className="text-[#1D4ED8] font-semibold break-all">{pName}</span>
+                                      <div key={idx} className="flex flex-wrap items-center justify-between text-[11px] bg-[#080D1A] p-1.5 rounded border border-slate-800">
+                                        <span className="text-sky-300 font-semibold break-all">{pName}</span>
                                         <div className="flex items-center space-x-2">
-                                          <span className="text-[#0F172A] font-bold">{String(pVal)}</span>
-                                          <span className="text-[9px] text-[#64748B] bg-slate-200 px-1 py-0.2 rounded font-sans">{pType || 'string'}</span>
+                                          <span className="text-white font-bold">{String(pVal)}</span>
+                                          <span className="text-[9px] text-slate-400 bg-slate-200 px-1 py-0.2 rounded font-sans">{pType || 'string'}</span>
                                         </div>
                                       </div>
                                     );
@@ -3563,7 +3563,7 @@ export const DeviceDetail: React.FC = () => {
                           )}
 
                           {/* Audit & Execution Timing */}
-                          <div className="flex flex-wrap items-center justify-between text-[11px] text-[#64748B] font-mono pt-1">
+                          <div className="flex flex-wrap items-center justify-between text-[11px] text-slate-400 font-mono pt-1">
                             <div className="flex items-center space-x-3">
                               <span>Queued: {cmd.queuedAt ? new Date(cmd.queuedAt).toLocaleString() : 'N/A'}</span>
                               {cmd.completedAt && <span>Completed: {new Date(cmd.completedAt).toLocaleString()}</span>}
@@ -3578,10 +3578,10 @@ export const DeviceDetail: React.FC = () => {
                     })}
                   </div>
                 ) : (
-                  <div className="py-12 bg-[#F8FAFC] rounded-2xl border border-dashed border-[#CBD5E1] text-center space-y-2">
+                  <div className="py-12 bg-[#060913] rounded-2xl border border-dashed border-slate-700/80 text-center space-y-2">
                     <CheckCircle2 className="w-8 h-8 text-emerald-500 mx-auto" />
-                    <p className="text-sm font-semibold text-[#0F172A]">Command Queue is Idle</p>
-                    <p className="text-xs text-[#64748B]">All dispatched TR-069 configuration changes and RPCs have completed successfully.</p>
+                    <p className="text-sm font-semibold text-white">Command Queue is Idle</p>
+                    <p className="text-xs text-slate-400">All dispatched TR-069 configuration changes and RPCs have completed successfully.</p>
                   </div>
                 )}
               </div>
@@ -3600,22 +3600,22 @@ export const DeviceDetail: React.FC = () => {
       >
         <form onSubmit={handleSaveConfig} className="space-y-4">
           {configError && (
-            <div className="p-3 rounded-lg bg-[#FEF2F2] border border-[#FECACA] text-[#991B1B] text-xs flex items-center space-x-2">
+            <div className="p-3 rounded-lg bg-rose-500/15 border border-rose-500/30 text-rose-300 text-xs flex items-center space-x-2">
               <AlertCircle className="w-4 h-4 shrink-0" />
               <span>{configError}</span>
             </div>
           )}
 
           {configSuccess && (
-            <div className="p-3 rounded-lg bg-[#ECFDF5] border border-[#A7F3D0] text-[#065F46] text-xs flex items-center space-x-2">
+            <div className="p-3 rounded-lg bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 text-xs flex items-center space-x-2">
               <CheckCircle2 className="w-4 h-4 shrink-0" />
               <span>{configSuccess}</span>
             </div>
           )}
 
           {/* Wi-Fi 2.4 GHz Section */}
-          <div className="p-3.5 bg-[#F8FAFC] rounded-xl border border-[#E2E8F0] space-y-3">
-            <h4 className="text-xs font-bold text-[#047857] uppercase tracking-wider">Wi-Fi 2.4 GHz Configuration</h4>
+          <div className="p-3.5 bg-[#060913] rounded-xl border border-slate-800 space-y-3">
+            <h4 className="text-xs font-bold text-emerald-400 uppercase tracking-wider">Wi-Fi 2.4 GHz Configuration</h4>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <Input
                 label="2.4 GHz SSID"
@@ -3633,11 +3633,11 @@ export const DeviceDetail: React.FC = () => {
             </div>
             <div className="grid grid-cols-2 gap-3">
               <div>
-                <label className="text-xs font-medium text-[#334155] block mb-1">Channel</label>
+                <label className="text-xs font-medium text-slate-300 block mb-1">Channel</label>
                 <select
                   value={configForm.wifi24Channel}
                   onChange={(e) => setConfigForm({ ...configForm, wifi24Channel: Number(e.target.value) })}
-                  className="w-full bg-white border border-[#E2E8F0] rounded-lg px-3 py-2 text-xs text-[#0F172A]"
+                  className="w-full bg-[#0E172A] border border-slate-800 rounded-lg px-3 py-2 text-xs text-white"
                 >
                   {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map((ch) => (
                     <option key={ch} value={ch}>Channel {ch}</option>
@@ -3645,11 +3645,11 @@ export const DeviceDetail: React.FC = () => {
                 </select>
               </div>
               <div>
-                <label className="text-xs font-medium text-[#334155] block mb-1">State</label>
+                <label className="text-xs font-medium text-slate-300 block mb-1">State</label>
                 <select
                   value={configForm.wifi24Enabled ? 'true' : 'false'}
                   onChange={(e) => setConfigForm({ ...configForm, wifi24Enabled: e.target.value === 'true' })}
-                  className="w-full bg-white border border-[#E2E8F0] rounded-lg px-3 py-2 text-xs text-[#0F172A]"
+                  className="w-full bg-[#0E172A] border border-slate-800 rounded-lg px-3 py-2 text-xs text-white"
                 >
                   <option value="true">Enabled</option>
                   <option value="false">Disabled</option>
@@ -3659,7 +3659,7 @@ export const DeviceDetail: React.FC = () => {
           </div>
 
           {/* Wi-Fi 5.0 GHz Section */}
-          <div className="p-3.5 bg-[#F8FAFC] rounded-xl border border-[#E2E8F0] space-y-3">
+          <div className="p-3.5 bg-[#060913] rounded-xl border border-slate-800 space-y-3">
             <h4 className="text-xs font-bold text-[#6D28D9] uppercase tracking-wider">Wi-Fi 5.0 GHz Configuration</h4>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <Input
@@ -3678,11 +3678,11 @@ export const DeviceDetail: React.FC = () => {
             </div>
             <div className="grid grid-cols-2 gap-3">
               <div>
-                <label className="text-xs font-medium text-[#334155] block mb-1">Channel</label>
+                <label className="text-xs font-medium text-slate-300 block mb-1">Channel</label>
                 <select
                   value={configForm.wifi5gChannel}
                   onChange={(e) => setConfigForm({ ...configForm, wifi5gChannel: Number(e.target.value) })}
-                  className="w-full bg-white border border-[#E2E8F0] rounded-lg px-3 py-2 text-xs text-[#0F172A]"
+                  className="w-full bg-[#0E172A] border border-slate-800 rounded-lg px-3 py-2 text-xs text-white"
                 >
                   {[36, 40, 44, 48, 149, 153, 157, 161].map((ch) => (
                     <option key={ch} value={ch}>Channel {ch}</option>
@@ -3690,11 +3690,11 @@ export const DeviceDetail: React.FC = () => {
                 </select>
               </div>
               <div>
-                <label className="text-xs font-medium text-[#334155] block mb-1">State</label>
+                <label className="text-xs font-medium text-slate-300 block mb-1">State</label>
                 <select
                   value={configForm.wifi5gEnabled ? 'true' : 'false'}
                   onChange={(e) => setConfigForm({ ...configForm, wifi5gEnabled: e.target.value === 'true' })}
-                  className="w-full bg-white border border-[#E2E8F0] rounded-lg px-3 py-2 text-xs text-[#0F172A]"
+                  className="w-full bg-[#0E172A] border border-slate-800 rounded-lg px-3 py-2 text-xs text-white"
                 >
                   <option value="true">Enabled</option>
                   <option value="false">Disabled</option>
@@ -3704,8 +3704,8 @@ export const DeviceDetail: React.FC = () => {
           </div>
 
           {/* WAN PPPoE & VLAN */}
-          <div className="p-3.5 bg-[#F8FAFC] rounded-xl border border-[#E2E8F0] space-y-3">
-            <h4 className="text-xs font-bold text-[#1677FF] uppercase tracking-wider">WAN & PPPoE Settings</h4>
+          <div className="p-3.5 bg-[#060913] rounded-xl border border-slate-800 space-y-3">
+            <h4 className="text-xs font-bold text-sky-400 uppercase tracking-wider">WAN & PPPoE Settings</h4>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <Input
                 label="PPPoE Username"
@@ -3734,7 +3734,7 @@ export const DeviceDetail: React.FC = () => {
             </div>
           </div>
 
-          <div className="flex justify-end space-x-3 pt-3 border-t border-[#E2E8F0]">
+          <div className="flex justify-end space-x-3 pt-3 border-t border-slate-800">
             <Button type="button" variant="outline" onClick={() => setIsConfigOpen(false)}>
               Cancel
             </Button>
@@ -3755,12 +3755,12 @@ export const DeviceDetail: React.FC = () => {
         maxWidth="md"
       >
         <div className="space-y-4">
-          <p className="text-xs text-[#334155]">
-            Are you sure you want to execute <span className="font-bold text-[#0F172A]">{actionConfirm?.label}</span> on ONT{' '}
-            <span className="font-mono text-[#1677FF]">{workspace?.header?.serialNumber}</span>?
+          <p className="text-xs text-slate-300">
+            Are you sure you want to execute <span className="font-bold text-white">{actionConfirm?.label}</span> on ONT{' '}
+            <span className="font-mono text-sky-400">{workspace?.header?.serialNumber}</span>?
           </p>
           {actionConfirm?.danger && (
-            <div className="p-3 rounded-lg bg-[#FEF2F2] border border-[#FECACA] text-[#991B1B] text-xs">
+            <div className="p-3 rounded-lg bg-rose-500/15 border border-rose-500/30 text-rose-300 text-xs">
               Warning: This is a high-risk operation that will restore the device to factory defaults and terminate customer connectivity.
             </div>
           )}
@@ -3788,17 +3788,17 @@ export const DeviceDetail: React.FC = () => {
         maxWidth="md"
       >
         <div className="space-y-4">
-          <div className="p-4 bg-[#FEF2F2] border border-[#FECACA] rounded-xl flex items-start space-x-3">
-            <AlertTriangle className="w-5 h-5 text-[#B91C1C] shrink-0 mt-0.5" />
+          <div className="p-4 bg-rose-500/15 border border-rose-500/30 rounded-xl flex items-start space-x-3">
+            <AlertTriangle className="w-5 h-5 text-rose-400 shrink-0 mt-0.5" />
             <div>
-              <p className="text-sm font-bold text-[#0F172A]">Permanently Delete ONT?</p>
-              <p className="text-xs text-[#64748B] mt-1">
-                Are you sure you want to permanently delete ONT <code className="font-mono font-bold text-[#B91C1C]">{workspace?.header?.serialNumber}</code> from your fleet? Any subscriber bindings and telemetry will be unlinked.
+              <p className="text-sm font-bold text-white">Permanently Delete ONT?</p>
+              <p className="text-xs text-slate-400 mt-1">
+                Are you sure you want to permanently delete ONT <code className="font-mono font-bold text-rose-400">{workspace?.header?.serialNumber}</code> from your fleet? Any subscriber bindings and telemetry will be unlinked.
               </p>
             </div>
           </div>
 
-          <div className="flex justify-end space-x-3 pt-3 border-t border-[#E2E8F0]">
+          <div className="flex justify-end space-x-3 pt-3 border-t border-slate-800">
             <Button variant="outline" onClick={() => setDeleteConfirmOpen(false)}>
               Cancel
             </Button>
@@ -3813,13 +3813,13 @@ export const DeviceDetail: React.FC = () => {
       {/* Full-Screen 30-Second Progress Overlay */}
       {isOverlayActive && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/80 backdrop-blur-sm p-4 animate-fadeIn">
-          <div className="bg-white rounded-3xl p-8 max-w-md w-full shadow-2xl border border-slate-200 text-center space-y-6">
+          <div className="bg-[#0E172A] rounded-3xl p-8 max-w-md w-full shadow-2xl border border-slate-800 text-center space-y-6">
             <div className="relative w-24 h-24 mx-auto flex items-center justify-center">
               <div className="absolute inset-0 rounded-full border-4 border-slate-100 border-t-[#E05638] animate-spin" />
-              <span className="text-2xl font-extrabold font-mono text-slate-800">{overlaySecondsLeft}s</span>
+              <span className="text-2xl font-extrabold font-mono text-slate-100">{overlaySecondsLeft}s</span>
             </div>
             <div className="space-y-2">
-              <h3 className="text-base font-bold text-slate-900">{overlayTitle}</h3>
+              <h3 className="text-base font-bold text-white">{overlayTitle}</h3>
               <p className="text-xs text-slate-500">
                 Dispatched TR-069 SetParameterValues to physical ONT. Waiting for hardware acknowledgment.
               </p>

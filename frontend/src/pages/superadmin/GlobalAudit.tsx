@@ -34,8 +34,8 @@ export const GlobalAudit: React.FC = () => {
       header: 'Action / Correlation ID',
       accessor: (l) => (
         <div>
-          <span className="font-mono font-semibold text-[#1677FF]">{l.action}</span>
-          <p className="text-[11px] font-mono text-[#94A3B8] mt-0.5">{l.correlationId}</p>
+          <span className="font-mono font-semibold text-sky-400">{l.action}</span>
+          <p className="text-[11px] font-mono text-slate-400 mt-0.5">{l.correlationId}</p>
         </div>
       ),
     },
@@ -43,15 +43,15 @@ export const GlobalAudit: React.FC = () => {
       header: 'Actor & Role',
       accessor: (l) => (
         <div>
-          <p className="text-[#1E293B]">{l.actorEmail}</p>
-          <span className="text-xs text-[#64748B] capitalize">{l.actorRole?.replace('_', ' ')}</span>
+          <p className="text-slate-100">{l.actorEmail}</p>
+          <span className="text-xs text-slate-400 capitalize">{l.actorRole?.replace('_', ' ')}</span>
         </div>
       ),
     },
     {
       header: 'Target Resource',
       accessor: (l) => (
-        <span className="text-xs text-[#334155]">
+        <span className="text-xs text-slate-300">
           {l.targetResource} ({l.targetIdentifier || l.targetId?.slice(-6)})
         </span>
       ),
@@ -67,7 +67,7 @@ export const GlobalAudit: React.FC = () => {
     {
       header: 'Timestamp',
       accessor: (l) => (
-        <span className="text-xs text-[#64748B]">{new Date(l.timestamp).toLocaleString()}</span>
+        <span className="text-xs text-slate-400">{new Date(l.timestamp).toLocaleString()}</span>
       ),
     },
   ];
@@ -79,9 +79,9 @@ export const GlobalAudit: React.FC = () => {
       breadcrumbs={[{ label: 'Audit Log' }]}
     >
       <div className="space-y-4">
-        <div className="p-3 bg-white border border-[#E2E8F0] rounded-xl flex items-center justify-between">
-          <div className="flex items-center space-x-2 text-xs text-[#64748B]">
-            <Lock className="w-4 h-4 text-[#047857]" />
+        <div className="p-3 bg-[#0E172A] border border-slate-800 rounded-xl flex items-center justify-between">
+          <div className="flex items-center space-x-2 text-xs text-slate-400">
+            <Lock className="w-4 h-4 text-emerald-400" />
             <span>Cryptographically sealed audit trail. Passwords, auth secrets, and keys are masked.</span>
           </div>
           <form

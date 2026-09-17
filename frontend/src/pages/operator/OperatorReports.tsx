@@ -74,51 +74,51 @@ export const OperatorReports: React.FC = () => {
         <div className="space-y-6">
           {/* Key Metrics Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            <div className="bg-white border border-[#CBD5E1] rounded-2xl p-5 shadow-xs">
-              <div className="flex items-center justify-between text-[#64748B] text-xs font-bold">
+            <div className="bg-[#0E172A] border border-slate-700/80 rounded-2xl p-5 shadow-xs">
+              <div className="flex items-center justify-between text-slate-400 text-xs font-bold">
                 <span>Active Subscribers</span>
-                <Users className="w-4 h-4 text-[#1677FF]" />
+                <Users className="w-4 h-4 text-sky-400" />
               </div>
-              <p className="text-2xl font-bold text-[#0F172A] mt-2 font-mono">
+              <p className="text-2xl font-bold text-white mt-2 font-mono">
                 {activeSubs}
               </p>
-              <div className="flex items-center space-x-1.5 mt-2 text-[11px] text-[#047857] font-semibold">
+              <div className="flex items-center space-x-1.5 mt-2 text-[11px] text-emerald-400 font-semibold">
                 <TrendingUp className="w-3.5 h-3.5" />
                 <span>Real-Time Subscriber DB</span>
               </div>
             </div>
 
-            <div className="bg-white border border-[#CBD5E1] rounded-2xl p-5 shadow-xs">
-              <div className="flex items-center justify-between text-[#64748B] text-xs font-bold">
+            <div className="bg-[#0E172A] border border-slate-700/80 rounded-2xl p-5 shadow-xs">
+              <div className="flex items-center justify-between text-slate-400 text-xs font-bold">
                 <span>Fleet Availability</span>
-                <Radio className="w-4 h-4 text-[#047857]" />
+                <Radio className="w-4 h-4 text-emerald-400" />
               </div>
-              <p className="text-2xl font-bold text-[#0F172A] mt-2 font-mono">{onlineRatio}%</p>
-              <div className="flex items-center space-x-1.5 mt-2 text-[11px] text-[#64748B] font-mono">
+              <p className="text-2xl font-bold text-white mt-2 font-mono">{onlineRatio}%</p>
+              <div className="flex items-center space-x-1.5 mt-2 text-[11px] text-slate-400 font-mono">
                 <span>{onlineOnts} / {totalOnts} ONTs Online</span>
               </div>
             </div>
 
-            <div className="bg-white border border-[#CBD5E1] rounded-2xl p-5 shadow-xs">
-              <div className="flex items-center justify-between text-[#64748B] text-xs font-bold">
+            <div className="bg-[#0E172A] border border-slate-700/80 rounded-2xl p-5 shadow-xs">
+              <div className="flex items-center justify-between text-slate-400 text-xs font-bold">
                 <span>SLA Resolution Rate</span>
                 <ShieldCheck className="w-4 h-4 text-[#6D28D9]" />
               </div>
-              <p className="text-2xl font-bold text-[#0F172A] mt-2 font-mono">{slaCompliance}%</p>
-              <div className="flex items-center space-x-1.5 mt-2 text-[11px] text-[#047857] font-medium">
+              <p className="text-2xl font-bold text-white mt-2 font-mono">{slaCompliance}%</p>
+              <div className="flex items-center space-x-1.5 mt-2 text-[11px] text-emerald-400 font-medium">
                 <span>{resolvedIncidents} Resolved / {totalIncidents} Total</span>
               </div>
             </div>
 
-            <div className="bg-white border border-[#CBD5E1] rounded-2xl p-5 shadow-xs">
-              <div className="flex items-center justify-between text-[#64748B] text-xs font-bold">
+            <div className="bg-[#0E172A] border border-slate-700/80 rounded-2xl p-5 shadow-xs">
+              <div className="flex items-center justify-between text-slate-400 text-xs font-bold">
                 <span>Optical Margin Drift</span>
                 <AlertTriangle className="w-4 h-4 text-[#B45309]" />
               </div>
-              <p className={`text-2xl font-bold mt-2 font-mono ${atRisk > 0 ? 'text-[#B91C1C]' : 'text-[#047857]'}`}>
+              <p className={`text-2xl font-bold mt-2 font-mono ${atRisk > 0 ? 'text-rose-400' : 'text-emerald-400'}`}>
                 {atRisk} At-Risk
               </p>
-              <div className="flex items-center space-x-1.5 mt-2 text-[11px] text-[#64748B]">
+              <div className="flex items-center space-x-1.5 mt-2 text-[11px] text-slate-400">
                 <span>Rx Power &lt; -27.0 dBm threshold</span>
               </div>
             </div>
@@ -126,16 +126,16 @@ export const OperatorReports: React.FC = () => {
 
           {/* Operational Quality Distribution */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            <div className="bg-white border border-[#CBD5E1] rounded-2xl p-6 space-y-4 shadow-xs">
-              <h3 className="text-sm font-bold text-[#0F172A] flex items-center justify-between">
+            <div className="bg-[#0E172A] border border-slate-700/80 rounded-2xl p-6 space-y-4 shadow-xs">
+              <h3 className="text-sm font-bold text-white flex items-center justify-between">
                 <span>Optical Power Health Distribution</span>
                 <Badge variant="success">TR-069 Real Ingest</Badge>
               </h3>
               <div className="space-y-3 text-xs">
                 <div>
-                  <div className="flex justify-between text-[#334155] mb-1 font-semibold">
+                  <div className="flex justify-between text-slate-300 mb-1 font-semibold">
                     <span>Healthy Margin (&gt; -24.5 dBm)</span>
-                    <span className="font-bold text-[#047857] font-mono">{Math.max(0, totalOnts - atRisk)} ONTs</span>
+                    <span className="font-bold text-emerald-400 font-mono">{Math.max(0, totalOnts - atRisk)} ONTs</span>
                   </div>
                   <div className="w-full h-2 bg-[#F1F5F9] rounded-full overflow-hidden">
                     <div className="h-full bg-emerald-500 rounded-full" style={{ width: totalOnts > 0 ? `${((Math.max(0, totalOnts - atRisk) / totalOnts) * 100)}%` : '100%' }}></div>
@@ -143,9 +143,9 @@ export const OperatorReports: React.FC = () => {
                 </div>
 
                 <div>
-                  <div className="flex justify-between text-[#334155] mb-1 font-semibold">
+                  <div className="flex justify-between text-slate-300 mb-1 font-semibold">
                     <span>Critical Loss (&lt; -27.0 dBm)</span>
-                    <span className="font-bold text-[#B91C1C] font-mono">{atRisk} ONTs</span>
+                    <span className="font-bold text-rose-400 font-mono">{atRisk} ONTs</span>
                   </div>
                   <div className="w-full h-2 bg-[#F1F5F9] rounded-full overflow-hidden">
                     <div className="h-full bg-rose-500 rounded-full" style={{ width: totalOnts > 0 ? `${((atRisk / totalOnts) * 100)}%` : '0%' }}></div>
@@ -154,21 +154,21 @@ export const OperatorReports: React.FC = () => {
               </div>
             </div>
 
-            <div className="bg-white border border-[#CBD5E1] rounded-2xl p-6 space-y-4 shadow-xs">
-              <h3 className="text-sm font-bold text-[#0F172A]">Real-Time Incident & Field Statistics</h3>
+            <div className="bg-[#0E172A] border border-slate-700/80 rounded-2xl p-6 space-y-4 shadow-xs">
+              <h3 className="text-sm font-bold text-white">Real-Time Incident & Field Statistics</h3>
               <div className="space-y-3 text-xs">
-                <div className="p-3 bg-[#F8FAFC] border border-[#CBD5E1] rounded-xl flex items-center justify-between">
+                <div className="p-3 bg-[#060913] border border-slate-700/80 rounded-xl flex items-center justify-between">
                   <div>
-                    <p className="font-bold text-[#0F172A]">Total Logged Incidents</p>
-                    <p className="text-[11px] text-[#64748B]">Platform automated alarms and fiber cuts</p>
+                    <p className="font-bold text-white">Total Logged Incidents</p>
+                    <p className="text-[11px] text-slate-400">Platform automated alarms and fiber cuts</p>
                   </div>
                   <Badge variant="neutral">{totalIncidents} Incidents</Badge>
                 </div>
 
-                <div className="p-3 bg-[#F8FAFC] border border-[#CBD5E1] rounded-xl flex items-center justify-between">
+                <div className="p-3 bg-[#060913] border border-slate-700/80 rounded-xl flex items-center justify-between">
                   <div>
-                    <p className="font-bold text-[#0F172A]">Open Support Tickets</p>
-                    <p className="text-[11px] text-[#64748B]">Active customer tickets pending technician</p>
+                    <p className="font-bold text-white">Open Support Tickets</p>
+                    <p className="text-[11px] text-slate-400">Active customer tickets pending technician</p>
                   </div>
                   <Badge variant={data?.metrics?.openTickets > 0 ? 'warning' : 'success'}>
                     {data?.metrics?.openTickets || 0} Open
