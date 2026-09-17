@@ -3808,7 +3808,7 @@ ${fallbackParams.map((p) => `        <ParameterValueStruct>
     const hits = tenantSlug && tenantSlug !== 'default'
       ? this.recentHits.filter((h) => h.tenantSlug === tenantSlug)
       : this.recentHits;
-    const host = (reqHost || '31.42.125.25').split(':')[0];
+    const host = (reqHost || process.env.APP_HOST || '127.0.0.1').split(':')[0];
     const slug = (tenantSlug && tenantSlug !== 'default') ? tenantSlug : 'rudra';
     const cwmpPathUrl = `http://${host}:7547/tr069/${slug}`;
     const cwmpSubdomainUrl = `http://${slug}.${host}:7547`;

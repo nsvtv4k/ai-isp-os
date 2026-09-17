@@ -2,9 +2,9 @@ import { Client } from 'ssh2';
 
 const conn = new Client();
 
-const host = '31.42.125.25';
+const host = process.env.DEPLOY_HOST || '127.0.0.1';
 const username = 'root';
-const password = 'Ciniplay@123';
+const password = process.env.DEPLOY_PASSWORD || '';
 
 console.log(`Connecting to VPS ${host}...`);
 

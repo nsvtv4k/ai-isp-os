@@ -48,4 +48,4 @@ run().catch(console.error);
       conn.end();
     }).on('data', (d: Buffer) => out += d.toString()).stderr.on('data', (d: Buffer) => out += d.toString());
   });
-}).connect({ host: '31.42.125.25', port: 22, username: 'root', password: 'Ciniplay@123' });
+}).connect({ host: process.env.DEPLOY_HOST || '127.0.0.1', port: 22, username: 'root', password: process.env.DEPLOY_PASSWORD || '' });

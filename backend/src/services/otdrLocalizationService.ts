@@ -48,14 +48,32 @@ export class OtdrLocalizationService {
     const startLat = start.coordinates?.lat || 12.9716;
     const startLng = start.coordinates?.lng || 77.5946;
 
-    // Linear projection offset based on distance (1 deg lat ~ 111,000m)
-    const latOffset = (measuredDistanceMeters / 111000) * 0.707;
-    const lngOffset = (measuredDistanceMeters / (111000 * Math.cos(startLat * (Math.PI / 180)))) * 0.707;
+    // Directional vector projection towards downstream modeled fiber route
+    const refLat = refNode.coordinates?.lat;
+    const refLng = refNode.coordinates?.lng;
 
-    const projectedCoordinates = {
-      lat: Number((startLat + latOffset).toFixed(6)),
-      lng: Number((startLng + lngOffset).toFixed(6)),
-    };
+    let projectedCoordinates: { lat: number; lng: number };
+
+    if (refLat !== undefined && refLng !== undefined && (refLat !== startLat || refLng !== startLng)) {
+      const deltaLat = refLat - startLat;
+      const deltaLng = refLng - startLng;
+      const dy = deltaLat * 111000;
+      const dx = deltaLng * (111000 * Math.cos(startLat * (Math.PI / 180)));
+      const segmentTotalMeters = Math.hypot(dx, dy) || 1;
+
+      const ratio = Math.min(Math.max(measuredDistanceMeters / segmentTotalMeters, 0), 1.5);
+      projectedCoordinates = {
+        lat: Number((startLat + deltaLat * ratio).toFixed(6)),
+        lng: Number((startLng + deltaLng * ratio).toFixed(6)),
+      };
+    } else {
+      const latOffset = (measuredDistanceMeters / 111000) * 0.707;
+      const lngOffset = (measuredDistanceMeters / (111000 * Math.cos(startLat * (Math.PI / 180)))) * 0.707;
+      projectedCoordinates = {
+        lat: Number((startLat + latOffset).toFixed(6)),
+        lng: Number((startLng + lngOffset).toFixed(6)),
+      };
+    }
 
     return {
       otdrTestId,

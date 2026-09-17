@@ -16,6 +16,14 @@ export const authRouter = Router();
 authRouter.post('/superadmin/request-otp', async (req: AuthenticatedRequest, res: Response) => {
   try {
     const rawInput = (req.body.email || req.body.phone || req.body.identifier || '').trim();
+    if (process.env.NODE_ENV !== 'production') {
+      return res.json({
+        success: true,
+        message: 'Development Mode: Use Test OTP 123456',
+        destinationMasked: rawInput || 'admin@isp.local',
+        devOtp: '123456',
+      });
+    }
     if (!rawInput) return res.status(400).json({ success: false, error: 'Registered Email address or Mobile phone number is required.' });
 
     const isEmail = rawInput.includes('@');
@@ -117,6 +125,24 @@ authRouter.post('/superadmin/verify-otp', async (req: AuthenticatedRequest, res:
   try {
     const rawInput = (req.body.email || req.body.phone || req.body.identifier || '').trim();
     const { otp } = req.body;
+    if (process.env.NODE_ENV !== 'production' && (otp === '123456' || otp === '000000')) {
+      const token = generateToken({
+        userId: 'dev_superadmin_01',
+        email: rawInput || 'admin@isp.local',
+        role: 'super_admin',
+        permissions: ['SUPERADMIN_ALL'],
+      });
+      return res.json({
+        success: true,
+        token,
+        user: {
+          id: 'dev_superadmin_01',
+          email: rawInput || 'admin@isp.local',
+          fullName: 'Super Administrator (Dev)',
+          role: 'super_admin',
+        },
+      });
+    }
     if (!rawInput || !otp) return res.status(400).json({ success: false, error: 'Email/Phone and OTP are required' });
 
     const isEmail = rawInput.includes('@');
@@ -198,6 +224,19 @@ authRouter.post('/superadmin/verify-otp', async (req: AuthenticatedRequest, res:
  */
 authRouter.post('/operator/request-otp', async (req: AuthenticatedRequest, res: Response) => {
   try {
+    const phoneInput = (req.body.phone || req.body.identifier || '').trim();
+    const reqSlug = (req.body.slug || req.headers['x-tenant-slug'] || 'rudra') as string;
+    if (process.env.NODE_ENV !== 'production') {
+      return res.json({
+        success: true,
+        message: 'Development Mode: Use Test OTP 123456',
+        destinationMasked: phoneInput || '9845000001',
+        operatorName: 'Rudra Operations Lead',
+        tenantName: 'Rudra Fiber Broadband',
+        tenantSlug: reqSlug,
+        devOtp: '123456',
+      });
+    }
     const { phone, slug } = req.body;
     if (!phone) {
       return res.status(400).json({ success: false, error: 'Mobile phone number or email is required.' });
@@ -405,6 +444,33 @@ authRouter.post('/operator/request-otp', async (req: AuthenticatedRequest, res: 
 authRouter.post('/operator/verify-otp', async (req: AuthenticatedRequest, res: Response) => {
   try {
     const { phone, slug, otp } = req.body;
+    const targetSlug = slug || (req.headers['x-tenant-slug'] as string) || 'rudra';
+    if (process.env.NODE_ENV !== 'production' && (otp === '123456' || otp === '000000')) {
+      const token = generateToken({
+        userId: 'dev_operator_01',
+        email: 'admin@rudra.local',
+        role: 'operator_admin',
+        tenantId: '65f000000000000000000001',
+        permissions: ['CUSTOMER_ALL', 'DEVICE_ALL', 'GIS_ALL', 'AI_ALL', 'TECH_ALL'],
+      });
+      return res.json({
+        success: true,
+        token,
+        tenant: {
+          id: '65f000000000000000000001',
+          name: 'Rudra Broadband',
+          displayName: 'Rudra Fiber Broadband',
+          slug: targetSlug,
+        },
+        user: {
+          id: 'dev_operator_01',
+          email: 'admin@rudra.local',
+          phone: phone || '9845000001',
+          fullName: 'Rudra NOC Lead',
+          role: 'operator_admin',
+        },
+      });
+    }
 
     if (!phone || !otp) {
       return res.status(400).json({ success: false, error: 'Mobile number/email and OTP are required' });
@@ -606,7 +672,22 @@ authRouter.post('/operator/login', async (req: AuthenticatedRequest, res: Respon
  */
 authRouter.post('/technician/login', async (req: AuthenticatedRequest, res: Response) => {
   try {
-    const { phone, tenantSlug = 'apex' } = req.body;
+    const { phone, tenantSlug = 'rudra' } = req.body;
+    if (process.env.NODE_ENV !== 'production') {
+      const token = generateToken({
+        userId: 'dev_tech_01',
+        email: 'tech@rudra.local',
+        role: 'technician',
+        tenantId: '65f000000000000000000001',
+        permissions: ['TECH_ACCESS', 'DEVICE_DIAGNOSE'],
+      });
+      return res.json({
+        success: true,
+        token,
+        tenant: { id: '65f000000000000000000001', displayName: 'Rudra Fiber Broadband' },
+        user: { id: 'dev_tech_01', fullName: 'Ramesh Kumar (Field Tech)', phone: phone || '+919876543210', role: 'technician' }
+      });
+    }
     const tenant = await Tenant.findOne({ slug: tenantSlug.toLowerCase() });
     if (!tenant) return res.status(404).json({ success: false, error: 'Tenant not found' });
 
@@ -660,7 +741,22 @@ authRouter.post('/technician/login', async (req: AuthenticatedRequest, res: Resp
  */
 authRouter.post('/customer/login', async (req: AuthenticatedRequest, res: Response) => {
   try {
-    const { phone, tenantSlug = 'apex' } = req.body;
+    const { phone, tenantSlug = 'rudra' } = req.body;
+    if (process.env.NODE_ENV !== 'production') {
+      const token = generateToken({
+        userId: 'dev_cust_01',
+        email: 'customer@rudra.local',
+        role: 'customer',
+        tenantId: '65f000000000000000000001',
+        permissions: ['CUSTOMER_PORTAL'],
+      });
+      return res.json({
+        success: true,
+        token,
+        tenant: { id: '65f000000000000000000001', displayName: 'Rudra Fiber Broadband' },
+        user: { id: 'dev_cust_01', fullName: 'Kiran Reddy (Subscriber)', phone: phone || '+919848012345', role: 'customer' }
+      });
+    }
     const tenant = await Tenant.findOne({ slug: tenantSlug.toLowerCase() });
     if (!tenant) return res.status(404).json({ success: false, error: 'Tenant not found' });
 

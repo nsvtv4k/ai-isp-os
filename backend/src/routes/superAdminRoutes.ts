@@ -175,7 +175,7 @@ superAdminRouter.post('/tenants', async (req: AuthenticatedRequest, res: Respons
       return res.status(409).json({ success: false, error: `Slug '${targetSlug}' is already in use.` });
     }
 
-    const rawHost = (req.headers['x-forwarded-host'] as string) || (req.headers['host'] as string) || '31.42.125.25';
+    const rawHost = (req.headers['x-forwarded-host'] as string) || (req.headers['host'] as string) || process.env.APP_HOST || 'localhost';
     const cleanHost = rawHost.split(':')[0];
     const computedSubdomain = `${targetSlug}.${cleanHost}`;
 
@@ -264,7 +264,7 @@ superAdminRouter.get('/tenants/:id', async (req: AuthenticatedRequest, res: Resp
       AuditLog.find({ tenantId: tenant._id }).sort({ timestamp: -1 }).limit(10),
     ]);
 
-    const rawHost = (req.headers['x-forwarded-host'] as string) || (req.headers['host'] as string) || '31.42.125.25';
+    const rawHost = (req.headers['x-forwarded-host'] as string) || (req.headers['host'] as string) || process.env.APP_HOST || 'localhost';
     const cleanHost = rawHost.split(':')[0];
     const targetSlug = tenant.slug || 'rudra';
     const cwmpUrl = `http://${targetSlug}.${cleanHost}:7547`;
@@ -349,7 +349,7 @@ superAdminRouter.put('/tenants/:id', async (req: AuthenticatedRequest, res: Resp
         return res.status(409).json({ success: false, error: `Slug '${slug}' is already in use by another tenant.` });
       }
       tenant.slug = slug.toLowerCase().trim();
-      const rawHost = (req.headers['x-forwarded-host'] as string) || (req.headers['host'] as string) || '31.42.125.25';
+      const rawHost = (req.headers['x-forwarded-host'] as string) || (req.headers['host'] as string) || process.env.APP_HOST || 'localhost';
       const cleanHost = rawHost.split(':')[0];
       tenant.subdomain = `${tenant.slug}.${cleanHost}`;
     }
@@ -425,7 +425,7 @@ superAdminRouter.put('/tenants/:id', async (req: AuthenticatedRequest, res: Resp
       correlationId: req.correlationId || `sa_ten_upd_${Date.now()}`,
     });
 
-    const rawHost = (req.headers['x-forwarded-host'] as string) || (req.headers['host'] as string) || '31.42.125.25';
+    const rawHost = (req.headers['x-forwarded-host'] as string) || (req.headers['host'] as string) || process.env.APP_HOST || 'localhost';
     const cleanHost = rawHost.split(':')[0];
     const targetSlug = tenant.slug || 'rudra';
     const cwmpUrl = `http://${targetSlug}.${cleanHost}:7547`;
@@ -1423,12 +1423,13 @@ superAdminRouter.post('/settings/alerts/test-whatsapp', async (req: Authenticate
       return res.status(400).json({ success: false, error: 'Super Admin recipient WhatsApp phone number is required' });
     }
 
+    const cleanHost = ((req.headers['x-forwarded-host'] as string) || (req.headers['host'] as string) || 'localhost').split(':')[0];
     const testPayload = {
       serialNumber: `TEST-ONT-${Math.floor(100000 + Math.random() * 900000)}`,
       manufacturer: 'GENEXIS / Syrotech (Test)',
       oui: '002207',
       productClass: 'Titanium-2122A',
-      incomingHost: 'ciniplay.in:7547',
+      incomingHost: `${cleanHost}:7547`,
       incomingUrl: '/tr069',
       reason: 'MISSING_SLUG_AND_SUBDOMAIN (Test Alert)',
       clientIp: req.ip || '127.0.0.1',
@@ -1443,7 +1444,7 @@ superAdminRouter.post('/settings/alerts/test-whatsapp', async (req: Authenticate
       `🌐 *Host:* ${testPayload.incomingHost}\n` +
       `❗ *Reason Code:* \`${testPayload.reason}\`\n` +
       `🕒 *Timestamp:* ${formattedTime} IST\n\n` +
-      `👉 *Manage Devices:* https://ciniplay.in/superadmin/pending-mappings\n\n` +
+      `👉 *Manage Devices:* http://localhost:3000/superadmin/pending-mappings\n\n` +
       `🛡️ _AI ISP OS Multi-Tenant TR-069 Controller_`;
 
     const result = await WhatsAppService.sendTestMessage(targetPhone, alertMessage);

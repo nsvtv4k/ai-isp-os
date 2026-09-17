@@ -171,12 +171,12 @@ export async function seedDatabase() {
     name: 'Rudra Broadband',
     displayName: 'Rudra Fiber Broadband',
     slug: 'rudra',
-    subdomain: 'rudra.31.42.125.25',
+    subdomain: process.env.DEFAULT_TENANT_SUBDOMAIN || 'rudra.localhost',
     operatorKey: 'opk_rudra_982341',
     status: 'active',
     owner: {
       name: 'Rudra Operations Lead',
-      email: 'admin@rudra.ciniplay.in',
+      email: process.env.OPERATOR_EMAIL || 'admin@rudra.local',
       phone: '+919845000001',
     },
     address: {
@@ -193,7 +193,7 @@ export async function seedDatabase() {
       secondaryColor: '#0f172a',
       companyName: 'Rudra Fiber Broadband',
       supportPhone: '+91 98450 00001',
-      supportEmail: 'support@rudra.ciniplay.in',
+      supportEmail: 'support@rudra.local',
       portalTitle: 'Rudra Fiber NOC & Operations',
     },
     plan: {
@@ -211,7 +211,7 @@ export async function seedDatabase() {
   // 4. Seed Primary Operator User for WhatsApp OTP login
   await User.create({
     tenantId: primaryTenant._id,
-    email: 'admin@rudra.ciniplay.in',
+    email: process.env.OPERATOR_EMAIL || 'admin@rudra.local',
     phone: '+919845000001',
     fullName: 'Rudra NOC Lead',
     role: 'operator_admin',
@@ -230,7 +230,7 @@ export async function seedDatabase() {
       status: 'active',
     },
     {
-      email: 'superadmin@ciniplay.in',
+      email: process.env.SUPERADMIN_EMAIL || 'superadmin@isp.local',
       phone: '+919949666907',
       fullName: 'Super Administrator',
       role: 'super_admin',

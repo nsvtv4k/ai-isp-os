@@ -182,7 +182,7 @@ cwmpRouter.post('/usp', async (req: Request, res: Response) => {
 cwmpRouter.get('/api/v1/operator/cwmp/status', async (req: Request, res: Response) => {
   try {
     const tenantSlug = (req.headers['x-tenant-slug'] as string) || (req as any).user?.tenantSlug || 'rudra';
-    const hostHeader = (req.headers['x-forwarded-host'] as string) || (req.headers['host'] as string) || '31.42.125.25';
+    const hostHeader = (req.headers['x-forwarded-host'] as string) || (req.headers['host'] as string) || process.env.APP_HOST || '127.0.0.1';
     const stats = CwmpService.getStats(tenantSlug, hostHeader);
     return res.json(stats);
   } catch (error: any) {

@@ -31,7 +31,7 @@ const server = http.createServer(app);
 // Enable trust proxy for Nginx reverse proxy so req.hostname and IPs are accurate
 app.set('trust proxy', true);
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 4000;
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/ai_isp_os_db';
 const JWT_SECRET = process.env.JWT_SECRET || 'ai-isp-os-master-enterprise-secret-key-2026';
 const METRICS_BEARER_TOKEN = process.env.METRICS_BEARER_TOKEN || 'metrics_secure_token_2026';
@@ -42,7 +42,7 @@ const ALLOWED_ORIGINS = [
   'https://www.ciniplay.in',
   process.env.CORS_ORIGIN,
   ...(process.env.NODE_ENV !== 'production'
-    ? ['http://localhost:3000', 'http://localhost:5173', 'http://127.0.0.1:3000', 'http://127.0.0.1:5173']
+    ? ['http://localhost:3000', 'http://localhost:5173', 'http://127.0.0.1:3000', 'http://127.0.0.1:5173', 'http://localhost:4000', 'http://127.0.0.1:4000']
     : []),
 ].filter(Boolean) as string[];
 
@@ -348,23 +348,36 @@ app.use((err: any, req: express.Request, res: express.Response, next: express.Ne
 
 // Database Connection & Server Initialization
 export const startServer = async () => {
+  // Graceful connection attempt
   try {
     if (mongoose.connection.readyState === 0) {
-      await mongoose.connect(MONGODB_URI);
+      await mongoose.connect(MONGODB_URI, { serverSelectionTimeoutMS: 3000 });
       console.log('Connected to MongoDB database successfully.');
     }
+  } catch (dbError: any) {
+    console.warn('[Database Notice] MongoDB is offline: ' + dbError.message + '. Starting server in resilient standalone mode.');
+    const retryTimer = setInterval(async () => {
+      if (mongoose.connection.readyState === 0) {
+        try {
+          await mongoose.connect(MONGODB_URI, { serverSelectionTimeoutMS: 3000 });
+          console.log('Successfully connected to MongoDB database.');
+          clearInterval(retryTimer);
+        } catch {}
+      } else {
+        clearInterval(retryTimer);
+      }
+    }, 10000);
+  }
 
+  // Start HTTP Server
+  try {
     if (process.env.NODE_ENV !== 'test') {
       server.listen(PORT, () => {
-        console.log(`AI ISP OS Backend Engine running on http://localhost:${PORT}`);
-        // Initialize background WhatsApp Web Baileys multi-device engine
-        WhatsAppService.initBaileysSocket().catch((err: any) => {
-          console.warn('[WhatsAppService] Background Baileys socket spin-up:', err.message);
-        });
+        console.log('AI ISP OS Backend Engine running on http://localhost:' + PORT);
       });
     }
-  } catch (error) {
-    console.error('Failed to connect to database or start server:', error);
+  } catch (serverError: any) {
+    console.error('Failed to start HTTP server:', serverError);
   }
 };
 
